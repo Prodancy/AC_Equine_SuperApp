@@ -126,11 +126,6 @@ export default function Treatment() {
       {/* Mobile Back Button & Header */}
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-2">
-        <Link href="/">
-           <Button variant="ghost" size="icon" className="md:hidden -ml-2">
-             <ChevronLeft className="w-6 h-6" />
-           </Button>
-        </Link>
         <div>
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Treatment</h1>
           <p className="text-xs md:text-sm text-muted-foreground hidden md:block">Manage active cryotherapy session.</p>
