@@ -12,7 +12,11 @@ import {
   ThermometerSnowflake,
   Loader2,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  Zap,
+  Waves,
+  ShieldCheck,
+  Plus
 } from "lucide-react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,23 +27,33 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
+  DialogTrigger,
+  DialogFooter,
 } from "@/components/ui/dialog";
-
-import america_cryo_logo_horizontalh_64 from "@assets/america-cryo-logo-horizontalh-64.png";
+import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
+import { Label } from "@/components/ui/label";
 
 export default function Dashboard() {
   const [isConnectOpen, setIsConnectOpen] = useState(false);
+  const [isScheduleOpen, setIsScheduleOpen] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState<'idle' | 'scanning' | 'connecting' | 'connected' | 'error'>('idle');
+
+  const treatments = [
+    { id: "cryo", label: "Cryotherapy", icon: Zap, color: "text-blue-400" },
+    { id: "3b_laser", label: "3B Laser", icon: Activity, color: "text-red-400" },
+    { id: "shockwave", label: "Shockwave", icon: Waves, color: "text-orange-400" },
+    { id: "class_iv", label: "Class IV Laser", icon: ShieldCheck, color: "text-purple-400" },
+  ];
 
   const handleConnect = async () => {
     setConnectionStatus('scanning');
-    // Simulate Bluetooth scanning and connection logic
     await new Promise(resolve => setTimeout(resolve, 2000));
     setConnectionStatus('connecting');
     await new Promise(resolve => setTimeout(resolve, 1500));
     setConnectionStatus('connected');
     
-    // Auto-close after success
     setTimeout(() => {
       setIsConnectOpen(false);
       setConnectionStatus('idle');
@@ -58,13 +72,53 @@ export default function Dashboard() {
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground tracking-widest">Dashboard</h1>
           <p className="text-sm md:text-base text-muted-foreground">Welcome back, Dr. Anderson</p>
         </div>
-        <Button 
-          onClick={() => setIsConnectOpen(true)}
-          className="w-full md:w-auto gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 transition-all active:scale-95 border border-primary/20"
-        >
-          <Bluetooth className="w-4 h-4" /> Connect Device
-        </Button>
+        <div className="flex w-full md:w-auto gap-3">
+          <Dialog open={isScheduleOpen} onOpenChange={setIsScheduleOpen}>
+            <DialogTrigger asChild>
+              <Button variant="outline" className="flex-1 md:flex-none gap-2 border-white/10 bg-card/50 hover:bg-card text-foreground">
+                <Calendar className="w-4 h-4 text-primary" /> Schedule
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md bg-[#0a0f1d] border-white/10">
+              <DialogHeader>
+                <DialogTitle>Schedule Treatment</DialogTitle>
+                <DialogDescription>Book a new session for a patient.</DialogDescription>
+              </DialogHeader>
+              <div className="py-4 space-y-4">
+                <div className="grid grid-cols-7 gap-2">
+                  {[...Array(7)].map((_, i) => (
+                    <div key={i} className={cn(
+                      "aspect-square rounded-lg border border-white/5 flex flex-col items-center justify-center text-[10px] font-bold",
+                      i === 1 ? "bg-primary text-white" : "bg-white/5 text-gray-500"
+                    )}>
+                      <span>{['M', 'T', 'W', 'T', 'F', 'S', 'S'][i]}</span>
+                      <span className="text-xs">{16 + i}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="space-y-2">
+                  <Label className="text-[10px] uppercase tracking-widest text-primary font-black">Available Slots</Label>
+                  <div className="grid grid-cols-3 gap-2">
+                    {['09:00', '10:30', '14:00', '15:30', '17:00'].map(time => (
+                      <Button key={time} variant="outline" className="h-10 text-xs border-white/5 bg-white/5">{time}</Button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <DialogFooter>
+                <Button className="w-full bg-primary text-white" onClick={() => setIsScheduleOpen(false)}>Confirm Booking</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+          <Button 
+            onClick={() => setIsConnectOpen(true)}
+            className="flex-1 md:flex-none gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 transition-all active:scale-95 border border-primary/20"
+          >
+            <Bluetooth className="w-4 h-4" /> Connect
+          </Button>
+        </div>
       </header>
+
       {/* Bluetooth Connection Dialog */}
       <Dialog open={isConnectOpen} onOpenChange={setIsConnectOpen}>
         <DialogContent className="sm:max-w-md bg-card border-white/10">
@@ -142,7 +196,7 @@ export default function Dashboard() {
           </div>
         </DialogContent>
       </Dialog>
-      {/* Hero Section - Solid Branding */}
+
       <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl aspect-[16/9] md:aspect-[32/9] border border-white/10 bg-gradient-to-br from-[#0a0f1d] via-[#111827] to-[#030712]">
         <div className="absolute inset-0 flex items-end md:items-center p-6 md:p-12">
           <div className="max-w-xl space-y-2 md:space-y-4 pb-4 md:pb-0">
@@ -162,7 +216,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      {/* Hero Stats - Horizontal scroll on mobile */}
+
       <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 no-scrollbar snap-x">
         {[
           { label: "Active Treatments", value: "3", icon: Activity, color: "text-primary" },
@@ -170,87 +224,87 @@ export default function Dashboard() {
           { label: "Hours This Week", value: "12.5h", icon: Clock, color: "text-muted-foreground" },
           { label: "Scheduled Today", value: "5", icon: Calendar, color: "text-muted-foreground" },
         ].map((stat, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
-            className="min-w-[160px] md:min-w-0 snap-center"
-          >
+          <motion.div key={i} className="min-w-[160px] md:min-w-0 snap-center">
             <Card className="hover:shadow-lg transition-shadow h-full bg-card/50 backdrop-blur border-white/5">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-4">
-                <CardTitle className="text-xs font-medium text-muted-foreground whitespace-nowrap tracking-wider">
-                  {stat.label}
-                </CardTitle>
+                <CardTitle className="text-xs font-medium text-muted-foreground whitespace-nowrap tracking-wider">{stat.label}</CardTitle>
                 <stat.icon className={`h-4 w-4 ${stat.color}`} />
               </CardHeader>
-              <CardContent className="p-4 pt-0">
-                <div className="text-2xl font-bold text-foreground">{stat.value}</div>
-              </CardContent>
+              <CardContent className="p-4 pt-0"><div className="text-2xl font-bold text-foreground">{stat.value}</div></CardContent>
             </Card>
           </motion.div>
         ))}
       </div>
+
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
-        {/* Quick Actions / Recent Activity */}
-        <Card className="col-span-full lg:col-span-4 shadow-lg border-white/5 bg-card/50 backdrop-blur order-2 lg:order-1">
+        <Card className="col-span-full lg:col-span-4 shadow-lg border-white/5 bg-card/50 backdrop-blur overflow-hidden">
+          <div className="h-1 bg-gray-500/20 w-full" />
           <CardHeader>
-            <CardTitle className="tracking-wider text-sm md:text-base">Recent Treatments</CardTitle>
-            <CardDescription>
-              Latest cryotherapy sessions recorded.
-            </CardDescription>
+            <CardTitle className="tracking-[0.2em] text-[10px] uppercase text-gray-400 font-black">Treatment Pipeline</CardTitle>
+            <CardDescription className="text-gray-400">Aggregated patient sessions and outcomes.</CardDescription>
           </CardHeader>
           <CardContent className="p-0 md:p-6">
-            <div className="divide-y divide-white/5">
-              {[
-                { horse: "Thunder Spirit", condition: "Tendonitis - Left Foreleg", time: "2h ago", protocol: "Inflammation" },
-                { horse: "Bella Luna", condition: "Post-Race Recovery", time: "5h ago", protocol: "Recovery" },
-                { horse: "Midnight Star", condition: "Muscle Soreness", time: "Yesterday", protocol: "Deep Tissue" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center justify-between p-4 hover:bg-white/5 transition-colors">
-                  <div className="space-y-1">
-                    <p className="text-sm font-bold text-foreground leading-none">{item.horse}</p>
-                    <p className="text-xs text-muted-foreground line-clamp-1">{item.condition}</p>
+            <ScrollArea className="h-[320px] px-4 md:px-0">
+              <div className="space-y-3 pb-4">
+                {[
+                  { date: "Feb 24, 2024", horse: "Thunder Spirit", protocol: "Tendon Repair", status: "Completed", modalities: ["cryo", "3b_laser"] },
+                  { date: "Feb 23, 2024", horse: "Bella Luna", protocol: "Recovery", status: "Completed", modalities: ["cryo"] },
+                  { date: "Feb 23, 2024", horse: "Apollo", protocol: "Inflammation", status: "Interrupted", modalities: ["shockwave"] },
+                  { date: "Feb 22, 2024", horse: "Midnight Star", protocol: "Manual", status: "Completed", modalities: ["class_iv"] },
+                ].map((row, i) => (
+                  <div key={i} className="group relative bg-[#1a2234]/40 rounded-2xl p-4 border border-white/5 hover:border-primary/30 transition-all">
+                    <div className="flex justify-between items-start mb-2">
+                      <div className="space-y-0.5">
+                        <div className="text-[9px] font-black text-gray-500 tracking-widest uppercase">{row.date}</div>
+                        <div className="text-sm font-bold text-white tracking-tight">{row.horse}</div>
+                      </div>
+                      <Badge variant={row.status === "Completed" ? "default" : "destructive"} className="text-[9px] font-black uppercase tracking-tighter rounded-lg h-5 px-2">
+                        {row.status}
+                      </Badge>
+                    </div>
+                    <div className="flex justify-between items-center mt-3">
+                      <div className="text-[11px] text-primary font-bold uppercase tracking-tight bg-primary/5 px-2 py-0.5 rounded-md border border-primary/10">{row.protocol}</div>
+                      <div className="flex gap-1">
+                        {row.modalities.map(m => {
+                          const tool = treatments.find(t => t.id === m);
+                          return tool ? <tool.icon key={m} className={cn("w-3.5 h-3.5", tool.color)} /> : null;
+                        })}
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-right pl-4">
-                    <div className="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded border border-primary/20 whitespace-nowrap tracking-wide">{item.protocol}</div>
-                    <div className="text-[10px] text-muted-foreground mt-1">{item.time}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <Button variant="ghost" className="w-full text-xs text-muted-foreground mt-2 md:hidden hover:text-primary">
-              View All History <ArrowRight className="w-3 h-3 ml-1" />
-            </Button>
+                ))}
+              </div>
+            </ScrollArea>
           </CardContent>
         </Card>
 
-        {/* Quick Start Panel */}
-        <Card className="col-span-full lg:col-span-3 bg-gradient-to-br from-primary/10 to-transparent border-primary/20 order-1 lg:order-2">
+        <Card className="col-span-full lg:col-span-3 bg-gradient-to-br from-primary/10 to-transparent border-primary/20">
           <CardHeader>
-            <CardTitle className="tracking-wider text-sm md:text-base">Quick Actions</CardTitle>
-            <CardDescription>Manage your clinic</CardDescription>
+            <CardTitle className="tracking-wider text-sm md:text-base">Quick Start</CardTitle>
+            <CardDescription>Launch clinic tools</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Link href="/treatment">
               <Button className="w-full h-20 text-lg flex flex-col gap-1 justify-center items-center shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all active:scale-[0.98] bg-primary text-white border-0">
                 <ThermometerSnowflake className="w-8 h-8 mb-1" />
-                <span className="font-bold tracking-wide">NEW TREATMENT</span>
+                <span className="font-bold tracking-wide uppercase">New Treatment</span>
               </Button>
             </Link>
             <div className="grid grid-cols-2 gap-3">
               <Link href="/horses">
                 <Button variant="outline" className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all">
                   <Horse className="w-5 h-5 text-primary" />
-                  <span className="text-xs font-medium tracking-wide">Add Horse</span>
+                  <span className="text-xs font-medium tracking-wide">Registry</span>
                 </Button>
               </Link>
-              <Link href="/records">
-                <Button variant="outline" className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all">
-                  <Activity className="w-5 h-5 text-primary" />
-                  <span className="text-xs font-medium tracking-wide">Records</span>
-                </Button>
-              </Link>
+              <Button 
+                variant="outline" 
+                onClick={() => setIsScheduleOpen(true)}
+                className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all"
+              >
+                <Calendar className="w-5 h-5 text-primary" />
+                <span className="text-xs font-medium tracking-wide">Book Slot</span>
+              </Button>
             </div>
           </CardContent>
         </Card>
