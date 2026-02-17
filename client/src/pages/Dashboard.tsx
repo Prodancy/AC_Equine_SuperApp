@@ -238,7 +238,7 @@ export default function Dashboard() {
                   className="w-full h-20 md:h-24 flex flex-col items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl transition-all backdrop-blur-md group/btn shadow-lg px-4"
                 >
                   <Horse className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
-                  <span className="text-[10px] md:text-xs font-bold tracking-[0.1em]">Patients</span>
+                  <span className="md:text-xs font-bold tracking-[0.1em] text-[15px]">Patients</span>
                 </Button>
               </Link>
 
