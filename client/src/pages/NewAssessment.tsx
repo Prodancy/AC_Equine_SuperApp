@@ -87,7 +87,7 @@ export default function NewAssessment() {
         <div className="max-w-4xl mx-auto p-4 md:p-10 space-y-12 pb-12">
           <section className="space-y-6">
             <div className="flex justify-between items-end">
-              <Label className="text-[10px] uppercase tracking-[0.3em] text-white font-black">Digital Thermography (Live Stream)</Label>
+              <Label className="text-[11px] tracking-[0.1em] text-white font-bold">Digital Thermography (Live Stream)</Label>
               <span className="text-[10px] text-gray-500 font-bold tracking-widest">{capturedImages.length}/4 Snapshots</span>
             </div>
             
@@ -151,7 +151,7 @@ export default function NewAssessment() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <section className="space-y-4">
-              <Label className="text-[10px] uppercase tracking-[0.3em] text-white font-black">Clinical Category</Label>
+              <Label className="text-[11px] tracking-[0.1em] text-white font-bold">Clinical Category</Label>
               <Select value={conditionLabel} onValueChange={setConditionLabel}>
                 <SelectTrigger className="bg-[#1a2234]/50 border-white/5 h-14 rounded-2xl text-gray-200 focus:ring-primary/20 transition-all shadow-inner">
                   <SelectValue placeholder="Select diagnostic focus..." />
@@ -166,7 +166,7 @@ export default function NewAssessment() {
             </section>
 
             <section className="space-y-4">
-              <Label className="text-[10px] uppercase tracking-[0.3em] text-white font-black">Proposed Modalities</Label>
+              <Label className="text-[11px] tracking-[0.1em] text-white font-bold">Proposed Modalities</Label>
               <div className="grid grid-cols-2 gap-3">
                 {treatments.map((t) => (
                   <button
@@ -188,7 +188,7 @@ export default function NewAssessment() {
           </div>
 
           <section className="space-y-4 pb-10">
-            <Label className="text-[10px] uppercase tracking-[0.3em] text-white font-black">Clinical Notes</Label>
+            <Label className="text-[11px] tracking-[0.1em] text-white font-bold">Clinical Notes</Label>
             <div className="rounded-[1.5rem] border border-white/5 bg-[#1a2234]/50 overflow-hidden focus-within:border-primary/40 transition-all shadow-2xl">
               <div className="flex items-center gap-1 p-3 border-b border-white/5 bg-white/[0.03]">
                 <div className="flex gap-1 px-1 border-r border-white/10 mr-1">
