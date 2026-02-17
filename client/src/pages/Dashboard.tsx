@@ -234,31 +234,31 @@ export default function Dashboard() {
         <Card className="shadow-lg border-white/5 bg-card/80 backdrop-blur-xl overflow-hidden border-t-primary/20">
           <div className="h-1 bg-primary/40 w-full" />
           <CardHeader className="sticky top-0 bg-card/50 backdrop-blur-md z-30 pb-4">
-            <CardTitle className="tracking-[0.2em] text-[10px] uppercase text-primary font-black">Treatment Pipeline</CardTitle>
-            <CardDescription className="text-gray-400">Aggregated patient sessions and outcomes.</CardDescription>
+            <CardTitle className="tracking-[0.2em] text-[10px] uppercase text-primary font-black">Scheduled Today</CardTitle>
+            <CardDescription className="text-gray-400">Upcoming sessions for {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</CardDescription>
           </CardHeader>
           <CardContent className="p-0 md:p-6 overflow-y-auto max-h-[60vh] no-scrollbar scroll-smooth">
             <div className="space-y-3 pb-4 px-4 md:px-0">
               {[
-                { date: "Feb 24, 2024", horse: "Thunder Spirit", protocol: "Tendon Repair", status: "Completed", modalities: ["cryo", "3b_laser"] },
-                { date: "Feb 23, 2024", horse: "Bella Luna", protocol: "Recovery", status: "Completed", modalities: ["cryo"] },
-                { date: "Feb 23, 2024", horse: "Apollo", protocol: "Inflammation", status: "Interrupted", modalities: ["shockwave"] },
-                { date: "Feb 22, 2024", horse: "Midnight Star", protocol: "Manual", status: "Completed", modalities: ["class_iv"] },
-                { date: "Feb 21, 2024", horse: "Storm", protocol: "Recovery", status: "Completed", modalities: ["cryo"] },
-                { date: "Feb 20, 2024", horse: "Shadow", protocol: "Tendon Repair", status: "Completed", modalities: ["3b_laser"] },
-                { date: "Feb 19, 2024", horse: "Blaze", protocol: "Inflammation", status: "Completed", modalities: ["shockwave"] },
-                { date: "Feb 18, 2024", horse: "Luna", protocol: "Manual", status: "Completed", modalities: ["class_iv"] },
-                { date: "Feb 17, 2024", horse: "Spirit", protocol: "Deep Tissue", status: "Completed", modalities: ["cryo", "3b_laser"] },
-                { date: "Feb 16, 2024", horse: "Titan", protocol: "Recovery", status: "Completed", modalities: ["cryo"] },
-                { date: "Feb 15, 2024", horse: "Flash", protocol: "Tendon Repair", status: "Completed", modalities: ["shockwave"] },
+                { time: "09:00 AM", horse: "Thunder Spirit", protocol: "Tendon Repair", status: "Confirmed", modalities: ["cryo", "3b_laser"] },
+                { time: "10:30 AM", horse: "Bella Luna", protocol: "Recovery", status: "Confirmed", modalities: ["cryo"] },
+                { time: "01:15 PM", horse: "Apollo", protocol: "Inflammation", status: "Delayed", modalities: ["shockwave"] },
+                { time: "03:00 PM", horse: "Midnight Star", protocol: "Manual", status: "Confirmed", modalities: ["class_iv"] },
+                { time: "04:30 PM", horse: "Storm", protocol: "Recovery", status: "Confirmed", modalities: ["cryo"] },
               ].map((row, i) => (
                 <div key={i} className="group relative bg-[#1a2234]/40 rounded-2xl p-4 border border-white/5 hover:border-primary/30 transition-all">
                   <div className="flex justify-between items-start mb-2">
                     <div className="space-y-0.5">
-                      <div className="text-[9px] font-black text-gray-500 tracking-widest uppercase">{row.date}</div>
+                      <div className="text-[10px] font-black text-primary tracking-widest uppercase flex items-center gap-1.5">
+                        <Clock className="w-3 h-3" />
+                        {row.time}
+                      </div>
                       <div className="text-sm font-bold text-white tracking-tight">{row.horse}</div>
                     </div>
-                    <Badge variant={row.status === "Completed" ? "default" : "destructive"} className="text-[9px] font-black uppercase tracking-tighter rounded-lg h-5 px-2">
+                    <Badge variant={row.status === "Confirmed" ? "default" : "destructive"} className={cn(
+                      "text-[9px] font-black uppercase tracking-tighter rounded-lg h-5 px-2",
+                      row.status === "Confirmed" ? "bg-green-500/20 text-green-500 border-green-500/30" : "bg-red-500/20 text-red-500 border-red-500/30"
+                    )}>
                       {row.status}
                     </Badge>
                   </div>
