@@ -54,7 +54,7 @@ export default function Dashboard() {
       </div>
 
       {/* Hero Stats - Horizontal scroll on mobile */}
-      <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 scrollbar-hide snap-x">
+      <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 no-scrollbar snap-x">
         {[
           { label: "Active Treatments", value: "3", icon: Activity, color: "text-blue-400" },
           { label: "Avg. Temp Drop", value: "-25°C", icon: Thermometer, color: "text-cyan-400" },
