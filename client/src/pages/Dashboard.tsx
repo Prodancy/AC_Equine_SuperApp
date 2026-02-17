@@ -76,8 +76,6 @@ export default function Dashboard() {
     <div className="p-4 md:p-8 space-y-6 md:space-y-8 max-w-7xl mx-auto pb-24 md:pb-8">
     <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
       <div className="flex items-center gap-4">
-        <img src={america_cryo_logo} alt="America Cryo" className="h-6 md:h-8 w-auto" />
-        <div className="h-6 w-px bg-white/10 hidden md:block" />
         <div>
           <h1 className="text-xl md:text-2xl font-bold tracking-widest uppercase text-foreground">Dashboard</h1>
           <p className="text-[10px] text-muted-foreground uppercase tracking-tight hidden md:block">Welcome back, Dr. Anderson</p>

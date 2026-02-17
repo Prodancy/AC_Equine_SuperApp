@@ -18,10 +18,13 @@ import { Link } from "wouter";
 export default function Settings() {
   return (
     <div className="p-4 md:p-8 max-w-4xl mx-auto space-y-6 pb-24 md:pb-8">
+      <div className="flex justify-center md:hidden mb-2">
+        <div className="flex flex-col items-center">
+          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-8 w-auto mb-1" />
+        </div>
+      </div>
     <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
       <div className="flex items-center gap-4">
-        <img src={america_cryo_logo} alt="America Cryo" className="h-6 md:h-8 w-auto" />
-        <div className="h-6 w-px bg-white/10 hidden md:block" />
         <div>
           <h1 className="text-xl md:text-2xl font-bold tracking-widest uppercase text-foreground">Settings</h1>
           <p className="text-[10px] text-muted-foreground uppercase tracking-tight hidden md:block">Preferences & Configuration</p>
