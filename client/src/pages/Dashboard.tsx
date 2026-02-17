@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import heroHorseDark from "@/assets/hero-horse-dark.jpg"; // Using the new dark asset
 import { Horse } from "@/components/icons/Horse";
 
 export default function Dashboard() {
@@ -26,14 +25,9 @@ export default function Dashboard() {
           <Bluetooth className="w-4 h-4" /> Connect Device
         </Button>
       </header>
-      {/* Hero Section */}
-      <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl aspect-[16/9] md:aspect-[32/9] border border-white/10">
-        <img 
-          src={heroHorseDark} 
-          alt="Rabbit silhouette abstract" 
-          className="absolute inset-0 w-full h-full object-cover opacity-80"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-background via-background/60 to-transparent flex items-end md:items-center p-6 md:p-12">
+      {/* Hero Section - Solid Branding */}
+      <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl aspect-[16/9] md:aspect-[32/9] border border-white/10 bg-gradient-to-br from-[#0a0f1d] via-[#111827] to-[#030712]">
+        <div className="absolute inset-0 flex items-end md:items-center p-6 md:p-12">
           <div className="max-w-xl space-y-2 md:space-y-4 pb-4 md:pb-0">
             <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight drop-shadow-md">
               ADVANCED EQUINE <br/><span className="text-primary glow-text">CRYOTHERAPY</span>
