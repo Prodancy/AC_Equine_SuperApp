@@ -49,15 +49,7 @@ export default function Dashboard() {
     <div className="p-4 md:p-8 space-y-6 md:space-y-8 max-w-7xl mx-auto pb-24 md:pb-8">
       <div className="flex justify-center md:hidden mb-2">
         <div className="flex flex-col items-center">
-          <img src={america_cryo_logo_horizontalh_64} alt="America Cryo Logo" className="h-8 w-auto mb-1" />
-          <a 
-            href="https://www.americacryo.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-[8px] text-muted-foreground hover:text-primary transition-colors tracking-[0.2em]"
-          >
-            WWW.AMERICACRYO.COM
-          </a>
+          <img src="/src/assets/logo.png" alt="America Cryo Logo" className="h-8 w-auto mb-1" />
         </div>
       </div>
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">

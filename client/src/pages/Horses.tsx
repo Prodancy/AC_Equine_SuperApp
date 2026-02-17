@@ -88,14 +88,6 @@ export default function Horses() {
       <div className="flex justify-center md:hidden mb-2">
         <div className="flex flex-col items-center">
           <img src="/src/assets/logo.png" alt="America Cryo Logo" className="h-8 w-auto mb-1" />
-          <a 
-            href="https://www.americacryo.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-[8px] text-muted-foreground hover:text-primary transition-colors tracking-[0.2em]"
-          >
-            WWW.AMERICACRYO.COM
-          </a>
         </div>
       </div>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">

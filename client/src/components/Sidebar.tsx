@@ -24,14 +24,6 @@ export default function Sidebar() {
       <div className="p-6 border-b">
         <div className="flex flex-col gap-1">
           <img src="/src/assets/logo.png" alt="America Cryo Logo" className="h-10 w-auto self-start mb-2" />
-          <a 
-            href="https://www.americacryo.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-[10px] text-muted-foreground hover:text-primary transition-colors tracking-widest"
-          >
-            WWW.AMERICACRYO.COM
-          </a>
         </div>
         <p className="text-xs text-muted-foreground mt-2 tracking-widest font-medium">
           Equine Therapy
