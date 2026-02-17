@@ -10,11 +10,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Play, Pause, Square, Thermometer, Timer, Bluetooth, Activity, ChevronLeft } from "lucide-react";
+import { Play, Pause, Square, Thermometer, Timer, Bluetooth, Activity, ChevronLeft, CheckCircle2 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 // Mock Protocols
 const protocols = [
@@ -32,7 +40,22 @@ export default function Treatment() {
   const [currentTemp, setCurrentTemp] = useState(20); // Starting at room temp
   const [targetTemp, setTargetTemp] = useState(protocols[0].temp);
   const [intensity, setIntensity] = useState([protocols[0].intensity]);
+  const [isConnectOpen, setIsConnectOpen] = useState(false);
+  const [connectionStatus, setConnectionStatus] = useState<'idle' | 'scanning' | 'connecting' | 'connected' | 'error'>('idle');
   const { toast } = useToast();
+
+  const handleConnect = async () => {
+    setConnectionStatus('scanning');
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setConnectionStatus('connecting');
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setConnectionStatus('connected');
+    
+    setTimeout(() => {
+      setIsConnectOpen(false);
+      setConnectionStatus('idle');
+    }, 2000);
+  };
 
   const currentProtocol = protocols.find(p => p.id === activeProtocol) || protocols[0];
 
@@ -101,23 +124,34 @@ export default function Treatment() {
         </div>
       </div>
       {/* Mobile Back Button & Header */}
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <Link href="/">
-             <Button variant="ghost" size="icon" className="md:hidden -ml-2">
-               <ChevronLeft className="w-6 h-6" />
-             </Button>
-          </Link>
-          <div>
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Treatment</h1>
-            <p className="text-xs md:text-sm text-muted-foreground hidden md:block">Manage active cryotherapy session.</p>
-          </div>
+    <div className="flex justify-between items-center">
+      <div className="flex items-center gap-2">
+        <Link href="/">
+           <Button variant="ghost" size="icon" className="md:hidden -ml-2">
+             <ChevronLeft className="w-6 h-6" />
+           </Button>
+        </Link>
+        <div>
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Treatment</h1>
+          <p className="text-xs md:text-sm text-muted-foreground hidden md:block">Manage active cryotherapy session.</p>
         </div>
+      </div>
+      <div className="flex items-center gap-2">
+        <Button 
+          variant="outline" 
+          size="sm"
+          onClick={() => setIsConnectOpen(true)}
+          className="h-8 md:h-9 text-[10px] md:text-xs font-bold uppercase tracking-wider border-white/10 bg-card/50 hover:bg-card"
+        >
+          <Bluetooth className="w-3 h-3 md:w-4 md:h-4 mr-1.5" />
+          Manage Device
+        </Button>
         <div className="flex items-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-600 rounded-full border border-green-500/20 text-xs md:text-sm font-medium">
           <Bluetooth className="w-3 h-3 md:w-4 md:h-4 animate-pulse" />
           <span>Connected</span>
         </div>
       </div>
+    </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Right Column: Visualization (Top on mobile) */}
@@ -248,6 +282,84 @@ export default function Treatment() {
           </Card>
         </div>
       </div>
+
+      {/* Bluetooth Connection Dialog */}
+      <Dialog open={isConnectOpen} onOpenChange={setIsConnectOpen}>
+        <DialogContent className="sm:max-w-md bg-card border-white/10">
+          <DialogHeader>
+            <DialogTitle>Bluetooth Connection</DialogTitle>
+            <DialogDescription>
+              Connect to your America Cryo ESP32 handheld device.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="flex flex-col items-center justify-center py-8 space-y-6">
+            <div className="relative">
+              <AnimatePresence mode="wait">
+                {connectionStatus === 'idle' && (
+                  <motion.div 
+                    key="idle"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center"
+                  >
+                    <Bluetooth className="w-10 h-10 text-primary" />
+                  </motion.div>
+                )}
+                {(connectionStatus === 'scanning' || connectionStatus === 'connecting') && (
+                  <motion.div 
+                    key="loading"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    className="relative"
+                  >
+                    <div className="w-20 h-20 rounded-full border-4 border-primary/20 border-t-primary animate-spin" />
+                    <Bluetooth className="w-8 h-8 text-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                  </motion.div>
+                )}
+                {connectionStatus === 'connected' && (
+                  <motion.div 
+                    key="connected"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center"
+                  >
+                    <CheckCircle2 className="w-10 h-10 text-green-500" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <div className="text-center space-y-1">
+              <p className="text-sm font-semibold text-foreground uppercase tracking-wider">
+                {connectionStatus === 'idle' && "Ready to Connect"}
+                {connectionStatus === 'scanning' && "Scanning for Devices..."}
+                {connectionStatus === 'connecting' && "Pairing with ESP32-Cryo..."}
+                {connectionStatus === 'connected' && "Connection Successful"}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {connectionStatus === 'idle' && "Make sure your handheld device is turned on."}
+                {connectionStatus === 'scanning' && "Looking for nearby America Cryo hardware."}
+                {connectionStatus === 'connecting' && "Establishing secure Bluetooth tunnel."}
+                {connectionStatus === 'connected' && "ESP32 Handheld Controller is ready."}
+              </p>
+            </div>
+
+            <Button 
+              onClick={handleConnect}
+              disabled={connectionStatus !== 'idle'}
+              className="w-full h-12 text-base font-bold tracking-wide"
+            >
+              {connectionStatus === 'idle' ? "Start Scanning" : (
+                connectionStatus === 'connected' ? "Connected" : "Processing..."
+              )}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

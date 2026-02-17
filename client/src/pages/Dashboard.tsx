@@ -176,13 +176,6 @@ export default function Dashboard() {
               </DialogFooter>
             </DialogContent>
           </Dialog>
-          <Button 
-            onClick={() => setIsConnectOpen(true)}
-            variant="outline"
-            className="flex-1 md:flex-none gap-2 border-white/10 bg-card/50 hover:bg-card text-foreground transition-all active:scale-95"
-          >
-            Manage Device
-          </Button>
         </div>
       </header>
 
