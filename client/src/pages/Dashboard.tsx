@@ -178,9 +178,10 @@ export default function Dashboard() {
           </Dialog>
           <Button 
             onClick={() => setIsConnectOpen(true)}
-            className="flex-1 md:flex-none gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 transition-all active:scale-95 border border-primary/20"
+            variant="outline"
+            className="flex-1 md:flex-none gap-2 border-white/10 bg-card/50 hover:bg-card text-foreground transition-all active:scale-95"
           >
-            <Bluetooth className="w-4 h-4" /> Connect
+            Manage Device
           </Button>
         </div>
       </header>
@@ -309,12 +310,15 @@ export default function Dashboard() {
             <CardDescription>Launch clinic tools</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <Link href="/treatment">
-              <Button className="w-full h-20 text-lg flex flex-col gap-1 justify-center items-center shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all active:scale-[0.98] bg-primary text-white border-0">
-                <ThermometerSnowflake className="w-8 h-8 mb-1" />
-                <span className="font-bold tracking-wide uppercase">New Treatment</span>
-              </Button>
-            </Link>
+          <Link href="/treatment">
+            <Button className="w-full h-20 text-lg flex flex-col gap-1 justify-center items-center shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all active:scale-[0.98] bg-primary text-white border-0">
+              <div className="flex items-center gap-2">
+                <ThermometerSnowflake className="w-8 h-8" />
+                <Bluetooth className="w-5 h-5 animate-pulse text-blue-200" />
+              </div>
+              <span className="font-bold tracking-wide uppercase">New Treatment</span>
+            </Button>
+          </Link>
             <div className="grid grid-cols-2 gap-3">
               <Link href="/horses">
                 <Button variant="outline" className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all">
