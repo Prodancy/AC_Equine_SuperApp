@@ -68,6 +68,11 @@ export default function Records() {
           </div>
         </div>
         <div className="flex w-full md:w-auto gap-2">
+            <Link href="/diagnose">
+              <Button className="flex-1 md:flex-none gap-2 bg-primary hover:bg-primary/90 text-white border-0 shadow-lg shadow-primary/20 font-bold tracking-widest h-12 px-8">
+                <Camera className="w-5 h-5" /> New Scan
+              </Button>
+            </Link>
             <Button variant="outline" className="flex-1 md:flex-none gap-2 border-white/10 bg-card/50 hover:bg-card text-foreground font-bold tracking-widest h-12 px-6">
               <Download className="w-4 h-4" /> Export
             </Button>
