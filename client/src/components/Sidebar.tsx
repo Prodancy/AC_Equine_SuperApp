@@ -15,8 +15,8 @@ export default function Sidebar() {
   const navItems = [
     { icon: LayoutDashboard, label: "Dashboard", href: "/" },
     { icon: ThermometerSnowflake, label: "Treatment", href: "/treatment" },
-    { icon: FileText, label: "Health Records", href: "/records" },
     { icon: Horse, label: "Horse Registry", href: "/horses" },
+    { icon: FileText, label: "Health Records", href: "/records" },
     { icon: Settings, label: "Settings", href: "/settings" },
   ];
 
