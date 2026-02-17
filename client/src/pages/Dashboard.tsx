@@ -236,15 +236,15 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="grid gap-6 grid-cols-1">
-        <Card className="shadow-lg border-white/5 bg-card/50 backdrop-blur overflow-hidden">
-          <div className="h-1 bg-gray-500/20 w-full" />
-          <CardHeader>
-            <CardTitle className="tracking-[0.2em] text-[10px] uppercase text-gray-400 font-black">Treatment Pipeline</CardTitle>
+      <div className="grid gap-6 grid-cols-1 sticky top-0 z-20">
+        <Card className="shadow-lg border-white/5 bg-card/80 backdrop-blur-xl overflow-hidden border-t-primary/20">
+          <div className="h-1 bg-primary/40 w-full" />
+          <CardHeader className="sticky top-0 bg-card/50 backdrop-blur-md z-30 pb-4">
+            <CardTitle className="tracking-[0.2em] text-[10px] uppercase text-primary font-black">Treatment Pipeline</CardTitle>
             <CardDescription className="text-gray-400">Aggregated patient sessions and outcomes.</CardDescription>
           </CardHeader>
-          <CardContent className="p-0 md:p-6">
-            <div className="space-y-3 pb-4 px-4 md:px-0 max-h-[800px] overflow-y-auto no-scrollbar">
+          <CardContent className="p-0 md:p-6 overflow-y-auto max-h-[60vh] no-scrollbar scroll-smooth">
+            <div className="space-y-3 pb-4 px-4 md:px-0">
               {[
                 { date: "Feb 24, 2024", horse: "Thunder Spirit", protocol: "Tendon Repair", status: "Completed", modalities: ["cryo", "3b_laser"] },
                 { date: "Feb 23, 2024", horse: "Bella Luna", protocol: "Recovery", status: "Completed", modalities: ["cryo"] },
