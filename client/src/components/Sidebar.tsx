@@ -1,5 +1,11 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
+import {
+  LayoutDashboard,
+  ThermometerSnowflake,
+  FileText,
+  Settings,
+} from "lucide-react";
 import { Horse } from "@/components/icons/Horse";
 
 export default function Sidebar() {
