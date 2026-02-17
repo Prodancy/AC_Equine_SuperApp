@@ -36,7 +36,7 @@ export default function Diagnose() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-white uppercase tracking-widest">Clinical Diagnosis</h1>
-          <p className="text-sm text-gray-400">Manage assessments and digital thermography records.</p>
+          <p className="text-sm text-gray-400">Manage Assessments And Digital Thermography Records</p>
         </div>
         <Link href="/diagnose/new">
           <Button className="w-full md:w-auto gap-2 bg-primary hover:bg-primary/90 text-white border-0 shadow-lg shadow-primary/20 font-black tracking-widest h-12 px-8">
@@ -48,8 +48,8 @@ export default function Diagnose() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="md:col-span-2 bg-card/50 backdrop-blur border-white/5 overflow-hidden">
           <CardHeader className="border-b border-white/5 bg-white/[0.02]">
-            <CardTitle className="text-[10px] uppercase tracking-[0.2em] text-primary font-black">Assessment Registry</CardTitle>
-            <CardDescription className="text-gray-500 text-xs">A comprehensive list of all clinical evaluations.</CardDescription>
+            <CardTitle className="text-[10px] uppercase tracking-[0.2em] text-white font-black">Assessment Registry</CardTitle>
+            <CardDescription className="text-gray-500 text-xs">A Comprehensive List Of All Clinical Evaluations</CardDescription>
           </CardHeader>
           <CardContent className="p-0">
             <ScrollArea className="h-[600px]">
@@ -94,7 +94,7 @@ export default function Diagnose() {
 
         <Card className="bg-card/50 backdrop-blur border-white/5 overflow-hidden h-fit">
           <CardHeader className="border-b border-white/5 bg-white/[0.02]">
-            <CardTitle className="text-[10px] uppercase tracking-[0.2em] text-primary font-black">Statistics</CardTitle>
+            <CardTitle className="text-[10px] uppercase tracking-[0.2em] text-white font-black">Statistics</CardTitle>
           </CardHeader>
           <CardContent className="p-6 space-y-6">
             <div className="space-y-2">
