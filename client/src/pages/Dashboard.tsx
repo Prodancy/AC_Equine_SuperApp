@@ -183,39 +183,65 @@ export default function Dashboard() {
         </DialogContent>
       </Dialog>
 
-      <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl aspect-[16/10] md:aspect-[32/12] border border-white/10 bg-gradient-to-br from-[#0a0f1d] via-[#111827] to-[#030712]">
-        <div className="absolute inset-0 flex items-center p-6 md:p-12">
-          <div className="w-full grid md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-2 md:space-y-4">
-              <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight drop-shadow-md uppercase">
-                EQUINE HEALTH <br/><span className="text-primary glow-text">SOLUTIONS</span>
-              </h2>
-              <p className="text-gray-300 text-sm md:text-lg max-w-[90%] drop-shadow-sm">
-                Comprehensive management for peak performance and recovery.
+      <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[16/10] md:aspect-[32/11] border border-white/10 group">
+        {/* Elegant Background with Image and Overlay */}
+        <div className="absolute inset-0 bg-[#0a0f1d]">
+          <img 
+            src="/src/assets/hero-horse.jpg" 
+            alt="Hero Horse" 
+            className="w-full h-full object-cover opacity-40 scale-105 group-hover:scale-100 transition-transform duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1d] via-[#0a0f1d]/80 to-transparent" />
+        </div>
+
+        <div className="absolute inset-0 flex items-center p-8 md:p-16">
+          <div className="w-full grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-primary">
+                  <div className="h-px w-8 bg-primary/50" />
+                  <span className="text-[10px] uppercase tracking-[0.4em] font-black">Professional Equine Care</span>
+                </div>
+                <h2 className="text-3xl md:text-5xl font-light text-white tracking-tight leading-none uppercase">
+                  Equine Health <br/><span className="font-black text-primary italic">Solutions</span>
+                </h2>
+              </div>
+              <p className="text-gray-400 text-sm md:text-lg max-w-md leading-relaxed font-medium">
+                Elevating performance through precision management and advanced recovery protocols.
               </p>
-              <div className="flex gap-4 pt-2">
+              <div className="flex gap-4 pt-4">
                 <Link href="/treatment">
-                  <Button size="lg" className="bg-primary text-white hover:bg-primary/90 border-0 font-bold shadow-lg shadow-primary/20">
+                  <Button size="lg" className="bg-primary text-white hover:bg-primary/90 px-8 h-12 rounded-full font-bold shadow-xl shadow-primary/20 transition-all hover:translate-y-[-2px] active:translate-y-0">
                     START SESSION <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-4">
               <Button 
                 onClick={() => setIsScheduleOpen(true)}
-                className="h-24 md:h-32 flex flex-col gap-2 justify-center bg-white/5 hover:bg-white/10 border-white/10 text-white transition-all backdrop-blur-sm"
+                className="h-32 md:h-40 flex flex-col gap-4 justify-center items-center bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl transition-all backdrop-blur-md group/btn shadow-lg"
               >
-                <Calendar className="w-6 h-6 md:w-8 md:h-8 text-primary" />
-                <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-center">Schedule<br/>Treatment</span>
+                <div className="p-3 rounded-full bg-primary/10 group-hover/btn:bg-primary/20 transition-colors">
+                  <Calendar className="w-6 h-6 text-primary" />
+                </div>
+                <div className="text-center">
+                  <span className="block text-[10px] font-black tracking-[0.2em] uppercase text-primary/70 mb-1">Clinic</span>
+                  <span className="text-xs md:text-sm font-bold tracking-widest uppercase">Schedule</span>
+                </div>
               </Button>
               <Link href="/horses">
                 <Button 
-                  className="w-full h-24 md:h-32 flex flex-col gap-2 justify-center bg-white/5 hover:bg-white/10 border-white/10 text-white transition-all backdrop-blur-sm"
+                  className="w-full h-32 md:h-40 flex flex-col gap-4 justify-center items-center bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl transition-all backdrop-blur-md group/btn shadow-lg"
                 >
-                  <Horse className="w-6 h-6 md:w-8 md:h-8 text-primary" />
-                  <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-center">Patient<br/>Registry</span>
+                  <div className="p-3 rounded-full bg-primary/10 group-hover/btn:bg-primary/20 transition-colors">
+                    <Horse className="w-6 h-6 text-primary" />
+                  </div>
+                  <div className="text-center">
+                    <span className="block text-[10px] font-black tracking-[0.2em] uppercase text-primary/70 mb-1">Registry</span>
+                    <span className="text-xs md:text-sm font-bold tracking-widest uppercase">Patients</span>
+                  </div>
                 </Button>
               </Link>
             </div>
