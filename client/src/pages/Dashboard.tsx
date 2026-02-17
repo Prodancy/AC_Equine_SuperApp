@@ -80,15 +80,14 @@ export default function Dashboard() {
           <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto mb-1" />
         </div>
       </div>
-    <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
-      <div className="flex items-center gap-4">
-        <div>
-          <h1 className="text-xl md:text-2xl font-bold tracking-widest text-foreground">Dashboard</h1>
-          <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block">Welcome back, Dr. Anderson</p>
+      <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
+        <div className="flex items-center gap-4">
+          <div>
+            <h1 className="text-xl md:text-2xl font-bold tracking-widest text-foreground">Dashboard</h1>
+            <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block">Welcome back, Dr. Anderson</p>
+          </div>
         </div>
       </div>
-    </div>
-
       <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 no-scrollbar snap-x">
         {[
           { label: "Active Treatments", value: "3", icon: Activity, color: "text-primary" },
@@ -123,7 +122,6 @@ export default function Dashboard() {
           </motion.div>
         ))}
       </div>
-
       {/* Bluetooth Connection Dialog */}
       <Dialog open={isConnectOpen} onOpenChange={setIsConnectOpen}>
         <DialogContent className="sm:max-w-md bg-card border-white/10">
@@ -201,7 +199,6 @@ export default function Dashboard() {
           </div>
         </DialogContent>
       </Dialog>
-
       <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#0a0f1d]">
         <div className="p-8 md:p-12">
           <div className="flex flex-col gap-8">
@@ -224,7 +221,7 @@ export default function Dashboard() {
               <Link href="/treatment">
                 <Button className="w-full h-20 md:h-24 flex flex-col items-center justify-center gap-2 bg-primary text-white hover:bg-primary/90 rounded-2xl transition-all shadow-lg shadow-primary/20 group/btn px-4">
                   <ThermometerSnowflake className="w-6 h-6 transition-transform group-hover:scale-110" />
-                  <span className="text-[10px] md:text-xs font-bold tracking-[0.1em]">Start Session</span>
+                  <span className="md:text-xs font-bold tracking-[0.1em] text-[15px]">Start Session</span>
                 </Button>
               </Link>
               
@@ -257,7 +254,6 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-
       <div className="grid gap-6 grid-cols-1 sticky top-0 z-20">
         <Card className="shadow-lg border-white/5 bg-card/80 backdrop-blur-xl overflow-hidden border-t-primary/20">
           <div className="h-1 bg-primary/40 w-full" />
