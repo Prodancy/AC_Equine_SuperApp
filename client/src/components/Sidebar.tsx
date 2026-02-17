@@ -21,7 +21,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="w-64 border-r bg-card flex flex-col h-full">
+    <div className="hidden md:flex w-64 border-r bg-card flex-col h-full sticky top-0">
       <div className="p-6 border-b">
         <h1 className="text-2xl font-bold text-primary tracking-tighter uppercase">
           America<span className="text-foreground">Cryo</span>

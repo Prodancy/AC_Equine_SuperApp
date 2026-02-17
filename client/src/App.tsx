@@ -10,12 +10,13 @@ import Treatment from "@/pages/Treatment";
 import Records from "@/pages/Records";
 import Settings from "@/pages/Settings";
 import Sidebar from "@/components/Sidebar";
+import BottomNav from "@/components/BottomNav";
 
 function Router() {
   return (
-    <div className="flex h-screen bg-background">
+    <div className="flex h-screen bg-background flex-col md:flex-row overflow-hidden">
       <Sidebar />
-      <main className="flex-1 overflow-y-auto">
+      <main className="flex-1 overflow-y-auto pb-20 md:pb-0 scroll-smooth">
         <Switch>
           <Route path="/" component={Dashboard} />
           <Route path="/horses" component={Horses} />
@@ -25,6 +26,7 @@ function Router() {
           <Route component={NotFound} />
         </Switch>
       </main>
+      <BottomNav />
     </div>
   );
 }
