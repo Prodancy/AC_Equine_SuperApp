@@ -6,6 +6,7 @@ import {
   ThermometerSnowflake,
   FileText,
   Settings,
+  CreditCard,
 } from "lucide-react";
 import { Horse } from "@/components/icons/Horse";
 
@@ -17,6 +18,7 @@ export default function Sidebar() {
     { icon: ThermometerSnowflake, label: "Treatment", href: "/treatment" },
     { icon: Horse, label: "Horse Registry", href: "/horses" },
     { icon: FileText, label: "Health Records", href: "/records" },
+    { icon: CreditCard, label: "Billing", href: "/billing" },
     { icon: Settings, label: "Settings", href: "/settings" },
   ];
 

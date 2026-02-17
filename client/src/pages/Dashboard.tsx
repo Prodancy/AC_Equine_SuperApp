@@ -16,7 +16,8 @@ import {
   Zap,
   Waves,
   ShieldCheck,
-  Plus
+  Plus,
+  CreditCard
 } from "lucide-react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
@@ -203,7 +204,7 @@ export default function Dashboard() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               <Link href="/treatment">
                 <Button className="w-full h-14 flex items-center justify-center gap-3 bg-primary text-white hover:bg-primary/90 rounded-xl transition-all shadow-lg shadow-primary/20 group/btn px-6">
                   <ThermometerSnowflake className="w-5 h-5 transition-transform group-hover:scale-110" />
@@ -225,6 +226,15 @@ export default function Dashboard() {
                 >
                   <Horse className="w-5 h-5 text-primary transition-transform group-hover:scale-110" />
                   <span className="text-xs font-bold tracking-[0.15em]">Patients</span>
+                </Button>
+              </Link>
+
+              <Link href="/billing">
+                <Button 
+                  className="w-full h-14 flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl transition-all backdrop-blur-md group/btn shadow-lg px-6"
+                >
+                  <CreditCard className="w-5 h-5 text-primary transition-transform group-hover:scale-110" />
+                  <span className="text-xs font-bold tracking-[0.15em]">Billing</span>
                 </Button>
               </Link>
             </div>

@@ -13,7 +13,8 @@ import {
   ShieldCheck,
   Loader2,
   Activity,
-  Waves
+  Waves,
+  CreditCard
 } from "lucide-react";
 import { useState } from "react";
 import {
@@ -78,6 +79,7 @@ export default function BottomNav() {
     { icon: Zap, label: "Therapy", href: "/treatment" },
     { icon: Camera, label: "Diagnose", href: "/diagnose", isCenter: true },
     { icon: Users, label: "Horses", href: "/horses" },
+    { icon: CreditCard, label: "Billing", href: "/billing" },
     { icon: UserCircle, label: "Settings", href: "/settings" },
   ];
 
