@@ -92,11 +92,11 @@ export default function Settings() {
         <CardContent className="space-y-4 text-sm text-muted-foreground">
           <div className="flex justify-between py-2 border-b">
             <span>Software Version</span>
-            <span className="font-mono text-foreground">v2.4.1 (Stable)</span>
+            <span className="text-foreground">v2.4.1 (Stable)</span>
           </div>
           <div className="flex justify-between py-2 border-b">
             <span>Firmware Version (Handheld)</span>
-            <span className="font-mono text-foreground">FW-2024-02-15</span>
+            <span className="text-foreground">FW-2024-02-15</span>
           </div>
           <div className="flex justify-between py-2 border-b">
             <span>Support Contact</span>

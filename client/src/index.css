@@ -7,6 +7,7 @@
 @theme {
   --font-sans: "Open Sans", sans-serif;
   --font-display: "Open Sans", sans-serif;
+  --font-mono: "Open Sans", monospace;
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);

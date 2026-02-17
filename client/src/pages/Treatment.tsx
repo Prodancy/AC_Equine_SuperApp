@@ -151,7 +151,7 @@ export default function Treatment() {
                   />
                 </svg>
                 <div className="absolute flex flex-col items-center">
-                  <span className="text-5xl md:text-6xl font-bold font-mono tracking-tighter tabular-nums">
+                  <span className="text-5xl md:text-6xl font-bold tracking-tighter tabular-nums">
                     {formatTime(timeLeft)}
                   </span>
                   <span className="text-xs text-muted-foreground mt-1 font-semibold tracking-wider">REMAINING</span>
