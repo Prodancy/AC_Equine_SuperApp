@@ -134,9 +134,9 @@ export default function Horses() {
 
   return (
     <div className="p-4 md:p-8 max-w-7xl mx-auto space-y-6 pb-24 md:pb-8">
-      <div className="flex justify-center md:hidden mb-2">
+      <div className="flex justify-center mb-6">
         <div className="flex flex-col items-center">
-          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-8 w-auto mb-1" />
+          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto mb-1" />
         </div>
       </div>
     <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
