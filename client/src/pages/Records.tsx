@@ -15,7 +15,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { FileText, Download, Calendar, ArrowUpRight, ChevronLeft } from "lucide-react";
+import { FileText, Download, Calendar, ArrowUpRight, ChevronLeft, Camera, Plus } from "lucide-react";
 import thermalHorse from "@/assets/thermal-horse.jpg";
 import { Link } from "wouter";
 
@@ -34,9 +34,14 @@ export default function Records() {
             <p className="text-sm md:text-base text-muted-foreground">Diagnose, track, and analyze treatment history.</p>
           </div>
         </div>
-        <Button variant="outline" className="w-full md:w-auto gap-2">
-          <Download className="w-4 h-4" /> Export All Data
-        </Button>
+        <div className="flex w-full md:w-auto gap-2">
+            <Button className="flex-1 md:flex-none gap-2 bg-blue-600 hover:bg-blue-700">
+            <Camera className="w-4 h-4" /> New Scan
+            </Button>
+            <Button variant="outline" className="flex-1 md:flex-none gap-2">
+            <Download className="w-4 h-4" /> Export
+            </Button>
+        </div>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
@@ -48,27 +53,25 @@ export default function Records() {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 gap-3 md:gap-4">
               <div className="space-y-2">
-                <div className="aspect-square relative rounded-lg overflow-hidden border bg-muted group cursor-pointer shadow-inner">
+                <div className="aspect-square relative rounded-xl overflow-hidden border bg-muted group cursor-pointer shadow-inner">
                   <img src={thermalHorse} alt="Before Treatment" className="object-cover w-full h-full transition-transform group-hover:scale-105" />
-                  <div className="absolute top-2 left-2 bg-black/70 text-white text-[10px] md:text-xs px-2 py-1 rounded backdrop-blur-sm">
+                  <div className="absolute top-2 left-2 bg-black/70 text-white text-[10px] md:text-xs px-2 py-1 rounded-md backdrop-blur-sm font-medium">
                     BEFORE (14:00)
                   </div>
-                </div>
-                <div className="flex justify-between text-xs md:text-sm px-1">
-                  <span className="text-muted-foreground">Max Temp:</span>
-                  <span className="font-mono text-red-500 font-bold">38.5°C</span>
+                  <div className="absolute bottom-2 right-2 bg-red-500/90 text-white text-[10px] md:text-xs px-2 py-1 rounded-full backdrop-blur-sm font-bold shadow-sm">
+                    38.5°C
+                  </div>
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="aspect-square relative rounded-lg overflow-hidden border bg-muted group cursor-pointer shadow-inner">
+                <div className="aspect-square relative rounded-xl overflow-hidden border bg-muted group cursor-pointer shadow-inner">
                   <img src={thermalHorse} alt="After Treatment" className="object-cover w-full h-full grayscale transition-transform group-hover:scale-105" style={{ filter: "hue-rotate(90deg) contrast(1.2)" }} />
-                  <div className="absolute top-2 left-2 bg-black/70 text-white text-[10px] md:text-xs px-2 py-1 rounded backdrop-blur-sm">
+                  <div className="absolute top-2 left-2 bg-black/70 text-white text-[10px] md:text-xs px-2 py-1 rounded-md backdrop-blur-sm font-medium">
                     AFTER (14:20)
                   </div>
-                </div>
-                <div className="flex justify-between text-xs md:text-sm px-1">
-                  <span className="text-muted-foreground">Max Temp:</span>
-                  <span className="font-mono text-blue-500 font-bold">22.1°C</span>
+                   <div className="absolute bottom-2 right-2 bg-blue-500/90 text-white text-[10px] md:text-xs px-2 py-1 rounded-full backdrop-blur-sm font-bold shadow-sm">
+                    22.1°C
+                  </div>
                 </div>
               </div>
             </div>

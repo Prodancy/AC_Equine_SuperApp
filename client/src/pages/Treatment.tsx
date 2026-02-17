@@ -220,23 +220,23 @@ export default function Treatment() {
                 <Button 
                   size="lg" 
                   className={cn(
-                    "h-20 md:h-24 text-lg md:text-xl flex flex-col gap-1 md:gap-2 transition-all active:scale-95 shadow-lg",
+                    "h-20 md:h-24 text-lg md:text-xl flex flex-col gap-1 md:gap-2 transition-all active:scale-95 shadow-lg rounded-2xl",
                     isPlaying ? "bg-yellow-500 hover:bg-yellow-600 text-white" : "bg-primary hover:bg-primary/90"
                   )}
                   onClick={togglePlay}
                 >
-                  {isPlaying ? <Pause className="w-6 h-6 md:w-8 md:h-8" /> : <Play className="w-6 h-6 md:w-8 md:h-8" />}
-                  {isPlaying ? "Pause" : "Start"}
+                  {isPlaying ? <Pause className="w-8 h-8 md:w-10 md:h-10" /> : <Play className="w-8 h-8 md:w-10 md:h-10" />}
+                  {isPlaying ? "Pause" : "START"}
                 </Button>
                 <Button 
                   size="lg" 
                   variant="destructive"
-                  className="h-20 md:h-24 text-lg md:text-xl flex flex-col gap-1 md:gap-2 active:scale-95 shadow-lg"
+                  className="h-20 md:h-24 text-lg md:text-xl flex flex-col gap-1 md:gap-2 active:scale-95 shadow-lg rounded-2xl"
                   onClick={stopTreatment}
                   disabled={timeLeft === currentProtocol.duration * 60}
                 >
-                  <Square className="w-6 h-6 md:w-8 md:h-8" />
-                  Stop
+                  <Square className="w-8 h-8 md:w-10 md:h-10" />
+                  STOP
                 </Button>
               </div>
             </CardContent>
