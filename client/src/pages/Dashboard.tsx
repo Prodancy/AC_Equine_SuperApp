@@ -8,7 +8,7 @@ import {
   ArrowRight,
   Bluetooth,
   ThermometerSnowflake,
-  Rabbit,
+  Horse,
 } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -130,7 +130,7 @@ export default function Dashboard() {
             <div className="grid grid-cols-2 gap-3">
               <Link href="/horses">
                 <Button variant="outline" className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all">
-                  <Rabbit className="w-5 h-5 text-primary" />
+                  <Horse className="w-5 h-5 text-primary" />
                   <span className="text-xs font-medium uppercase tracking-wide">Add Horse</span>
                 </Button>
               </Link>
