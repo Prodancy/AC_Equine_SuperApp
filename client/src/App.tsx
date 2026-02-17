@@ -11,6 +11,7 @@ import Records from "@/pages/Records";
 import Settings from "@/pages/Settings";
 import HistoryDetail from "@/pages/HistoryDetail";
 import Diagnose from "@/pages/Diagnose";
+import NewAssessment from "@/pages/NewAssessment";
 import Sidebar from "@/components/Sidebar";
 import BottomNav from "@/components/BottomNav";
 
@@ -25,6 +26,7 @@ function Router() {
           <Route path="/treatment" component={Treatment} />
           <Route path="/records" component={Records} />
           <Route path="/diagnose" component={Diagnose} />
+          <Route path="/diagnose/new" component={NewAssessment} />
           <Route path="/settings" component={Settings} />
           <Route path="/horses/:horseId/history/:date" component={HistoryDetail} />
           <Route component={NotFound} />
