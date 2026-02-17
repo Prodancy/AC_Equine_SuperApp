@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,11 +16,65 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { FileText, Download, Calendar, ArrowUpRight, ChevronLeft, Camera, Plus } from "lucide-react";
-import thermalHorseDark from "@/assets/thermal-horse-dark.jpg"; // Using new dark thermal asset
+import { 
+  FileText, 
+  Download, 
+  ArrowUpRight, 
+  ChevronLeft, 
+  Camera, 
+  X, 
+  CheckCircle2,
+  Loader2
+} from "lucide-react";
+import thermalHorseDark from "@/assets/thermal-horse-dark.jpg"; 
 import { Link } from "wouter";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Records() {
+  const [isScanOpen, setIsScanOpen] = useState(false);
+  const [capturedImages, setCapturedImages] = useState<string[]>([]);
+  const [diagnosisNote, setDiagnosisNote] = useState("");
+  const [conditionLabel, setConditionLabel] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleCapture = () => {
+    if (capturedImages.length < 4) {
+      setCapturedImages([...capturedImages, thermalHorseDark]);
+    }
+  };
+
+  const removeImage = (index: number) => {
+    setCapturedImages(capturedImages.filter((_, i) => i !== index));
+  };
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsSubmitting(false);
+    setIsScanOpen(false);
+    setCapturedImages([]);
+    setDiagnosisNote("");
+    setConditionLabel("");
+  };
+
   return (
     <div className="p-4 md:p-8 max-w-7xl mx-auto space-y-6 pb-24 md:pb-8">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
@@ -35,11 +90,117 @@ export default function Records() {
           </div>
         </div>
         <div className="flex w-full md:w-auto gap-2">
-            <Button className="flex-1 md:flex-none gap-2 bg-primary hover:bg-primary/90 text-white border-0 shadow-lg shadow-primary/20">
-            <Camera className="w-4 h-4" /> New Scan
-            </Button>
+            <Dialog open={isScanOpen} onOpenChange={setIsScanOpen}>
+              <DialogTrigger asChild>
+                <Button className="flex-1 md:flex-none gap-2 bg-primary hover:bg-primary/90 text-white border-0 shadow-lg shadow-primary/20">
+                  <Camera className="w-4 h-4" /> New Scan
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[600px] max-h-[90vh] flex flex-col p-0 overflow-hidden bg-card border-white/10">
+                <DialogHeader className="p-6 pb-0">
+                  <DialogTitle className="text-xl">New Diagnostic Scan</DialogTitle>
+                  <DialogDescription>
+                    Capture thermal images and record veterinary diagnosis.
+                  </DialogDescription>
+                </DialogHeader>
+
+                <ScrollArea className="flex-1 p-6">
+                  <div className="space-y-6">
+                    <div className="space-y-3">
+                      <Label className="text-xs uppercase tracking-widest text-muted-foreground">Thermal Capture (Max 4)</Label>
+                      <div className="grid grid-cols-2 gap-3">
+                        {capturedImages.map((img, idx) => (
+                          <div key={idx} className="relative aspect-square rounded-lg overflow-hidden border border-white/10 bg-black/40 group">
+                            <img src={img} className="object-cover w-full h-full opacity-90" alt={`Capture ${idx + 1}`} />
+                            <Button 
+                              variant="destructive" 
+                              size="icon" 
+                              className="absolute top-2 right-2 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity"
+                              onClick={() => removeImage(idx)}
+                            >
+                              <X className="w-3 h-3" />
+                            </Button>
+                            <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/60 text-[10px] text-white backdrop-blur-sm border border-white/10">
+                              View {idx + 1}
+                            </div>
+                          </div>
+                        ))}
+                        {capturedImages.length < 4 && (
+                          <button 
+                            onClick={handleCapture}
+                            className="aspect-square rounded-lg border-2 border-dashed border-white/10 hover:border-primary/50 hover:bg-primary/5 flex flex-col items-center justify-center gap-2 transition-all text-muted-foreground hover:text-primary group"
+                          >
+                            <Camera className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                            <span className="text-[10px] font-medium">Capture View</span>
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="condition" className="text-xs uppercase tracking-widest text-muted-foreground">Primary Condition</Label>
+                      <Select value={conditionLabel} onValueChange={setConditionLabel}>
+                        <SelectTrigger id="condition" className="bg-background/50 border-white/10 h-11">
+                          <SelectValue placeholder="Select condition type..." />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="inflammation">Acute Inflammation</SelectItem>
+                          <SelectItem value="tendon">Tendon/Ligament Strain</SelectItem>
+                          <SelectItem value="muscle">Muscle Soreness</SelectItem>
+                          <SelectItem value="joint">Joint Degeneration</SelectItem>
+                          <SelectItem value="recovery">General Recovery</SelectItem>
+                          <SelectItem value="other">Other/Custom</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="notes" className="text-xs uppercase tracking-widest text-muted-foreground">Veterinary Diagnosis Notes</Label>
+                      <div className="relative group">
+                        <Textarea 
+                          id="notes" 
+                          placeholder="Enter detailed diagnosis and clinical observations..." 
+                          className="min-h-[120px] bg-background/50 border-white/10 focus:border-primary/50 transition-colors resize-none text-sm leading-relaxed pr-10"
+                          value={diagnosisNote}
+                          onChange={(e) => setDiagnosisNote(e.target.value)}
+                        />
+                        <div className="absolute right-3 top-3 opacity-20 group-focus-within:opacity-50 transition-opacity pointer-events-none">
+                          <FileText className="w-4 h-4" />
+                        </div>
+                      </div>
+                      <p className="text-[10px] text-muted-foreground italic">
+                        Notes will be timestamped and attached to the patient's permanent EHR.
+                      </p>
+                    </div>
+                  </div>
+                </ScrollArea>
+
+                <DialogFooter className="p-6 border-t border-white/10 bg-secondary/5">
+                  <Button variant="ghost" onClick={() => setIsScanOpen(false)} disabled={isSubmitting} className="hover:bg-white/5">
+                    Cancel
+                  </Button>
+                  <Button 
+                    onClick={handleSubmit} 
+                    disabled={isSubmitting || capturedImages.length === 0 || !conditionLabel}
+                    className="gap-2 shadow-lg shadow-primary/20 bg-primary hover:bg-primary/90 text-white min-w-[140px]"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Saving...
+                      </>
+                    ) : (
+                      <>
+                        <CheckCircle2 className="w-4 h-4" />
+                        Complete Diagnosis
+                      </>
+                    )}
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
             <Button variant="outline" className="flex-1 md:flex-none gap-2 border-white/10 bg-card/50 hover:bg-card text-foreground">
-            <Download className="w-4 h-4" /> Export
+              <Download className="w-4 h-4" /> Export
             </Button>
         </div>
       </div>
