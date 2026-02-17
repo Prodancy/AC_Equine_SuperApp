@@ -83,31 +83,31 @@ export default function Shockwave() {
 
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-6 order-1 md:order-2">
-          <Card className="flex flex-col justify-between overflow-hidden relative border-orange-400/20 shadow-lg bg-card">
+          <Card className="flex flex-col justify-between overflow-hidden relative border-blue-400/20 shadow-lg bg-card">
             <CardHeader className="text-center pb-0 pt-4">
-              <CardTitle className="text-muted-foreground tracking-widest text-[10px] md:text-xs">Shock Delivery</CardTitle>
+              <CardTitle className="text-blue-400/60 tracking-widest text-[10px] md:text-xs">Shock Delivery</CardTitle>
             </CardHeader>
             <CardContent className="flex-1 flex flex-col items-center justify-center space-y-6 md:space-y-8 relative z-10 py-6 md:py-8">
               <div className="relative w-56 h-56 md:w-64 md:h-64 flex items-center justify-center">
                 <svg className="w-full h-full transform -rotate-90">
                   <circle cx="50%" cy="50%" r="45%" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-secondary" />
-                  <circle cx="50%" cy="50%" r="45%" stroke="currentColor" strokeWidth="8" fill="transparent" strokeDasharray="283" strokeDashoffset={283 * (1 - progress / 100)} className="text-orange-400 transition-all duration-1000 ease-linear" />
+                  <circle cx="50%" cy="50%" r="45%" stroke="currentColor" strokeWidth="8" fill="transparent" strokeDasharray="283" strokeDashoffset={283 * (1 - progress / 100)} className="text-blue-400 transition-all duration-1000 ease-linear" />
                 </svg>
                 <div className="absolute flex flex-col items-center">
-                  <span className="text-5xl md:text-6xl font-bold tracking-tighter tabular-nums">{formatTime(timeLeft)}</span>
-                  <span className="text-xs text-muted-foreground mt-1 font-semibold tracking-wider">Remaining</span>
+                  <span className="text-5xl md:text-6xl font-bold tracking-tighter tabular-nums text-white">{formatTime(timeLeft)}</span>
+                  <span className="text-xs text-blue-400/80 mt-1 font-semibold tracking-wider">Remaining</span>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4 md:gap-8 w-full">
-                <div className="flex flex-col items-center bg-orange-400/5 p-3 md:p-4 rounded-xl border border-orange-400/10">
-                  <Waves className="w-5 h-5 md:w-6 md:h-6 text-orange-400 mb-1" />
-                  <span className="text-xl md:text-2xl font-bold tabular-nums">{currentProtocol.shocks}</span>
-                  <span className="text-[10px] md:text-xs text-muted-foreground">Target Shocks</span>
+                <div className="flex flex-col items-center bg-blue-500/5 p-3 md:p-4 rounded-xl border border-blue-500/10">
+                  <Waves className="w-5 h-5 md:w-6 md:h-6 text-blue-400 mb-1" />
+                  <span className="text-xl md:text-2xl font-bold tabular-nums text-white">{currentProtocol.shocks}</span>
+                  <span className="text-[10px] md:text-xs text-blue-400/60">Target Shocks</span>
                 </div>
-                <div className="flex flex-col items-center bg-orange-400/5 p-3 md:p-4 rounded-xl border border-orange-400/10">
-                  <Activity className="w-5 h-5 md:w-6 md:h-6 text-orange-400 mb-1" />
-                  <span className="text-xl md:text-2xl font-bold tabular-nums">{intensity[0]}%</span>
-                  <span className="text-[10px] md:text-xs text-muted-foreground">Pressure</span>
+                <div className="flex flex-col items-center bg-blue-500/5 p-3 md:p-4 rounded-xl border border-blue-500/10">
+                  <Activity className="w-5 h-5 md:w-6 md:h-6 text-blue-400 mb-1" />
+                  <span className="text-xl md:text-2xl font-bold tabular-nums text-white">{intensity[0]}%</span>
+                  <span className="text-[10px] md:text-xs text-blue-400/60">Pressure</span>
                 </div>
               </div>
             </CardContent>
@@ -136,7 +136,7 @@ export default function Shockwave() {
                 <div className="space-y-3">
                   <div className="flex justify-between text-sm font-medium">
                     <span>Pressure Intensity</span>
-                    <span className="text-orange-400 font-bold">{intensity[0]}%</span>
+                    <span className="text-blue-400 font-bold">{intensity[0]}%</span>
                   </div>
                   <Slider value={intensity} onValueChange={setIntensity} max={100} step={5} className="py-2" />
                 </div>
@@ -144,7 +144,7 @@ export default function Shockwave() {
             </CardContent>
           </Card>
           <div className="grid grid-cols-2 gap-3 md:gap-4">
-            <Button size="lg" className={cn("h-20 text-xl rounded-2xl", isPlaying ? "bg-yellow-500 hover:bg-yellow-600" : "bg-orange-500 hover:bg-orange-600")} onClick={() => setIsPlaying(!isPlaying)}>
+            <Button size="lg" className={cn("h-20 text-xl rounded-2xl", isPlaying ? "bg-yellow-500 hover:bg-yellow-600" : "bg-blue-500 hover:bg-blue-600")} onClick={() => setIsPlaying(!isPlaying)}>
               {isPlaying ? <Pause className="w-8 h-8 mr-2" /> : <Play className="w-8 h-8 mr-2" />}
               {isPlaying ? "Pause" : "Start"}
             </Button>
