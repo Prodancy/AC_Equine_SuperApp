@@ -276,19 +276,39 @@ export default function Dashboard() {
         </DialogContent>
       </Dialog>
 
-      <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl aspect-[16/9] md:aspect-[32/9] border border-white/10 bg-gradient-to-br from-[#0a0f1d] via-[#111827] to-[#030712]">
-        <div className="absolute inset-0 flex items-end md:items-center p-6 md:p-12">
-          <div className="max-w-xl space-y-2 md:space-y-4 pb-4 md:pb-0">
-            <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight drop-shadow-md">
-              ADVANCED EQUINE <br/><span className="text-primary glow-text">CRYOTHERAPY</span>
-            </h2>
-            <p className="text-gray-300 text-sm md:text-lg max-w-[90%] drop-shadow-sm">
-              Precision temperature control for optimal recovery and performance.
-            </p>
-            <div className="flex gap-4 pt-2">
-              <Link href="/treatment">
-                <Button size="lg" className="w-full md:w-auto bg-primary text-white hover:bg-primary/90 border-0 font-bold shadow-lg shadow-primary/20">
-                  START SESSION <ArrowRight className="w-4 h-4 ml-2" />
+      <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl aspect-[16/10] md:aspect-[32/12] border border-white/10 bg-gradient-to-br from-[#0a0f1d] via-[#111827] to-[#030712]">
+        <div className="absolute inset-0 flex items-center p-6 md:p-12">
+          <div className="w-full grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-2 md:space-y-4">
+              <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight drop-shadow-md uppercase">
+                EQUINE HEALTH <br/><span className="text-primary glow-text">SOLUTIONS</span>
+              </h2>
+              <p className="text-gray-300 text-sm md:text-lg max-w-[90%] drop-shadow-sm">
+                Comprehensive management for peak performance and recovery.
+              </p>
+              <div className="flex gap-4 pt-2">
+                <Link href="/treatment">
+                  <Button size="lg" className="bg-primary text-white hover:bg-primary/90 border-0 font-bold shadow-lg shadow-primary/20">
+                    START SESSION <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <Button 
+                onClick={() => setIsScheduleOpen(true)}
+                className="h-24 md:h-32 flex flex-col gap-2 justify-center bg-white/5 hover:bg-white/10 border-white/10 text-white transition-all backdrop-blur-sm"
+              >
+                <Calendar className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+                <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-center">Schedule<br/>Treatment</span>
+              </Button>
+              <Link href="/horses">
+                <Button 
+                  className="w-full h-24 md:h-32 flex flex-col gap-2 justify-center bg-white/5 hover:bg-white/10 border-white/10 text-white transition-all backdrop-blur-sm"
+                >
+                  <Horse className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+                  <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-center">Patient<br/>Registry</span>
                 </Button>
               </Link>
             </div>
@@ -300,34 +320,18 @@ export default function Dashboard() {
         <Card className="col-span-full lg:col-span-3 bg-gradient-to-br from-primary/10 to-transparent border-primary/20">
           <CardHeader>
             <CardTitle className="tracking-wider text-sm md:text-base">Quick Start</CardTitle>
-            <CardDescription>Launch clinic tools</CardDescription>
+            <CardDescription>Launch session tools</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-          <Link href="/treatment">
-            <Button className="w-full h-20 text-lg flex flex-col gap-1 justify-center items-center shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all active:scale-[0.98] bg-primary text-white border-0">
-              <div className="flex items-center gap-2">
-                <ThermometerSnowflake className="w-8 h-8" />
-                <Bluetooth className="w-5 h-5 animate-pulse text-blue-200" />
-              </div>
-              <span className="font-bold tracking-wide uppercase">New Treatment</span>
-            </Button>
-          </Link>
-            <div className="grid grid-cols-2 gap-3">
-              <Link href="/horses">
-                <Button variant="outline" className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all">
-                  <Horse className="w-5 h-5 text-primary" />
-                  <span className="text-xs font-medium tracking-wide">Registry</span>
-                </Button>
-              </Link>
-              <Button 
-                variant="outline" 
-                onClick={() => setIsScheduleOpen(true)}
-                className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all"
-              >
-                <Calendar className="w-5 h-5 text-primary" />
-                <span className="text-xs font-medium tracking-wide">Book Slot</span>
+            <Link href="/treatment">
+              <Button className="w-full h-20 text-lg flex flex-col gap-1 justify-center items-center shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all active:scale-[0.98] bg-primary text-white border-0">
+                <div className="flex items-center gap-2">
+                  <ThermometerSnowflake className="w-8 h-8" />
+                  <Bluetooth className="w-5 h-5 animate-pulse text-blue-200" />
+                </div>
+                <span className="font-bold tracking-wide uppercase">New Session</span>
               </Button>
-            </div>
+            </Link>
           </CardContent>
         </Card>
 
