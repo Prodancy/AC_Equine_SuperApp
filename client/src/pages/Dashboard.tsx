@@ -222,35 +222,35 @@ export default function Dashboard() {
 
             <div className="grid grid-cols-2 gap-4">
               <Link href="/treatment">
-                <Button className="w-full h-56 md:h-80 flex flex-col items-center justify-center gap-0 bg-primary text-white hover:bg-primary/90 rounded-[2.5rem] transition-all shadow-2xl shadow-primary/20 group/btn px-1 overflow-hidden">
-                  <ThermometerSnowflake className="w-32 h-32 md:w-64 md:h-64 transition-transform group-hover:scale-110 opacity-90" />
-                  <span className="text-3xl md:text-6xl font-black tracking-tighter leading-none -mt-4 md:-mt-8">Start Session</span>
+                <Button className="w-full h-20 md:h-24 flex flex-col items-center justify-center gap-2 bg-primary text-white hover:bg-primary/90 rounded-2xl transition-all shadow-lg shadow-primary/20 group/btn px-4">
+                  <ThermometerSnowflake className="w-6 h-6 transition-transform group-hover:scale-110" />
+                  <span className="text-[10px] md:text-xs font-bold tracking-[0.1em]">Start Session</span>
                 </Button>
               </Link>
               
               <Button 
                 onClick={() => setIsScheduleOpen(true)}
-                className="w-full h-56 md:h-80 flex flex-col items-center justify-center gap-0 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-[2.5rem] transition-all backdrop-blur-md group/btn shadow-2xl px-1 overflow-hidden"
+                className="w-full h-20 md:h-24 flex flex-col items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl transition-all backdrop-blur-md group/btn shadow-lg px-4"
               >
-                <Calendar className="w-32 h-32 md:w-64 md:h-64 text-primary transition-transform group-hover:scale-110 opacity-90" />
-                <span className="text-3xl md:text-6xl font-black tracking-tighter leading-none -mt-4 md:-mt-8">Schedule</span>
+                <Calendar className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
+                <span className="text-[10px] md:text-xs font-bold tracking-[0.1em]">Schedule</span>
               </Button>
 
               <Link href="/horses" className="w-full">
                 <Button 
-                  className="w-full h-56 md:h-80 flex flex-col items-center justify-center gap-0 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-[2.5rem] transition-all backdrop-blur-md group/btn shadow-2xl px-1 overflow-hidden"
+                  className="w-full h-20 md:h-24 flex flex-col items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl transition-all backdrop-blur-md group/btn shadow-lg px-4"
                 >
-                  <Horse className="w-32 h-32 md:w-64 md:h-64 text-primary transition-transform group-hover:scale-110 opacity-90" />
-                  <span className="text-3xl md:text-6xl font-black tracking-tighter leading-none -mt-4 md:-mt-8">Patients</span>
+                  <Horse className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
+                  <span className="text-[10px] md:text-xs font-bold tracking-[0.1em]">Patients</span>
                 </Button>
               </Link>
 
               <Link href="/billing" className="w-full">
                 <Button 
-                  className="w-full h-56 md:h-80 flex flex-col items-center justify-center gap-0 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-[2.5rem] transition-all backdrop-blur-md group/btn shadow-2xl px-1 overflow-hidden"
+                  className="w-full h-20 md:h-24 flex flex-col items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl transition-all backdrop-blur-md group/btn shadow-lg px-4"
                 >
-                  <CreditCard className="w-32 h-32 md:w-64 md:h-64 text-primary transition-transform group-hover:scale-110 opacity-90" />
-                  <span className="text-3xl md:text-6xl font-black tracking-tighter leading-none -mt-4 md:-mt-8">Billing</span>
+                  <CreditCard className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
+                  <span className="text-[10px] md:text-xs font-bold tracking-[0.1em]">Billing</span>
                 </Button>
               </Link>
             </div>
