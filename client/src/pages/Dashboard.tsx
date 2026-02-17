@@ -74,7 +74,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="p-4 md:p-8 space-y-6 md:space-y-8 max-w-7xl mx-auto pb-24 md:pb-8">
+    <div className="p-4 md:p-8 space-y-6 md:space-y-8 max-w-7xl mx-auto md:pb-8 pt-[20px] pb-[20px]">
       <div className="flex justify-center mb-6">
         <div className="flex flex-col items-center">
           <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto mb-1" />
