@@ -233,11 +233,11 @@ export default function Dashboard() {
       <div className="grid gap-6 grid-cols-1 sticky top-0 z-20">
         <Card className="shadow-lg border-white/5 bg-card/80 backdrop-blur-xl overflow-hidden border-t-primary/20">
           <div className="h-1 bg-primary/40 w-full" />
-          <CardHeader className="sticky top-0 bg-card/50 backdrop-blur-md z-30 pb-4">
+          <CardHeader className="bg-card/50 backdrop-blur-md z-30 pb-4">
             <CardTitle className="tracking-[0.2em] text-[10px] uppercase text-primary font-black">Scheduled Today</CardTitle>
             <CardDescription className="text-gray-400">Upcoming sessions for {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</CardDescription>
           </CardHeader>
-          <CardContent className="p-0 md:p-6 overflow-y-auto max-h-[60vh] no-scrollbar scroll-smooth">
+          <CardContent className="p-0 md:p-6">
             <div className="space-y-3 pb-4 px-4 md:px-0">
               {[
                 { time: "09:00 AM", horse: "Thunder Spirit", protocol: "Tendon Repair", status: "Confirmed", modalities: ["cryo", "3b_laser"] },
