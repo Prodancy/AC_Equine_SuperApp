@@ -93,17 +93,33 @@ export default function Dashboard() {
         {[
           { label: "Active Treatments", value: "3", icon: Activity, color: "text-primary" },
           { label: "Patient Recovery", value: "94%", icon: ShieldCheck, color: "text-green-400" },
-          { label: "Revenue MTD", value: "$12.4k", icon: Zap, color: "text-orange-400" },
+          { label: "Revenue MTD", value: "$12.4k", icon: CreditCard, color: "text-orange-400", href: "/billing" },
           { label: "Scheduled Today", value: "5", icon: Calendar, color: "text-primary" },
         ].map((stat, i) => (
           <motion.div key={i} className="min-w-[160px] md:min-w-0 snap-center">
-            <Card className="hover:shadow-lg transition-shadow h-full bg-card/50 backdrop-blur border-white/5">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-4">
-                <CardTitle className="text-xs font-medium text-muted-foreground whitespace-nowrap tracking-wider">Active treatments</CardTitle>
-                <stat.icon className={`h-4 w-4 ${stat.color}`} />
-              </CardHeader>
-              <CardContent className="p-4 pt-0"><div className="text-2xl font-bold text-foreground">{stat.value}</div></CardContent>
-            </Card>
+            {stat.href ? (
+              <Link href={stat.href}>
+                <Card className="hover:shadow-lg transition-all hover:scale-[1.02] active:scale-95 cursor-pointer h-full bg-card/50 backdrop-blur border-white/5">
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-4">
+                    <CardTitle className="text-xs font-medium text-muted-foreground whitespace-nowrap tracking-wider">{stat.label}</CardTitle>
+                    <stat.icon className={`h-4 w-4 ${stat.color}`} />
+                  </CardHeader>
+                  <CardContent className="p-4 pt-0">
+                    <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ) : (
+              <Card className="hover:shadow-lg transition-shadow h-full bg-card/50 backdrop-blur border-white/5">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-4">
+                  <CardTitle className="text-xs font-medium text-muted-foreground whitespace-nowrap tracking-wider">{stat.label}</CardTitle>
+                  <stat.icon className={`h-4 w-4 ${stat.color}`} />
+                </CardHeader>
+                <CardContent className="p-4 pt-0">
+                  <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                </CardContent>
+              </Card>
+            )}
           </motion.div>
         ))}
       </div>

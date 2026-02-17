@@ -12,7 +12,9 @@ import {
   Zap, 
   Waves, 
   ShieldCheck,
-  AlertCircle
+  AlertCircle,
+  CreditCard,
+  Plus
 } from "lucide-react";
 import { Link, useParams } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -61,6 +63,14 @@ export default function HistoryDetail() {
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground tracking-widest">Session Detail</h1>
           <p className="text-sm text-muted-foreground">{detail.horseName} • {detail.date}</p>
         </div>
+      </div>
+
+      <div className="flex flex-wrap gap-2 md:hidden">
+        <Link href="/billing">
+          <Button className="w-full gap-2 bg-primary text-white font-bold h-11">
+            <CreditCard className="w-4 h-4" /> Create Invoice
+          </Button>
+        </Link>
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
@@ -112,8 +122,13 @@ export default function HistoryDetail() {
         <div className="space-y-6">
           {/* Status & Metrics */}
           <Card className="bg-card/50 backdrop-blur border-white/5 shadow-xl border-t-4 border-t-primary">
-            <CardHeader>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0">
               <CardTitle className="text-xs font-black tracking-[0.2em] text-muted-foreground">Session Metrics</CardTitle>
+              <Link href="/billing">
+                <Button variant="ghost" size="icon" className="h-8 w-8 text-primary hover:bg-primary/10">
+                  <CreditCard className="w-4 h-4" />
+                </Button>
+              </Link>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex justify-between items-center">
