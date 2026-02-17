@@ -1,3 +1,4 @@
+import america_cryo_logo from "@/assets/logo-official.png";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { 
@@ -61,7 +62,12 @@ export default function NewAssessment() {
 
   return (
     <div className="flex flex-col h-screen bg-[#0a0f1d] overflow-hidden">
-      <header className="p-4 md:p-6 border-b border-white/5 bg-[#111827]/50 backdrop-blur-md flex items-center justify-between shrink-0">
+      <div className="flex justify-center py-4 bg-[#0a0f1d]">
+        <div className="flex flex-col items-center">
+          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto mb-1" />
+        </div>
+      </div>
+      <header className="p-4 md:p-6 border-b border-white/5 bg-[#111827]/50 backdrop-blur-md flex items-center justify-between shrink-0 sticky top-0 z-50">
         <div className="flex items-center gap-4">
           <Link href="/diagnose">
             <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary transition-colors">

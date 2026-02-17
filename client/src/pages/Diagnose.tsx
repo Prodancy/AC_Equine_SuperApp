@@ -33,14 +33,21 @@ export default function Diagnose() {
 
   return (
     <div className="p-4 md:p-8 max-w-7xl mx-auto space-y-6 pb-24 md:pb-8">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-white uppercase tracking-widest">Clinical Diagnosis</h1>
-          <p className="text-sm text-gray-400">Manage Assessments And Digital Thermography Records</p>
+      <div className="flex justify-center mb-6">
+        <div className="flex flex-col items-center">
+          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto mb-1" />
+        </div>
+      </div>
+      <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
+        <div className="flex items-center gap-4">
+          <div>
+            <h1 className="text-xl md:text-2xl font-bold tracking-widest uppercase text-foreground">Diagnose</h1>
+            <p className="text-[10px] text-muted-foreground uppercase tracking-tight hidden md:block">Clinical Assessments & Thermography</p>
+          </div>
         </div>
         <Link href="/diagnose/new">
-          <Button className="w-full md:w-auto gap-2 bg-primary hover:bg-primary/90 text-white border-0 shadow-lg shadow-primary/20 font-black tracking-widest h-12 px-8">
-            <Plus className="w-5 h-5" /> New Assessment
+          <Button size="sm" className="gap-2 shadow-md h-9 text-[10px] font-bold uppercase tracking-wider">
+            <Plus className="w-4 h-4" /> <span>New Assessment</span>
           </Button>
         </Link>
       </div>
