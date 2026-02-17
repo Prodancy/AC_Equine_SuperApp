@@ -104,7 +104,7 @@ export default function Records() {
              </Button>
            </Link>
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground tracking-widest uppercase">Diagnose</h1>
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground tracking-widest">Diagnose</h1>
             <p className="text-sm md:text-base text-muted-foreground">Assess condition and propose precision treatments.</p>
           </div>
         </div>
@@ -112,7 +112,7 @@ export default function Records() {
             <Dialog open={isScanOpen} onOpenChange={setIsScanOpen}>
               <DialogTrigger asChild>
                 <Button className="flex-1 md:flex-none gap-2 bg-primary hover:bg-primary/90 text-white border-0 shadow-lg shadow-primary/20 font-bold tracking-widest h-12 px-8">
-                  <Camera className="w-5 h-5" /> NEW SCAN
+                  <Camera className="w-5 h-5" /> New Scan
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[700px] max-h-[95vh] flex flex-col p-0 overflow-hidden bg-[#0a0f1d] border-white/10 shadow-2xl">
@@ -236,7 +236,7 @@ export default function Records() {
 
                 <DialogFooter className="p-6 border-t border-white/5 bg-[#111827]">
                   <Button variant="ghost" onClick={() => setIsScanOpen(false)} disabled={isSubmitting} className="text-gray-400 hover:bg-white/5 font-bold tracking-widest text-xs">
-                    DISCARD
+                    Discard
                   </Button>
                   <Button 
                     onClick={handleSubmit} 
@@ -246,12 +246,12 @@ export default function Records() {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
-                        PROCESSING...
+                        Processing...
                       </>
                     ) : (
                       <>
                         <ShieldCheck className="w-5 h-5" />
-                        SAVE TO EHR
+                        Save to EHR
                       </>
                     )}
                   </Button>
@@ -259,7 +259,7 @@ export default function Records() {
               </DialogContent>
             </Dialog>
             <Button variant="outline" className="flex-1 md:flex-none gap-2 border-white/10 bg-card/50 hover:bg-card text-foreground font-bold tracking-widest h-12 px-6">
-              <Download className="w-4 h-4" /> EXPORT
+              <Download className="w-4 h-4" /> Export
             </Button>
         </div>
       </div>
