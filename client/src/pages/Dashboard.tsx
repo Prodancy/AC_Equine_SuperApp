@@ -220,37 +220,37 @@ export default function Dashboard() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 gap-4">
               <Link href="/treatment">
-                <Button className="w-full h-14 flex items-center justify-center gap-3 bg-primary text-white hover:bg-primary/90 rounded-xl transition-all shadow-lg shadow-primary/20 group/btn px-6">
-                  <ThermometerSnowflake className="w-5 h-5 transition-transform group-hover:scale-110" />
-                  <span className="text-xs font-bold tracking-[0.15em]">Start Session</span>
+                <Button className="w-full h-20 md:h-24 flex flex-col items-center justify-center gap-2 bg-primary text-white hover:bg-primary/90 rounded-2xl transition-all shadow-lg shadow-primary/20 group/btn px-4">
+                  <ThermometerSnowflake className="w-6 h-6 transition-transform group-hover:scale-110" />
+                  <span className="text-[10px] md:text-xs font-bold tracking-[0.1em]">Start Session</span>
                 </Button>
               </Link>
               
               <Button 
                 onClick={() => setIsScheduleOpen(true)}
-                className="h-14 flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl transition-all backdrop-blur-md group/btn shadow-lg px-6"
+                className="w-full h-20 md:h-24 flex flex-col items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl transition-all backdrop-blur-md group/btn shadow-lg px-4"
               >
-                <Calendar className="w-5 h-5 text-primary transition-transform group-hover:scale-110" />
-                <span className="text-xs font-bold tracking-[0.15em]">Schedule</span>
+                <Calendar className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
+                <span className="text-[10px] md:text-xs font-bold tracking-[0.1em]">Schedule</span>
               </Button>
 
-              <Link href="/horses">
+              <Link href="/horses" className="w-full">
                 <Button 
-                  className="w-full h-14 flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl transition-all backdrop-blur-md group/btn shadow-lg px-6"
+                  className="w-full h-20 md:h-24 flex flex-col items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl transition-all backdrop-blur-md group/btn shadow-lg px-4"
                 >
-                  <Horse className="w-5 h-5 text-primary transition-transform group-hover:scale-110" />
-                  <span className="text-xs font-bold tracking-[0.15em]">Patients</span>
+                  <Horse className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
+                  <span className="text-[10px] md:text-xs font-bold tracking-[0.1em]">Patients</span>
                 </Button>
               </Link>
 
-              <Link href="/billing">
+              <Link href="/billing" className="w-full">
                 <Button 
-                  className="w-full h-14 flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl transition-all backdrop-blur-md group/btn shadow-lg px-6"
+                  className="w-full h-20 md:h-24 flex flex-col items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl transition-all backdrop-blur-md group/btn shadow-lg px-4"
                 >
-                  <CreditCard className="w-5 h-5 text-primary transition-transform group-hover:scale-110" />
-                  <span className="text-xs font-bold tracking-[0.15em]">Billing</span>
+                  <CreditCard className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
+                  <span className="text-[10px] md:text-xs font-bold tracking-[0.1em]">Billing</span>
                 </Button>
               </Link>
             </div>
