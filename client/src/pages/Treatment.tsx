@@ -1,4 +1,4 @@
-import america_cryo_logo from "@/assets/america-cryo-logo-horizontalh-64_1771349527967.png";
+import america_cryo_logo from "@/assets/logo-official.png";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";

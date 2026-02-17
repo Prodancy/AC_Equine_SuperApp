@@ -1,4 +1,4 @@
-import america_cryo_logo from "@/assets/america-cryo-logo-horizontalh-64_1771349527967.png";
+import america_cryo_logo from "@/assets/logo-official.png";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
