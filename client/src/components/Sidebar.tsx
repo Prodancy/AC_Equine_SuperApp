@@ -23,9 +23,7 @@ export default function Sidebar() {
     <div className="hidden md:flex w-64 border-r bg-card flex-col h-full sticky top-0">
       <div className="p-6 border-b">
         <div className="flex flex-col gap-1">
-          <h1 className="text-2xl font-bold text-primary tracking-tighter">
-            America<span className="text-foreground">Cryo</span>
-          </h1>
+          <img src="/src/assets/logo.png" alt="America Cryo Logo" className="h-10 w-auto self-start mb-2" />
           <a 
             href="https://www.americacryo.com" 
             target="_blank" 

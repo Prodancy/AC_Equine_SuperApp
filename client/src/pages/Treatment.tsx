@@ -96,9 +96,7 @@ export default function Treatment() {
     <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
       <div className="flex justify-center md:hidden mb-2">
         <div className="flex flex-col items-center">
-          <h1 className="text-xl font-bold text-primary tracking-tighter">
-            America<span className="text-foreground">Cryo</span>
-          </h1>
+          <img src="/src/assets/logo.png" alt="America Cryo Logo" className="h-8 w-auto mb-1" />
           <a 
             href="https://www.americacryo.com" 
             target="_blank" 
