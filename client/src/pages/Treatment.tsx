@@ -126,11 +126,6 @@ export default function Treatment() {
       {/* Mobile Back Button & Header */}
     <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
       <div className="flex items-center gap-4">
-        <Link href="/">
-          <Button variant="ghost" size="icon" className="hover:bg-primary/10 text-primary">
-            <ChevronLeft className="w-6 h-6" />
-          </Button>
-        </Link>
         <div>
           <h1 className="text-xl md:text-2xl font-bold tracking-widest uppercase text-foreground">Treatment</h1>
           <p className="text-[10px] text-muted-foreground uppercase tracking-tight hidden md:block">Active Session Management</p>
