@@ -1,0 +1,104 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardFooter
+} from "@/components/ui/card";
+import { User, Shield, Zap, Info, Smartphone } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+
+export default function Settings() {
+  return (
+    <div className="p-8 max-w-4xl mx-auto space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">Settings</h1>
+        <p className="text-muted-foreground">Manage application preferences and device connection.</p>
+      </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <User className="w-5 h-5" /> Clinic Profile
+          </CardTitle>
+          <CardDescription>Update your veterinary clinic details.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid gap-2">
+            <Label htmlFor="clinicName">Clinic Name</Label>
+            <Input id="clinicName" defaultValue="Equine Performance Center" />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="vetName">Lead Veterinarian</Label>
+              <Input id="vetName" defaultValue="Dr. Sarah Anderson" />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="license">License Number</Label>
+              <Input id="license" defaultValue="VET-883920" />
+            </div>
+          </div>
+        </CardContent>
+        <CardFooter className="border-t bg-secondary/10 px-6 py-4">
+          <Button>Save Changes</Button>
+        </CardFooter>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Smartphone className="w-5 h-5" /> Device Connection
+          </CardTitle>
+          <CardDescription>Manage ESP32 Handheld Controller connection.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="flex items-center justify-between">
+            <div className="space-y-0.5">
+              <Label className="text-base">Bluetooth Discovery</Label>
+              <p className="text-sm text-muted-foreground">Allow the handheld device to connect automatically.</p>
+            </div>
+            <Switch defaultChecked />
+          </div>
+          <Separator />
+          <div className="flex items-center justify-between">
+            <div className="space-y-0.5">
+              <Label className="text-base">Auto-Sync Records</Label>
+              <p className="text-sm text-muted-foreground">Sync treatment data to cloud when Wi-Fi is available.</p>
+            </div>
+            <Switch defaultChecked />
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="w-5 h-5" /> About
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4 text-sm text-muted-foreground">
+          <div className="flex justify-between py-2 border-b">
+            <span>Software Version</span>
+            <span className="font-mono text-foreground">v2.4.1 (Stable)</span>
+          </div>
+          <div className="flex justify-between py-2 border-b">
+            <span>Firmware Version (Handheld)</span>
+            <span className="font-mono text-foreground">FW-2024-02-15</span>
+          </div>
+          <div className="flex justify-between py-2 border-b">
+            <span>Support Contact</span>
+            <span className="text-primary hover:underline cursor-pointer">support@americacryo.com</span>
+          </div>
+          <div className="pt-4 text-xs text-center">
+            &copy; 2024 America Cryo. All rights reserved. <br/>Designed for professional equine therapy.
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
