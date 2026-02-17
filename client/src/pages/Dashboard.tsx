@@ -185,6 +185,25 @@ export default function Dashboard() {
         </div>
       </header>
 
+      <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 no-scrollbar snap-x">
+        {[
+          { label: "Active Treatments", value: "3", icon: Activity, color: "text-primary" },
+          { label: "Patient Recovery", value: "94%", icon: ShieldCheck, color: "text-green-400" },
+          { label: "Revenue MTD", value: "$12.4k", icon: Zap, color: "text-orange-400" },
+          { label: "Scheduled Today", value: "5", icon: Calendar, color: "text-primary" },
+        ].map((stat, i) => (
+          <motion.div key={i} className="min-w-[160px] md:min-w-0 snap-center">
+            <Card className="hover:shadow-lg transition-shadow h-full bg-card/50 backdrop-blur border-white/5">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-4">
+                <CardTitle className="text-xs font-medium text-muted-foreground whitespace-nowrap tracking-wider">{stat.label}</CardTitle>
+                <stat.icon className={`h-4 w-4 ${stat.color}`} />
+              </CardHeader>
+              <CardContent className="p-4 pt-0"><div className="text-2xl font-bold text-foreground">{stat.value}</div></CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+
       {/* Bluetooth Connection Dialog */}
       <Dialog open={isConnectOpen} onOpenChange={setIsConnectOpen}>
         <DialogContent className="sm:max-w-md bg-card border-white/10">
@@ -281,25 +300,6 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 no-scrollbar snap-x">
-        {[
-          { label: "Active Treatments", value: "3", icon: Activity, color: "text-primary" },
-          { label: "Avg. Temp Drop", value: "-25°C", icon: Thermometer, color: "text-primary" },
-          { label: "Hours This Week", value: "12.5h", icon: Clock, color: "text-muted-foreground" },
-          { label: "Scheduled Today", value: "5", icon: Calendar, color: "text-muted-foreground" },
-        ].map((stat, i) => (
-          <motion.div key={i} className="min-w-[160px] md:min-w-0 snap-center">
-            <Card className="hover:shadow-lg transition-shadow h-full bg-card/50 backdrop-blur border-white/5">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-4">
-                <CardTitle className="text-xs font-medium text-muted-foreground whitespace-nowrap tracking-wider">{stat.label}</CardTitle>
-                <stat.icon className={`h-4 w-4 ${stat.color}`} />
-              </CardHeader>
-              <CardContent className="p-4 pt-0"><div className="text-2xl font-bold text-foreground">{stat.value}</div></CardContent>
-            </Card>
-          </motion.div>
-        ))}
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
