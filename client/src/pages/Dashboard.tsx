@@ -24,6 +24,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
+import america_cryo_logo_horizontalh_64 from "@assets/america-cryo-logo-horizontalh-64.png";
+
 export default function Dashboard() {
   const [isConnectOpen, setIsConnectOpen] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState<'idle' | 'scanning' | 'connecting' | 'connected' | 'error'>('idle');
@@ -47,7 +49,7 @@ export default function Dashboard() {
     <div className="p-4 md:p-8 space-y-6 md:space-y-8 max-w-7xl mx-auto pb-24 md:pb-8">
       <div className="flex justify-center md:hidden mb-2">
         <div className="flex flex-col items-center">
-          <img src="/src/assets/logo.png" alt="America Cryo Logo" className="h-8 w-auto mb-1" />
+          <img src={america_cryo_logo_horizontalh_64} alt="America Cryo Logo" className="h-8 w-auto mb-1" />
           <a 
             href="https://www.americacryo.com" 
             target="_blank" 
@@ -70,7 +72,6 @@ export default function Dashboard() {
           <Bluetooth className="w-4 h-4" /> Connect Device
         </Button>
       </header>
-
       {/* Bluetooth Connection Dialog */}
       <Dialog open={isConnectOpen} onOpenChange={setIsConnectOpen}>
         <DialogContent className="sm:max-w-md bg-card border-white/10">
