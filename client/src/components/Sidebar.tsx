@@ -1,13 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import {
-  LayoutDashboard,
-  Stethoscope,
-  ThermometerSnowflake,
-  FileText,
-  Settings,
-  Rabbit,
-} from "lucide-react";
+import { Horse } from "@/components/icons/Horse";
 
 export default function Sidebar() {
   const [location] = useLocation();
@@ -15,7 +8,7 @@ export default function Sidebar() {
   const navItems = [
     { icon: LayoutDashboard, label: "Dashboard", href: "/" },
     { icon: ThermometerSnowflake, label: "Treatment", href: "/treatment" },
-    { icon: Rabbit, label: "Rabbit Registry", href: "/horses" },
+    { icon: Horse, label: "Horse Registry", href: "/horses" },
     { icon: FileText, label: "Health Records", href: "/records" },
     { icon: Settings, label: "Settings", href: "/settings" },
   ];

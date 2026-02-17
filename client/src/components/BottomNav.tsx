@@ -1,12 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import {
-  LayoutDashboard,
-  ThermometerSnowflake,
-  FileText,
-  Settings,
-  Rabbit,
-} from "lucide-react";
+import { Horse } from "@/components/icons/Horse";
 
 export default function BottomNav() {
   const [location] = useLocation();
@@ -14,7 +8,7 @@ export default function BottomNav() {
   const navItems = [
     { icon: LayoutDashboard, label: "Home", href: "/" },
     { icon: ThermometerSnowflake, label: "Therapy", href: "/treatment" },
-    { icon: Rabbit, label: "Horses", href: "/horses" },
+    { icon: Horse, label: "Horses", href: "/horses" },
     { icon: FileText, label: "Records", href: "/records" },
     { icon: Settings, label: "Settings", href: "/settings" },
   ];
