@@ -261,27 +261,29 @@ export default function Horses() {
                       >
                         <div className="space-y-2 pt-3">
                           {horse.history?.map((entry, idx) => (
-                            <div key={idx} className="bg-[#1a2234]/40 rounded-lg p-3 border border-white/5 flex justify-between items-center">
-                              <div className="space-y-1">
-                                <div className="text-[10px] text-muted-foreground flex items-center gap-1.5 uppercase font-bold tracking-tighter">
-                                  <Clock className="w-3 h-3 text-primary" />
-                                  {entry.date}
+                            <Link key={idx} href={`/horses/${horse.id}/history/${entry.date.replace(/ /g, '-')}`}>
+                              <div className="bg-[#1a2234]/40 rounded-lg p-3 border border-white/5 flex justify-between items-center cursor-pointer hover:border-primary/50 hover:bg-primary/5 transition-all active:scale-[0.98] group mb-2">
+                                <div className="space-y-1">
+                                  <div className="text-[10px] text-muted-foreground flex items-center gap-1.5 uppercase font-bold tracking-tighter">
+                                    <Clock className="w-3 h-3 text-primary" />
+                                    {entry.date}
+                                  </div>
+                                  <div className="text-xs font-bold text-foreground group-hover:text-primary transition-colors">{entry.protocol}</div>
                                 </div>
-                                <div className="text-xs font-bold text-foreground">{entry.protocol}</div>
+                                <div className="text-right">
+                                  <div className="text-[10px] text-primary flex items-center justify-end gap-1 font-bold">
+                                    <Thermometer className="w-3 h-3" />
+                                    {entry.temp}
+                                  </div>
+                                  <div className={cn(
+                                    "text-[9px] uppercase font-black tracking-widest mt-0.5",
+                                    entry.status === "Completed" ? "text-green-500" : "text-yellow-500"
+                                  )}>
+                                    {entry.status}
+                                  </div>
+                                </div>
                               </div>
-                              <div className="text-right">
-                                <div className="text-[10px] text-primary flex items-center justify-end gap-1 font-bold">
-                                  <Thermometer className="w-3 h-3" />
-                                  {entry.temp}
-                                </div>
-                                <div className={cn(
-                                  "text-[9px] uppercase font-black tracking-widest mt-0.5",
-                                  entry.status === "Completed" ? "text-green-500" : "text-yellow-500"
-                                )}>
-                                  {entry.status}
-                                </div>
-                              </div>
-                            </div>
+                            </Link>
                           ))}
                         </div>
                       </motion.div>

@@ -9,6 +9,7 @@ import Horses from "@/pages/Horses";
 import Treatment from "@/pages/Treatment";
 import Records from "@/pages/Records";
 import Settings from "@/pages/Settings";
+import HistoryDetail from "@/pages/HistoryDetail";
 import Sidebar from "@/components/Sidebar";
 import BottomNav from "@/components/BottomNav";
 
@@ -23,6 +24,7 @@ function Router() {
           <Route path="/treatment" component={Treatment} />
           <Route path="/records" component={Records} />
           <Route path="/settings" component={Settings} />
+          <Route path="/horses/:horseId/history/:date" component={HistoryDetail} />
           <Route component={NotFound} />
         </Switch>
       </main>
