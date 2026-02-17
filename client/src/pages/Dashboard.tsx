@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
@@ -8,12 +9,40 @@ import {
   ArrowRight,
   Bluetooth,
   ThermometerSnowflake,
+  Loader2,
+  CheckCircle2,
+  AlertCircle
 } from "lucide-react";
 import { Link } from "wouter";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Horse } from "@/components/icons/Horse";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 export default function Dashboard() {
+  const [isConnectOpen, setIsConnectOpen] = useState(false);
+  const [connectionStatus, setConnectionStatus] = useState<'idle' | 'scanning' | 'connecting' | 'connected' | 'error'>('idle');
+
+  const handleConnect = async () => {
+    setConnectionStatus('scanning');
+    // Simulate Bluetooth scanning and connection logic
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setConnectionStatus('connecting');
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setConnectionStatus('connected');
+    
+    // Auto-close after success
+    setTimeout(() => {
+      setIsConnectOpen(false);
+      setConnectionStatus('idle');
+    }, 2000);
+  };
+
   return (
     <div className="p-4 md:p-8 space-y-6 md:space-y-8 max-w-7xl mx-auto pb-24 md:pb-8">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -21,10 +50,91 @@ export default function Dashboard() {
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground tracking-widest">Dashboard</h1>
           <p className="text-sm md:text-base text-muted-foreground">Welcome back, Dr. Anderson</p>
         </div>
-        <Button className="w-full md:w-auto gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 transition-all active:scale-95 border border-primary/20">
+        <Button 
+          onClick={() => setIsConnectOpen(true)}
+          className="w-full md:w-auto gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 transition-all active:scale-95 border border-primary/20"
+        >
           <Bluetooth className="w-4 h-4" /> Connect Device
         </Button>
       </header>
+
+      {/* Bluetooth Connection Dialog */}
+      <Dialog open={isConnectOpen} onOpenChange={setIsConnectOpen}>
+        <DialogContent className="sm:max-w-md bg-card border-white/10">
+          <DialogHeader>
+            <DialogTitle>Bluetooth Connection</DialogTitle>
+            <DialogDescription>
+              Connect to your America Cryo ESP32 handheld device.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="flex flex-col items-center justify-center py-8 space-y-6">
+            <div className="relative">
+              <AnimatePresence mode="wait">
+                {connectionStatus === 'idle' && (
+                  <motion.div 
+                    key="idle"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center"
+                  >
+                    <Bluetooth className="w-10 h-10 text-primary" />
+                  </motion.div>
+                )}
+                {(connectionStatus === 'scanning' || connectionStatus === 'connecting') && (
+                  <motion.div 
+                    key="loading"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    className="relative"
+                  >
+                    <div className="w-20 h-20 rounded-full border-4 border-primary/20 border-t-primary animate-spin" />
+                    <Bluetooth className="w-8 h-8 text-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                  </motion.div>
+                )}
+                {connectionStatus === 'connected' && (
+                  <motion.div 
+                    key="connected"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center"
+                  >
+                    <CheckCircle2 className="w-10 h-10 text-green-500" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <div className="text-center space-y-1">
+              <p className="text-sm font-semibold text-foreground uppercase tracking-wider">
+                {connectionStatus === 'idle' && "Ready to Connect"}
+                {connectionStatus === 'scanning' && "Scanning for Devices..."}
+                {connectionStatus === 'connecting' && "Pairing with ESP32-Cryo..."}
+                {connectionStatus === 'connected' && "Connection Successful"}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {connectionStatus === 'idle' && "Make sure your handheld device is turned on."}
+                {connectionStatus === 'scanning' && "Looking for nearby America Cryo hardware."}
+                {connectionStatus === 'connecting' && "Establishing secure Bluetooth tunnel."}
+                {connectionStatus === 'connected' && "ESP32 Handheld Controller is ready."}
+              </p>
+            </div>
+
+            <Button 
+              onClick={handleConnect}
+              disabled={connectionStatus !== 'idle'}
+              className="w-full h-12 text-base font-bold tracking-wide"
+            >
+              {connectionStatus === 'idle' ? "Start Scanning" : (
+                connectionStatus === 'connected' ? "Connected" : "Processing..."
+              )}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
       {/* Hero Section - Solid Branding */}
       <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl aspect-[16/9] md:aspect-[32/9] border border-white/10 bg-gradient-to-br from-[#0a0f1d] via-[#111827] to-[#030712]">
         <div className="absolute inset-0 flex items-end md:items-center p-6 md:p-12">
