@@ -275,37 +275,42 @@ export default function Dashboard() {
             <CardDescription className="text-gray-400">Aggregated patient sessions and outcomes.</CardDescription>
           </CardHeader>
           <CardContent className="p-0 md:p-6">
-            <ScrollArea className="h-[320px] px-4 md:px-0">
-              <div className="space-y-3 pb-4">
-                {[
-                  { date: "Feb 24, 2024", horse: "Thunder Spirit", protocol: "Tendon Repair", status: "Completed", modalities: ["cryo", "3b_laser"] },
-                  { date: "Feb 23, 2024", horse: "Bella Luna", protocol: "Recovery", status: "Completed", modalities: ["cryo"] },
-                  { date: "Feb 23, 2024", horse: "Apollo", protocol: "Inflammation", status: "Interrupted", modalities: ["shockwave"] },
-                  { date: "Feb 22, 2024", horse: "Midnight Star", protocol: "Manual", status: "Completed", modalities: ["class_iv"] },
-                ].map((row, i) => (
-                  <div key={i} className="group relative bg-[#1a2234]/40 rounded-2xl p-4 border border-white/5 hover:border-primary/30 transition-all">
-                    <div className="flex justify-between items-start mb-2">
-                      <div className="space-y-0.5">
-                        <div className="text-[9px] font-black text-gray-500 tracking-widest uppercase">{row.date}</div>
-                        <div className="text-sm font-bold text-white tracking-tight">{row.horse}</div>
-                      </div>
-                      <Badge variant={row.status === "Completed" ? "default" : "destructive"} className="text-[9px] font-black uppercase tracking-tighter rounded-lg h-5 px-2">
-                        {row.status}
-                      </Badge>
+            <div className="space-y-3 pb-4 px-4 md:px-0 max-h-[800px] overflow-y-auto no-scrollbar">
+              {[
+                { date: "Feb 24, 2024", horse: "Thunder Spirit", protocol: "Tendon Repair", status: "Completed", modalities: ["cryo", "3b_laser"] },
+                { date: "Feb 23, 2024", horse: "Bella Luna", protocol: "Recovery", status: "Completed", modalities: ["cryo"] },
+                { date: "Feb 23, 2024", horse: "Apollo", protocol: "Inflammation", status: "Interrupted", modalities: ["shockwave"] },
+                { date: "Feb 22, 2024", horse: "Midnight Star", protocol: "Manual", status: "Completed", modalities: ["class_iv"] },
+                { date: "Feb 21, 2024", horse: "Storm", protocol: "Recovery", status: "Completed", modalities: ["cryo"] },
+                { date: "Feb 20, 2024", horse: "Shadow", protocol: "Tendon Repair", status: "Completed", modalities: ["3b_laser"] },
+                { date: "Feb 19, 2024", horse: "Blaze", protocol: "Inflammation", status: "Completed", modalities: ["shockwave"] },
+                { date: "Feb 18, 2024", horse: "Luna", protocol: "Manual", status: "Completed", modalities: ["class_iv"] },
+                { date: "Feb 17, 2024", horse: "Spirit", protocol: "Deep Tissue", status: "Completed", modalities: ["cryo", "3b_laser"] },
+                { date: "Feb 16, 2024", horse: "Titan", protocol: "Recovery", status: "Completed", modalities: ["cryo"] },
+                { date: "Feb 15, 2024", horse: "Flash", protocol: "Tendon Repair", status: "Completed", modalities: ["shockwave"] },
+              ].map((row, i) => (
+                <div key={i} className="group relative bg-[#1a2234]/40 rounded-2xl p-4 border border-white/5 hover:border-primary/30 transition-all">
+                  <div className="flex justify-between items-start mb-2">
+                    <div className="space-y-0.5">
+                      <div className="text-[9px] font-black text-gray-500 tracking-widest uppercase">{row.date}</div>
+                      <div className="text-sm font-bold text-white tracking-tight">{row.horse}</div>
                     </div>
-                    <div className="flex justify-between items-center mt-3">
-                      <div className="text-[11px] text-primary font-bold uppercase tracking-tight bg-primary/5 px-2 py-0.5 rounded-md border border-primary/10">{row.protocol}</div>
-                      <div className="flex gap-1">
-                        {row.modalities.map(m => {
-                          const tool = treatments.find(t => t.id === m);
-                          return tool ? <tool.icon key={m} className={cn("w-3.5 h-3.5", tool.color)} /> : null;
-                        })}
-                      </div>
+                    <Badge variant={row.status === "Completed" ? "default" : "destructive"} className="text-[9px] font-black uppercase tracking-tighter rounded-lg h-5 px-2">
+                      {row.status}
+                    </Badge>
+                  </div>
+                  <div className="flex justify-between items-center mt-3">
+                    <div className="text-[11px] text-primary font-bold uppercase tracking-tight bg-primary/5 px-2 py-0.5 rounded-md border border-primary/10">{row.protocol}</div>
+                    <div className="flex gap-1">
+                      {row.modalities.map(m => {
+                        const tool = treatments.find(t => t.id === m);
+                        return tool ? <tool.icon key={m} className={cn("w-3.5 h-3.5", tool.color)} /> : null;
+                      })}
                     </div>
                   </div>
-                ))}
-              </div>
-            </ScrollArea>
+                </div>
+              ))}
+            </div>
           </CardContent>
         </Card>
       </div>
