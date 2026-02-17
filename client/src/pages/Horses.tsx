@@ -141,14 +141,9 @@ export default function Horses() {
       </div>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div className="flex items-center gap-2">
-           <Link href="/">
-             <Button variant="ghost" size="icon" className="md:hidden -ml-2">
-               <ChevronLeft className="w-6 h-6" />
-             </Button>
-           </Link>
            <div>
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">Horse Registry</h1>
-            <p className="text-sm md:text-base text-muted-foreground">Manage patient profiles and history.</p>
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground uppercase tracking-widest">Patient Registry</h1>
+            <p className="text-sm md:text-base text-muted-foreground">Manage animal profiles and medical history.</p>
            </div>
         </div>
         
