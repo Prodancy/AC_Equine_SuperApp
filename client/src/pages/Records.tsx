@@ -98,8 +98,8 @@ export default function Records() {
         <div className="flex w-full md:w-auto gap-2">
             <Dialog open={isScanOpen} onOpenChange={setIsScanOpen}>
               <DialogTrigger asChild>
-                <Button className="flex-1 md:flex-none gap-2 bg-primary hover:bg-primary/90 text-white border-0 shadow-lg shadow-primary/20">
-                  <Camera className="w-4 h-4" /> New Scan
+                <Button className="flex-1 md:flex-none gap-2 bg-primary hover:bg-primary/90 text-white border-0 shadow-lg shadow-primary/20 font-bold tracking-widest">
+                  <Camera className="w-4 h-4" /> NEW SCAN
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[600px] max-h-[90vh] flex flex-col p-0 overflow-hidden bg-card border-white/10">

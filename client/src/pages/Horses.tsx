@@ -1,4 +1,5 @@
 import america_cryo_logo from "@/assets/logo-official.png";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,17 +22,58 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Plus, Search, Trash2, Edit, ChevronLeft } from "lucide-react";
+import { Plus, Search, Trash2, Edit, ChevronLeft, History, Clock, Thermometer } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 
-// Mock Data
+// Mock Data with History
 const initialHorses = [
-  { id: 1, name: "Thunder Spirit", breed: "Thoroughbred", age: 5, owner: "Sarah Jenkins", notes: "Sensitive to cold on left flank." },
-  { id: 2, name: "Bella Luna", breed: "Arabian", age: 7, owner: "Mark Davis", notes: "Regular maintenance required." },
-  { id: 3, name: "Midnight Star", breed: "Quarter Horse", age: 4, owner: "Elena Rodriguez", notes: "Recovering from fetlock injury." },
-  { id: 4, name: "Apollo", breed: "Warmblood", age: 9, owner: "James Wilson", notes: "Arthritis in right knee." },
+  { 
+    id: 1, 
+    name: "Thunder Spirit", 
+    breed: "Thoroughbred", 
+    age: 5, 
+    owner: "Sarah Jenkins", 
+    notes: "Sensitive to cold on left flank.",
+    history: [
+      { date: "Feb 24, 2024", protocol: "Tendon Repair", temp: "-120°C", status: "Completed" },
+      { date: "Feb 21, 2024", protocol: "Tendon Repair", temp: "-120°C", status: "Completed" },
+    ]
+  },
+  { 
+    id: 2, 
+    name: "Bella Luna", 
+    breed: "Arabian", 
+    age: 7, 
+    owner: "Mark Davis", 
+    notes: "Regular maintenance required.",
+    history: [
+      { date: "Feb 23, 2024", protocol: "Recovery", temp: "-130°C", status: "Completed" },
+    ]
+  },
+  { 
+    id: 3, 
+    name: "Midnight Star", 
+    breed: "Quarter Horse", 
+    age: 4, 
+    owner: "Elena Rodriguez", 
+    notes: "Recovering from fetlock injury.",
+    history: [
+      { date: "Feb 22, 2024", protocol: "Deep Tissue", temp: "-150°C", status: "Completed" },
+    ]
+  },
+  { 
+    id: 4, 
+    name: "Apollo", 
+    breed: "Warmblood", 
+    age: 9, 
+    owner: "James Wilson", 
+    notes: "Arthritis in right knee.",
+    history: [
+      { date: "Feb 23, 2024", protocol: "Inflammation", temp: "-140°C", status: "Interrupted" },
+    ]
+  },
 ];
 
 export default function Horses() {
@@ -39,6 +81,7 @@ export default function Horses() {
   const [search, setSearch] = useState("");
   const { toast } = useToast();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [expandedHorse, setExpandedHorse] = useState<number | null>(null);
 
   // Form State
   const [newHorse, setNewHorse] = useState({ name: "", breed: "", age: "", owner: "", notes: "" });
@@ -47,6 +90,10 @@ export default function Horses() {
     h.name.toLowerCase().includes(search.toLowerCase()) || 
     h.owner.toLowerCase().includes(search.toLowerCase())
   );
+
+  const toggleHistory = (id: number) => {
+    setExpandedHorse(expandedHorse === id ? null : id);
+  };
 
   const handleAddHorse = () => {
     if (!newHorse.name || !newHorse.owner) {
@@ -64,7 +111,8 @@ export default function Horses() {
       breed: newHorse.breed,
       age: parseInt(newHorse.age) || 0,
       owner: newHorse.owner,
-      notes: newHorse.notes
+      notes: newHorse.notes,
+      history: []
     };
 
     setHorses([...horses, horse]);
@@ -166,7 +214,7 @@ export default function Horses() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.2 }}
           >
-            <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-primary active:scale-[0.99] transition-transform">
+            <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-primary active:scale-[0.99] transition-transform overflow-hidden">
               <CardHeader className="pb-2 p-4 md:p-6">
                 <div className="flex justify-between items-start">
                   <div>
@@ -178,7 +226,7 @@ export default function Horses() {
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="p-4 md:p-6 pt-0">
+              <CardContent className="p-4 md:p-6 pt-0 space-y-4">
                 <div className="space-y-2 text-sm mt-2">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Owner:</span>
@@ -188,13 +236,65 @@ export default function Horses() {
                     {horse.notes || "No notes available."}
                   </div>
                 </div>
+
+                <div className="pt-2 border-t border-white/5">
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="w-full justify-between h-8 text-xs font-bold tracking-wider uppercase text-primary hover:bg-primary/5"
+                    onClick={() => toggleHistory(horse.id)}
+                  >
+                    <span className="flex items-center gap-2">
+                      <History className="w-3.5 h-3.5" />
+                      Treatment History
+                    </span>
+                    <ChevronLeft className={cn("w-4 h-4 transition-transform", expandedHorse === horse.id ? "-rotate-90" : "rotate-0")} />
+                  </Button>
+                  
+                  <AnimatePresence>
+                    {expandedHorse === horse.id && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="space-y-2 pt-3">
+                          {horse.history?.map((entry, idx) => (
+                            <div key={idx} className="bg-[#1a2234]/40 rounded-lg p-3 border border-white/5 flex justify-between items-center">
+                              <div className="space-y-1">
+                                <div className="text-[10px] text-muted-foreground flex items-center gap-1.5 uppercase font-bold tracking-tighter">
+                                  <Clock className="w-3 h-3 text-primary" />
+                                  {entry.date}
+                                </div>
+                                <div className="text-xs font-bold text-foreground">{entry.protocol}</div>
+                              </div>
+                              <div className="text-right">
+                                <div className="text-[10px] text-primary flex items-center justify-end gap-1 font-bold">
+                                  <Thermometer className="w-3 h-3" />
+                                  {entry.temp}
+                                </div>
+                                <div className={cn(
+                                  "text-[9px] uppercase font-black tracking-widest mt-0.5",
+                                  entry.status === "Completed" ? "text-green-500" : "text-yellow-500"
+                                )}>
+                                  {entry.status}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </CardContent>
-              <CardFooter className="flex justify-end gap-2 pt-0 pb-4 px-4 md:px-6">
-                <Button variant="ghost" size="sm" className="hover:text-primary">
-                  <Edit className="w-4 h-4 mr-1" /> Edit
+              <CardFooter className="flex justify-end gap-2 pt-0 pb-4 px-4 md:px-6 bg-secondary/10">
+                <Button variant="ghost" size="sm" className="hover:text-primary text-xs font-bold tracking-widest">
+                  <Edit className="w-3.5 h-3.5 mr-1" /> EDIT
                 </Button>
-                <Button variant="ghost" size="sm" className="hover:text-destructive text-destructive/80" onClick={() => handleDelete(horse.id)}>
-                  <Trash2 className="w-4 h-4 mr-1" /> Delete
+                <Button variant="ghost" size="sm" className="hover:text-destructive text-destructive/80 text-xs font-bold tracking-widest" onClick={() => handleDelete(horse.id)}>
+                  <Trash2 className="w-3.5 h-3.5 mr-1" /> DELETE
                 </Button>
               </CardFooter>
             </Card>
