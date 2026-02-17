@@ -8,24 +8,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { 
   FileText, 
   Download, 
-  ArrowUpRight, 
   ChevronLeft, 
   Camera, 
   X, 
   CheckCircle2,
-  Loader2
+  Loader2,
+  Stethoscope,
+  Activity,
+  Zap,
+  Waves,
+  ShieldCheck,
+  Plus
 } from "lucide-react";
 import thermalHorseDark from "@/assets/thermal-horse-dark.jpg"; 
 import { Link } from "wouter";
@@ -39,7 +36,6 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -48,18 +44,33 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
 
 export default function Records() {
   const [isScanOpen, setIsScanOpen] = useState(false);
   const [capturedImages, setCapturedImages] = useState<string[]>([]);
   const [diagnosisNote, setDiagnosisNote] = useState("");
   const [conditionLabel, setConditionLabel] = useState("");
+  const [proposedTreatment, setProposedTreatment] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const treatments = [
+    { id: "cryo", label: "Cryotherapy", icon: Zap, color: "text-blue-400" },
+    { id: "3b_laser", label: "3B Laser", icon: Activity, color: "text-red-400" },
+    { id: "shockwave", label: "Shockwave", icon: Waves, color: "text-orange-400" },
+    { id: "class_iv", label: "Class IV Laser", icon: ShieldCheck, color: "text-purple-400" },
+  ];
 
   const handleCapture = () => {
     if (capturedImages.length < 4) {
       setCapturedImages([...capturedImages, thermalHorseDark]);
     }
+  };
+
+  const toggleTreatment = (id: string) => {
+    setProposedTreatment(prev => 
+      prev.includes(id) ? prev.filter(t => t !== id) : [...prev, id]
+    );
   };
 
   const removeImage = (index: number) => {
@@ -74,6 +85,7 @@ export default function Records() {
     setCapturedImages([]);
     setDiagnosisNote("");
     setConditionLabel("");
+    setProposedTreatment([]);
   };
 
   return (
@@ -83,6 +95,7 @@ export default function Records() {
           <img src={america_cryo_logo} alt="America Cryo Logo" className="h-8 w-auto mb-1" />
         </div>
       </div>
+      
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div className="flex items-center gap-2">
           <Link href="/">
@@ -91,218 +104,254 @@ export default function Records() {
              </Button>
            </Link>
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground tracking-widest">Health Records</h1>
-            <p className="text-sm md:text-base text-muted-foreground">Diagnose, track, and analyze treatment history.</p>
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground tracking-widest uppercase">Diagnose</h1>
+            <p className="text-sm md:text-base text-muted-foreground">Assess condition and propose precision treatments.</p>
           </div>
         </div>
         <div className="flex w-full md:w-auto gap-2">
             <Dialog open={isScanOpen} onOpenChange={setIsScanOpen}>
               <DialogTrigger asChild>
-                <Button className="flex-1 md:flex-none gap-2 bg-primary hover:bg-primary/90 text-white border-0 shadow-lg shadow-primary/20 font-bold tracking-widest">
-                  <Camera className="w-4 h-4" /> NEW SCAN
+                <Button className="flex-1 md:flex-none gap-2 bg-primary hover:bg-primary/90 text-white border-0 shadow-lg shadow-primary/20 font-bold tracking-widest h-12 px-8">
+                  <Camera className="w-5 h-5" /> NEW SCAN
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[600px] max-h-[90vh] flex flex-col p-0 overflow-hidden bg-card border-white/10">
-                <DialogHeader className="p-6 pb-0">
-                  <DialogTitle className="text-xl">New Diagnostic Scan</DialogTitle>
-                  <DialogDescription>
-                    Capture thermal images and record veterinary diagnosis.
-                  </DialogDescription>
+              <DialogContent className="sm:max-w-[700px] max-h-[95vh] flex flex-col p-0 overflow-hidden bg-[#0a0f1d] border-white/10 shadow-2xl">
+                <DialogHeader className="p-6 pb-0 border-b border-white/5 bg-[#111827]">
+                  <div className="flex items-center gap-3 mb-1">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <Stethoscope className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <DialogTitle className="text-xl font-bold tracking-tight">Clinical Assessment</DialogTitle>
+                      <DialogDescription className="text-gray-400">
+                        Capture thermal data and define treatment protocols.
+                      </DialogDescription>
+                    </div>
+                  </div>
                 </DialogHeader>
 
                 <ScrollArea className="flex-1 p-6">
-                  <div className="space-y-6">
-                    <div className="space-y-3">
-                      <Label className="text-xs uppercase tracking-widest text-muted-foreground">Thermal Capture (Max 4)</Label>
-                      <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-8">
+                    {/* Image Capture Section */}
+                    <section className="space-y-4">
+                      <div className="flex justify-between items-end">
+                        <Label className="text-[10px] uppercase tracking-[0.2em] text-primary font-black">Thermal Imaging (Max 4)</Label>
+                        <span className="text-[10px] text-gray-500 font-bold">{capturedImages.length}/4 Images</span>
+                      </div>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         {capturedImages.map((img, idx) => (
-                          <div key={idx} className="relative aspect-square rounded-lg overflow-hidden border border-white/10 bg-black/40 group">
-                            <img src={img} className="object-cover w-full h-full opacity-90" alt={`Capture ${idx + 1}`} />
+                          <div key={idx} className="relative aspect-square rounded-xl overflow-hidden border border-white/10 bg-black/40 group ring-1 ring-white/5">
+                            <img src={img} className="object-cover w-full h-full opacity-90 transition-transform duration-500 group-hover:scale-110" alt={`Capture ${idx + 1}`} />
                             <Button 
                               variant="destructive" 
                               size="icon" 
-                              className="absolute top-2 right-2 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity"
+                              className="absolute top-1.5 right-1.5 w-6 h-6 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
                               onClick={() => removeImage(idx)}
                             >
                               <X className="w-3 h-3" />
                             </Button>
-                            <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/60 text-[10px] text-white backdrop-blur-sm border border-white/10">
-                              View {idx + 1}
+                            <div className="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded-md bg-black/60 text-[9px] text-white backdrop-blur-md border border-white/10 font-bold">
+                              VIEW {idx + 1}
                             </div>
                           </div>
                         ))}
                         {capturedImages.length < 4 && (
                           <button 
                             onClick={handleCapture}
-                            className="aspect-square rounded-lg border-2 border-dashed border-white/10 hover:border-primary/50 hover:bg-primary/5 flex flex-col items-center justify-center gap-2 transition-all text-muted-foreground hover:text-primary group"
+                            className="aspect-square rounded-xl border-2 border-dashed border-white/10 hover:border-primary/50 hover:bg-primary/5 flex flex-col items-center justify-center gap-2 transition-all text-muted-foreground hover:text-primary group bg-white/5"
                           >
-                            <Camera className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                            <span className="text-[10px] font-medium">Capture View</span>
+                            <div className="p-3 rounded-full bg-white/5 group-hover:bg-primary/10 transition-colors">
+                              <Plus className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                            </div>
+                            <span className="text-[9px] font-black uppercase tracking-widest">Add View</span>
                           </button>
                         )}
                       </div>
+                    </section>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {/* Condition Selection */}
+                      <section className="space-y-3">
+                        <Label htmlFor="condition" className="text-[10px] uppercase tracking-[0.2em] text-primary font-black">Health Category</Label>
+                        <Select value={conditionLabel} onValueChange={setConditionLabel}>
+                          <SelectTrigger id="condition" className="bg-[#1a2234] border-white/5 h-12 rounded-xl text-gray-200">
+                            <SelectValue placeholder="Select primary condition..." />
+                          </SelectTrigger>
+                          <SelectContent className="bg-[#1a2234] border-white/10 text-gray-200">
+                            <SelectItem value="inflammation">Acute Inflammation</SelectItem>
+                            <SelectItem value="tendon">Tendon/Ligament Strain</SelectItem>
+                            <SelectItem value="muscle">Muscle Soreness</SelectItem>
+                            <SelectItem value="joint">Joint Degeneration</SelectItem>
+                            <SelectItem value="recovery">General Recovery</SelectItem>
+                            <SelectItem value="other">Other/Custom</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </section>
+
+                      {/* Proposed Treatment */}
+                      <section className="space-y-3">
+                        <Label className="text-[10px] uppercase tracking-[0.2em] text-primary font-black">Proposed Modalities</Label>
+                        <div className="grid grid-cols-2 gap-2">
+                          {treatments.map((t) => (
+                            <button
+                              key={t.id}
+                              onClick={() => toggleTreatment(t.id)}
+                              className={cn(
+                                "flex items-center gap-2 px-3 py-2.5 rounded-xl border transition-all text-left",
+                                proposedTreatment.includes(t.id)
+                                  ? "bg-primary/20 border-primary text-white shadow-lg shadow-primary/10"
+                                  : "bg-[#1a2234] border-white/5 text-gray-400 hover:border-white/20"
+                              )}
+                            >
+                              <t.icon className={cn("w-4 h-4", proposedTreatment.includes(t.id) ? t.color : "text-gray-500")} />
+                              <span className="text-[10px] font-bold uppercase tracking-tight">{t.label}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </section>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="condition" className="text-xs uppercase tracking-widest text-muted-foreground">Primary Condition</Label>
-                      <Select value={conditionLabel} onValueChange={setConditionLabel}>
-                        <SelectTrigger id="condition" className="bg-background/50 border-white/10 h-11">
-                          <SelectValue placeholder="Select condition type..." />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="inflammation">Acute Inflammation</SelectItem>
-                          <SelectItem value="tendon">Tendon/Ligament Strain</SelectItem>
-                          <SelectItem value="muscle">Muscle Soreness</SelectItem>
-                          <SelectItem value="joint">Joint Degeneration</SelectItem>
-                          <SelectItem value="recovery">General Recovery</SelectItem>
-                          <SelectItem value="other">Other/Custom</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="notes" className="text-xs uppercase tracking-widest text-muted-foreground">Veterinary Diagnosis Notes</Label>
-                      <div className="relative group">
-                        <Textarea 
+                    {/* Rich Text Notes */}
+                    <section className="space-y-3">
+                      <Label htmlFor="notes" className="text-[10px] uppercase tracking-[0.2em] text-primary font-black">Clinical Notes (Rich Text)</Label>
+                      <div className="rounded-xl border border-white/5 bg-[#1a2234] overflow-hidden focus-within:border-primary/40 transition-colors">
+                        <div className="flex items-center gap-1 p-2 border-b border-white/5 bg-white/5">
+                           <div className="flex gap-1">
+                              {['B', 'I', 'U', '•'].map(btn => (
+                                <button key={btn} className="w-8 h-8 rounded hover:bg-white/10 text-gray-400 font-serif text-sm transition-colors">{btn}</button>
+                              ))}
+                           </div>
+                        </div>
+                        <textarea 
                           id="notes" 
-                          placeholder="Enter detailed diagnosis and clinical observations..." 
-                          className="min-h-[120px] bg-background/50 border-white/10 focus:border-primary/50 transition-colors resize-none text-sm leading-relaxed pr-10"
+                          placeholder="Document detailed veterinary observations and assessment results..." 
+                          className="w-full min-h-[160px] bg-transparent border-0 p-4 focus:ring-0 text-sm leading-relaxed text-gray-200 resize-none"
                           value={diagnosisNote}
                           onChange={(e) => setDiagnosisNote(e.target.value)}
                         />
-                        <div className="absolute right-3 top-3 opacity-20 group-focus-within:opacity-50 transition-opacity pointer-events-none">
-                          <FileText className="w-4 h-4" />
-                        </div>
                       </div>
-                      <p className="text-[10px] text-muted-foreground italic">
-                        Notes will be timestamped and attached to the patient's permanent EHR.
-                      </p>
-                    </div>
+                    </section>
                   </div>
                 </ScrollArea>
 
-                <DialogFooter className="p-6 border-t border-white/10 bg-secondary/5">
-                  <Button variant="ghost" onClick={() => setIsScanOpen(false)} disabled={isSubmitting} className="hover:bg-white/5">
-                    Cancel
+                <DialogFooter className="p-6 border-t border-white/5 bg-[#111827]">
+                  <Button variant="ghost" onClick={() => setIsScanOpen(false)} disabled={isSubmitting} className="text-gray-400 hover:bg-white/5 font-bold tracking-widest text-xs">
+                    DISCARD
                   </Button>
                   <Button 
                     onClick={handleSubmit} 
                     disabled={isSubmitting || capturedImages.length === 0 || !conditionLabel}
-                    className="gap-2 shadow-lg shadow-primary/20 bg-primary hover:bg-primary/90 text-white min-w-[140px]"
+                    className="gap-2 shadow-xl shadow-primary/20 bg-primary hover:bg-primary/90 text-white min-w-[180px] h-12 font-black tracking-[0.1em]"
                   >
                     {isSubmitting ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
-                        Saving...
+                        PROCESSING...
                       </>
                     ) : (
                       <>
-                        <CheckCircle2 className="w-4 h-4" />
-                        Complete Diagnosis
+                        <ShieldCheck className="w-5 h-5" />
+                        SAVE TO EHR
                       </>
                     )}
                   </Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
-            <Button variant="outline" className="flex-1 md:flex-none gap-2 border-white/10 bg-card/50 hover:bg-card text-foreground">
-              <Download className="w-4 h-4" /> Export
+            <Button variant="outline" className="flex-1 md:flex-none gap-2 border-white/10 bg-card/50 hover:bg-card text-foreground font-bold tracking-widest h-12 px-6">
+              <Download className="w-4 h-4" /> EXPORT
             </Button>
         </div>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <Card className="col-span-2 md:col-span-1 shadow-lg bg-card/50 backdrop-blur border-white/5">
+        <Card className="col-span-2 md:col-span-1 shadow-lg bg-card/50 backdrop-blur border-white/5 overflow-hidden">
+          <div className="h-1 bg-primary/40 w-full" />
           <CardHeader>
-            <CardTitle className="tracking-wider text-sm md:text-base">Thermal Imaging Analysis</CardTitle>
-            <CardDescription>Compare pre and post treatment thermal scans.</CardDescription>
+            <CardTitle className="tracking-[0.2em] text-[10px] uppercase text-primary font-black">Case Analysis</CardTitle>
+            <CardDescription className="text-gray-400">Pre and post treatment thermal verification.</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-6">
             <div className="grid grid-cols-2 gap-3 md:gap-4">
               <div className="space-y-2">
-                <div className="aspect-square relative rounded-xl overflow-hidden border border-white/10 bg-black/50 group cursor-pointer shadow-inner">
+                <div className="aspect-square relative rounded-2xl overflow-hidden border border-white/10 bg-black/50 group cursor-pointer shadow-2xl">
                   <img src={thermalHorseDark} alt="Before Treatment" className="object-cover w-full h-full opacity-90 transition-transform group-hover:scale-105" />
-                  <div className="absolute top-2 left-2 bg-black/80 text-white text-[10px] md:text-xs px-2 py-1 rounded-md backdrop-blur-sm font-medium border border-white/10">
-                    BEFORE (14:00)
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="absolute top-3 left-3 bg-black/80 text-white text-[9px] px-2 py-1 rounded-md backdrop-blur-md font-black border border-white/10 tracking-widest">
+                    BASELINE
                   </div>
-                  <div className="absolute bottom-2 right-2 bg-red-500/90 text-white text-[10px] md:text-xs px-2 py-1 rounded-full backdrop-blur-sm font-bold shadow-lg border border-red-400/50">
+                  <div className="absolute bottom-3 right-3 bg-red-500/90 text-white text-xs px-2.5 py-1.5 rounded-xl backdrop-blur-md font-black shadow-lg border border-red-400/50">
                     38.5°C
                   </div>
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="aspect-square relative rounded-xl overflow-hidden border border-white/10 bg-black/50 group cursor-pointer shadow-inner">
+                <div className="aspect-square relative rounded-2xl overflow-hidden border border-white/10 bg-black/50 group cursor-pointer shadow-2xl">
                   <img src={thermalHorseDark} alt="After Treatment" className="object-cover w-full h-full grayscale opacity-80 transition-transform group-hover:scale-105" style={{ filter: "hue-rotate(180deg) contrast(1.4) brightness(0.8)" }} />
-                  <div className="absolute top-2 left-2 bg-black/80 text-white text-[10px] md:text-xs px-2 py-1 rounded-md backdrop-blur-sm font-medium border border-white/10">
-                    AFTER (14:20)
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="absolute top-3 left-3 bg-black/80 text-white text-[9px] px-2 py-1 rounded-md backdrop-blur-md font-black border border-white/10 tracking-widest">
+                    POST-OP
                   </div>
-                   <div className="absolute bottom-2 right-2 bg-primary/90 text-white text-[10px] md:text-xs px-2 py-1 rounded-full backdrop-blur-sm font-bold shadow-lg border border-primary/50">
+                   <div className="absolute bottom-3 right-3 bg-primary/90 text-white text-xs px-2.5 py-1.5 rounded-xl backdrop-blur-md font-black shadow-lg border border-primary/50">
                     22.1°C
                   </div>
                 </div>
               </div>
             </div>
-            <div className="bg-primary/5 p-4 rounded-lg border border-primary/10">
-              <h4 className="font-bold text-sm flex items-center gap-2 mb-2 text-primary tracking-wide">
-                <FileText className="w-4 h-4" /> Diagnosis Note
+            <div className="bg-primary/5 p-5 rounded-2xl border border-primary/10 relative">
+              <div className="absolute -top-3 left-6 px-3 py-1 bg-[#111827] border border-white/5 rounded-full text-[9px] font-black text-primary tracking-widest uppercase">Clinical Assessment</div>
+              <h4 className="font-bold text-sm flex items-center gap-2 mb-2 text-primary tracking-wide pt-2">
+                <FileText className="w-4 h-4" /> Diagnosis Summary
               </h4>
-              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                Significant inflammation reduction observed in the left hock area. Thermal delta indicates successful cryotherapy application. Recommended follow-up in 48 hours.
+              <p className="text-xs md:text-sm text-gray-300 leading-relaxed font-medium">
+                Significant inflammation reduction observed in the left hock area. Thermal delta indicates successful cryotherapy application. Recommended follow-up in 48 hours with Class IV laser support.
               </p>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="col-span-2 md:col-span-1 shadow-lg bg-card/50 backdrop-blur border-white/5">
+        <Card className="col-span-2 md:col-span-1 shadow-lg bg-card/50 backdrop-blur border-white/5 overflow-hidden">
+          <div className="h-1 bg-gray-500/20 w-full" />
           <CardHeader>
-            <CardTitle className="tracking-wider text-sm md:text-base">Treatment History</CardTitle>
-            <CardDescription>Recent sessions across all patients.</CardDescription>
+            <CardTitle className="tracking-[0.2em] text-[10px] uppercase text-gray-400 font-black">Treatment Pipeline</CardTitle>
+            <CardDescription className="text-gray-400">Aggregated patient sessions and outcomes.</CardDescription>
           </CardHeader>
           <CardContent className="p-0 md:p-6">
-            <div className="rounded-md md:border border-white/10 overflow-hidden">
-              <Table>
-                <TableHeader className="hidden md:table-header-group">
-                  <TableRow className="border-white/10 hover:bg-transparent">
-                    <TableHead className="text-muted-foreground">Date</TableHead>
-                    <TableHead className="text-muted-foreground">Horse</TableHead>
-                    <TableHead className="text-muted-foreground">Protocol</TableHead>
-                    <TableHead className="text-muted-foreground">Status</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {[
-                    { date: "Feb 24, 2024", horse: "Thunder Spirit", protocol: "Tendon Repair", status: "Completed" },
-                    { date: "Feb 23, 2024", horse: "Bella Luna", protocol: "Recovery", status: "Completed" },
-                    { date: "Feb 23, 2024", horse: "Apollo", protocol: "Inflammation", status: "Interrupted" },
-                    { date: "Feb 22, 2024", horse: "Midnight Star", protocol: "Manual", status: "Completed" },
-                    { date: "Feb 21, 2024", horse: "Thunder Spirit", protocol: "Tendon Repair", status: "Completed" },
-                  ].map((row, i) => (
-                    <TableRow key={i} className="flex flex-col md:table-row border-b md:border-b-0 p-4 md:p-0 border-white/5 hover:bg-white/5">
-                      <TableCell className="font-medium text-xs text-muted-foreground md:table-cell pb-1 md:pb-4 pt-0 md:pt-4 border-none md:border-b border-white/5">
-                        <span className="md:hidden font-semibold text-foreground mr-2">Date:</span>{row.date}
-                      </TableCell>
-                      <TableCell className="md:table-cell py-1 md:py-4 border-none md:border-b border-white/5 text-base md:text-sm font-semibold md:font-normal text-foreground">
-                         <span className="md:hidden font-normal text-muted-foreground mr-2 text-xs">Patient:</span>{row.horse}
-                      </TableCell>
-                      <TableCell className="md:table-cell py-1 md:py-4 border-none md:border-b border-white/5 text-sm text-primary font-medium">
-                         <span className="md:hidden font-normal text-muted-foreground mr-2 text-xs">Protocol:</span>{row.protocol}
-                      </TableCell>
-                      <TableCell className="md:table-cell py-1 md:py-4 border-none md:border-b border-white/5">
-                        <div className="flex justify-between items-center md:block">
-                           <span className="md:hidden text-xs text-muted-foreground">Status:</span>
-                           <Badge variant={row.status === "Completed" ? "default" : "destructive"} className="text-[10px] md:text-xs">
-                             {row.status}
-                           </Badge>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
+            <ScrollArea className="h-[400px] px-4 md:px-0">
+              <div className="space-y-3 pb-4">
+                {[
+                  { date: "Feb 24, 2024", horse: "Thunder Spirit", protocol: "Tendon Repair", status: "Completed", modalities: ["cryo", "3b_laser"] },
+                  { date: "Feb 23, 2024", horse: "Bella Luna", protocol: "Recovery", status: "Completed", modalities: ["cryo"] },
+                  { date: "Feb 23, 2024", horse: "Apollo", protocol: "Inflammation", status: "Interrupted", modalities: ["shockwave"] },
+                  { date: "Feb 22, 2024", horse: "Midnight Star", protocol: "Manual", status: "Completed", modalities: ["class_iv"] },
+                  { date: "Feb 21, 2024", horse: "Thunder Spirit", protocol: "Tendon Repair", status: "Completed", modalities: ["cryo", "shockwave"] },
+                ].map((row, i) => (
+                  <div key={i} className="group relative bg-[#1a2234]/40 rounded-2xl p-4 border border-white/5 hover:border-primary/30 transition-all">
+                    <div className="flex justify-between items-start mb-2">
+                      <div className="space-y-0.5">
+                        <div className="text-[9px] font-black text-gray-500 tracking-widest uppercase">{row.date}</div>
+                        <div className="text-sm font-bold text-white tracking-tight">{row.horse}</div>
+                      </div>
+                      <Badge variant={row.status === "Completed" ? "default" : "destructive"} className="text-[9px] font-black uppercase tracking-tighter rounded-lg h-5 px-2">
+                        {row.status}
+                      </Badge>
+                    </div>
+                    <div className="flex justify-between items-center mt-3">
+                      <div className="text-[11px] text-primary font-bold uppercase tracking-tight bg-primary/5 px-2 py-0.5 rounded-md border border-primary/10">{row.protocol}</div>
+                      <div className="flex gap-1">
+                        {row.modalities.map(m => {
+                          const tool = treatments.find(t => t.id === m);
+                          return tool ? <tool.icon key={m} className={cn("w-3.5 h-3.5", tool.color)} /> : null;
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </ScrollArea>
             <div className="p-4 md:p-0 md:mt-4">
-              <Button variant="ghost" className="w-full text-primary hover:text-primary/80 hover:bg-primary/10">
-                View Full History <ArrowUpRight className="w-4 h-4 ml-2" />
+              <Button variant="ghost" className="w-full text-[10px] font-black tracking-[0.2em] uppercase text-primary hover:bg-primary/10 transition-colors h-10">
+                Full History Log <Plus className="w-3 h-3 ml-2" />
               </Button>
             </div>
           </CardContent>
