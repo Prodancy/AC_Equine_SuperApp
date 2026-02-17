@@ -13,6 +13,10 @@ import Billing from "@/pages/Billing";
 import HistoryDetail from "@/pages/HistoryDetail";
 import Diagnose from "@/pages/Diagnose";
 import NewAssessment from "@/pages/NewAssessment";
+import Cryotherapy from "@/pages/Cryotherapy";
+import Laser3B from "@/pages/Laser3B";
+import Shockwave from "@/pages/Shockwave";
+import ClassIV from "@/pages/ClassIV";
 import Sidebar from "@/components/Sidebar";
 import BottomNav from "@/components/BottomNav";
 
@@ -25,6 +29,10 @@ function Router() {
           <Route path="/" component={Dashboard} />
           <Route path="/horses" component={Horses} />
           <Route path="/treatment" component={Treatment} />
+          <Route path="/treatment/cryotherapy" component={Cryotherapy} />
+          <Route path="/treatment/3b-laser" component={Laser3B} />
+          <Route path="/treatment/shockwave" component={Shockwave} />
+          <Route path="/treatment/class-iv" component={ClassIV} />
           <Route path="/records" component={Records} />
           <Route path="/diagnose" component={Diagnose} />
           <Route path="/diagnose/new" component={NewAssessment} />
