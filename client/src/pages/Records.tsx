@@ -83,7 +83,7 @@ export default function Records() {
         <Card className="col-span-2 md:col-span-1 shadow-lg bg-card/50 backdrop-blur border-white/5 overflow-hidden">
           <div className="h-1 bg-primary/40 w-full" />
           <CardHeader>
-            <CardTitle className="tracking-[0.2em] text-[10px] uppercase text-primary font-black">Digital Thermography History</CardTitle>
+            <CardTitle className="tracking-[0.2em] text-[10px] text-primary font-black">Digital Thermography History</CardTitle>
             <CardDescription className="text-gray-400">Historical digital thermography assessments and baseline records.</CardDescription>
           </CardHeader>
           <CardContent className="p-0 md:p-6">
@@ -98,20 +98,20 @@ export default function Records() {
                   <div key={i} className="group bg-[#1a2234]/40 rounded-2xl p-4 border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
                     <div className="flex justify-between items-start mb-3">
                       <div>
-                        <div className="text-[10px] font-black text-primary tracking-widest uppercase mb-1">{record.date}</div>
+                        <div className="text-[10px] font-black text-primary tracking-widest mb-1">{record.date}</div>
                         <div className="text-sm font-bold text-white tracking-tight">{record.horse}</div>
                       </div>
-                      <Badge className="bg-primary/10 text-primary border-primary/20 text-[9px] font-black uppercase tracking-tighter">
+                      <Badge className="bg-primary/10 text-primary border-primary/20 text-[9px] font-black tracking-tighter">
                         {record.status}
                       </Badge>
                     </div>
                     <div className="flex justify-between items-end">
                       <div className="space-y-1">
-                        <div className="text-[9px] text-gray-500 font-bold uppercase tracking-widest">Clinical Category</div>
+                        <div className="text-[9px] text-gray-500 font-bold tracking-widest">Clinical Category</div>
                         <div className="text-xs font-medium text-gray-300">{record.condition}</div>
                       </div>
                       <div className="text-right">
-                        <div className="text-[9px] text-gray-500 font-bold uppercase tracking-widest">Thermal Delta</div>
+                        <div className="text-[9px] text-gray-500 font-bold tracking-widest">Thermal Delta</div>
                         <div className="text-xs font-black text-red-400">{record.delta}</div>
                       </div>
                     </div>

@@ -41,12 +41,12 @@ export default function Diagnose() {
       <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
         <div className="flex items-center gap-4">
           <div>
-            <h1 className="text-xl md:text-2xl font-bold tracking-widest uppercase text-foreground">Diagnose</h1>
-            <p className="text-[10px] text-muted-foreground uppercase tracking-tight hidden md:block">Clinical Assessments & Thermography</p>
+            <h1 className="text-xl md:text-2xl font-bold tracking-widest text-foreground">Diagnose</h1>
+            <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block">Clinical Assessments & Thermography</p>
           </div>
         </div>
         <Link href="/diagnose/new">
-          <Button size="sm" className="gap-2 shadow-md h-9 text-[10px] font-bold uppercase tracking-wider">
+          <Button size="sm" className="gap-2 shadow-md h-9 text-[10px] font-bold tracking-wider">
             <Plus className="w-4 h-4" /> <span>New Assessment</span>
           </Button>
         </Link>
@@ -55,7 +55,7 @@ export default function Diagnose() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="md:col-span-2 bg-card/50 backdrop-blur border-white/5 overflow-hidden">
           <CardHeader className="border-b border-white/5 bg-white/[0.02]">
-            <CardTitle className="text-[10px] uppercase tracking-[0.2em] text-white font-black">Assessment Registry</CardTitle>
+            <CardTitle className="text-[10px] tracking-[0.2em] text-white font-black">Assessment Registry</CardTitle>
             <CardDescription className="text-gray-500 text-xs">A Comprehensive List Of All Clinical Evaluations</CardDescription>
           </CardHeader>
           <CardContent className="p-0">
@@ -70,25 +70,25 @@ export default function Diagnose() {
                         </div>
                         <div>
                           <h3 className="text-sm font-bold text-white tracking-tight group-hover:text-primary transition-colors">{diag.horse}</h3>
-                          <p className="text-[10px] text-gray-500 font-medium uppercase tracking-tighter">{diag.date}</p>
+                          <p className="text-[10px] text-gray-500 font-medium tracking-tighter">{diag.date}</p>
                         </div>
                       </div>
-                      <Badge className="bg-white/5 text-gray-400 border-white/10 text-[8px] font-black uppercase tracking-widest">
+                      <Badge className="bg-white/5 text-gray-400 border-white/10 text-[8px] font-black tracking-widest">
                         {diag.status}
                       </Badge>
                     </div>
                     <div className="flex items-center justify-between mt-4">
                       <div className="flex gap-4">
                         <div className="space-y-0.5">
-                          <p className="text-[8px] text-gray-600 font-black uppercase tracking-widest">Category</p>
+                          <p className="text-[8px] text-gray-600 font-black tracking-widest">Category</p>
                           <p className="text-xs text-gray-300">{diag.condition}</p>
                         </div>
                         <div className="space-y-0.5">
-                          <p className="text-[8px] text-gray-600 font-black uppercase tracking-widest">Thermal Delta</p>
+                          <p className="text-[8px] text-gray-600 font-black tracking-widest">Thermal Delta</p>
                           <p className="text-xs text-red-400 font-bold">{diag.delta}</p>
                         </div>
                       </div>
-                      <Button variant="ghost" size="sm" className="text-primary hover:text-primary hover:bg-primary/10 text-[10px] font-black uppercase tracking-widest">
+                      <Button variant="ghost" size="sm" className="text-primary hover:text-primary hover:bg-primary/10 text-[10px] font-black tracking-widest">
                         View Report <ArrowRight className="w-3 h-3 ml-1" />
                       </Button>
                     </div>
@@ -101,20 +101,20 @@ export default function Diagnose() {
 
         <Card className="bg-card/50 backdrop-blur border-white/5 overflow-hidden h-fit">
           <CardHeader className="border-b border-white/5 bg-white/[0.02]">
-            <CardTitle className="text-[10px] uppercase tracking-[0.2em] text-white font-black">Statistics</CardTitle>
+            <CardTitle className="text-[10px] tracking-[0.2em] text-white font-black">Statistics</CardTitle>
           </CardHeader>
           <CardContent className="p-6 space-y-6">
             <div className="space-y-2">
-              <p className="text-[9px] text-gray-500 font-black uppercase tracking-widest text-center">Total Assessments</p>
+              <p className="text-[9px] text-gray-500 font-black tracking-widest text-center">Total Assessments</p>
               <p className="text-4xl font-black text-white text-center tracking-tighter">124</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="p-3 rounded-xl bg-white/5 border border-white/5 text-center">
-                <p className="text-[8px] text-gray-600 font-black uppercase tracking-widest mb-1">Success Rate</p>
+                <p className="text-[8px] text-gray-600 font-black tracking-widest mb-1">Success Rate</p>
                 <p className="text-lg font-bold text-green-400">92%</p>
               </div>
               <div className="p-3 rounded-xl bg-white/5 border border-white/5 text-center">
-                <p className="text-[8px] text-gray-600 font-black uppercase tracking-widest mb-1">Active Cases</p>
+                <p className="text-[8px] text-gray-600 font-black tracking-widest mb-1">Active Cases</p>
                 <p className="text-lg font-bold text-primary">12</p>
               </div>
             </div>

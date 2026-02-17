@@ -82,8 +82,8 @@ export default function Dashboard() {
     <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
       <div className="flex items-center gap-4">
         <div>
-          <h1 className="text-xl md:text-2xl font-bold tracking-widest uppercase text-foreground">Dashboard</h1>
-          <p className="text-[10px] text-muted-foreground uppercase tracking-tight hidden md:block">Welcome back, Dr. Anderson</p>
+          <h1 className="text-xl md:text-2xl font-bold tracking-widest text-foreground">Dashboard</h1>
+          <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block">Welcome back, Dr. Anderson</p>
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@ export default function Dashboard() {
           <motion.div key={i} className="min-w-[160px] md:min-w-0 snap-center">
             <Card className="hover:shadow-lg transition-shadow h-full bg-card/50 backdrop-blur border-white/5">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-4">
-                <CardTitle className="text-xs font-medium text-muted-foreground whitespace-nowrap tracking-wider">{stat.label}</CardTitle>
+                <CardTitle className="text-xs font-medium text-muted-foreground whitespace-nowrap tracking-wider">Active treatments</CardTitle>
                 <stat.icon className={`h-4 w-4 ${stat.color}`} />
               </CardHeader>
               <CardContent className="p-4 pt-0"><div className="text-2xl font-bold text-foreground">{stat.value}</div></CardContent>
@@ -192,9 +192,9 @@ export default function Dashboard() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-primary">
                   <div className="h-px w-8 bg-primary/50" />
-                  <span className="text-[10px] uppercase tracking-[0.4em] font-black">Professional Equine Care</span>
+                  <span className="text-[10px] tracking-[0.4em] font-black">Professional Equine Care</span>
                 </div>
-                <h2 className="text-3xl md:text-5xl font-light text-white tracking-tight leading-none uppercase">
+                <h2 className="text-3xl md:text-5xl font-light text-white tracking-tight leading-none">
                   Equine Health <br/><span className="font-black text-primary italic">Solutions</span>
                 </h2>
               </div>
@@ -207,7 +207,7 @@ export default function Dashboard() {
               <Link href="/treatment">
                 <Button className="w-full h-14 flex items-center justify-center gap-3 bg-primary text-white hover:bg-primary/90 rounded-xl transition-all shadow-lg shadow-primary/20 group/btn px-6">
                   <ThermometerSnowflake className="w-5 h-5 transition-transform group-hover:scale-110" />
-                  <span className="text-xs font-bold tracking-[0.15em] uppercase">Start Session</span>
+                  <span className="text-xs font-bold tracking-[0.15em]">Start Session</span>
                 </Button>
               </Link>
               
@@ -216,7 +216,7 @@ export default function Dashboard() {
                 className="h-14 flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl transition-all backdrop-blur-md group/btn shadow-lg px-6"
               >
                 <Calendar className="w-5 h-5 text-primary transition-transform group-hover:scale-110" />
-                <span className="text-xs font-bold tracking-[0.15em] uppercase">Schedule</span>
+                <span className="text-xs font-bold tracking-[0.15em]">Schedule</span>
               </Button>
 
               <Link href="/horses">
@@ -224,7 +224,7 @@ export default function Dashboard() {
                   className="w-full h-14 flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl transition-all backdrop-blur-md group/btn shadow-lg px-6"
                 >
                   <Horse className="w-5 h-5 text-primary transition-transform group-hover:scale-110" />
-                  <span className="text-xs font-bold tracking-[0.15em] uppercase">Patients</span>
+                  <span className="text-xs font-bold tracking-[0.15em]">Patients</span>
                 </Button>
               </Link>
             </div>
@@ -236,7 +236,7 @@ export default function Dashboard() {
         <Card className="shadow-lg border-white/5 bg-card/80 backdrop-blur-xl overflow-hidden border-t-primary/20">
           <div className="h-1 bg-primary/40 w-full" />
           <CardHeader className="bg-card/50 backdrop-blur-md z-30 pb-4">
-            <CardTitle className="tracking-[0.2em] text-[10px] uppercase text-primary font-black">Scheduled Today</CardTitle>
+            <CardTitle className="tracking-[0.2em] text-[10px] text-primary font-black">Scheduled Today</CardTitle>
             <CardDescription className="text-gray-400">Upcoming sessions for {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</CardDescription>
           </CardHeader>
           <CardContent className="p-0 md:p-6">
@@ -251,21 +251,21 @@ export default function Dashboard() {
                 <div key={i} className="group relative bg-[#1a2234]/40 rounded-2xl p-4 border border-white/5 hover:border-primary/30 transition-all">
                   <div className="flex justify-between items-start mb-2">
                     <div className="space-y-0.5">
-                      <div className="text-[10px] font-black text-primary tracking-widest uppercase flex items-center gap-1.5">
+                      <div className="text-[10px] font-black text-primary tracking-widest flex items-center gap-1.5">
                         <Clock className="w-3 h-3" />
                         {row.time}
                       </div>
                       <div className="text-sm font-bold text-white tracking-tight">{row.horse}</div>
                     </div>
                     <Badge variant={row.status === "Confirmed" ? "default" : "destructive"} className={cn(
-                      "text-[9px] font-black uppercase tracking-tighter rounded-lg h-5 px-2",
+                      "text-[9px] font-black tracking-tighter rounded-lg h-5 px-2",
                       row.status === "Confirmed" ? "bg-green-500/20 text-green-500 border-green-500/30" : "bg-red-500/20 text-red-500 border-red-500/30"
                     )}>
                       {row.status}
                     </Badge>
                   </div>
                   <div className="flex justify-between items-center mt-3">
-                    <div className="text-[11px] text-primary font-bold uppercase tracking-tight bg-primary/5 px-2 py-0.5 rounded-md border border-primary/10">{row.protocol}</div>
+                    <div className="text-[11px] text-primary font-bold tracking-tight bg-primary/5 px-2 py-0.5 rounded-md border border-primary/10">{row.protocol}</div>
                     <div className="flex gap-1">
                       {row.modalities.map(m => {
                         const tool = treatments.find(t => t.id === m);

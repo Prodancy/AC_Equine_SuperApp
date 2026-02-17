@@ -127,8 +127,8 @@ export default function Treatment() {
     <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
       <div className="flex items-center gap-4">
         <div>
-          <h1 className="text-xl md:text-2xl font-bold tracking-widest uppercase text-foreground">Treatment</h1>
-          <p className="text-[10px] text-muted-foreground uppercase tracking-tight hidden md:block">Active Session Management</p>
+          <h1 className="text-xl md:text-2xl font-bold tracking-widest text-foreground">Treatment</h1>
+          <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block">Active Session Management</p>
         </div>
       </div>
       <div className="flex items-center gap-2">
@@ -137,7 +137,7 @@ export default function Treatment() {
           size="sm"
           onClick={() => setIsConnectOpen(true)}
           className={cn(
-            "h-8 md:h-9 text-[10px] md:text-xs font-bold uppercase tracking-wider border-white/10 transition-all",
+            "h-8 md:h-9 text-[10px] md:text-xs font-bold tracking-wider border-white/10 transition-all",
             connectionStatus === 'connected' ? "bg-green-500/10 text-green-500 border-green-500/20 hover:bg-green-500/20" : "bg-card/50 hover:bg-card text-foreground"
           )}
         >
@@ -188,7 +188,7 @@ export default function Treatment() {
                   <span className="text-5xl md:text-6xl font-bold tracking-tighter tabular-nums">
                     {formatTime(timeLeft)}
                   </span>
-                  <span className="text-xs text-muted-foreground mt-1 font-semibold tracking-wider">REMAINING</span>
+                  <span className="text-xs text-muted-foreground mt-1 font-semibold tracking-wider">Remaining</span>
                 </div>
               </div>
 
@@ -328,7 +328,7 @@ export default function Treatment() {
             </div>
 
             <div className="text-center space-y-1">
-              <p className="text-sm font-semibold text-foreground uppercase tracking-wider">
+              <p className="text-sm font-semibold text-foreground tracking-wider">
                 {connectionStatus === 'idle' && "Ready to Connect"}
                 {connectionStatus === 'scanning' && "Scanning for Devices..."}
                 {connectionStatus === 'connecting' && "Pairing with ESP32-Cryo..."}

@@ -142,14 +142,14 @@ export default function Horses() {
     <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
       <div className="flex items-center gap-4">
         <div>
-          <h1 className="text-xl md:text-2xl font-bold tracking-widest uppercase text-foreground">Registry</h1>
-          <p className="text-[10px] text-muted-foreground uppercase tracking-tight hidden md:block">Patient Profiles & History</p>
+          <h1 className="text-xl md:text-2xl font-bold tracking-widest text-foreground">Registry</h1>
+          <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block">Patient Profiles & History</p>
         </div>
       </div>
       
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogTrigger asChild>
-          <Button size="sm" className="gap-2 shadow-md h-9 text-[10px] font-bold uppercase tracking-wider">
+          <Button size="sm" className="gap-2 shadow-md h-9 text-[10px] font-bold tracking-wider">
             <Plus className="w-4 h-4" /> <span>Add Patient</span>
           </Button>
         </DialogTrigger>
@@ -236,7 +236,7 @@ export default function Horses() {
                   <Button 
                     variant="ghost" 
                     size="sm" 
-                    className="w-full justify-between h-8 text-xs font-bold tracking-wider uppercase text-primary hover:bg-primary/5"
+                    className="w-full justify-between h-8 text-xs font-bold tracking-wider text-primary hover:bg-primary/5"
                     onClick={() => toggleHistory(horse.id)}
                   >
                     <span className="flex items-center gap-2">
@@ -259,7 +259,7 @@ export default function Horses() {
                             <Link key={idx} href={`/horses/${horse.id}/history/${entry.date.replace(/ /g, '-')}`}>
                               <div className="bg-[#1a2234]/40 rounded-lg p-3 border border-white/5 flex justify-between items-center cursor-pointer hover:border-primary/50 hover:bg-primary/5 transition-all active:scale-[0.98] group mb-2">
                                 <div className="space-y-1">
-                                  <div className="text-[10px] text-muted-foreground flex items-center gap-1.5 uppercase font-bold tracking-tighter">
+                                  <div className="text-[10px] text-muted-foreground flex items-center gap-1.5 font-bold tracking-tighter">
                                     <Clock className="w-3 h-3 text-primary" />
                                     {entry.date}
                                   </div>
@@ -271,7 +271,7 @@ export default function Horses() {
                                     {entry.temp}
                                   </div>
                                   <div className={cn(
-                                    "text-[9px] uppercase font-black tracking-widest mt-0.5",
+                                    "text-[9px] font-black tracking-widest mt-0.5",
                                     entry.status === "Completed" ? "text-green-500" : "text-yellow-500"
                                   )}>
                                     {entry.status}
@@ -288,10 +288,10 @@ export default function Horses() {
               </CardContent>
               <CardFooter className="flex justify-end gap-2 pt-0 pb-4 px-4 md:px-6 bg-secondary/10">
                 <Button variant="ghost" size="sm" className="hover:text-primary text-xs font-bold tracking-widest">
-                  <Edit className="w-3.5 h-3.5 mr-1" /> EDIT
+                  <Edit className="w-3.5 h-3.5 mr-1" /> Edit
                 </Button>
                 <Button variant="ghost" size="sm" className="hover:text-destructive text-destructive/80 text-xs font-bold tracking-widest" onClick={() => handleDelete(horse.id)}>
-                  <Trash2 className="w-3.5 h-3.5 mr-1" /> DELETE
+                  <Trash2 className="w-3.5 h-3.5 mr-1" /> Delete
                 </Button>
               </CardFooter>
             </Card>

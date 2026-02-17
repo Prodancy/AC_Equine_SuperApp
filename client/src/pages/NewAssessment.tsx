@@ -79,12 +79,12 @@ export default function NewAssessment() {
               <Stethoscope className="w-6 h-6 text-primary" />
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-bold tracking-tight text-white uppercase tracking-[0.2em]">New Assessment</h1>
-              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest hidden md:block">Real-time Digital Thermography</p>
+              <h1 className="text-xl md:text-2xl font-bold tracking-tight text-white tracking-[0.2em]">New Assessment</h1>
+              <p className="text-[10px] text-gray-500 font-bold tracking-widest hidden md:block">Real-time Digital Thermography</p>
             </div>
           </div>
         </div>
-        <Button variant="ghost" onClick={() => setLocation("/diagnose")} className="text-gray-400 font-black tracking-[0.2em] text-[10px] uppercase hover:text-white transition-colors">
+        <Button variant="ghost" onClick={() => setLocation("/diagnose")} className="text-gray-400 font-black tracking-[0.2em] text-[10px] hover:text-white transition-colors">
           Discard
         </Button>
       </header>
@@ -142,7 +142,7 @@ export default function NewAssessment() {
                   >
                     <X className="w-4 h-4" />
                   </Button>
-                  <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-black/60 text-[8px] text-white backdrop-blur-md border border-white/10 font-black tracking-widest uppercase">
+                  <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-black/60 text-[8px] text-white backdrop-blur-md border border-white/10 font-black tracking-widest">
                     View {idx + 1}
                   </div>
                 </div>
@@ -186,7 +186,7 @@ export default function NewAssessment() {
                     )}
                   >
                     <t.icon className={cn("w-4 h-4", proposedTreatment.includes(t.id) ? t.color : "text-gray-500")} />
-                    <span className="text-[10px] font-black uppercase tracking-widest">{t.label}</span>
+                    <span className="text-[10px] font-black tracking-widest">{t.label}</span>
                   </button>
                 ))}
               </div>
@@ -224,7 +224,7 @@ export default function NewAssessment() {
             <Button 
               onClick={handleSubmit} 
               disabled={isSubmitting || capturedImages.length === 0 || !conditionLabel}
-              className="w-full gap-3 bg-primary hover:bg-primary/90 text-white h-14 font-black tracking-[0.3em] text-xs uppercase shadow-[0_10px_30px_rgba(239,68,68,0.2)] transition-all active:scale-[0.98] disabled:opacity-50"
+              className="w-full gap-3 bg-primary hover:bg-primary/90 text-white h-14 font-black tracking-[0.3em] text-xs shadow-[0_10px_30px_rgba(239,68,68,0.2)] transition-all active:scale-[0.98] disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>
