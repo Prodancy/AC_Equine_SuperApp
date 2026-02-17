@@ -236,8 +236,7 @@ export default function Treatment() {
                 </Button>
                 <Button 
                   size="lg" 
-                  variant="destructive"
-                  className="h-20 md:h-24 text-lg md:text-xl flex flex-col gap-1 md:gap-2 active:scale-95 shadow-lg rounded-2xl"
+                  className="h-20 md:h-24 text-lg md:text-xl flex flex-col gap-1 md:gap-2 active:scale-95 shadow-lg rounded-2xl bg-orange-500 hover:bg-orange-600 text-white border-0"
                   onClick={stopTreatment}
                   disabled={timeLeft === currentProtocol.duration * 60}
                 >
