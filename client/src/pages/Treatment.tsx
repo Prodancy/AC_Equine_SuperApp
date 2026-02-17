@@ -141,10 +141,6 @@ export default function Treatment() {
           <Bluetooth className="w-3 h-3 md:w-4 md:h-4 mr-1.5" />
           Manage Device
         </Button>
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-600 rounded-full border border-green-500/20 text-xs md:text-sm font-medium">
-          <Bluetooth className="w-3 h-3 md:w-4 md:h-4 animate-pulse" />
-          <span>Connected</span>
-        </div>
       </div>
     </div>
 
