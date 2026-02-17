@@ -187,7 +187,7 @@ export default function NewAssessment() {
             </section>
           </div>
 
-          <section className="space-y-4 pb-10">
+          <section className="space-y-4 pb-2">
             <Label className="text-[11px] tracking-[0.1em] text-white font-bold">Clinical Notes</Label>
             <div className="rounded-[1.5rem] border border-white/5 bg-[#1a2234]/50 overflow-hidden focus-within:border-primary/40 transition-all shadow-2xl">
               <div className="flex items-center gap-1 p-3 border-b border-white/5 bg-white/[0.03]">
@@ -214,7 +214,7 @@ export default function NewAssessment() {
             </div>
           </section>
 
-          <div className="pt-4">
+          <div className="pt-2">
             <Button 
               onClick={handleSubmit} 
               disabled={isSubmitting || capturedImages.length === 0 || !conditionLabel}
