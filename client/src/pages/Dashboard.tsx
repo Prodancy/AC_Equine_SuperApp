@@ -74,17 +74,14 @@ export default function Dashboard() {
 
   return (
     <div className="p-4 md:p-8 space-y-6 md:space-y-8 max-w-7xl mx-auto pb-24 md:pb-8">
-      <div className="flex justify-center md:hidden mb-2">
-        <div className="flex flex-col items-center">
-          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-8 w-auto mb-1" />
+    <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
+      <div className="flex items-center gap-4">
+        <div>
+          <h1 className="text-xl md:text-2xl font-bold tracking-widest uppercase text-foreground">Dashboard</h1>
+          <p className="text-[10px] text-muted-foreground uppercase tracking-tight hidden md:block">Welcome back, Dr. Anderson</p>
         </div>
       </div>
-      <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground tracking-widest uppercase">Dashboard</h1>
-          <p className="text-sm md:text-base text-muted-foreground">Welcome back, Dr. Anderson</p>
-        </div>
-      </header>
+    </div>
 
       <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 no-scrollbar snap-x">
         {[

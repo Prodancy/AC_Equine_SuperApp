@@ -23,12 +23,19 @@ export default function Settings() {
           <img src={america_cryo_logo} alt="America Cryo Logo" className="h-8 w-auto mb-1" />
         </div>
       </div>
-      <div className="flex items-center gap-2">
+    <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
+      <div className="flex items-center gap-4">
+        <Link href="/">
+          <Button variant="ghost" size="icon" className="hover:bg-primary/10 text-primary">
+            <ChevronLeft className="w-6 h-6" />
+          </Button>
+        </Link>
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground uppercase tracking-widest">Settings</h1>
-          <p className="text-sm md:text-base text-muted-foreground">Manage application preferences and clinic details.</p>
+          <h1 className="text-xl md:text-2xl font-bold tracking-widest uppercase text-foreground">Settings</h1>
+          <p className="text-[10px] text-muted-foreground uppercase tracking-tight hidden md:block">Preferences & Configuration</p>
         </div>
       </div>
+    </div>
 
       <Card>
         <CardHeader>

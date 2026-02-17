@@ -139,57 +139,62 @@ export default function Horses() {
           <img src={america_cryo_logo} alt="America Cryo Logo" className="h-8 w-auto mb-1" />
         </div>
       </div>
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div className="flex items-center gap-2">
-           <div>
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground uppercase tracking-widest">Patient Registry</h1>
-            <p className="text-sm md:text-base text-muted-foreground">Manage animal profiles and medical history.</p>
-           </div>
+    <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
+      <div className="flex items-center gap-4">
+        <Link href="/">
+          <Button variant="ghost" size="icon" className="hover:bg-primary/10 text-primary">
+            <ChevronLeft className="w-6 h-6" />
+          </Button>
+        </Link>
+        <div>
+          <h1 className="text-xl md:text-2xl font-bold tracking-widest uppercase text-foreground">Registry</h1>
+          <p className="text-[10px] text-muted-foreground uppercase tracking-tight hidden md:block">Patient Profiles & History</p>
         </div>
-        
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button className="w-full md:w-auto gap-2 shadow-md">
-              <Plus className="w-4 h-4" /> <span className="hidden md:inline">Register New Horse</span><span className="md:hidden">Add Horse</span>
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px] w-[95vw] rounded-xl">
-            <DialogHeader>
-              <DialogTitle>Register New Horse</DialogTitle>
-              <DialogDescription>
-                Create a new profile for treatment tracking.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="grid gap-4 py-4">
+      </div>
+      
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogTrigger asChild>
+          <Button size="sm" className="gap-2 shadow-md h-9 text-[10px] font-bold uppercase tracking-wider">
+            <Plus className="w-4 h-4" /> <span>Add Patient</span>
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px] w-[95vw] rounded-xl">
+          <DialogHeader>
+            <DialogTitle>Register New Patient</DialogTitle>
+            <DialogDescription>
+              Create a new profile for treatment tracking.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid gap-2">
+              <Label htmlFor="name">Patient Name</Label>
+              <Input id="name" value={newHorse.name} onChange={e => setNewHorse({...newHorse, name: e.target.value})} placeholder="e.g., Thunder Spirit" />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="name">Horse Name</Label>
-                <Input id="name" value={newHorse.name} onChange={e => setNewHorse({...newHorse, name: e.target.value})} placeholder="e.g., Thunder Spirit" />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="grid gap-2">
-                  <Label htmlFor="breed">Breed</Label>
-                  <Input id="breed" value={newHorse.breed} onChange={e => setNewHorse({...newHorse, breed: e.target.value})} placeholder="e.g., Thoroughbred" />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="age">Age</Label>
-                  <Input id="age" type="number" value={newHorse.age} onChange={e => setNewHorse({...newHorse, age: e.target.value})} placeholder="e.g., 5" />
-                </div>
+                <Label htmlFor="breed">Breed</Label>
+                <Input id="breed" value={newHorse.breed} onChange={e => setNewHorse({...newHorse, breed: e.target.value})} placeholder="e.g., Thoroughbred" />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="owner">Owner</Label>
-                <Input id="owner" value={newHorse.owner} onChange={e => setNewHorse({...newHorse, owner: e.target.value})} placeholder="Owner Name" />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="notes">Medical Notes</Label>
-                <Textarea id="notes" value={newHorse.notes} onChange={e => setNewHorse({...newHorse, notes: e.target.value})} placeholder="Any specific conditions..." />
+                <Label htmlFor="age">Age</Label>
+                <Input id="age" type="number" value={newHorse.age} onChange={e => setNewHorse({...newHorse, age: e.target.value})} placeholder="e.g., 5" />
               </div>
             </div>
-            <DialogFooter>
-              <Button onClick={handleAddHorse} className="w-full md:w-auto">Register Horse</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
-      </div>
+            <div className="grid gap-2">
+              <Label htmlFor="owner">Owner</Label>
+              <Input id="owner" value={newHorse.owner} onChange={e => setNewHorse({...newHorse, owner: e.target.value})} placeholder="Owner Name" />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="notes">Medical Notes</Label>
+              <Textarea id="notes" value={newHorse.notes} onChange={e => setNewHorse({...newHorse, notes: e.target.value})} placeholder="Any specific conditions..." />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button onClick={handleAddHorse} className="w-full md:w-auto">Register Patient</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
 
       <div className="flex items-center gap-2 bg-card p-3 rounded-xl border shadow-sm max-w-md w-full">
         <Search className="w-5 h-5 text-muted-foreground ml-1" />
