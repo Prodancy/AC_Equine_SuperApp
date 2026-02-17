@@ -183,20 +183,10 @@ export default function Dashboard() {
         </DialogContent>
       </Dialog>
 
-      <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[16/10] md:aspect-[32/11] border border-white/10 group">
-        {/* Elegant Background with Image and Overlay */}
-        <div className="absolute inset-0 bg-[#0a0f1d]">
-          <img 
-            src="/src/assets/hero-horse.jpg" 
-            alt="Hero Horse" 
-            className="w-full h-full object-cover opacity-40 scale-105 group-hover:scale-100 transition-transform duration-700"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1d] via-[#0a0f1d]/80 to-transparent" />
-        </div>
-
-        <div className="absolute inset-0 flex items-center p-8 md:p-16">
-          <div className="w-full grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+      <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#0a0f1d]">
+        <div className="p-8 md:p-12">
+          <div className="flex flex-col gap-8">
+            <div className="space-y-4">
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-primary">
                   <div className="h-px w-8 bg-primary/50" />
@@ -206,42 +196,39 @@ export default function Dashboard() {
                   Equine Health <br/><span className="font-black text-primary italic">Solutions</span>
                 </h2>
               </div>
-              <p className="text-gray-400 text-sm md:text-lg max-w-md leading-relaxed font-medium">
+              <p className="text-gray-400 text-sm md:text-lg max-w-2xl leading-relaxed font-medium">
                 Elevating performance through precision management and advanced recovery protocols.
               </p>
-              <div className="flex gap-4 pt-4">
-                <Link href="/treatment">
-                  <Button size="lg" className="bg-primary text-white hover:bg-primary/90 px-8 h-12 rounded-full font-bold shadow-xl shadow-primary/20 transition-all hover:translate-y-[-2px] active:translate-y-0">
-                    START SESSION <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-              </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <Link href="/treatment">
+                <Button className="w-full h-24 md:h-32 flex flex-col gap-3 justify-center items-center bg-primary text-white hover:bg-primary/90 rounded-2xl transition-all shadow-lg shadow-primary/20 group/btn">
+                  <div className="p-2.5 rounded-full bg-white/20 group-hover/btn:bg-white/30 transition-colors">
+                    <ThermometerSnowflake className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs md:text-sm font-bold tracking-widest uppercase">Start Session</span>
+                </Button>
+              </Link>
+              
               <Button 
                 onClick={() => setIsScheduleOpen(true)}
-                className="h-32 md:h-40 flex flex-col gap-4 justify-center items-center bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl transition-all backdrop-blur-md group/btn shadow-lg"
+                className="h-24 md:h-32 flex flex-col gap-3 justify-center items-center bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl transition-all backdrop-blur-md group/btn shadow-lg"
               >
-                <div className="p-3 rounded-full bg-primary/10 group-hover/btn:bg-primary/20 transition-colors">
+                <div className="p-2.5 rounded-full bg-primary/10 group-hover/btn:bg-primary/20 transition-colors">
                   <Calendar className="w-6 h-6 text-primary" />
                 </div>
-                <div className="text-center">
-                  <span className="block text-[10px] font-black tracking-[0.2em] uppercase text-primary/70 mb-1">Clinic</span>
-                  <span className="text-xs md:text-sm font-bold tracking-widest uppercase">Schedule</span>
-                </div>
+                <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-center">Schedule</span>
               </Button>
+
               <Link href="/horses">
                 <Button 
-                  className="w-full h-32 md:h-40 flex flex-col gap-4 justify-center items-center bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl transition-all backdrop-blur-md group/btn shadow-lg"
+                  className="w-full h-24 md:h-32 flex flex-col gap-3 justify-center items-center bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl transition-all backdrop-blur-md group/btn shadow-lg"
                 >
-                  <div className="p-3 rounded-full bg-primary/10 group-hover/btn:bg-primary/20 transition-colors">
+                  <div className="p-2.5 rounded-full bg-primary/10 group-hover/btn:bg-primary/20 transition-colors">
                     <Horse className="w-6 h-6 text-primary" />
                   </div>
-                  <div className="text-center">
-                    <span className="block text-[10px] font-black tracking-[0.2em] uppercase text-primary/70 mb-1">Registry</span>
-                    <span className="text-xs md:text-sm font-bold tracking-widest uppercase">Patients</span>
-                  </div>
+                  <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-center">Patients</span>
                 </Button>
               </Link>
             </div>
