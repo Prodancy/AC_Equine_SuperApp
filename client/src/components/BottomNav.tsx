@@ -138,16 +138,16 @@ export default function BottomNav() {
       </div>
 
       <Dialog open={isScanOpen} onOpenChange={setIsScanOpen}>
-        <DialogContent className="sm:max-w-[700px] max-h-[95vh] flex flex-col p-0 overflow-hidden bg-[#0a0f1d] border-white/10 shadow-2xl">
-          <DialogHeader className="p-6 pb-0 border-b border-white/5 bg-[#111827]">
+        <DialogContent className="sm:max-w-[700px] h-[90vh] flex flex-col p-0 overflow-hidden bg-[#0a0f1d] border-white/10 shadow-2xl">
+          <DialogHeader className="p-6 pb-0 border-b border-white/5 bg-[#111827] shrink-0">
             <div className="flex items-center gap-3 mb-1">
               <div className="p-2 bg-primary/10 rounded-lg">
                 <Stethoscope className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <DialogTitle className="text-xl font-bold tracking-tight">Digital Thermography Assessment</DialogTitle>
+                <DialogTitle className="text-xl font-bold tracking-tight">Clinical Assessment</DialogTitle>
                 <DialogDescription className="text-gray-400">
-                  Analyze thermal distribution and define precision protocols.
+                  Perform real-time thermal analysis and prescribe treatments.
                 </DialogDescription>
               </div>
             </div>
@@ -267,7 +267,7 @@ export default function BottomNav() {
             </div>
           </ScrollArea>
 
-          <DialogFooter className="p-6 border-t border-white/5 bg-[#111827]">
+          <DialogFooter className="p-6 border-t border-white/5 bg-[#111827] shrink-0">
             <Button variant="ghost" onClick={() => setIsScanOpen(false)} className="text-gray-400 font-bold tracking-widest text-xs">
               Discard
             </Button>
