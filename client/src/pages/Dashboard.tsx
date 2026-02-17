@@ -316,26 +316,8 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
-        <Card className="col-span-full lg:col-span-3 bg-gradient-to-br from-primary/10 to-transparent border-primary/20">
-          <CardHeader>
-            <CardTitle className="tracking-wider text-sm md:text-base">Quick Start</CardTitle>
-            <CardDescription>Launch session tools</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Link href="/treatment">
-              <Button className="w-full h-20 text-lg flex flex-col gap-1 justify-center items-center shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all active:scale-[0.98] bg-primary text-white border-0">
-                <div className="flex items-center gap-2">
-                  <ThermometerSnowflake className="w-8 h-8" />
-                  <Bluetooth className="w-5 h-5 animate-pulse text-blue-200" />
-                </div>
-                <span className="font-bold tracking-wide uppercase">New Session</span>
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
-
-        <Card className="col-span-full lg:col-span-4 shadow-lg border-white/5 bg-card/50 backdrop-blur overflow-hidden">
+      <div className="grid gap-6 grid-cols-1">
+        <Card className="shadow-lg border-white/5 bg-card/50 backdrop-blur overflow-hidden">
           <div className="h-1 bg-gray-500/20 w-full" />
           <CardHeader>
             <CardTitle className="tracking-[0.2em] text-[10px] uppercase text-gray-400 font-black">Treatment Pipeline</CardTitle>
