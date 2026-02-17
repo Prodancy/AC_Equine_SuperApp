@@ -18,7 +18,7 @@ export default function Dashboard() {
     <div className="p-4 md:p-8 space-y-6 md:space-y-8 max-w-7xl mx-auto pb-24 md:pb-8">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground uppercase tracking-widest">Dashboard</h1>
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground tracking-widest">Dashboard</h1>
           <p className="text-sm md:text-base text-muted-foreground">Welcome back, Dr. Anderson</p>
         </div>
         <Button className="w-full md:w-auto gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 transition-all active:scale-95 border border-primary/20">
@@ -62,7 +62,7 @@ export default function Dashboard() {
           >
             <Card className="hover:shadow-lg transition-shadow h-full bg-card/50 backdrop-blur border-white/5">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-4">
-                <CardTitle className="text-xs font-medium text-muted-foreground whitespace-nowrap uppercase tracking-wider">
+                <CardTitle className="text-xs font-medium text-muted-foreground whitespace-nowrap tracking-wider">
                   {stat.label}
                 </CardTitle>
                 <stat.icon className={`h-4 w-4 ${stat.color}`} />
@@ -78,7 +78,7 @@ export default function Dashboard() {
         {/* Quick Actions / Recent Activity */}
         <Card className="col-span-full lg:col-span-4 shadow-lg border-white/5 bg-card/50 backdrop-blur order-2 lg:order-1">
           <CardHeader>
-            <CardTitle className="uppercase tracking-wider text-sm md:text-base">Recent Treatments</CardTitle>
+            <CardTitle className="tracking-wider text-sm md:text-base">Recent Treatments</CardTitle>
             <CardDescription>
               Latest cryotherapy sessions recorded.
             </CardDescription>
@@ -96,7 +96,7 @@ export default function Dashboard() {
                     <p className="text-xs text-muted-foreground line-clamp-1">{item.condition}</p>
                   </div>
                   <div className="text-right pl-4">
-                    <div className="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded border border-primary/20 whitespace-nowrap uppercase tracking-wide">{item.protocol}</div>
+                    <div className="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded border border-primary/20 whitespace-nowrap tracking-wide">{item.protocol}</div>
                     <div className="text-[10px] text-muted-foreground mt-1">{item.time}</div>
                   </div>
                 </div>
@@ -111,7 +111,7 @@ export default function Dashboard() {
         {/* Quick Start Panel */}
         <Card className="col-span-full lg:col-span-3 bg-gradient-to-br from-primary/10 to-transparent border-primary/20 order-1 lg:order-2">
           <CardHeader>
-            <CardTitle className="uppercase tracking-wider text-sm md:text-base">Quick Actions</CardTitle>
+            <CardTitle className="tracking-wider text-sm md:text-base">Quick Actions</CardTitle>
             <CardDescription>Manage your clinic</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -125,13 +125,13 @@ export default function Dashboard() {
               <Link href="/horses">
                 <Button variant="outline" className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all">
                   <Horse className="w-5 h-5 text-primary" />
-                  <span className="text-xs font-medium uppercase tracking-wide">Add Horse</span>
+                  <span className="text-xs font-medium tracking-wide">Add Horse</span>
                 </Button>
               </Link>
               <Link href="/records">
                 <Button variant="outline" className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all">
                   <Activity className="w-5 h-5 text-primary" />
-                  <span className="text-xs font-medium uppercase tracking-wide">Records</span>
+                  <span className="text-xs font-medium tracking-wide">Records</span>
                 </Button>
               </Link>
             </div>

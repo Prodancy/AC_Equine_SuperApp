@@ -120,7 +120,7 @@ export default function Treatment() {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
             
             <CardHeader className="text-center pb-0 pt-4">
-              <CardTitle className="text-muted-foreground uppercase tracking-widest text-[10px] md:text-xs">Current Session</CardTitle>
+              <CardTitle className="text-muted-foreground tracking-widest text-[10px] md:text-xs">Current Session</CardTitle>
             </CardHeader>
             
             <CardContent className="flex-1 flex flex-col items-center justify-center space-y-6 md:space-y-8 relative z-10 py-6 md:py-8">
@@ -163,12 +163,12 @@ export default function Treatment() {
                 <div className="flex flex-col items-center bg-secondary/30 p-3 md:p-4 rounded-xl border border-secondary/50">
                   <Thermometer className="w-5 h-5 md:w-6 md:h-6 text-primary mb-1" />
                   <span className="text-xl md:text-2xl font-bold tabular-nums">{Math.round(currentTemp)}°C</span>
-                  <span className="text-[10px] md:text-xs text-muted-foreground uppercase">Nozzle Temp</span>
+                  <span className="text-[10px] md:text-xs text-muted-foreground">Nozzle Temp</span>
                 </div>
                 <div className="flex flex-col items-center bg-secondary/30 p-3 md:p-4 rounded-xl border border-secondary/50">
                   <Activity className="w-5 h-5 md:w-6 md:h-6 text-muted-foreground mb-1" />
                   <span className="text-xl md:text-2xl font-bold tabular-nums">{intensity}%</span>
-                  <span className="text-[10px] md:text-xs text-muted-foreground uppercase">Intensity</span>
+                  <span className="text-[10px] md:text-xs text-muted-foreground">Intensity</span>
                 </div>
               </div>
 
@@ -226,7 +226,7 @@ export default function Treatment() {
                   onClick={togglePlay}
                 >
                   {isPlaying ? <Pause className="w-8 h-8 md:w-10 md:h-10" /> : <Play className="w-8 h-8 md:w-10 md:h-10" />}
-                  {isPlaying ? "Pause" : "START"}
+                  {isPlaying ? "Pause" : "Start"}
                 </Button>
                 <Button 
                   size="lg" 
@@ -236,7 +236,7 @@ export default function Treatment() {
                   disabled={timeLeft === currentProtocol.duration * 60}
                 >
                   <Square className="w-8 h-8 md:w-10 md:h-10" />
-                  STOP
+                  Stop
                 </Button>
               </div>
             </CardContent>

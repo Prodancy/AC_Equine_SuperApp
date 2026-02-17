@@ -30,16 +30,16 @@ export default function Records() {
              </Button>
            </Link>
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground uppercase tracking-widest">Health Records</h1>
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground tracking-widest">Health Records</h1>
             <p className="text-sm md:text-base text-muted-foreground">Diagnose, track, and analyze treatment history.</p>
           </div>
         </div>
         <div className="flex w-full md:w-auto gap-2">
             <Button className="flex-1 md:flex-none gap-2 bg-primary hover:bg-primary/90 text-white border-0 shadow-lg shadow-primary/20">
-            <Camera className="w-4 h-4" /> NEW SCAN
+            <Camera className="w-4 h-4" /> New Scan
             </Button>
             <Button variant="outline" className="flex-1 md:flex-none gap-2 border-white/10 bg-card/50 hover:bg-card text-foreground">
-            <Download className="w-4 h-4" /> EXPORT
+            <Download className="w-4 h-4" /> Export
             </Button>
         </div>
       </div>
@@ -47,7 +47,7 @@ export default function Records() {
       <div className="grid gap-6 md:grid-cols-2">
         <Card className="col-span-2 md:col-span-1 shadow-lg bg-card/50 backdrop-blur border-white/5">
           <CardHeader>
-            <CardTitle className="uppercase tracking-wider text-sm md:text-base">Thermal Imaging Analysis</CardTitle>
+            <CardTitle className="tracking-wider text-sm md:text-base">Thermal Imaging Analysis</CardTitle>
             <CardDescription>Compare pre and post treatment thermal scans.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -76,7 +76,7 @@ export default function Records() {
               </div>
             </div>
             <div className="bg-primary/5 p-4 rounded-lg border border-primary/10">
-              <h4 className="font-bold text-sm flex items-center gap-2 mb-2 text-primary uppercase tracking-wide">
+              <h4 className="font-bold text-sm flex items-center gap-2 mb-2 text-primary tracking-wide">
                 <FileText className="w-4 h-4" /> Diagnosis Note
               </h4>
               <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
@@ -88,7 +88,7 @@ export default function Records() {
 
         <Card className="col-span-2 md:col-span-1 shadow-lg bg-card/50 backdrop-blur border-white/5">
           <CardHeader>
-            <CardTitle className="uppercase tracking-wider text-sm md:text-base">Treatment History</CardTitle>
+            <CardTitle className="tracking-wider text-sm md:text-base">Treatment History</CardTitle>
             <CardDescription>Recent sessions across all patients.</CardDescription>
           </CardHeader>
           <CardContent className="p-0 md:p-6">

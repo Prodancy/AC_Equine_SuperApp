@@ -22,10 +22,10 @@ export default function Sidebar() {
   return (
     <div className="hidden md:flex w-64 border-r bg-card flex-col h-full sticky top-0">
       <div className="p-6 border-b">
-        <h1 className="text-2xl font-bold text-primary tracking-tighter uppercase">
+        <h1 className="text-2xl font-bold text-primary tracking-tighter">
           America<span className="text-foreground">Cryo</span>
         </h1>
-        <p className="text-xs text-muted-foreground mt-1 tracking-widest uppercase">
+        <p className="text-xs text-muted-foreground mt-1 tracking-widest">
           Equine Therapy
         </p>
       </div>
