@@ -237,6 +237,37 @@ export default function Dashboard() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
+        <Card className="col-span-full lg:col-span-3 bg-gradient-to-br from-primary/10 to-transparent border-primary/20">
+          <CardHeader>
+            <CardTitle className="tracking-wider text-sm md:text-base">Quick Start</CardTitle>
+            <CardDescription>Launch clinic tools</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <Link href="/treatment">
+              <Button className="w-full h-20 text-lg flex flex-col gap-1 justify-center items-center shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all active:scale-[0.98] bg-primary text-white border-0">
+                <ThermometerSnowflake className="w-8 h-8 mb-1" />
+                <span className="font-bold tracking-wide uppercase">New Treatment</span>
+              </Button>
+            </Link>
+            <div className="grid grid-cols-2 gap-3">
+              <Link href="/horses">
+                <Button variant="outline" className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all">
+                  <Horse className="w-5 h-5 text-primary" />
+                  <span className="text-xs font-medium tracking-wide">Registry</span>
+                </Button>
+              </Link>
+              <Button 
+                variant="outline" 
+                onClick={() => setIsScheduleOpen(true)}
+                className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all"
+              >
+                <Calendar className="w-5 h-5 text-primary" />
+                <span className="text-xs font-medium tracking-wide">Book Slot</span>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
         <Card className="col-span-full lg:col-span-4 shadow-lg border-white/5 bg-card/50 backdrop-blur overflow-hidden">
           <div className="h-1 bg-gray-500/20 w-full" />
           <CardHeader>
@@ -275,37 +306,6 @@ export default function Dashboard() {
                 ))}
               </div>
             </ScrollArea>
-          </CardContent>
-        </Card>
-
-        <Card className="col-span-full lg:col-span-3 bg-gradient-to-br from-primary/10 to-transparent border-primary/20">
-          <CardHeader>
-            <CardTitle className="tracking-wider text-sm md:text-base">Quick Start</CardTitle>
-            <CardDescription>Launch clinic tools</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Link href="/treatment">
-              <Button className="w-full h-20 text-lg flex flex-col gap-1 justify-center items-center shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all active:scale-[0.98] bg-primary text-white border-0">
-                <ThermometerSnowflake className="w-8 h-8 mb-1" />
-                <span className="font-bold tracking-wide uppercase">New Treatment</span>
-              </Button>
-            </Link>
-            <div className="grid grid-cols-2 gap-3">
-              <Link href="/horses">
-                <Button variant="outline" className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all">
-                  <Horse className="w-5 h-5 text-primary" />
-                  <span className="text-xs font-medium tracking-wide">Registry</span>
-                </Button>
-              </Link>
-              <Button 
-                variant="outline" 
-                onClick={() => setIsScheduleOpen(true)}
-                className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all"
-              >
-                <Calendar className="w-5 h-5 text-primary" />
-                <span className="text-xs font-medium tracking-wide">Book Slot</span>
-              </Button>
-            </div>
           </CardContent>
         </Card>
       </div>
