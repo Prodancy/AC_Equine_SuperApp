@@ -5,7 +5,7 @@ import {
   Home, 
   Zap, 
   Camera, 
-  Users, 
+  Search,
   UserCircle,
   Stethoscope,
   Plus,
@@ -14,8 +14,11 @@ import {
   Loader2,
   Activity,
   Waves,
-  CreditCard
+  CreditCard,
+  Settings,
+  ClipboardList
 } from "lucide-react";
+import { Horse } from "@/components/icons/Horse";
 import { useState } from "react";
 import {
   Dialog,
@@ -76,11 +79,11 @@ export default function BottomNav() {
 
   const navItems = [
     { icon: Home, label: "Home", href: "/" },
+    { icon: ClipboardList, label: "Diagnose", href: "/diagnose" },
     { icon: Zap, label: "Therapy", href: "/treatment" },
-    { icon: Camera, label: "Diagnose", href: "/diagnose", isCenter: true },
-    { icon: Users, label: "Horses", href: "/horses" },
+    { icon: Horse, label: "Horses", href: "/horses" },
     { icon: CreditCard, label: "Billing", href: "/billing" },
-    { icon: UserCircle, label: "Settings", href: "/settings" },
+    { icon: Settings, label: "Settings", href: "/settings" },
   ];
 
   return (
@@ -88,33 +91,11 @@ export default function BottomNav() {
       <nav className="flex justify-around items-center h-16 relative">
         {navItems.map((item) => {
           const isActive = location === item.href;
-          if (item.isCenter) {
-            return (
-              <Link key={item.href} href={item.href}>
-                <div className="relative flex flex-col items-center justify-center -mt-8">
-                  <div className={cn(
-                    "w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl active:scale-90 cursor-pointer",
-                    isActive 
-                      ? "bg-primary text-white shadow-primary/30" 
-                      : "bg-[#1a2234] text-gray-400 border border-white/10"
-                  )}>
-                    <item.icon className="w-7 h-7" />
-                  </div>
-                  <span className={cn(
-                    "mt-1 text-[10px] font-bold tracking-tight transition-colors",
-                    isActive ? "text-primary" : "text-gray-500"
-                  )}>
-                    {item.label}
-                  </span>
-                </div>
-              </Link>
-            );
-          }
           return (
             <Link key={item.href} href={item.href}>
               <div
                 className={cn(
-                  "flex flex-col items-center justify-center w-16 h-full gap-1 transition-all duration-300 relative active:scale-95 cursor-pointer",
+                  "flex flex-col items-center justify-center flex-1 h-full gap-1 transition-all duration-300 relative active:scale-95 cursor-pointer",
                   isActive
                     ? "text-primary"
                     : "text-gray-500 hover:text-gray-400"
