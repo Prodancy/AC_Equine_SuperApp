@@ -1,3 +1,4 @@
+import america_cryo_logo from "@/assets/america-cryo-logo-horizontalh-64_1771349527967.png";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import {
@@ -23,7 +24,7 @@ export default function Sidebar() {
     <div className="hidden md:flex w-64 border-r bg-card flex-col h-full sticky top-0">
       <div className="p-6 border-b">
         <div className="flex flex-col gap-1">
-          <img src="/src/assets/logo.png" alt="America Cryo Logo" className="h-10 w-auto self-start mb-2" />
+          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 w-auto self-start mb-2" />
         </div>
         <p className="text-xs text-muted-foreground mt-2 tracking-widest font-medium">
           Equine Therapy

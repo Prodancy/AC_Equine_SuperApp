@@ -1,3 +1,4 @@
+import america_cryo_logo from "@/assets/america-cryo-logo-horizontalh-64_1771349527967.png";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -87,7 +88,7 @@ export default function Horses() {
     <div className="p-4 md:p-8 max-w-7xl mx-auto space-y-6 pb-24 md:pb-8">
       <div className="flex justify-center md:hidden mb-2">
         <div className="flex flex-col items-center">
-          <img src="/src/assets/logo.png" alt="America Cryo Logo" className="h-8 w-auto mb-1" />
+          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-8 w-auto mb-1" />
         </div>
       </div>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
