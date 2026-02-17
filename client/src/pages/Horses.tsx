@@ -85,6 +85,21 @@ export default function Horses() {
 
   return (
     <div className="p-4 md:p-8 max-w-7xl mx-auto space-y-6 pb-24 md:pb-8">
+      <div className="flex justify-center md:hidden mb-2">
+        <div className="flex flex-col items-center">
+          <h1 className="text-xl font-bold text-primary tracking-tighter">
+            America<span className="text-foreground">Cryo</span>
+          </h1>
+          <a 
+            href="https://www.americacryo.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-[8px] text-muted-foreground hover:text-primary transition-colors tracking-[0.2em]"
+          >
+            WWW.AMERICACRYO.COM
+          </a>
+        </div>
+      </div>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div className="flex items-center gap-2">
            <Link href="/">

@@ -22,10 +22,20 @@ export default function Sidebar() {
   return (
     <div className="hidden md:flex w-64 border-r bg-card flex-col h-full sticky top-0">
       <div className="p-6 border-b">
-        <h1 className="text-2xl font-bold text-primary tracking-tighter">
-          America<span className="text-foreground">Cryo</span>
-        </h1>
-        <p className="text-xs text-muted-foreground mt-1 tracking-widest">
+        <div className="flex flex-col gap-1">
+          <h1 className="text-2xl font-bold text-primary tracking-tighter">
+            America<span className="text-foreground">Cryo</span>
+          </h1>
+          <a 
+            href="https://www.americacryo.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-[10px] text-muted-foreground hover:text-primary transition-colors tracking-widest"
+          >
+            WWW.AMERICACRYO.COM
+          </a>
+        </div>
+        <p className="text-xs text-muted-foreground mt-2 tracking-widest font-medium">
           Equine Therapy
         </p>
       </div>
