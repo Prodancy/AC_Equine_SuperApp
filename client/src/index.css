@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: "Inter", sans-serif;
-  --font-display: "Oswald", sans-serif;
+  --font-sans: "Open Sans", sans-serif;
+  --font-display: "Open Sans", sans-serif;
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
