@@ -24,14 +24,9 @@ export default function Settings() {
         </div>
       </div>
       <div className="flex items-center gap-2">
-         <Link href="/">
-           <Button variant="ghost" size="icon" className="md:hidden -ml-2">
-             <ChevronLeft className="w-6 h-6" />
-           </Button>
-         </Link>
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">Settings</h1>
-          <p className="text-sm md:text-base text-muted-foreground">Manage application preferences.</p>
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground uppercase tracking-widest">Settings</h1>
+          <p className="text-sm md:text-base text-muted-foreground">Manage application preferences and clinic details.</p>
         </div>
       </div>
 
