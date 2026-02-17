@@ -211,7 +211,29 @@ export default function Records() {
         </div>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
+            <div className="flex justify-center py-12">
+              <div className="relative group cursor-pointer" onClick={() => setIsScanOpen(true)}>
+                <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl group-hover:bg-primary/30 transition-all animate-pulse" />
+                <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-dashed border-primary/40 flex items-center justify-center bg-card shadow-2xl group-hover:border-primary group-hover:scale-105 transition-all duration-500">
+                  <div className="flex flex-col items-center gap-4 text-primary">
+                    <div className="relative">
+                      <Camera className="w-16 h-16 md:w-24 md:h-24 stroke-[1.5]" />
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full border-2 border-white animate-pulse" />
+                    </div>
+                    <span className="font-bold tracking-[0.2em] text-sm md:text-base">START NEW SCAN</span>
+                  </div>
+                </div>
+                {/* Camera Menu Mockup Elements */}
+                <div className="absolute -top-8 -left-8 text-[10px] font-mono text-muted-foreground uppercase tracking-widest hidden md:block">
+                  ISO 400 <br/> F 2.8 <br/> 1/60
+                </div>
+                <div className="absolute -bottom-8 -right-8 text-[10px] font-mono text-primary uppercase tracking-widest hidden md:block">
+                  REC ● 00:00:00
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
         <Card className="col-span-2 md:col-span-1 shadow-lg bg-card/50 backdrop-blur border-white/5">
           <CardHeader>
             <CardTitle className="tracking-wider text-sm md:text-base">Thermal Imaging Analysis</CardTitle>
