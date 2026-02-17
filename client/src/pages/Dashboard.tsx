@@ -8,11 +8,11 @@ import {
   ArrowRight,
   Bluetooth,
   ThermometerSnowflake,
-  Horse,
 } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import heroHorseDark from "@/assets/hero-horse-dark.jpg"; // Using the new dark asset
+import { Horse } from "@/components/icons/Horse";
 
 export default function Dashboard() {
   return (
