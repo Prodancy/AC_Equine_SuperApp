@@ -26,7 +26,6 @@ export default function Dashboard() {
           <Bluetooth className="w-4 h-4" /> Connect Device
         </Button>
       </header>
-
       {/* Hero Section */}
       <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl aspect-[16/9] md:aspect-[32/9] border border-white/10">
         <img 
@@ -52,7 +51,6 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-
       {/* Hero Stats - Horizontal scroll on mobile */}
       <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 no-scrollbar snap-x">
         {[
@@ -82,7 +80,6 @@ export default function Dashboard() {
           </motion.div>
         ))}
       </div>
-
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
         {/* Quick Actions / Recent Activity */}
         <Card className="col-span-full lg:col-span-4 shadow-lg border-white/5 bg-card/50 backdrop-blur order-2 lg:order-1">
@@ -134,7 +131,7 @@ export default function Dashboard() {
               <Link href="/horses">
                 <Button variant="outline" className="w-full h-14 flex flex-col gap-0.5 justify-center bg-card/50 backdrop-blur hover:bg-card border-white/10 hover:border-primary/50 text-foreground transition-all">
                   <Rabbit className="w-5 h-5 text-primary" />
-                  <span className="text-xs font-medium uppercase tracking-wide">Add Rabbit</span>
+                  <span className="text-xs font-medium uppercase tracking-wide">Add Horse</span>
                 </Button>
               </Link>
               <Link href="/records">
