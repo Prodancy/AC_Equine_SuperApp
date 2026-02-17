@@ -161,12 +161,12 @@ export default function Treatment() {
               {/* Stats */}
               <div className="grid grid-cols-2 gap-4 md:gap-8 w-full">
                 <div className="flex flex-col items-center bg-secondary/30 p-3 md:p-4 rounded-xl border border-secondary/50">
-                  <Thermometer className="w-5 h-5 md:w-6 md:h-6 text-blue-500 mb-1" />
+                  <Thermometer className="w-5 h-5 md:w-6 md:h-6 text-primary mb-1" />
                   <span className="text-xl md:text-2xl font-bold tabular-nums">{Math.round(currentTemp)}°C</span>
                   <span className="text-[10px] md:text-xs text-muted-foreground uppercase">Nozzle Temp</span>
                 </div>
                 <div className="flex flex-col items-center bg-secondary/30 p-3 md:p-4 rounded-xl border border-secondary/50">
-                  <Activity className="w-5 h-5 md:w-6 md:h-6 text-indigo-500 mb-1" />
+                  <Activity className="w-5 h-5 md:w-6 md:h-6 text-muted-foreground mb-1" />
                   <span className="text-xl md:text-2xl font-bold tabular-nums">{intensity}%</span>
                   <span className="text-[10px] md:text-xs text-muted-foreground uppercase">Intensity</span>
                 </div>

@@ -54,10 +54,10 @@ export default function Dashboard() {
       {/* Hero Stats - Horizontal scroll on mobile */}
       <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 no-scrollbar snap-x">
         {[
-          { label: "Active Treatments", value: "3", icon: Activity, color: "text-blue-400" },
-          { label: "Avg. Temp Drop", value: "-25°C", icon: Thermometer, color: "text-cyan-400" },
-          { label: "Hours This Week", value: "12.5h", icon: Clock, color: "text-indigo-400" },
-          { label: "Scheduled Today", value: "5", icon: Calendar, color: "text-violet-400" },
+          { label: "Active Treatments", value: "3", icon: Activity, color: "text-primary" },
+          { label: "Avg. Temp Drop", value: "-25°C", icon: Thermometer, color: "text-primary" },
+          { label: "Hours This Week", value: "12.5h", icon: Clock, color: "text-muted-foreground" },
+          { label: "Scheduled Today", value: "5", icon: Calendar, color: "text-muted-foreground" },
         ].map((stat, i) => (
           <motion.div
             key={i}
