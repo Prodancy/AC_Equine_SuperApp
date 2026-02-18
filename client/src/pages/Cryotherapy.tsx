@@ -76,6 +76,7 @@ export default function Cryotherapy() {
   const [fogNozzle, setFogNozzle] = useState(false);
   const [massageNozzle, setMassageNozzle] = useState(false);
   const [flowRate, setFlowRate] = useState([50]);
+  const [fogRate, setFogRate] = useState(2);
 
   const nozzles = [
     { id: "small", name: "Small", description: "Precision cooling" },
@@ -206,6 +207,26 @@ export default function Cryotherapy() {
               step={1} 
               className="py-2" 
             />
+          </div>
+
+          <div className="space-y-3">
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#A9B3CE]">Fog Rate</p>
+            <div className="flex gap-2">
+              {[1, 2, 3, 4, 5].map((rate) => (
+                <button
+                  key={rate}
+                  onClick={() => setFogRate(rate)}
+                  className={cn(
+                    "flex-1 h-12 rounded-xl border font-bold transition-all duration-200 active:scale-95",
+                    fogRate === rate 
+                      ? "bg-[#3D63DD] border-[#3D63DD] text-white shadow-[0_0_15px_rgba(61,99,221,0.3)]" 
+                      : "bg-white/5 border-white/10 text-[#A9B3CE] hover:border-white/20"
+                  )}
+                >
+                  {rate}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
