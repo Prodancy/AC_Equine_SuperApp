@@ -1102,12 +1102,7 @@ export default function Cryotherapy() {
                             )}
                           >
                             <div
-                              className={cn(
-                                "h-20 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
-                                activeProtocol === p.id
-                                  ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]"
-                                  : "bg-white/5 border-white/10 hover:border-white/20",
-                              )}
+                              className="h-20 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center bg-white/5 border-white/10 hover:border-white/20 text-[20px] font-semibold"
                             >
                             <p className="tracking-tight text-[13px] font-bold text-white">
                               {p.name}
