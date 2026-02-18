@@ -483,6 +483,14 @@ export default function Cryotherapy() {
   const [selectedControl, setSelectedControl] = useState<string | null>(null);
 
   const [customTime, setCustomTime] = useState(120);
+  const [manualProtocols, setManualProtocols] = useState([
+    { id: "m30", name: "30s", duration: 0.5, temp: -120, intensity: 70 },
+    { id: "m45", name: "45s", duration: 0.75, temp: -120, intensity: 70 },
+    { id: "m60", name: "60s", duration: 1, temp: -120, intensity: 70 },
+    { id: "m90", name: "90s", duration: 1.5, temp: -120, intensity: 70 },
+    { id: "m120", name: "120s", duration: 2, temp: -120, intensity: 70 },
+    { id: "m_custom", name: "Custom", duration: 2, temp: -120, intensity: 70 },
+  ]);
 
   const [showSession, setShowSession] = useState(false);
 
@@ -491,7 +499,7 @@ export default function Cryotherapy() {
   );
 
   const currentProtocol =
-    localProtocols.find((p) => p.id === activeProtocol) || filteredProtocols[0] || protocols[0];
+    manualProtocols.find((p) => p.id === activeProtocol) || (activeTab === 'thermal' ? filteredProtocols.find((p) => p.id === activeProtocol) : null) || filteredProtocols[0] || protocols[0];
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [timeLeft, setTimeLeft] = useState(currentProtocol.duration * 60);
@@ -1053,10 +1061,10 @@ export default function Cryotherapy() {
               </div>
               <div className="flex-1" />
                 <span className="font-bold text-[#3D63DD] tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0 text-[12px]">
-                  {protocols.find((p) => p.id === activeProtocol)?.name ===
+                  {manualProtocols.find((p) => p.id === activeProtocol)?.name ===
                   "Custom"
                     ? `Custom (${formatTime(customTime)})`
-                    : protocols.find((p) => p.id === activeProtocol)?.name}
+                    : manualProtocols.find((p) => p.id === activeProtocol)?.name}
                 </span>
               <motion.div
                 animate={{ rotate: isProtocolExpanded ? 180 : 0 }}
@@ -1078,9 +1086,9 @@ export default function Cryotherapy() {
                 >
                   <div className="pt-4 pb-4">
                     <div className="grid grid-cols-2 gap-3 mb-6">
-                      {filteredProtocols.map((p) => (
+                      {manualProtocols.map((p) => (
                           <div
-                            key={`protocol-btn-${p.id}`}
+                            key={`manual-protocol-btn-${p.id}`}
                             onClick={() => {
                               setActiveProtocol(p.id);
                             }}
@@ -1110,7 +1118,7 @@ export default function Cryotherapy() {
                     </div>
 
                     <div className="space-y-4">
-                      {currentProtocol.name === "CUSTOM" && (
+                      {activeProtocol === "m_custom" && (
                         <div className="bg-[#0a0f1d] border border-white/10 rounded-2xl p-6 flex flex-col items-center space-y-6">
                           <div className="flex items-center justify-center gap-8">
                             {/* Minutes Column */}
