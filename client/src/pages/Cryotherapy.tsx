@@ -429,7 +429,7 @@ export default function Cryotherapy() {
                               >
                                 <ChevronDown className="w-8 h-8" />
                               </button>
-                              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#A9B3CE] mt-1">mins</span>
+                              <span className="font-black uppercase tracking-[0.2em] text-[#A9B3CE] mt-1 text-[14px]">mins</span>
                             </div>
 
                             {/* Divider */}
@@ -475,7 +475,6 @@ export default function Cryotherapy() {
           </AnimatePresence>
         </div>
       </div>
-
       <AnimatePresence mode="wait">
         {activeTab === "controls" ? (
           <motion.div 
