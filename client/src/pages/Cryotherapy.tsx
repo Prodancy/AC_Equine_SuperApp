@@ -517,12 +517,52 @@ export default function Cryotherapy() {
   };
 
   const getPartLabel = (part: string) => {
-    if (part === "leg-front-left") return "Fetlock";
-    if (part === "stifle") return "Stifle";
-    if (part === "joint-hind") return "Stifle";
-    if (part === "leg-front-right") return "Feet";
-    if (part === "hoof-front-left") return "Hock";
-    return part.replace(/-/g, " ");
+    let label = "";
+    if (part === "leg-front-left") label = "Fetlock";
+    else if (part === "stifle") label = "Stifle";
+    else if (part === "joint-hind") label = "Stifle";
+    else if (part === "leg-front-right") label = "Feet";
+    else if (part === "hoof-front-left") label = "Hock";
+    else if (part === "back-left") label = "Back";
+    else if (part === "neck") label = "Neck";
+    else if (part === "hip") label = "Hip";
+    else if (part === "shoulder") label = "Shoulder";
+    else if (part === "chest") label = "Chest";
+    else if (part === "back-right") label = "Back";
+    else if (part === "tail") label = "Tail";
+    else label = part.replace(/-/g, " ");
+    
+    return label.split(' ').map(word => {
+      if (word.startsWith('(')) {
+        return '(' + word.charAt(1).toUpperCase() + word.slice(2).toLowerCase();
+      }
+      if (word.includes('/')) {
+        return word.split('/').map(sub => {
+          const trimmed = sub.trim();
+          return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
+        }).join(' / ');
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }).join(' ');
+  };
+
+  const toTitleCase = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  };
+
+  const getFullTitleCase = (str: string) => {
+    return str.split(' ').map(word => {
+      if (word.startsWith('(')) {
+        return '(' + word.charAt(1).toUpperCase() + word.slice(2).toLowerCase();
+      }
+      if (word.includes('/')) {
+        return word.split('/').map(sub => {
+          const trimmed = sub.trim();
+          return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
+        }).join(' / ');
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }).join(' ');
   };
 
   const formatTime = (seconds: number) => {
@@ -608,7 +648,7 @@ export default function Cryotherapy() {
                 Cryotherapy
               </h1>
               <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block font-bold">
-                Active Cryo Session
+                Active cryo session
               </p>
             </div>
           </div>
@@ -1217,7 +1257,7 @@ export default function Cryotherapy() {
               <div className="mt-8 w-full max-w-2xl">
                 <div className="text-center mb-6">
                   <h3 className="text-xl font-bold tracking-tight text-white mb-2">
-                    {getPartLabel(selectedPart)} Protocols
+                    {getPartLabel(selectedPart)} protocols
                   </h3>
                   <p className="text-[#A9B3CE] text-xs tracking-widest">
                     Select a protocol to begin treatment
@@ -1242,20 +1282,16 @@ export default function Cryotherapy() {
                         setIsPlaying(true);
                         toast({
                           title: "Protocol Started",
-                          description: `Starting ${p.name} for ${selectedPart.replace("-", " ")}`,
+                          description: `Starting ${getFullTitleCase(p.name)} for ${getPartLabel(selectedPart)}`,
                         });
                       }}
                     >
                       <div className="relative z-10">
                         <input
                           type="text"
-                          value={p.name}
-                          onChange={(e) => {
-                            e.stopPropagation();
-                            updateProtocolName(p.id, e.target.value);
-                          }}
-                          onClick={(e) => e.stopPropagation()}
-                          className="bg-transparent border-none outline-none text-white font-bold text-sm capitalize tracking-wider w-full focus:ring-0 p-0"
+                          value={getFullTitleCase(p.name)}
+                          readOnly
+                          className="bg-transparent border-none outline-none text-white font-bold text-sm tracking-wider w-full focus:ring-0 p-0 pointer-events-none"
                         />
                       </div>
                     </div>
