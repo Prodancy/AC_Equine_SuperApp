@@ -249,10 +249,7 @@ export default function Cryotherapy() {
                       ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
                       : "bg-white/5 border-white/10 hover:border-white/20"
                   )}>
-                    <span className={cn(
-                      "text-[10px] font-black uppercase tracking-tight leading-tight",
-                      flowRate[0] === rate.value ? "text-[#3D63DD]" : "text-[#ffffff]"
-                    )}>
+                    <span className="uppercase tracking-tight text-[#ffffff] text-[12px] font-bold">
                       {rate.label}
                     </span>
                   </div>
