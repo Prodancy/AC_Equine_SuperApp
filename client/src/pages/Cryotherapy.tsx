@@ -158,7 +158,7 @@ export default function Cryotherapy() {
             className="w-full flex items-center justify-between py-2 group"
           >
             <div className="flex items-center gap-3">
-              <p className="font-black uppercase tracking-[0.3em] text-[#A9B3CE] text-[14px] group-hover:text-white transition-colors">Select Nozzle Type</p>
+              <p className="uppercase tracking-[0.3em] text-[#A9B3CE] text-[14px] group-hover:text-white transition-colors font-bold">Select Nozzle Type</p>
               {selectedControl && (
                 <span className="text-[10px] font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20">
                   {selectedControl.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
