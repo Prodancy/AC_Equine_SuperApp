@@ -91,6 +91,12 @@ const protocols = [
 export default function Cryotherapy() {
   const [selectedPart, setSelectedPart] = useState<string>("neck");
   const [localProtocols, setLocalProtocols] = useState(protocols);
+  const [activeProtocol, setActiveProtocol] = useState(protocols[0].id);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(protocols[0].duration * 60);
+  const [currentTemp, setCurrentTemp] = useState(20);
+  const [targetTemp, setTargetTemp] = useState(protocols[0].temp);
+  const [intensity, setIntensity] = useState([protocols[0].intensity]);
 
   useEffect(() => {
     const active = localProtocols.find(p => p.id === activeProtocol);
