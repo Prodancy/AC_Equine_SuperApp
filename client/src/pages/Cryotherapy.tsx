@@ -144,19 +144,17 @@ export default function Cryotherapy() {
               {[
                 { id: "mild", name: "Mild Cone", image: nozzle6mm },
                 { id: "strong", name: "Strong Cone", image: nozzle15mm },
-                { id: "precision", name: "Precision", image: nozzle6mm },
-              ].map((nozzle, index) => (
+              ].map((nozzle) => (
                 <button
                   key={`fog-nozzle-${nozzle.id}`}
                   onClick={() => setSelectedNozzle(nozzle.id)}
                   className={cn(
                     "group relative transition-all duration-300 active:scale-95",
-                    selectedNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60",
-                    index === 2 ? "col-span-2 w-[calc(50%-6px)] mx-auto" : "w-full"
+                    selectedNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60"
                   )}
                 >
                 <div className={cn(
-                  "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300 w-full",
+                  "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
                   selectedNozzle === nozzle.id 
                     ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
                     : "bg-white/5 border-white/10 hover:border-white/20"
@@ -195,7 +193,7 @@ export default function Cryotherapy() {
                   className={cn(
                     "group relative transition-all duration-300 active:scale-95",
                     selectedMassageNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60",
-                    index === 2 ? "col-span-2 w-[calc(50%-6px)] mx-auto" : "w-full"
+                    index === 2 ? "col-span-2 w-1/2 mx-auto" : "w-full"
                   )}
                 >
                   <div className={cn(
