@@ -473,6 +473,46 @@ const protocols = [
     intensity: 65,
     temp: -120,
   },
+  {
+    id: "p1_hip",
+    bodyPart: "hip",
+    name: "Sepsis / Cellulitis",
+    duration: 1.5,
+    intensity: 80,
+    temp: -140,
+  },
+  {
+    id: "p2_hip",
+    bodyPart: "hip",
+    name: "Chronic Articular Lesions",
+    duration: 2,
+    intensity: 70,
+    temp: -120,
+  },
+  {
+    id: "p3_hip",
+    bodyPart: "hip",
+    name: "Degenerative Joint Disease",
+    duration: 2.5,
+    intensity: 60,
+    temp: -110,
+  },
+  {
+    id: "p4_hip",
+    bodyPart: "hip",
+    name: "Muscle / Tendon Rupture",
+    duration: 3,
+    intensity: 50,
+    temp: -100,
+  },
+  {
+    id: "p5_hip",
+    bodyPart: "hip",
+    name: "Rheumatology",
+    duration: 1,
+    intensity: 45,
+    temp: -90,
+  },
 ];
 
 export default function Cryotherapy() {
@@ -508,7 +548,7 @@ export default function Cryotherapy() {
   const [customTime, setCustomTime] = useState(120);
 
   const currentProtocol =
-    protocols.find((p) => p.id === activeProtocol) || filteredProtocols[0];
+    localProtocols.find((p) => p.id === activeProtocol) || filteredProtocols[0];
 
   useEffect(() => {
     const partProtocols = protocols.filter((p) => p.bodyPart === selectedPart);
