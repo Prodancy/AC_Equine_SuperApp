@@ -16,6 +16,8 @@ import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
+import nozzle6mm from "@/assets/nozzle-6mm.png";
+import nozzle15mm from "@/assets/nozzle-15mm.png";
 
 const protocols = [
   { id: "c1", name: "Localized Inflammation", duration: 10, intensity: 80, temp: -140 },
@@ -79,8 +81,8 @@ export default function Cryotherapy() {
   const [fogRate, setFogRate] = useState(2);
 
   const nozzles = [
-    { id: "small", name: "Small", description: "6mm" },
-    { id: "medium", name: "Medium", description: "15mm" },
+    { id: "small", name: "6mm Nozzle", description: "Precision", image: nozzle6mm },
+    { id: "medium", name: "15mm Nozzle", description: "Recovery", image: nozzle15mm },
   ];
 
   return (
@@ -145,20 +147,27 @@ export default function Cryotherapy() {
                     selectedNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60"
                   )}
                 >
-                  <div className={cn(
-                    "h-20 rounded-2xl flex flex-col items-center justify-center gap-1 border transition-all duration-300",
-                    selectedNozzle === nozzle.id 
-                      ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
-                      : "bg-white/5 border-white/10 hover:border-white/20"
-                  )}>
-                    <span className={cn(
-                      "text-xs font-black uppercase tracking-widest",
-                      selectedNozzle === nozzle.id ? "text-[#3D63DD]" : "text-[#A9B3CE]"
-                    )}>
-                      {nozzle.name}
-                    </span>
-                    <span className="text-[8px] font-bold text-[#A9B3CE]/50 uppercase tracking-tighter">{nozzle.description}</span>
+                <div className={cn(
+                  "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
+                  selectedNozzle === nozzle.id 
+                    ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                    : "bg-white/5 border-white/10 hover:border-white/20"
+                )}>
+                  <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={nozzle.image} 
+                      alt={nozzle.name} 
+                      className="w-full h-full object-contain filter brightness-110 contrast-110"
+                    />
                   </div>
+                  <span className={cn(
+                    "text-[10px] font-black uppercase tracking-widest",
+                    selectedNozzle === nozzle.id ? "text-[#3D63DD]" : "text-[#A9B3CE]"
+                  )}>
+                    {nozzle.name}
+                  </span>
+                  <span className="text-[8px] font-bold text-[#A9B3CE]/50 uppercase tracking-tighter">{nozzle.description}</span>
+                </div>
                   {selectedNozzle === nozzle.id && (
                     <motion.div 
                       layoutId="selected-nozzle-glow"
