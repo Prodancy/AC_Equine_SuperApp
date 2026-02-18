@@ -1104,7 +1104,7 @@ export default function Cryotherapy() {
                             <div
                               className="h-20 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center bg-white/5 border-white/10 hover:border-white/20 text-[20px] font-semibold"
                             >
-                            <p className="tracking-tight text-[13px] font-bold text-white">
+                            <p className="tracking-tight text-white text-[18px] font-semibold">
                               {p.name}
                             </p>
                             </div>
