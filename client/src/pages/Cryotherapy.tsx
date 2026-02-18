@@ -71,7 +71,7 @@ const protocols = [
   {
     id: "p1_neck",
     bodyPart: "neck",
-    name: "30 Seconds",
+    name: "Neck Maintenance",
     duration: 0.5,
     intensity: 80,
     temp: -140,
@@ -79,7 +79,7 @@ const protocols = [
   {
     id: "p2_neck",
     bodyPart: "neck",
-    name: "45 Seconds",
+    name: "Neck Pain",
     duration: 0.75,
     intensity: 70,
     temp: -120,
@@ -87,7 +87,7 @@ const protocols = [
   {
     id: "p3_neck",
     bodyPart: "neck",
-    name: "60 Seconds",
+    name: "Hematoma",
     duration: 1,
     intensity: 60,
     temp: -110,
@@ -95,7 +95,7 @@ const protocols = [
   {
     id: "p4_neck",
     bodyPart: "neck",
-    name: "90 Seconds",
+    name: "Chronic Articular Lesions",
     duration: 1.5,
     intensity: 50,
     temp: -100,
@@ -103,7 +103,7 @@ const protocols = [
   {
     id: "p25_neck",
     bodyPart: "neck",
-    name: "120 Seconds",
+    name: "Degenerative Joint Disease",
     duration: 2,
     intensity: 45,
     temp: -90,
@@ -111,7 +111,7 @@ const protocols = [
   {
     id: "p26_neck",
     bodyPart: "neck",
-    name: "Custom",
+    name: "Trigger Point / Myofascial Pain",
     duration: 10,
     intensity: 65,
     temp: -115,
