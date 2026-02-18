@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Play, Pause, Square, Thermometer, Bluetooth, Activity, Zap, ChevronLeft } from "lucide-react";
+import { Play, Pause, Square, Thermometer, Bluetooth, Activity, Zap, ChevronLeft, ChevronDown } from "lucide-react";
 import { Horse } from "@/components/icons/Horse";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
@@ -87,6 +87,8 @@ export default function Cryotherapy() {
 
   const [selectedControl, setSelectedControl] = useState<string | null>("extra-soft");
 
+  const [isNozzleExpanded, setIsNozzleExpanded] = useState(false);
+
   const nozzles = [
     { id: "mild", name: "Mild Cone", image: nozzle6mm },
     { id: "strong", name: "Strong Cone", image: nozzle15mm },
@@ -147,127 +149,157 @@ export default function Cryotherapy() {
         </div>
 
         {/* Nozzle Selection Section */}
-        <div className="px-4 md:px-8 py-6 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5 space-y-6">
-          <div>
-            <p className="font-black uppercase tracking-[0.3em] text-[#A9B3CE] mb-4 text-[14px]">Select Nozzle Type</p>
-            
-            <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Fog Nozzle</p>
-            <div className="grid grid-cols-2 gap-3 mb-6">
-              {[
-                { id: "mild", name: "Mild Cone", image: nozzle6mm },
-                { id: "strong", name: "Strong Cone", image: nozzle15mm },
-              ].map((nozzle) => (
-                <button
-                  key={`fog-nozzle-${nozzle.id}`}
-                  onClick={() => handleSelection('fog', nozzle.id)}
-                  className={cn(
-                    "group relative transition-all duration-300 active:scale-95",
-                    selectedControl === `fog-${nozzle.id}` ? "scale-[1.02] z-10" : "opacity-60"
-                  )}
-                >
-                <div className={cn(
-                  "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
-                  selectedControl === `fog-${nozzle.id}` 
-                    ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
-                    : "bg-white/5 border-white/10 hover:border-white/20"
-                )}>
-                  <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
-                    <img 
-                      src={nozzle.image} 
-                      alt={nozzle.name} 
-                      className="w-full h-full object-contain filter brightness-110 contrast-110"
-                    />
-                  </div>
-                  <span className="uppercase tracking-widest text-[#ffffff] text-[14px] font-medium">
-                    {nozzle.name}
-                  </span>
-                </div>
-                  {selectedControl === `fog-${nozzle.id}` && (
-                    <motion.div 
-                      layoutId="selected-nozzle-glow-fog"
-                      className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
-                    />
-                  )}
-                </button>
-              ))}
+        <div className="px-4 md:px-8 py-4 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5">
+          <button 
+            onClick={() => setIsNozzleExpanded(!isNozzleExpanded)}
+            className="w-full flex items-center justify-between py-2 group"
+          >
+            <div className="flex items-center gap-3">
+              <p className="font-black uppercase tracking-[0.3em] text-[#A9B3CE] text-[14px] group-hover:text-white transition-colors">Select Nozzle Type</p>
+              {selectedControl && (
+                <span className="text-[10px] font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20">
+                  {selectedControl.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                </span>
+              )}
             </div>
-
-            <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Massage Nozzle</p>
-            <div className="grid grid-cols-2 gap-3 mb-6">
-              {[
-                { id: "mild", name: "Dome Nozzle", image: massageMild },
-                { id: "strong", name: "Thin Nozzle", image: massageStrong },
-                { id: "precision", name: "Flat Contact Nozzle", image: massagePrecision },
-              ].map((nozzle, index) => (
-                <button
-                  key={`massage-${nozzle.id}`}
-                  onClick={() => handleSelection('massage', nozzle.id)}
-                  className={cn(
-                    "group relative transition-all duration-300 active:scale-95",
-                    selectedControl === `massage-${nozzle.id}` ? "scale-[1.02] z-10" : "opacity-60",
-                    index === 2 ? "col-span-2 w-1/2 mx-auto" : "w-full"
-                  )}
-                >
-                  <div className={cn(
-                    "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300 w-full",
-                    selectedControl === `massage-${nozzle.id}` 
-                      ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
-                      : "bg-white/5 border-white/10 hover:border-white/20"
-                  )}>
-                    <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
-                      <img 
-                        src={nozzle.image} 
-                        alt={nozzle.name} 
-                        className="w-full h-full object-contain filter brightness-110 contrast-110"
-                      />
+            <motion.div
+              animate={{ rotate: isNozzleExpanded ? 180 : 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <ChevronDown className="w-5 h-5 text-[#A9B3CE] group-hover:text-white transition-colors" />
+            </motion.div>
+          </button>
+          
+          <AnimatePresence>
+            {isNozzleExpanded && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <div className="pt-6 space-y-6">
+                  <div>
+                    <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Fog Nozzle</p>
+                    <div className="grid grid-cols-2 gap-3 mb-6">
+                      {[
+                        { id: "mild", name: "Mild Cone", image: nozzle6mm },
+                        { id: "strong", name: "Strong Cone", image: nozzle15mm },
+                      ].map((nozzle) => (
+                        <button
+                          key={`fog-nozzle-${nozzle.id}`}
+                          onClick={() => handleSelection('fog', nozzle.id)}
+                          className={cn(
+                            "group relative transition-all duration-300 active:scale-95",
+                            selectedControl === `fog-${nozzle.id}` ? "scale-[1.02] z-10" : "opacity-60"
+                          )}
+                        >
+                        <div className={cn(
+                          "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
+                          selectedControl === `fog-${nozzle.id}` 
+                            ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                            : "bg-white/5 border-white/10 hover:border-white/20"
+                        )}>
+                          <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
+                            <img 
+                              src={nozzle.image} 
+                              alt={nozzle.name} 
+                              className="w-full h-full object-contain filter brightness-110 contrast-110"
+                            />
+                          </div>
+                          <span className="uppercase tracking-widest text-[#ffffff] text-[14px] font-medium">
+                            {nozzle.name}
+                          </span>
+                        </div>
+                          {selectedControl === `fog-${nozzle.id}` && (
+                            <motion.div 
+                              layoutId="selected-nozzle-glow-fog"
+                              className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
+                            />
+                          )}
+                        </button>
+                      ))}
                     </div>
-                    <span className="uppercase tracking-widest text-[#ffffff] text-[14px] font-medium">
-                      {nozzle.name}
-                    </span>
+
+                    <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Massage Nozzle</p>
+                    <div className="grid grid-cols-2 gap-3 mb-6">
+                      {[
+                        { id: "mild", name: "Dome Nozzle", image: massageMild },
+                        { id: "strong", name: "Thin Nozzle", image: massageStrong },
+                        { id: "precision", name: "Flat Contact Nozzle", image: massagePrecision },
+                      ].map((nozzle, index) => (
+                        <button
+                          key={`massage-${nozzle.id}`}
+                          onClick={() => handleSelection('massage', nozzle.id)}
+                          className={cn(
+                            "group relative transition-all duration-300 active:scale-95",
+                            selectedControl === `massage-${nozzle.id}` ? "scale-[1.02] z-10" : "opacity-60",
+                            index === 2 ? "col-span-2 w-1/2 mx-auto" : "w-full"
+                          )}
+                        >
+                          <div className={cn(
+                            "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300 w-full",
+                            selectedControl === `massage-${nozzle.id}` 
+                              ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                              : "bg-white/5 border-white/10 hover:border-white/20"
+                          )}>
+                            <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
+                              <img 
+                                src={nozzle.image} 
+                                alt={nozzle.name} 
+                                className="w-full h-full object-contain filter brightness-110 contrast-110"
+                              />
+                            </div>
+                            <span className="uppercase tracking-widest text-[#ffffff] text-[14px] font-medium">
+                              {nozzle.name}
+                            </span>
+                          </div>
+                          {selectedControl === `massage-${nozzle.id}` && (
+                            <motion.div 
+                              layoutId="selected-nozzle-glow-massage"
+                              className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
+                            />
+                          )}
+                        </button>
+                      ))}
+                    </div>
+
+                    <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Flow Rates</p>
+                    <div className="grid grid-cols-2 gap-3 mb-6">
+                      {[
+                        { id: "extra-soft", label: "Extra Soft - 0.3lpm", value: 20 },
+                        { id: "soft", label: "Soft - 0.5lpm", value: 40 },
+                        { id: "medium", label: "Medium - 0.7lpm", value: 60 },
+                        { id: "hard", label: "Hard - 0.9lpm", value: 80 },
+                        { id: "extra-hard", label: "Extra Hard - 1.1lpm", value: 100 },
+                      ].map((rate) => (
+                        <button
+                          key={`flow-btn-${rate.value}`}
+                          onClick={() => handleSelection('flow', rate.id, rate.value)}
+                          className={cn(
+                            "group relative transition-all duration-300 active:scale-95",
+                            selectedControl === `flow-${rate.id}` ? "scale-[1.02] z-10" : "opacity-60"
+                          )}
+                        >
+                          <div className={cn(
+                            "h-16 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
+                            selectedControl === `flow-${rate.id}` 
+                              ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                              : "bg-white/5 border-white/10 hover:border-white/20"
+                          )}>
+                            <span className="uppercase tracking-tight text-[14px] font-medium text-[#ffffff]">
+                              {rate.label}
+                            </span>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                  {selectedControl === `massage-${nozzle.id}` && (
-                    <motion.div 
-                      layoutId="selected-nozzle-glow-massage"
-                      className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
-                    />
-                  )}
-                </button>
-              ))}
-            </div>
-
-            <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Flow Rates</p>
-            <div className="grid grid-cols-2 gap-3 mb-6">
-              {[
-                { id: "extra-soft", label: "Extra Soft - 0.3lpm", value: 20 },
-                { id: "soft", label: "Soft - 0.5lpm", value: 40 },
-                { id: "medium", label: "Medium - 0.7lpm", value: 60 },
-                { id: "hard", label: "Hard - 0.9lpm", value: 80 },
-                { id: "extra-hard", label: "Extra Hard - 1.1lpm", value: 100 },
-              ].map((rate) => (
-                <button
-                  key={`flow-btn-${rate.value}`}
-                  onClick={() => handleSelection('flow', rate.id, rate.value)}
-                  className={cn(
-                    "group relative transition-all duration-300 active:scale-95",
-                    selectedControl === `flow-${rate.id}` ? "scale-[1.02] z-10" : "opacity-60"
-                  )}
-                >
-                  <div className={cn(
-                    "h-16 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
-                    selectedControl === `flow-${rate.id}` 
-                      ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
-                      : "bg-white/5 border-white/10 hover:border-white/20"
-                  )}>
-                    <span className="uppercase tracking-tight text-[14px] font-medium text-[#ffffff]">
-                      {rate.label}
-                    </span>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-
-
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
       <AnimatePresence mode="wait">
