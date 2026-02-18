@@ -499,7 +499,10 @@ export default function Cryotherapy() {
   );
 
   const currentProtocol =
-    manualProtocols.find((p) => p.id === activeProtocol) || (activeTab === 'thermal' ? filteredProtocols.find((p) => p.id === activeProtocol) : null) || filteredProtocols[0] || protocols[0];
+    manualProtocols.find((p) => p.id === activeProtocol) || 
+    (activeTab === 'thermal' ? filteredProtocols.find((p) => p.id === activeProtocol) : null) || 
+    filteredProtocols[0] || 
+    protocols[0];
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [timeLeft, setTimeLeft] = useState(currentProtocol.duration * 60);
@@ -723,58 +726,57 @@ export default function Cryotherapy() {
             </div>
 
             <div className="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6">
-                <h3 className="text-[#A9B3CE] text-[12px] font-bold mb-4">Session details</h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center py-2 border-b border-white/5">
-                    <span className="text-[#A9B3CE]/60 text-sm">Treatment Site</span>
-                    <span className="text-white font-bold">{getPartLabel(selectedPart)}</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b border-white/5">
-                    <span className="text-[#A9B3CE]/60 text-sm">Protocol</span>
-                    <span className="text-white font-bold">{currentProtocol.name}</span>
-                  </div>
-                  {selectedControl && (
-                    <div className="flex justify-between items-center py-2 border-b border-white/5">
-                      <span className="text-[#A9B3CE]/60 text-sm">Nozzle</span>
-                      <span className="text-[#3D63DD] font-bold text-xs">
-                        {selectedControl.split('-')[1]}
-                      </span>
-                    </div>
-                  )}
+              <h3 className="text-[#A9B3CE] text-[12px] font-bold mb-4">Session details</h3>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center py-2 border-b border-white/5">
+                  <span className="text-[#A9B3CE]/60 text-sm">Treatment Site</span>
+                  <span className="text-white font-bold">{getPartLabel(selectedPart)}</span>
                 </div>
+                <div className="flex justify-between items-center py-2 border-b border-white/5">
+                  <span className="text-[#A9B3CE]/60 text-sm">Protocol</span>
+                  <span className="text-white font-bold">{currentProtocol.name}</span>
+                </div>
+                {selectedControl && (
+                  <div className="flex justify-between items-center py-2 border-b border-white/5">
+                    <span className="text-[#A9B3CE]/60 text-sm">Nozzle</span>
+                    <span className="text-[#3D63DD] font-bold text-xs">
+                      {selectedControl.split('-')[1]}
+                    </span>
+                  </div>
+                )}
               </div>
+            </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <Button
-                  size="lg"
-                  className={cn(
-                    "h-20 text-xl rounded-2xl font-bold transition-all active:scale-95",
-                    isPlaying
-                      ? "bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/20"
-                      : "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20",
-                  )}
-                  onClick={() => setIsPlaying(!isPlaying)}
-                >
-                  {isPlaying ? (
-                    <Pause className="w-8 h-8 mr-2 fill-current" />
-                  ) : (
-                    <Play className="w-8 h-8 mr-2 fill-current" />
-                  )}
-                  {isPlaying ? "Pause session" : "Start session"}
-                </Button>
-                <Button
-                  size="lg"
-                  variant="destructive"
-                  className="h-20 text-xl rounded-2xl font-bold bg-red-500/20 border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white transition-all active:scale-95"
-                  onClick={() => {
-                    setIsPlaying(false);
-                    setShowSession(false);
-                  }}
-                >
-                  <Square className="w-8 h-8 mr-2 fill-current" />
-                  Stop session
-                </Button>
-              </div>
+            <div className="grid grid-cols-2 gap-4">
+              <Button
+                size="lg"
+                className={cn(
+                  "h-20 text-xl rounded-2xl font-bold transition-all active:scale-95",
+                  isPlaying
+                    ? "bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/20"
+                    : "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20",
+                )}
+                onClick={() => setIsPlaying(!isPlaying)}
+              >
+                {isPlaying ? (
+                  <Pause className="w-8 h-8 mr-2 fill-current" />
+                ) : (
+                  <Play className="w-8 h-8 mr-2 fill-current" />
+                )}
+                {isPlaying ? "Pause session" : "Start session"}
+              </Button>
+              <Button
+                size="lg"
+                variant="destructive"
+                className="h-20 text-xl rounded-2xl font-bold bg-red-500/20 border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white transition-all active:scale-95"
+                onClick={() => {
+                  setIsPlaying(false);
+                  setShowSession(false);
+                }}
+              >
+                <Square className="w-8 h-8 mr-2 fill-current" />
+                Stop session
+              </Button>
             </div>
           </div>
         </div>
@@ -1183,9 +1185,7 @@ export default function Cryotherapy() {
                               <div className="w-20 h-28 bg-[#3D63DD]/10 border border-[#3D63DD]/30 rounded-2xl flex items-center justify-center relative overflow-hidden group">
                                 <div className="absolute inset-0 bg-gradient-to-b from-[#3D63DD]/5 via-transparent to-[#3D63DD]/5 pointer-events-none" />
                                 <span className="text-5xl font-black text-white tabular-nums tracking-tighter">
-                                  {(customTime % 60)
-                                    .toString()
-                                    .padStart(2, "0")}
+                                  {(customTime % 60).toString().padStart(2, "0")}
                                 </span>
                               </div>
                               <button
@@ -1200,102 +1200,97 @@ export default function Cryotherapy() {
                                 <ChevronDown className="w-8 h-8" />
                               </button>
                               <span className="font-black tracking-[0.2em] text-[#A9B3CE] mt-1 text-[14px]">
-                                sec
+                                secs
                               </span>
                             </div>
                           </div>
                         </div>
                       )}
+                      
+                      <Button
+                        size="lg"
+                        className="w-full h-20 text-xl rounded-2xl font-bold bg-[#3D63DD] hover:bg-[#3D63DD]/90 shadow-lg shadow-[#3D63DD]/20 transition-all active:scale-95"
+                        onClick={startSession}
+                      >
+                        <Play className="w-8 h-8 mr-2 fill-current" />
+                        Start Session
+                      </Button>
                     </div>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
-
-            <div className="mt-6">
-              <Button
-                size="lg"
-                disabled={!selectedControl}
-                className={cn(
-                  "w-full h-20 text-xl rounded-2xl font-black uppercase tracking-widest transition-all active:scale-95 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20",
-                )}
-                onClick={startSession}
-              >
-                <Play className="w-8 h-8 mr-2 fill-current" />
-                Start Session
-              </Button>
-            </div>
           </div>
         )}
       </div>
-      <AnimatePresence mode="wait">
-        {activeTab === "controls" ? (
-          <motion.div
-            key="controls"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="hidden"
-          >
-            {/* The controls were moved inside the Set Session section above */}
-          </motion.div>
-        ) : (
-          <motion.div
-            key="thermal"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="flex flex-col items-center justify-center min-h-[400px] relative"
-          >
-            <div className="absolute inset-0 flex items-center justify-center p-8 opacity-20 pointer-events-none">
-              <Horse
-                className="w-full h-full text-white"
-                activePart={selectedPart}
-              />
-            </div>
 
-            <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
-              <div className="relative w-full max-w-2xl aspect-[1.1/1] flex items-center justify-center overflow-hidden rounded-[2.5rem]">
+      <AnimatePresence mode="wait">
+        {activeTab === "thermal" && (
+          <motion.div
+            key="thermal-content"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="flex flex-col items-center"
+          >
+            <div className="w-full flex flex-col items-center">
+              <div className="relative w-full max-w-2xl aspect-[4/3] bg-[#0a0f1d] rounded-3xl p-8 border border-white/5 shadow-2xl overflow-hidden group">
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+                  <div className="absolute inset-0 bg-[radial-gradient(#3D63DD_1px,transparent_1px)] [background-size:20px_20px]" />
+                </div>
+                
                 <img
                   src={horse_anatomy}
                   alt="Horse Anatomy"
-                  className="w-full h-full object-cover opacity-80"
+                  className="w-full h-full object-contain relative z-10 filter brightness-110 contrast-110 drop-shadow-[0_0_30px_rgba(61,99,221,0.2)]"
                 />
 
-                {/* Hotspots matched to image with precise orange glowing points */}
+                {/* Hotspots */}
                 {[
-                  { id: "head", top: "30.5%", left: "8.5%" },
-                  { id: "neck", top: "28.8%", left: "25.2%" },
-                  { id: "shoulder", top: "41.1%", left: "34.2%" },
-                  { id: "back-left", top: "32.8%", left: "54.7%" },
-                  { id: "hip", top: "34.8%", left: "78.4%" },
-                  { id: "leg-front-left", top: "80.2%", left: "39.1%" },
-                  { id: "leg-front-right", top: "83.6%", left: "67.9%" },
-                  { id: "stifle", top: "53%", left: "78%" },
-                  { id: "hoof-front-left", top: "64.5%", left: "86%" },
+                  { id: "head", top: "25%", left: "15%", label: "Head" },
+                  { id: "neck", top: "35%", left: "30%", label: "Neck" },
+                  { id: "shoulder", top: "50%", left: "35%", label: "Shoulder" },
+                  { id: "back-left", top: "35%", left: "55%", label: "Back" },
+                  { id: "hip", top: "45%", left: "75%", label: "Hip" },
+                  { id: "stifle", top: "65%", left: "70%", label: "Stifle" },
+                  { id: "leg-front-left", top: "80%", left: "35%", label: "Fetlock" },
+                  { id: "hoof-front-left", top: "85%", left: "75%", label: "Hock" },
+                  { id: "leg-front-right", top: "85%", left: "42%", label: "Feet" },
                 ].map((spot) => (
                   <button
-                    key={spot.id}
+                    key={`hotspot-${spot.id}`}
                     onClick={() => setSelectedPart(spot.id)}
                     className={cn(
-                      "absolute w-12 h-12 rounded-full transition-all duration-300 flex items-center justify-center -translate-x-1/2 -translate-y-1/2 group z-20",
-                      selectedPart === spot.id
-                        ? "scale-110"
-                        : "hover:scale-110",
+                      "absolute w-8 h-8 md:w-10 md:h-10 z-20 group/spot transition-all duration-500",
+                      selectedPart === spot.id ? "scale-110" : "hover:scale-105",
                     )}
                     style={{ top: spot.top, left: spot.left }}
                   >
-                    {/* Glowing orange point to match the image style */}
-                    <div
-                      className={cn(
-                        "w-6 h-6 rounded-full transition-all duration-500 relative flex items-center justify-center",
-                        selectedPart === spot.id
-                          ? "bg-[#FF8A00] shadow-[0_0_30px_#FF8A00] border-2 border-white"
-                          : "bg-[#FF8A00] shadow-[0_0_15px_rgba(255,138,0,0.6)] border border-white/20 opacity-90 group-hover:opacity-100",
-                      )}
-                    >
-                      {/* Inner highlight dot */}
-                      <div className="w-1.5 h-1.5 rounded-full bg-white opacity-80" />
+                    <div className="relative w-full h-full flex items-center justify-center">
+                      {/* Outer Ring */}
+                      <div className={cn(
+                        "absolute inset-0 rounded-full border-2 transition-all duration-500",
+                        selectedPart === spot.id 
+                          ? "border-[#3D63DD] bg-[#3D63DD]/20 shadow-[0_0_15px_rgba(61,99,221,0.5)]" 
+                          : "border-white/40 bg-black/40 group-hover/spot:border-[#3D63DD]/60"
+                      )} />
+                      
+                      {/* Inner Core */}
+                      <div className={cn(
+                        "w-2.5 h-2.5 rounded-full transition-all duration-500",
+                        selectedPart === spot.id 
+                          ? "bg-[#3D63DD] scale-125" 
+                          : "bg-white/60 group-hover/spot:bg-[#3D63DD]/60"
+                      )} />
+
+                      {/* Label tooltip */}
+                      <div className={cn(
+                        "absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-md bg-black/80 border border-white/10 text-[10px] font-bold text-white whitespace-nowrap opacity-0 group-hover/spot:opacity-100 transition-opacity pointer-events-none z-30",
+                        selectedPart === spot.id && "opacity-100 bg-[#3D63DD]/90 border-[#3D63DD]/50"
+                      )}>
+                        {spot.label}
+                      </div>
 
                       {/* Outer pulse for active part */}
                       {selectedPart === spot.id && (
