@@ -1,3 +1,9 @@
+@import "@fontsource/open-sans/300.css";
+@import "@fontsource/open-sans/400.css";
+@import "@fontsource/open-sans/500.css";
+@import "@fontsource/open-sans/600.css";
+@import "@fontsource/open-sans/700.css";
+@import "@fontsource/open-sans/800.css";
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
@@ -5,8 +11,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: "Open Sans", sans-serif;
-  --font-display: "Open Sans", sans-serif;
+  --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Open Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Open Sans", monospace;
 
   --radius-lg: var(--radius);
@@ -60,17 +66,10 @@
 @layer base {
   * {
     font-family: "Open Sans", sans-serif;
+    text-transform: none !important;
   }
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
@@ -78,6 +77,24 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    text-transform: none !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+  }
+
+  button, a, span, p, div, label, input, textarea {
+    text-transform: none !important;
+    letter-spacing: normal !important;
   }
 }
 

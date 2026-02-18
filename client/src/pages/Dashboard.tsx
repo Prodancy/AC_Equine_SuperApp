@@ -89,7 +89,7 @@ export default function Dashboard() {
         <div className="space-y-1">
           <div className="flex items-center gap-2 text-primary">
             <div className="h-px w-6 bg-primary/50" />
-            <span className="text-[10px] tracking-[0.3em] font-black uppercase">Clinical Dashboard</span>
+            <span className="text-[10px] font-semibold">Clinical dashboard</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
             Welcome, <span className="text-[#3d63dd]">Dr. Anderson</span>
@@ -117,17 +117,17 @@ export default function Dashboard() {
                 <ChevronDown className="w-4 h-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="bg-[#121826] border-white/10 text-white">
-              <DropdownMenuItem onClick={() => setIsScheduleOpen(true)} className="hover:bg-white/5 cursor-pointer flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-primary" /> New Schedule
-              </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-white/5 cursor-pointer flex items-center gap-2">
-                <Horse className="w-4 h-4 text-primary" /> Register Patient
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setIsConnectOpen(true)} className="hover:bg-white/5 cursor-pointer flex items-center gap-2">
-                <Bluetooth className="w-4 h-4 text-primary" /> Connect Device
-              </DropdownMenuItem>
-            </DropdownMenuContent>
+              <DropdownMenuContent align="end" className="bg-[#121826] border-white/10 text-white">
+                <DropdownMenuItem onClick={() => setIsScheduleOpen(true)} className="hover:bg-white/5 cursor-pointer flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-primary" /> New schedule
+                </DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-white/5 cursor-pointer flex items-center gap-2">
+                  <Horse className="w-4 h-4 text-primary" /> Register patient
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setIsConnectOpen(true)} className="hover:bg-white/5 cursor-pointer flex items-center gap-2">
+                  <Bluetooth className="w-4 h-4 text-primary" /> Connect device
+                </DropdownMenuItem>
+              </DropdownMenuContent>
           </DropdownMenu>
         </div>
       </div>
@@ -147,7 +147,7 @@ export default function Dashboard() {
                   <stat.icon className="w-full h-full" />
                 </div>
                 <CardContent className="p-4 space-y-1 relative">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">{stat.label}</p>
+                  <p className="text-[10px] font-semibold text-gray-500">{stat.label}</p>
                   <div className="flex items-baseline gap-1">
                     <span className="text-2xl font-bold">{stat.value}</span>
                     <span className="text-[10px] text-gray-500 font-medium">{stat.sub}</span>
@@ -163,9 +163,9 @@ export default function Dashboard() {
             <div className="p-8 md:p-12 relative flex flex-col md:flex-row items-center gap-8">
               <div className="flex-1 space-y-6">
                 <div className="space-y-2 text-center md:text-left">
-                  <Badge className="bg-primary/20 text-primary border-primary/30 text-[10px] tracking-widest font-black mb-2 uppercase">Ready to Start</Badge>
-                  <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-none italic">
-                    EQUINE THERAPY <br/><span className="text-primary not-italic">SOLUTIONS</span>
+                  <Badge className="bg-primary/20 text-primary border-primary/30 text-[10px] font-semibold mb-2">Ready to start</Badge>
+                  <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-none">
+                    Equine therapy <br/><span className="text-primary">solutions</span>
                   </h2>
                   <p className="text-gray-400 text-sm md:text-lg max-w-md leading-relaxed">
                     Precision equine care powered by America Cryo's advanced recovery protocols.
@@ -173,18 +173,18 @@ export default function Dashboard() {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/treatment" className="flex-1">
-                    <Button className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-2xl font-black tracking-widest shadow-xl shadow-primary/20 flex items-center justify-center gap-3 active:scale-95 transition-all">
+                    <Button className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-2xl font-bold shadow-xl shadow-primary/20 flex items-center justify-center gap-3 active:scale-95 transition-all">
                       <ThermometerSnowflake className="w-6 h-6" />
-                      START NEW SESSION
+                      Start new session
                     </Button>
                   </Link>
                   <Button 
                     onClick={() => setIsScheduleOpen(true)}
                     variant="outline" 
-                    className="flex-1 h-14 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-black tracking-widest active:scale-95 transition-all"
+                    className="flex-1 h-14 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-bold active:scale-95 transition-all"
                   >
                     <Calendar className="w-5 h-5 mr-3 text-primary" />
-                    SCHEDULE
+                    Schedule
                   </Button>
                 </div>
               </div>
@@ -205,7 +205,7 @@ export default function Dashboard() {
             <div className="h-1.5 bg-gradient-to-r from-primary/50 via-primary to-primary/50 w-full" />
             <CardHeader className="p-6 pb-2">
               <div className="flex items-center justify-between">
-                <CardTitle className="text-sm font-black tracking-[0.2em] uppercase text-gray-400">Scheduled Today</CardTitle>
+                <CardTitle className="text-sm font-semibold text-gray-400">Scheduled today</CardTitle>
                 <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-white/5 text-gray-500">
                   <MoreHorizontal className="w-4 h-4" />
                 </Button>
@@ -221,7 +221,7 @@ export default function Dashboard() {
               ].map((row, i) => (
                 <div key={i} className="group flex items-center gap-4 p-3 rounded-2xl bg-[#121826]/50 border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
                   <div className="text-center min-w-[50px]">
-                    <p className="text-[9px] font-black text-primary uppercase">{row.time.split(' ')[1]}</p>
+                    <p className="text-[9px] font-semibold text-primary">{row.time.split(' ')[1]}</p>
                     <p className="text-sm font-bold text-white leading-tight">{row.time.split(' ')[0]}</p>
                   </div>
                   <div className="flex-1 space-y-1">
@@ -236,8 +236,8 @@ export default function Dashboard() {
                   </div>
                 </div>
               ))}
-              <Button className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl h-12 text-xs font-bold tracking-widest uppercase mt-2">
-                View All Schedule
+              <Button className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl h-12 text-xs font-bold mt-2">
+                View all schedule
               </Button>
             </CardContent>
           </Card>
@@ -323,27 +323,27 @@ export default function Dashboard() {
       {/* Schedule Dialog */}
       <Dialog open={isScheduleOpen} onOpenChange={setIsScheduleOpen}>
         <DialogContent className="sm:max-w-lg bg-[#0a0f1d] border-white/10 text-white rounded-[2rem]">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-bold tracking-tight">Schedule New Session</DialogTitle>
-            <DialogDescription className="text-gray-400 text-sm">
-              Book a new therapy session for your equine patient.
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="space-y-6 py-4 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
-            <div className="space-y-3">
-              <Label className="text-[10px] font-black uppercase tracking-widest text-primary">1. Select Date</Label>
-              <input 
-                type="date" 
-                value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
-              />
-            </div>
+            <DialogHeader>
+              <DialogTitle className="text-xl font-bold tracking-tight">Schedule new session</DialogTitle>
+              <DialogDescription className="text-gray-400 text-sm">
+                Book a new therapy session for your equine patient.
+              </DialogDescription>
+            </DialogHeader>
+            
+            <div className="space-y-6 py-4 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
+              <div className="space-y-3">
+                <Label className="text-[10px] font-semibold text-primary">1. Select date</Label>
+                <input 
+                  type="date" 
+                  value={selectedDate}
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
+                />
+              </div>
 
-            <div className="space-y-3">
-              <Label className="text-[10px] font-black uppercase tracking-widest text-primary">2. Available Slots</Label>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="space-y-3">
+                <Label className="text-[10px] font-semibold text-primary">2. Available slots</Label>
+                <div className="grid grid-cols-3 gap-2">
                 {["08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM"].map((time) => (
                   <Button
                     key={time}
@@ -360,9 +360,9 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div className="space-y-3">
-              <Label className="text-[10px] font-black uppercase tracking-widest text-primary">3. Select Patient</Label>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="space-y-3">
+                <Label className="text-[10px] font-semibold text-primary">3. Select patient</Label>
+                <div className="grid grid-cols-2 gap-2">
                 {horses.map((horse) => (
                   <Button
                     key={horse}
@@ -380,9 +380,9 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div className="space-y-3">
-              <Label className="text-[10px] font-black uppercase tracking-widest text-primary">4. Treatment Modality</Label>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="space-y-3">
+                <Label className="text-[10px] font-semibold text-primary">4. Treatment modality</Label>
+                <div className="grid grid-cols-2 gap-2">
                 {treatments.map((t) => (
                   <Button
                     key={t.id}
@@ -398,8 +398,8 @@ export default function Dashboard() {
           </div>
 
           <DialogFooter className="mt-4">
-            <Button className="w-full bg-primary hover:bg-primary/90 text-white font-black tracking-[0.2em] h-14 rounded-2xl uppercase shadow-xl shadow-primary/20" onClick={() => setIsScheduleOpen(false)}>
-              CONFIRM SCHEDULE
+            <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-14 rounded-2xl shadow-xl shadow-primary/20" onClick={() => setIsScheduleOpen(false)}>
+              Confirm schedule
             </Button>
           </DialogFooter>
         </DialogContent>

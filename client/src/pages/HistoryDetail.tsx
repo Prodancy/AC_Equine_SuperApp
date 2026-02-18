@@ -62,7 +62,7 @@ export default function HistoryDetail() {
           </Button>
         </Link>
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground tracking-widest">Session Detail</h1>
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">Session detail</h1>
           <p className="text-sm text-muted-foreground">{detail.horseName} • {detail.date}</p>
         </div>
       </div>

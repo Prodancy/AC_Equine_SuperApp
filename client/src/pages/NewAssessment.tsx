@@ -79,12 +79,12 @@ export default function NewAssessment() {
               <Stethoscope className="w-6 h-6 text-primary" />
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-bold tracking-tight text-white tracking-[0.2em]">New Assessment</h1>
-              <p className="text-[10px] text-gray-500 font-bold tracking-widest hidden md:block">Real-time Digital Thermography</p>
+              <h1 className="text-xl md:text-2xl font-bold tracking-tight text-white">New assessment</h1>
+              <p className="text-[10px] text-gray-500 font-bold hidden md:block">Real-time digital thermography</p>
             </div>
           </div>
         </div>
-        <Button variant="ghost" onClick={() => setLocation("/diagnose")} className="text-gray-400 font-black tracking-[0.2em] text-[10px] hover:text-white transition-colors">
+        <Button variant="ghost" onClick={() => setLocation("/diagnose")} className="text-gray-400 font-bold text-[10px] hover:text-white transition-colors">
           Discard
         </Button>
       </header>
@@ -224,17 +224,17 @@ export default function NewAssessment() {
             <Button 
               onClick={handleSubmit} 
               disabled={isSubmitting || capturedImages.length === 0 || !conditionLabel}
-              className="w-full gap-3 bg-primary hover:bg-primary/90 text-white h-14 font-black tracking-[0.3em] text-xs shadow-[0_10px_30px_rgba(239,68,68,0.2)] transition-all active:scale-[0.98] disabled:opacity-50"
+              className="w-full gap-3 bg-primary hover:bg-primary/90 text-white h-14 font-bold text-xs shadow-[0_10px_30px_rgba(239,68,68,0.2)] transition-all active:scale-[0.98] disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>
                   <Loader2 className="w-5 h-5 animate-spin" />
-                  Processing Assessment...
+                  Processing assessment...
                 </>
               ) : (
                 <>
                   <ShieldCheck className="w-5 h-5" />
-                  Finalize & Save to EHR
+                  Finalize & save to EHR
                 </>
               )}
             </Button>

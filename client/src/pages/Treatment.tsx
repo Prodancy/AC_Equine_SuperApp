@@ -85,8 +85,8 @@ export default function Treatment() {
       <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
         <div className="flex items-center gap-4">
           <div>
-            <h1 className="text-xl md:text-2xl font-bold tracking-widest text-foreground">Treatments</h1>
-            <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block">Select Clinical Modality</p>
+            <h1 className="text-xl md:text-2xl font-bold tracking-tight text-foreground">Treatments</h1>
+            <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block">Select clinical modality</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -132,8 +132,8 @@ export default function Treatment() {
                   <p className="text-sm text-gray-400 leading-relaxed mb-4">
                     {therapy.description}
                   </p>
-                  <div className="flex items-center text-primary text-xs font-black tracking-widest group-hover:translate-x-1 transition-transform">
-                    START PROTOCOL <ChevronRight className="w-4 h-4 ml-1" />
+                  <div className="flex items-center text-primary text-xs font-semibold group-hover:translate-x-1 transition-transform">
+                    Start protocol <ChevronRight className="w-4 h-4 ml-1" />
                   </div>
                 </CardContent>
               </Card>

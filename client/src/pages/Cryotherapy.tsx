@@ -690,10 +690,10 @@ export default function Cryotherapy() {
                       />
                     </svg>
                     <div className="absolute flex flex-col items-center">
-                      <span className="text-5xl md:text-6xl font-bold tracking-tighter tabular-nums text-white">
+                      <span className="text-5xl md:text-6xl font-bold tracking-tight tabular-nums text-white">
                         {formatTime(timeLeft)}
                       </span>
-                      <span className="text-xs text-blue-400/80 mt-1 font-semibold tracking-wider">
+                      <span className="text-xs text-blue-400/80 mt-1 font-semibold">
                         Remaining
                       </span>
                     </div>
@@ -704,8 +704,8 @@ export default function Cryotherapy() {
                       <span className="text-xl md:text-2xl font-bold tabular-nums text-white">
                         {Math.round(currentTemp)}°C
                       </span>
-                      <span className="text-[10px] md:text-xs text-blue-400/60 font-bold capitalize tracking-wider">
-                        Nozzle Temp
+                      <span className="text-[10px] md:text-xs text-blue-400/60 font-semibold capitalize">
+                        Nozzle temp
                       </span>
                     </div>
                     <div className="flex-1 flex flex-col items-center bg-blue-500/5 p-3 md:p-4 rounded-xl border border-blue-500/10">
@@ -713,7 +713,7 @@ export default function Cryotherapy() {
                       <span className="text-xl md:text-2xl font-bold tabular-nums text-white">
                         {intensity[0]}%
                       </span>
-                      <span className="text-[10px] md:text-xs text-blue-400/60 font-bold capitalize tracking-wider">
+                      <span className="text-[10px] md:text-xs text-blue-400/60 font-semibold capitalize">
                         Intensity
                       </span>
                     </div>
@@ -722,9 +722,8 @@ export default function Cryotherapy() {
               </Card>
             </div>
 
-            <div className="space-y-6 order-2 md:order-1">
-              <div className="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6">
-                <h3 className="text-[#A9B3CE] tracking-[0.2em] text-[12px] font-bold mb-4">Session Details</h3>
+            <div className="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6">
+                <h3 className="text-[#A9B3CE] text-[12px] font-bold mb-4">Session details</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center py-2 border-b border-white/5">
                     <span className="text-[#A9B3CE]/60 text-sm">Treatment Site</span>
@@ -749,7 +748,7 @@ export default function Cryotherapy() {
                 <Button
                   size="lg"
                   className={cn(
-                    "h-20 text-xl rounded-2xl font-black tracking-widest transition-all active:scale-95",
+                    "h-20 text-xl rounded-2xl font-bold transition-all active:scale-95",
                     isPlaying
                       ? "bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/20"
                       : "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20",
@@ -761,19 +760,19 @@ export default function Cryotherapy() {
                   ) : (
                     <Play className="w-8 h-8 mr-2 fill-current" />
                   )}
-                  {isPlaying ? "Pause" : "Resume"}
+                  {isPlaying ? "Pause session" : "Start session"}
                 </Button>
                 <Button
                   size="lg"
                   variant="destructive"
-                  className="h-20 text-xl rounded-2xl font-black tracking-widest bg-red-500/20 border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white transition-all active:scale-95"
+                  className="h-20 text-xl rounded-2xl font-bold bg-red-500/20 border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white transition-all active:scale-95"
                   onClick={() => {
                     setIsPlaying(false);
                     setShowSession(false);
                   }}
                 >
                   <Square className="w-8 h-8 mr-2 fill-current" />
-                  End
+                  Stop session
                 </Button>
               </div>
             </div>
