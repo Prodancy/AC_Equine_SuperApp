@@ -18,6 +18,9 @@ import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import nozzle6mm from "@/assets/nozzle-white.png";
 import nozzle15mm from "@/assets/nozzle-black.png";
+import massageMild from "@/assets/image_1771412928055.png";
+import massageStrong from "@/assets/image_1771412940321.png";
+import massagePrecision from "@/assets/image_1771412948862.png";
 
 const protocols = [
   { id: "c1", name: "Localized Inflammation", duration: 10, intensity: 80, temp: -140 },
@@ -183,9 +186,9 @@ export default function Cryotherapy() {
             <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Massage Nozzle</p>
             <div className="grid grid-cols-2 gap-3 mb-6">
               {[
-                { id: "mild", name: "Mild Cone", image: nozzle6mm },
-                { id: "strong", name: "Strong Cone", image: nozzle15mm },
-                { id: "precision", name: "Precision", image: nozzle6mm },
+                { id: "mild", name: "Mild Cone", image: massageMild },
+                { id: "strong", name: "Strong Cone", image: massageStrong },
+                { id: "precision", name: "Precision", image: massagePrecision },
               ].map((nozzle, index) => (
                 <button
                   key={`massage-${nozzle.id}`}
