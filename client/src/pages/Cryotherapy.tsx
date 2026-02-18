@@ -1,3 +1,4 @@
+import horse_anatomy from "@/assets/image_1771420930643.png";
 import america_cryo_logo from "@/assets/logo-official.png";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -23,48 +24,68 @@ import massageStrong from "@/assets/image_1771412940321.png";
 import massagePrecision from "@/assets/image_1771412948862.png";
 
 const protocols = [
-  // Neck
-  { id: "p1", bodyPart: "neck", name: "30 SECONDS", duration: 0.5, intensity: 80, temp: -140 },
-  { id: "p2", bodyPart: "neck", name: "45 SECONDS", duration: 0.75, intensity: 70, temp: -120 },
-  { id: "p3", bodyPart: "neck", name: "60 SECONDS", duration: 1, intensity: 60, temp: -110 },
-  { id: "p4", bodyPart: "neck", name: "90 SECONDS", duration: 1.5, intensity: 50, temp: -100 },
-  { id: "p25", bodyPart: "neck", name: "120 SECONDS", duration: 2, intensity: 45, temp: -90 },
-  { id: "p26", bodyPart: "neck", name: "CUSTOM", duration: 10, intensity: 65, temp: -115 },
-  // Back Left
-  { id: "p5", bodyPart: "back-left", name: "30 SECONDS", duration: 0.5, intensity: 75, temp: -130 },
-  { id: "p6", bodyPart: "back-left", name: "45 SECONDS", duration: 0.75, intensity: 85, temp: -150 },
-  { id: "p7", bodyPart: "back-left", name: "60 SECONDS", duration: 1, intensity: 65, temp: -115 },
-  { id: "p8", bodyPart: "back-left", name: "90 SECONDS", duration: 1.5, intensity: 90, temp: -160 },
-  { id: "p27", bodyPart: "back-left", name: "120 SECONDS", duration: 2, intensity: 70, temp: -125 },
-  { id: "p28", bodyPart: "back-left", name: "CUSTOM", duration: 5, intensity: 40, temp: -80 },
-  // Front Leg Left
-  { id: "p9", bodyPart: "leg-front-left", name: "30 SECONDS", duration: 0.5, intensity: 60, temp: -110 },
-  { id: "p10", bodyPart: "leg-front-left", name: "45 SECONDS", duration: 0.75, intensity: 70, temp: -125 },
-  { id: "p11", bodyPart: "leg-front-left", name: "60 SECONDS", duration: 1, intensity: 75, temp: -130 },
-  { id: "p12", bodyPart: "leg-front-left", name: "90 SECONDS", duration: 1.5, intensity: 55, temp: -105 },
-  { id: "p29", bodyPart: "leg-front-left", name: "120 SECONDS", duration: 2, intensity: 80, temp: -140 },
-  { id: "p30", bodyPart: "leg-front-left", name: "CUSTOM", duration: 11, intensity: 65, temp: -120 },
-  // Back Right
-  { id: "p13", bodyPart: "back-right", name: "30 SECONDS", duration: 0.5, intensity: 70, temp: -125 },
-  { id: "p14", bodyPart: "back-right", name: "45 SECONDS", duration: 0.75, intensity: 80, temp: -140 },
-  { id: "p15", bodyPart: "back-right", name: "60 SECONDS", duration: 1, intensity: 65, temp: -115 },
-  { id: "p16", bodyPart: "back-right", name: "90 SECONDS", duration: 1.5, intensity: 60, temp: -110 },
-  { id: "p31", bodyPart: "back-right", name: "120 SECONDS", duration: 2, intensity: 75, temp: -130 },
-  { id: "p32", bodyPart: "back-right", name: "CUSTOM", duration: 15, intensity: 85, temp: -150 },
-  // Front Leg Right
-  { id: "p17", bodyPart: "leg-front-right", name: "30 SECONDS", duration: 0.5, intensity: 75, temp: -135 },
-  { id: "p18", bodyPart: "leg-front-right", name: "45 SECONDS", duration: 0.75, intensity: 85, temp: -145 },
-  { id: "p19", bodyPart: "leg-front-right", name: "60 SECONDS", duration: 1, intensity: 65, temp: -120 },
-  { id: "p20", bodyPart: "leg-front-right", name: "90 SECONDS", duration: 1.5, intensity: 50, temp: -100 },
-  { id: "p33", bodyPart: "leg-front-right", name: "120 SECONDS", duration: 2, intensity: 60, temp: -110 },
-  { id: "p34", bodyPart: "leg-front-right", name: "CUSTOM", duration: 13, intensity: 70, temp: -125 },
-  // Hoof Front Left
-  { id: "p21", bodyPart: "hoof-front-left", name: "30 SECONDS", duration: 0.5, intensity: 90, temp: -160 },
-  { id: "p22", bodyPart: "hoof-front-left", name: "45 SECONDS", duration: 0.75, intensity: 80, temp: -140 },
-  { id: "p23", bodyPart: "hoof-front-left", name: "60 SECONDS", duration: 1, intensity: 70, temp: -130 },
-  { id: "p24", bodyPart: "hoof-front-left", name: "90 SECONDS", duration: 1.5, intensity: 60, temp: -115 },
-  { id: "p35", bodyPart: "hoof-front-left", name: "120 SECONDS", duration: 2, intensity: 50, temp: -100 },
-  { id: "p36", bodyPart: "hoof-front-left", name: "CUSTOM", duration: 11, intensity: 65, temp: -120 },
+    { id: "p1_head", bodyPart: "head", name: "30 SECONDS", duration: 0.5, intensity: 80, temp: -140 },
+    { id: "p2_head", bodyPart: "head", name: "45 SECONDS", duration: 0.75, intensity: 70, temp: -120 },
+    { id: "p3_head", bodyPart: "head", name: "60 SECONDS", duration: 1, intensity: 60, temp: -110 },
+    { id: "p4_head", bodyPart: "head", name: "90 SECONDS", duration: 1.5, intensity: 50, temp: -100 },
+    { id: "p25_head", bodyPart: "head", name: "120 SECONDS", duration: 2, intensity: 45, temp: -90 },
+    { id: "p26_head", bodyPart: "head", name: "CUSTOM", duration: 10, intensity: 65, temp: -115 },
+    // Neck
+    { id: "p1_neck", bodyPart: "neck", name: "30 SECONDS", duration: 0.5, intensity: 80, temp: -140 },
+    { id: "p2_neck", bodyPart: "neck", name: "45 SECONDS", duration: 0.75, intensity: 70, temp: -120 },
+    { id: "p3_neck", bodyPart: "neck", name: "60 SECONDS", duration: 1, intensity: 60, temp: -110 },
+    { id: "p4_neck", bodyPart: "neck", name: "90 SECONDS", duration: 1.5, intensity: 50, temp: -100 },
+    { id: "p25_neck", bodyPart: "neck", name: "120 SECONDS", duration: 2, intensity: 45, temp: -90 },
+    { id: "p26_neck", bodyPart: "neck", name: "CUSTOM", duration: 10, intensity: 65, temp: -115 },
+    // Shoulder
+    { id: "p1_shoulder", bodyPart: "shoulder", name: "30 SECONDS", duration: 0.5, intensity: 80, temp: -140 },
+    { id: "p2_shoulder", bodyPart: "shoulder", name: "45 SECONDS", duration: 0.75, intensity: 70, temp: -120 },
+    { id: "p3_shoulder", bodyPart: "shoulder", name: "60 SECONDS", duration: 1, intensity: 60, temp: -110 },
+    { id: "p4_shoulder", bodyPart: "shoulder", name: "90 SECONDS", duration: 1.5, intensity: 50, temp: -100 },
+    { id: "p25_shoulder", bodyPart: "shoulder", name: "120 SECONDS", duration: 2, intensity: 45, temp: -90 },
+    { id: "p26_shoulder", bodyPart: "shoulder", name: "CUSTOM", duration: 10, intensity: 65, temp: -115 },
+    // Back Left
+    { id: "p5", bodyPart: "back-left", name: "30 SECONDS", duration: 0.5, intensity: 75, temp: -130 },
+    { id: "p6", bodyPart: "back-left", name: "45 SECONDS", duration: 0.75, intensity: 85, temp: -150 },
+    { id: "p7", bodyPart: "back-left", name: "60 SECONDS", duration: 1, intensity: 65, temp: -115 },
+    { id: "p8", bodyPart: "back-left", name: "90 SECONDS", duration: 1.5, intensity: 90, temp: -160 },
+    { id: "p27", bodyPart: "back-left", name: "120 SECONDS", duration: 2, intensity: 70, temp: -125 },
+    { id: "p28", bodyPart: "back-left", name: "CUSTOM", duration: 5, intensity: 40, temp: -80 },
+    // Back Right
+    { id: "p13", bodyPart: "back-right", name: "30 SECONDS", duration: 0.5, intensity: 70, temp: -125 },
+    { id: "p14", bodyPart: "back-right", name: "45 SECONDS", duration: 0.75, intensity: 80, temp: -140 },
+    { id: "p15", bodyPart: "back-right", name: "60 SECONDS", duration: 1, intensity: 65, temp: -115 },
+    { id: "p16", bodyPart: "back-right", name: "90 SECONDS", duration: 1.5, intensity: 60, temp: -110 },
+    { id: "p31", bodyPart: "back-right", name: "120 SECONDS", duration: 2, intensity: 75, temp: -130 },
+    { id: "p32", bodyPart: "back-right", name: "CUSTOM", duration: 15, intensity: 85, temp: -150 },
+    // Front Leg Left
+    { id: "p9", bodyPart: "leg-front-left", name: "30 SECONDS", duration: 0.5, intensity: 60, temp: -110 },
+    { id: "p10", bodyPart: "leg-front-left", name: "45 SECONDS", duration: 0.75, intensity: 70, temp: -125 },
+    { id: "p11", bodyPart: "leg-front-left", name: "60 SECONDS", duration: 1, intensity: 75, temp: -130 },
+    { id: "p12", bodyPart: "leg-front-left", name: "90 SECONDS", duration: 1.5, intensity: 55, temp: -105 },
+    { id: "p29", bodyPart: "leg-front-left", name: "120 SECONDS", duration: 2, intensity: 80, temp: -140 },
+    { id: "p30", bodyPart: "leg-front-left", name: "CUSTOM", duration: 11, intensity: 65, temp: -120 },
+    // Front Leg Right
+    { id: "p17", bodyPart: "leg-front-right", name: "30 SECONDS", duration: 0.5, intensity: 75, temp: -135 },
+    { id: "p18", bodyPart: "leg-front-right", name: "45 SECONDS", duration: 0.75, intensity: 85, temp: -145 },
+    { id: "p19", bodyPart: "leg-front-right", name: "60 SECONDS", duration: 1, intensity: 65, temp: -120 },
+    { id: "p20", bodyPart: "leg-front-right", name: "90 SECONDS", duration: 1.5, intensity: 50, temp: -100 },
+    { id: "p33", bodyPart: "leg-front-right", name: "120 SECONDS", duration: 2, intensity: 60, temp: -110 },
+    { id: "p34", bodyPart: "leg-front-right", name: "CUSTOM", duration: 13, intensity: 70, temp: -125 },
+    // Joint Hind
+    { id: "p1_joint", bodyPart: "joint-hind", name: "30 SECONDS", duration: 0.5, intensity: 80, temp: -140 },
+    { id: "p2_joint", bodyPart: "joint-hind", name: "45 SECONDS", duration: 0.75, intensity: 70, temp: -120 },
+    { id: "p3_joint", bodyPart: "joint-hind", name: "60 SECONDS", duration: 1, intensity: 60, temp: -110 },
+    { id: "p4_joint", bodyPart: "joint-hind", name: "90 SECONDS", duration: 1.5, intensity: 50, temp: -100 },
+    { id: "p25_joint", bodyPart: "joint-hind", name: "120 SECONDS", duration: 2, intensity: 45, temp: -90 },
+    { id: "p26_joint", bodyPart: "joint-hind", name: "CUSTOM", duration: 10, intensity: 65, temp: -115 },
+    // Hoof Front Left
+    { id: "p21", bodyPart: "hoof-front-left", name: "30 SECONDS", duration: 0.5, intensity: 90, temp: -160 },
+    { id: "p22", bodyPart: "hoof-front-left", name: "45 SECONDS", duration: 0.75, intensity: 80, temp: -140 },
+    { id: "p23", bodyPart: "hoof-front-left", name: "60 SECONDS", duration: 1, intensity: 70, temp: -130 },
+    { id: "p24", bodyPart: "hoof-front-left", name: "90 SECONDS", duration: 1.5, intensity: 60, temp: -115 },
+    { id: "p35", bodyPart: "hoof-front-left", name: "120 SECONDS", duration: 2, intensity: 50, temp: -100 },
+    { id: "p36", bodyPart: "hoof-front-left", name: "CUSTOM", duration: 11, intensity: 65, temp: -120 },
 ];
 
 export default function Cryotherapy() {
@@ -574,34 +595,50 @@ export default function Cryotherapy() {
               <Horse className="w-full h-full text-white" activePart={selectedPart} />
             </div>
             
-            <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-8">
-              <div className="relative w-full max-w-md aspect-[4/3]">
-                <Horse 
-                  className="w-full h-full text-[#3D63DD]/20" 
-                  activePart={selectedPart}
+            <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-4">
+              <div className="relative w-full max-w-2xl aspect-[1.1/1] flex items-center justify-center overflow-hidden rounded-[2.5rem] border border-white/10 shadow-2xl bg-[#0a0f1d]">
+                <img 
+                  src={horse_anatomy} 
+                  alt="Horse Anatomy" 
+                  className="w-full h-full object-cover opacity-80"
                 />
                 
-                {/* Hotspots */}
+                {/* Hotspots matched to image with precise orange glowing points */}
                 {[
-                  { id: "neck", top: "35%", left: "45%" },
-                  { id: "back-left", top: "45%", left: "60%" },
-                  { id: "back-right", top: "45%", left: "75%" },
-                  { id: "leg-front-left", top: "70%", left: "35%" },
-                  { id: "leg-front-right", top: "70%", left: "45%" },
-                  { id: "hoof-front-left", top: "90%", left: "35%" },
+                  { id: "head", top: "29%", left: "8.5%" },
+                  { id: "neck", top: "28.8%", left: "25.2%" },
+                  { id: "shoulder", top: "41.1%", left: "34.2%" },
+                  { id: "back-left", top: "32.8%", left: "54.7%" },
+                  { id: "back-right", top: "34.8%", left: "78.4%" },
+                  { id: "leg-front-left", top: "79.2%", left: "39.1%" },
+                  { id: "leg-front-right", top: "83.6%", left: "67.9%" },
+                  { id: "joint-hind", top: "54.2%", left: "77.5%" },
+                  { id: "hoof-front-left", top: "84.2%", left: "86.1%" },
                 ].map((spot) => (
                   <button
                     key={spot.id}
                     onClick={() => setSelectedPart(spot.id)}
                     className={cn(
-                      "absolute w-6 h-6 rounded-full border-2 transition-all duration-300 flex items-center justify-center",
-                      selectedPart === spot.id 
-                        ? "bg-[#FF8A00] border-white scale-125 shadow-[0_0_20px_#FF8A00]" 
-                        : "bg-[#FF8A00]/40 border-[#FF8A00]/60 hover:bg-[#FF8A00] hover:scale-110"
+                      "absolute w-12 h-12 rounded-full transition-all duration-300 flex items-center justify-center -translate-x-1/2 -translate-y-1/2 group z-20",
+                      selectedPart === spot.id ? "scale-110" : "hover:scale-110"
                     )}
                     style={{ top: spot.top, left: spot.left }}
                   >
-                    <div className="w-2 h-2 rounded-full bg-white opacity-50" />
+                    {/* Glowing orange point to match the image style */}
+                    <div className={cn(
+                      "w-6 h-6 rounded-full transition-all duration-500 relative flex items-center justify-center",
+                      selectedPart === spot.id 
+                        ? "bg-[#FF8A00] shadow-[0_0_30px_#FF8A00] border-2 border-white" 
+                        : "bg-[#FF8A00] shadow-[0_0_15px_rgba(255,138,0,0.6)] border border-white/20 opacity-90 group-hover:opacity-100"
+                    )}>
+                      {/* Inner highlight dot */}
+                      <div className="w-1.5 h-1.5 rounded-full bg-white opacity-80" />
+                      
+                      {/* Outer pulse for active part */}
+                      {selectedPart === spot.id && (
+                        <div className="absolute inset-[-8px] rounded-full border-2 border-[#FF8A00] animate-ping opacity-40" />
+                      )}
+                    </div>
                   </button>
                 ))}
               </div>
