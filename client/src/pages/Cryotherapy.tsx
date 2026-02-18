@@ -104,13 +104,8 @@ export default function Cryotherapy() {
           </button>
           <button 
             onClick={() => setActiveTab("thermal")}
-            className={cn(
-              "flex-1 py-3 text-xs font-black tracking-[0.2em] uppercase transition-all relative",
-              activeTab === "thermal" ? "text-primary" : "text-gray-500 hover:text-gray-400"
-            )}
-          >
-            Thermal Imaging
-            {activeTab === "thermal" && (
+            className="flex-1 py-3 font-black tracking-[0.2em] uppercase transition-all relative text-gray-500 hover:text-gray-400 text-[14px]"
+          >PROtocol{activeTab === "thermal" && (
               <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
             )}
           </button>
