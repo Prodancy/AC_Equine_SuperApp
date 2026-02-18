@@ -864,7 +864,7 @@ export default function Cryotherapy() {
                 >
                   <div className="pt-6 space-y-6">
                     <div>
-                      <p className="font-medium text-[#A9B3CE]/40 tracking-widest mb-4 text-[14px]">
+                      <p className="font-medium tracking-widest mb-4 text-[14px] text-[#ffffff]">
                         Fog Nozzle
                       </p>
                       <div className="grid grid-cols-2 gap-3 mb-6">
