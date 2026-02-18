@@ -72,6 +72,13 @@ export default function Cryotherapy() {
   const progress = ((currentProtocol.duration * 60 - timeLeft) / (currentProtocol.duration * 60)) * 100;
 
   const [activeTab, setActiveTab] = useState("controls");
+  const [selectedNozzle, setSelectedNozzle] = useState("small");
+
+  const nozzles = [
+    { id: "small", name: "Small", description: "Precision cooling" },
+    { id: "medium", name: "Medium", description: "General recovery" },
+    { id: "large", name: "Large", description: "Broad area" },
+  ];
 
   return (
     <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
@@ -118,6 +125,44 @@ export default function Cryotherapy() {
               <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#3D63DD]" />
             )}
           </button>
+        </div>
+
+        {/* Nozzle Selection Section */}
+        <div className="px-4 md:px-8 py-6 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5">
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#A9B3CE] mb-4">Select Nozzle Type</p>
+          <div className="flex gap-3">
+            {nozzles.map((nozzle) => (
+              <button
+                key={nozzle.id}
+                onClick={() => setSelectedNozzle(nozzle.id)}
+                className={cn(
+                  "flex-1 group relative transition-all duration-300 active:scale-95",
+                  selectedNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60"
+                )}
+              >
+                <div className={cn(
+                  "h-20 rounded-2xl flex flex-col items-center justify-center gap-1 border transition-all duration-300",
+                  selectedNozzle === nozzle.id 
+                    ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                    : "bg-white/5 border-white/10 hover:border-white/20"
+                )}>
+                  <span className={cn(
+                    "text-xs font-black uppercase tracking-widest",
+                    selectedNozzle === nozzle.id ? "text-[#3D63DD]" : "text-[#A9B3CE]"
+                  )}>
+                    {nozzle.name}
+                  </span>
+                  <span className="text-[8px] font-bold text-[#A9B3CE]/50 uppercase tracking-tighter">{nozzle.description}</span>
+                </div>
+                {selectedNozzle === nozzle.id && (
+                  <motion.div 
+                    layoutId="selected-nozzle-glow"
+                    className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
+                  />
+                )}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
       <AnimatePresence mode="wait">
