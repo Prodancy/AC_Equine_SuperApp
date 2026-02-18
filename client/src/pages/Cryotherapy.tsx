@@ -156,135 +156,99 @@ export default function Cryotherapy() {
       <div className="flex justify-center mb-6">
         <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto" />
       </div>
-      <div className="flex flex-col bg-card/30 backdrop-blur-md sticky top-0 z-50 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
-        <div className="flex justify-between items-center py-4 px-4 md:px-8">
-          <div className="flex items-center gap-4">
-            <Link href="/treatment">
-              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                <ChevronLeft className="w-6 h-6" />
-              </Button>
-            </Link>
-            <div>
-              <h1 className="text-xl md:text-2xl font-bold tracking-widest text-white">Cryotherapy</h1>
-              <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block uppercase font-bold">Active Cryo Session</p>
+      <div className="flex flex-col bg-[#0a0f1d] sticky top-0 z-50 border-b border-white/5 -mx-4 md:-mx-8 mb-6 shadow-2xl">
+        <div className="relative">
+          <div className="flex justify-between items-center py-4 px-4 md:px-8 bg-card/30 backdrop-blur-md">
+            <div className="flex items-center gap-4">
+              <Link href="/treatment">
+                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
+                  <ChevronLeft className="w-6 h-6" />
+                </Button>
+              </Link>
+              <div>
+                <h1 className="text-xl md:text-2xl font-bold tracking-widest text-white">Cryotherapy</h1>
+                <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block uppercase font-bold">Active Cryo Session</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div className="flex px-4 md:px-8">
-          <button 
-            onClick={() => setActiveTab("controls")}
-            className={cn(
-              "flex-1 py-3 tracking-[0.2em] uppercase transition-all relative text-[14px] font-extrabold",
-              activeTab === "controls" ? "text-[#3D63DD]" : "text-[#A9B3CE] hover:text-[#A9B3CE]/80"
-            )}
-          >
-            Manual Mode
-            {activeTab === "controls" && (
-              <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#3D63DD]" />
-            )}
-          </button>
-          <button 
-            onClick={() => setActiveTab("thermal")}
-            className={cn(
-              "flex-1 py-3 tracking-[0.2em] uppercase transition-all relative text-[14px] font-extrabold",
-              activeTab === "thermal" ? "text-[#3D63DD]" : "text-[#A9B3CE] hover:text-[#A9B3CE]/80"
-            )}
-          >
-            Protocol Mode
-            {activeTab === "thermal" && (
-              <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#3D63DD]" />
-            )}
-          </button>
-        </div>
-
-        {/* Nozzle Selection Section */}
-        <div className="px-4 md:px-8 py-4 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5">
-          <button 
-            onClick={() => setIsNozzleExpanded(!isNozzleExpanded)}
-            className="w-full flex items-center justify-between py-2 group"
-          >
-            <p className="uppercase tracking-[0.3em] text-[#A9B3CE] text-[14px] group-hover:text-white transition-colors font-bold leading-tight text-left">SELECT<br />NOZZLE TYPE</p>
-            <div className="flex-1" />
-            {selectedControl && (
-              <span className="font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0 text-[12px]">
-                {selectedControl.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-              </span>
-            )}
-            <motion.div
-              animate={{ rotate: isNozzleExpanded ? 180 : 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="ml-3"
-            >
-              <ChevronDown className="w-5 h-5 text-[#A9B3CE] group-hover:text-white transition-colors" />
-            </motion.div>
-          </button>
           
-          <AnimatePresence>
-            {isNozzleExpanded && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="overflow-hidden"
-              >
-                <div className="pt-6 space-y-6">
-                  <div>
-                    <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Fog Nozzle</p>
-                    <div className="grid grid-cols-2 gap-3 mb-6">
-                      {[
-                        { id: "mild", name: "Mild Cone", image: nozzle6mm },
-                        { id: "strong", name: "Strong Cone", image: nozzle15mm },
-                      ].map((nozzle) => (
-                        <button
-                          key={`fog-nozzle-${nozzle.id}`}
-                          onClick={() => handleSelection('fog', nozzle.id)}
-                          className={cn(
-                            "group relative transition-all duration-300 active:scale-95",
-                            selectedControl === `fog-${nozzle.id}` ? "scale-[1.02] z-10" : "opacity-60"
-                          )}
-                        >
-                        <div className={cn(
-                          "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
-                          selectedControl === `fog-${nozzle.id}` 
-                            ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
-                            : "bg-white/5 border-white/10 hover:border-white/20"
-                        )}>
-                          <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
-                            <img 
-                              src={nozzle.image} 
-                              alt={nozzle.name} 
-                              className="w-full h-full object-contain filter brightness-110 contrast-110"
-                            />
-                          </div>
-                          <span className="uppercase tracking-widest text-[#ffffff] text-[14px] font-medium">
-                            {nozzle.name}
-                          </span>
-                        </div>
-                        </button>
-                      ))}
-                    </div>
+          <div className="flex px-4 md:px-8 bg-card/30 backdrop-blur-md">
+            <button 
+              onClick={() => setActiveTab("controls")}
+              className={cn(
+                "flex-1 py-3 tracking-[0.2em] uppercase transition-all relative text-[14px] font-extrabold",
+                activeTab === "controls" ? "text-[#3D63DD]" : "text-[#A9B3CE] hover:text-[#A9B3CE]/80"
+              )}
+            >
+              Manual Mode
+              {activeTab === "controls" && (
+                <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#3D63DD]" />
+              )}
+            </button>
+            <button 
+              onClick={() => setActiveTab("thermal")}
+              className={cn(
+                "flex-1 py-3 tracking-[0.2em] uppercase transition-all relative text-[14px] font-extrabold",
+                activeTab === "thermal" ? "text-[#3D63DD]" : "text-[#A9B3CE] hover:text-[#A9B3CE]/80"
+              )}
+            >
+              Protocol Mode
+              {activeTab === "thermal" && (
+                <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#3D63DD]" />
+              )}
+            </button>
+          </div>
 
-                    <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Massage Nozzle</p>
-                    <div className="grid grid-cols-2 gap-3 mb-6">
-                      {[
-                        { id: "mild", name: "Dome Nozzle", image: massageMild },
-                        { id: "strong", name: "Thin Nozzle", image: massageStrong },
-                        { id: "precision", name: "Flat Contact Nozzle", image: massagePrecision },
-                      ].map((nozzle, index) => (
-                        <button
-                          key={`massage-${nozzle.id}`}
-                          onClick={() => handleSelection('massage', nozzle.id)}
-                          className={cn(
-                            "group relative transition-all duration-300 active:scale-95",
-                            selectedControl === `massage-${nozzle.id}` ? "scale-[1.02] z-10" : "opacity-60",
-                            index === 2 ? "col-span-2 w-1/2 mx-auto" : "w-full"
-                          )}
-                        >
+          {/* Nozzle Selection Section */}
+          <div className="px-4 md:px-8 py-4 bg-[#0a0f1d] border-t border-white/5 shadow-inner">
+            <button 
+              onClick={() => setIsNozzleExpanded(!isNozzleExpanded)}
+              className="w-full flex items-center justify-between py-2 group"
+            >
+              <p className="uppercase tracking-[0.3em] text-[#A9B3CE] text-[14px] group-hover:text-white transition-colors font-bold leading-tight text-left">SELECT<br />NOZZLE TYPE</p>
+              <div className="flex-1" />
+              {selectedControl && (
+                <span className="font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0 text-[12px]">
+                  {selectedControl.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                </span>
+              )}
+              <motion.div
+                animate={{ rotate: isNozzleExpanded ? 180 : 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="ml-3"
+              >
+                <ChevronDown className="w-5 h-5 text-[#A9B3CE] group-hover:text-white transition-colors" />
+              </motion.div>
+            </button>
+            
+            <AnimatePresence>
+              {isNozzleExpanded && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-6 space-y-6 max-h-[40vh] overflow-y-auto no-scrollbar pb-4">
+                    <div>
+                      <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Fog Nozzle</p>
+                      <div className="grid grid-cols-2 gap-3 mb-6">
+                        {[
+                          { id: "mild", name: "Mild Cone", image: nozzle6mm },
+                          { id: "strong", name: "Strong Cone", image: nozzle15mm },
+                        ].map((nozzle) => (
+                          <button
+                            key={`fog-nozzle-${nozzle.id}`}
+                            onClick={() => handleSelection('fog', nozzle.id)}
+                            className={cn(
+                              "group relative transition-all duration-300 active:scale-95",
+                              selectedControl === `fog-${nozzle.id}` ? "scale-[1.02] z-10" : "opacity-60"
+                            )}
+                          >
                           <div className={cn(
-                            "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300 w-full",
-                            selectedControl === `massage-${nozzle.id}` 
+                            "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
+                            selectedControl === `fog-${nozzle.id}` 
                               ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
                               : "bg-white/5 border-white/10 hover:border-white/20"
                           )}>
@@ -299,56 +263,236 @@ export default function Cryotherapy() {
                               {nozzle.name}
                             </span>
                           </div>
-                        </button>
-                      ))}
-                    </div>
+                          </button>
+                        ))}
+                      </div>
 
-                    <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Flow Rates</p>
-                    <div className="grid grid-cols-2 gap-3 mb-6">
-                      {[
-                        { id: "extra-soft", label: "Extra Soft - 0.3lpm", value: 20 },
-                        { id: "soft", label: "Soft - 0.5lpm", value: 40 },
-                        { id: "medium", label: "Medium - 0.7lpm", value: 60 },
-                        { id: "hard", label: "Hard - 0.9lpm", value: 80 },
-                        { id: "extra-hard", label: "Extra Hard - 1.1lpm", value: 100 },
-                      ].map((rate) => (
-                        <div
-                          key={`flow-btn-${rate.value}`}
-                          onClick={() => handleSelection('flow', rate.id, rate.value)}
-                          role="button"
-                          tabIndex={0}
-                          className={cn(
-                            "group relative transition-all duration-300 active:scale-95 cursor-pointer outline-none",
-                            selectedControl === `flow-${rate.id}` ? "scale-[1.02] z-10" : "opacity-60"
-                          )}
-                        >
-                          <div className={cn(
-                            "h-16 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
-                            selectedControl === `flow-${rate.id}` 
-                              ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
-                              : "bg-white/5 border-white/10 hover:border-white/20"
-                          )}>
-                            <p 
-                              className="uppercase tracking-tight text-[14px] font-medium text-[#ffffff] outline-none rounded px-1"
-                            >
-                              {rate.label}
-                            </p>
+                      <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Massage Nozzle</p>
+                      <div className="grid grid-cols-2 gap-3 mb-6">
+                        {[
+                          { id: "mild", name: "Dome Nozzle", image: massageMild },
+                          { id: "strong", name: "Thin Nozzle", image: massageStrong },
+                          { id: "precision", name: "Flat Contact Nozzle", image: massagePrecision },
+                        ].map((nozzle, index) => (
+                          <button
+                            key={`massage-${nozzle.id}`}
+                            onClick={() => handleSelection('massage', nozzle.id)}
+                            className={cn(
+                              "group relative transition-all duration-300 active:scale-95",
+                              selectedControl === `massage-${nozzle.id}` ? "scale-[1.02] z-10" : "opacity-60",
+                              index === 2 ? "col-span-2 w-1/2 mx-auto" : "w-full"
+                            )}
+                          >
+                            <div className={cn(
+                              "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300 w-full",
+                              selectedControl === `massage-${nozzle.id}` 
+                                ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                                : "bg-white/5 border-white/10 hover:border-white/20"
+                            )}>
+                              <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
+                                <img 
+                                  src={nozzle.image} 
+                                  alt={nozzle.name} 
+                                  className="w-full h-full object-contain filter brightness-110 contrast-110"
+                                />
+                              </div>
+                              <span className="uppercase tracking-widest text-[#ffffff] text-[14px] font-medium">
+                                {nozzle.name}
+                              </span>
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+
+                      <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Flow Rates</p>
+                      <div className="grid grid-cols-2 gap-3 mb-6">
+                        {[
+                          { id: "extra-soft", label: "Extra Soft - 0.3lpm", value: 20 },
+                          { id: "soft", label: "Soft - 0.5lpm", value: 40 },
+                          { id: "medium", label: "Medium - 0.7lpm", value: 60 },
+                          { id: "hard", label: "Hard - 0.9lpm", value: 80 },
+                          { id: "extra-hard", label: "Extra Hard - 1.1lpm", value: 100 },
+                        ].map((rate) => (
+                          <div
+                            key={`flow-btn-${rate.value}`}
+                            onClick={() => handleSelection('flow', rate.id, rate.value)}
+                            role="button"
+                            tabIndex={0}
+                            className={cn(
+                              "group relative transition-all duration-300 active:scale-95 cursor-pointer outline-none",
+                              selectedControl === `flow-${rate.id}` ? "scale-[1.02] z-10" : "opacity-60"
+                            )}
+                          >
+                            <div className={cn(
+                              "h-16 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
+                              selectedControl === `flow-${rate.id}` 
+                                ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                                : "bg-white/5 border-white/10 hover:border-white/20"
+                            )}>
+                              <p 
+                                className="uppercase tracking-tight text-[14px] font-medium text-[#ffffff] outline-none rounded px-1"
+                              >
+                                {rate.label}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
-        {/* Protocol Selection Section */}
-        <div className={cn(
-          "px-4 md:px-8 py-4 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5 transition-all duration-300",
-          !selectedControl && "opacity-40 grayscale pointer-events-none"
-        )}>
+          {/* Protocol Selection Section */}
+          <div className={cn(
+            "px-4 md:px-8 py-4 bg-[#0a0f1d] border-t border-white/5 transition-all duration-300 shadow-lg",
+            !selectedControl && "opacity-40 grayscale pointer-events-none"
+          )}>
+            <button 
+              onClick={() => setIsProtocolExpanded(!isProtocolExpanded)}
+              disabled={!selectedControl}
+              className="w-full flex items-center justify-between py-2 group"
+            >
+              <div className="flex flex-col items-start">
+                <p className="uppercase tracking-[0.3em] text-[#A9B3CE] group-hover:text-white transition-colors text-[14px] font-bold text-left leading-tight">SET SESSION<br />DURATION</p>
+                {!selectedControl && (
+                  <span className="text-[8px] text-[#3D63DD] font-black uppercase tracking-widest mt-1 animate-pulse">Select nozzle first</span>
+                )}
+              </div>
+              <div className="flex-1" />
+              {activeProtocol && selectedControl && (
+                <span className="font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0 text-[12px]">
+                  {protocols.find(p => p.id === activeProtocol)?.name === "CUSTOM" 
+                    ? `CUSTOM (${formatTime(customTime)})` 
+                    : protocols.find(p => p.id === activeProtocol)?.name}
+                </span>
+              )}
+              <motion.div
+                animate={{ rotate: isProtocolExpanded ? 180 : 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="ml-3"
+              >
+                <ChevronDown className="w-5 h-5 text-[#A9B3CE] group-hover:text-white transition-colors" />
+              </motion.div>
+            </button>
+            
+            <AnimatePresence>
+              {isProtocolExpanded && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                    <div className="pt-4 pb-4">
+                      <div className="grid grid-cols-2 gap-3 mb-6">
+                        {filteredProtocols.map((p) => (
+                          <div
+                            key={`protocol-btn-${p.id}`}
+                            onClick={() => setActiveProtocol(p.id)}
+                            role="button"
+                            tabIndex={0}
+                            className={cn(
+                              "group relative transition-all duration-300 active:scale-95 cursor-pointer outline-none",
+                              activeProtocol === p.id ? "scale-[1.02] z-10" : "opacity-60"
+                            )}
+                          >
+                            <div className={cn(
+                              "h-20 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
+                              activeProtocol === p.id 
+                                ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                                : "bg-white/5 border-white/10 hover:border-white/20"
+                            )}>
+                              <p className="uppercase tracking-tight text-[13px] font-bold text-white">
+                                {p.name}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="space-y-4">
+                        {currentProtocol.name === "CUSTOM" && (
+                          <div className="bg-[#0a0f1d] border border-white/10 rounded-2xl p-6 flex flex-col items-center space-y-6">
+                            <div className="flex items-center justify-center gap-8">
+                              {/* Minutes Column */}
+                              <div className="flex flex-col items-center gap-1">
+                                <button 
+                                  onClick={() => {
+                                    const mins = Math.floor(customTime / 60);
+                                    const secs = customTime % 60;
+                                    if (mins < 4) setCustomTime(Math.min(240, (mins + 1) * 60 + secs));
+                                  }}
+                                  className="text-white/20 hover:text-white/60 transition-colors p-1"
+                                >
+                                  <ChevronDown className="w-8 h-8 rotate-180" />
+                                </button>
+                                <div className="w-20 h-28 bg-[#3D63DD]/10 border border-[#3D63DD]/30 rounded-2xl flex items-center justify-center relative overflow-hidden group">
+                                  <div className="absolute inset-0 bg-gradient-to-b from-[#3D63DD]/5 via-transparent to-[#3D63DD]/5 pointer-events-none" />
+                                  <span className="text-5xl font-black text-white tabular-nums tracking-tighter">
+                                    {Math.floor(customTime / 60).toString().padStart(2, '0')}
+                                  </span>
+                                </div>
+                                <button 
+                                  onClick={() => {
+                                    const mins = Math.floor(customTime / 60);
+                                    const secs = customTime % 60;
+                                    if (mins > 2) setCustomTime(Math.max(120, (mins - 1) * 60 + secs));
+                                  }}
+                                  className="text-white/20 hover:text-white/60 transition-colors p-1"
+                                >
+                                  <ChevronDown className="w-8 h-8" />
+                                </button>
+                                <span className="font-black uppercase tracking-[0.2em] text-[#A9B3CE] mt-1 text-[14px]">mins</span>
+                              </div>
+
+                              {/* Divider */}
+                              <div className="flex flex-col gap-3 py-10">
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD]" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD]" />
+                              </div>
+
+                              {/* Seconds Column */}
+                              <div className="flex flex-col items-center gap-1">
+                                <button 
+                                  onClick={() => {
+                                    if (customTime < 240) setCustomTime(Math.min(240, customTime + 1));
+                                  }}
+                                  className="text-white/20 hover:text-white/60 transition-colors p-1"
+                                >
+                                  <ChevronDown className="w-8 h-8 rotate-180" />
+                                </button>
+                                <div className="w-20 h-28 bg-[#3D63DD]/10 border border-[#3D63DD]/30 rounded-2xl flex items-center justify-center relative overflow-hidden group">
+                                  <div className="absolute inset-0 bg-gradient-to-b from-[#3D63DD]/5 via-transparent to-[#3D63DD]/5 pointer-events-none" />
+                                  <span className="text-5xl font-black text-white tabular-nums tracking-tighter">
+                                    {(customTime % 60).toString().padStart(2, '0')}
+                                  </span>
+                                </div>
+                                <button 
+                                  onClick={() => {
+                                    if (customTime > 120) setCustomTime(Math.max(120, customTime - 1));
+                                  }}
+                                  className="text-white/20 hover:text-white/60 transition-colors p-1"
+                                >
+                                  <ChevronDown className="w-8 h-8" />
+                                </button>
+                                <span className="font-black uppercase tracking-[0.2em] text-[#A9B3CE] mt-1 text-[14px]">sec</span>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                      </div>
+                    </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
           <button 
             onClick={() => setIsProtocolExpanded(!isProtocolExpanded)}
             disabled={!selectedControl}
