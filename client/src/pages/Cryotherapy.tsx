@@ -26,6 +26,9 @@ const protocols = [
   { id: "c1", name: "Localized Inflammation", duration: 10, intensity: 80, temp: -140 },
   { id: "c2", name: "Muscle Recovery", duration: 15, intensity: 70, temp: -120 },
   { id: "c3", name: "Post-Surgical", duration: 8, intensity: 60, temp: -110 },
+  { id: "c4", name: "Tendon Repair", duration: 12, intensity: 75, temp: -130 },
+  { id: "c5", name: "Chronic Pain", duration: 20, intensity: 65, temp: -115 },
+  { id: "c6", name: "Hoof Therapy", duration: 10, intensity: 90, temp: -150 },
 ];
 
 export default function Cryotherapy() {
@@ -333,20 +336,35 @@ export default function Cryotherapy() {
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="overflow-hidden"
               >
-                <div className="pt-6 space-y-4">
-                  <Select value={activeProtocol} onValueChange={setActiveProtocol} disabled={isPlaying}>
-                    <SelectTrigger className="w-full h-14 bg-white/5 border-white/10 rounded-xl text-white font-bold">
-                      <SelectValue placeholder="Select Protocol" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-[#1a2234] border-white/10 text-white">
-                      {protocols.map((p) => (
-                        <SelectItem key={p.id} value={p.id}>
-                          <span className="font-bold">{p.name}</span> <span className="text-muted-foreground text-[10px] ml-2 uppercase tracking-widest font-black">({p.duration}m)</span>
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
                   <div className="pb-4">
+                    <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Select Protocol</p>
+                    <div className="grid grid-cols-2 gap-3 mb-6">
+                      {protocols.map((p) => (
+                        <button
+                          key={`protocol-btn-${p.id}`}
+                          onClick={() => setActiveProtocol(p.id)}
+                          className={cn(
+                            "group relative transition-all duration-300 active:scale-95",
+                            activeProtocol === p.id ? "scale-[1.02] z-10" : "opacity-60"
+                          )}
+                        >
+                          <div className={cn(
+                            "h-20 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
+                            activeProtocol === p.id 
+                              ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                              : "bg-white/5 border-white/10 hover:border-white/20"
+                          )}>
+                            <span className="uppercase tracking-tight text-[13px] font-bold text-white mb-1">
+                              {p.name}
+                            </span>
+                            <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-black">
+                              {p.duration}m / {p.temp}°C
+                            </span>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+
                     <div className="space-y-4">
                       <div className="flex justify-between text-[10px] font-black uppercase tracking-widest">
                         <span className="text-gray-400">Target Intensity</span>
@@ -355,7 +373,6 @@ export default function Cryotherapy() {
                       <Slider value={intensity} onValueChange={setIntensity} max={100} step={5} className="py-2" />
                     </div>
                   </div>
-                </div>
               </motion.div>
             )}
           </AnimatePresence>
