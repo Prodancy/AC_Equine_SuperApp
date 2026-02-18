@@ -216,7 +216,7 @@ export default function Cryotherapy() {
             </div>
 
             <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Flow Rates</p>
-            <div className="grid grid-cols-3 gap-3 mb-6">
+            <div className="grid grid-cols-2 gap-3 mb-6">
               {[20, 40, 60, 80, 100].map((rate) => (
                 <button
                   key={`flow-btn-${rate}`}
