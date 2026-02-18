@@ -82,7 +82,7 @@ export default function Cryotherapy() {
 
   const nozzles = [
     { id: "small", name: "Mild Cone", image: nozzle6mm },
-    { id: "medium", name: "15mm Nozzle", image: nozzle15mm },
+    { id: "medium", name: "Strong Cone", image: nozzle15mm },
   ];
 
   return (
