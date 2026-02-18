@@ -104,7 +104,7 @@ export default function Cryotherapy() {
           </button>
           <button 
             onClick={() => setActiveTab("thermal")}
-            className="flex-1 py-3 font-black tracking-[0.2em] uppercase transition-all relative text-gray-500 hover:text-gray-400 text-[14px]"
+            className="flex-1 py-3 font-black tracking-[0.2em] uppercase transition-all relative hover:text-gray-400 text-[14px] text-[#A9B3CE]"
           >
             Protocol Mode
             {activeTab === "thermal" && (
