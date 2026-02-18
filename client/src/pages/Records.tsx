@@ -49,22 +49,17 @@ import { cn } from "@/lib/utils";
 export default function Records() {
   return (
     <div className="p-4 md:p-8 max-w-7xl mx-auto space-y-6 pb-24 md:pb-8">
-      <div className="flex justify-center md:hidden mb-2">
+      <div className="flex justify-center mb-6">
         <div className="flex flex-col items-center">
-          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-8 w-auto mb-1" />
+          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto mb-1" />
         </div>
       </div>
       
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-        <div className="flex items-center gap-2">
-          <Link href="/">
-             <Button variant="ghost" size="icon" className="md:hidden -ml-2 text-muted-foreground hover:text-primary">
-               <ChevronLeft className="w-6 h-6" />
-             </Button>
-           </Link>
+      <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
+        <div className="flex items-center gap-4">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground tracking-widest">Diagnose History</h1>
-            <p className="text-sm md:text-base text-muted-foreground">Historical digital thermography assessments and baseline records.</p>
+            <h1 className="text-xl md:text-2xl font-bold tracking-widest text-foreground">Records</h1>
+            <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block">Clinical History & Assessments</p>
           </div>
         </div>
         <div className="flex w-full md:w-auto gap-2">
@@ -73,9 +68,6 @@ export default function Records() {
                 <Camera className="w-5 h-5" /> New Scan
               </Button>
             </Link>
-            <Button variant="outline" className="flex-1 md:flex-none gap-2 border-white/10 bg-card/50 hover:bg-card text-foreground font-bold tracking-widest h-12 px-6">
-              <Download className="w-4 h-4" /> Export
-            </Button>
         </div>
       </div>
 

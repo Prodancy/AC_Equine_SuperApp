@@ -79,6 +79,11 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen text-white p-4 md:p-8 pb-24 md:pb-8 bg-[#0a0f1d]">
+      <div className="flex justify-center mb-10">
+        <div className="flex flex-col items-center">
+          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto mb-1" />
+        </div>
+      </div>
       {/* Header Area */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
         <div className="space-y-1">

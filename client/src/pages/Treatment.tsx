@@ -85,8 +85,8 @@ export default function Treatment() {
       <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
         <div className="flex items-center gap-4">
           <div>
-            <h1 className="text-xl md:text-2xl font-bold tracking-widest text-foreground">Therapy Selection</h1>
-            <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block">Select treatment modality to begin session</p>
+            <h1 className="text-xl md:text-2xl font-bold tracking-widest text-foreground">Treatments</h1>
+            <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block">Select Clinical Modality</p>
           </div>
         </div>
         <div className="flex items-center gap-2">

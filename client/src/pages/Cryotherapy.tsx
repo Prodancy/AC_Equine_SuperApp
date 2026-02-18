@@ -640,6 +640,11 @@ export default function Cryotherapy() {
   if (showSession) {
     return (
       <div className="fixed inset-0 z-[100] bg-[#030712] p-4 md:p-8 overflow-y-auto">
+        <div className="flex justify-center mb-6 pt-4">
+          <div className="flex flex-col items-center">
+            <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto mb-1" />
+          </div>
+        </div>
         <div className="max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
           <div className="flex justify-between items-center mb-8">
             <Button 
@@ -650,11 +655,6 @@ export default function Cryotherapy() {
               <ChevronLeft className="w-5 h-5 mr-2" />
               Back to Setup
             </Button>
-            <img
-              src={america_cryo_logo}
-              alt="America Cryo Logo"
-              className="h-10 md:h-12 w-auto"
-            />
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
@@ -785,7 +785,7 @@ export default function Cryotherapy() {
 
   return (
     <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
-      <div className="flex justify-center mb-6">
+      <div className="flex justify-center mb-6 pt-4">
         <img
           src={america_cryo_logo}
           alt="America Cryo Logo"
