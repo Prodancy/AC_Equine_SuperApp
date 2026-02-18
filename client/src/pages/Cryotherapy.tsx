@@ -77,7 +77,6 @@ export default function Cryotherapy() {
       <div className="flex justify-center mb-6">
         <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto" />
       </div>
-      
       <div className="flex flex-col bg-card/30 backdrop-blur-md sticky top-0 z-50 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
         <div className="flex justify-between items-center py-4 px-4 md:px-8">
           <div className="flex items-center gap-4">
@@ -96,10 +95,7 @@ export default function Cryotherapy() {
         <div className="flex px-4 md:px-8">
           <button 
             onClick={() => setActiveTab("controls")}
-            className={cn(
-              "flex-1 py-3 text-xs font-black tracking-[0.2em] uppercase transition-all relative",
-              activeTab === "controls" ? "text-primary" : "text-gray-500 hover:text-gray-400"
-            )}
+            className="flex-1 py-3 tracking-[0.2em] uppercase transition-all relative text-primary text-[14px] font-black"
           >
             Controls
             {activeTab === "controls" && (
@@ -120,7 +116,6 @@ export default function Cryotherapy() {
           </button>
         </div>
       </div>
-
       <AnimatePresence mode="wait">
         {activeTab === "controls" ? (
           <motion.div 
