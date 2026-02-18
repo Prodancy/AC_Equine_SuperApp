@@ -649,7 +649,7 @@ export default function Cryotherapy() {
           <button
             onClick={() => setActiveTab("controls")}
             className={cn(
-              "flex-1 py-3 tracking-[0.2em] uppercase transition-all relative text-[14px] font-extrabold",
+              "flex-1 py-3 tracking-[0.2em] transition-all relative text-[14px] font-extrabold",
               activeTab === "controls"
                 ? "text-[#3D63DD]"
                 : "text-[#A9B3CE] hover:text-[#A9B3CE]/80",
@@ -666,7 +666,7 @@ export default function Cryotherapy() {
           <button
             onClick={() => setActiveTab("thermal")}
             className={cn(
-              "flex-1 py-3 tracking-[0.2em] uppercase transition-all relative text-[14px] font-extrabold",
+              "flex-1 py-3 tracking-[0.2em] transition-all relative text-[14px] font-extrabold",
               activeTab === "thermal"
                 ? "text-[#3D63DD]"
                 : "text-[#A9B3CE] hover:text-[#A9B3CE]/80",
