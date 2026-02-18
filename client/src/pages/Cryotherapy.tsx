@@ -86,6 +86,9 @@ export default function Cryotherapy() {
     const partProtocols = protocols.filter(p => p.bodyPart === selectedPart);
     if (partProtocols.length > 0) {
       setActiveProtocol(partProtocols[0].id);
+      setSelectedControl(null);
+      setIsNozzleExpanded(true);
+      setIsProtocolExpanded(false);
     }
   }, [selectedPart]);
 
@@ -135,15 +138,17 @@ export default function Cryotherapy() {
   const [selectedMassageNozzle, setSelectedMassageNozzle] = useState("small");
   const [flowRate, setFlowRate] = useState([50]);
 
-  const [isNozzleExpanded, setIsNozzleExpanded] = useState(false);
-  const [isProtocolExpanded, setIsProtocolExpanded] = useState(true);
-  const [selectedControl, setSelectedControl] = useState<string | null>("extra-soft");
+  const [isNozzleExpanded, setIsNozzleExpanded] = useState(true);
+  const [isProtocolExpanded, setIsProtocolExpanded] = useState(false);
+  const [selectedControl, setSelectedControl] = useState<string | null>(null);
 
   const handleSelection = (type: 'fog' | 'massage' | 'flow', id: string, value?: number) => {
     setSelectedControl(`${type}-${id}`);
     if (type === 'fog') setSelectedNozzle(id);
     if (type === 'massage') setSelectedMassageNozzle(id);
     if (type === 'flow' && value !== undefined) setFlowRate([value]);
+    setIsProtocolExpanded(true);
+    setIsNozzleExpanded(false);
   };
 
   return (
@@ -340,14 +345,23 @@ export default function Cryotherapy() {
         </div>
 
         {/* Protocol Selection Section */}
-        <div className="px-4 md:px-8 py-4 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5">
+        <div className={cn(
+          "px-4 md:px-8 py-4 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5 transition-all duration-300",
+          !selectedControl && "opacity-40 grayscale pointer-events-none"
+        )}>
           <button 
             onClick={() => setIsProtocolExpanded(!isProtocolExpanded)}
+            disabled={!selectedControl}
             className="w-full flex items-center justify-between py-2 group"
           >
-            <p className="uppercase tracking-[0.3em] text-[#A9B3CE] group-hover:text-white transition-colors text-[14px] font-bold text-left leading-tight">SET SESSION<br />DURATION</p>
+            <div className="flex flex-col items-start">
+              <p className="uppercase tracking-[0.3em] text-[#A9B3CE] group-hover:text-white transition-colors text-[14px] font-bold text-left leading-tight">SET SESSION<br />DURATION</p>
+              {!selectedControl && (
+                <span className="text-[8px] text-[#3D63DD] font-black uppercase tracking-widest mt-1 animate-pulse">Select nozzle first</span>
+              )}
+            </div>
             <div className="flex-1" />
-            {activeProtocol && (
+            {activeProtocol && selectedControl && (
               <span className="font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0 text-[12px]">
                 {protocols.find(p => p.id === activeProtocol)?.name === "CUSTOM" 
                   ? `CUSTOM (${formatTime(customTime)})` 
@@ -519,9 +533,13 @@ export default function Cryotherapy() {
             </div>
 
             <div className="space-y-4 md:space-y-6 order-2 md:order-1">
-              <div className="grid grid-cols-2 gap-3 md:gap-4">
+              <div className={cn(
+                "grid grid-cols-2 gap-3 md:gap-4 transition-all duration-300",
+                !selectedControl && "opacity-40 grayscale pointer-events-none"
+              )}>
                 <Button 
                   size="lg" 
+                  disabled={!selectedControl}
                   className={cn(
                     "h-20 text-xl rounded-2xl font-black uppercase tracking-widest transition-all active:scale-95", 
                     isPlaying ? "bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/20" : "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20"
