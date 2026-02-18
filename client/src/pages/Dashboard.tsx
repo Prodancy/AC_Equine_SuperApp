@@ -301,6 +301,57 @@ export default function Dashboard() {
           </CardContent>
         </Card>
       </div>
+      <Dialog open={isScheduleOpen} onOpenChange={setIsScheduleOpen}>
+        <DialogContent className="sm:max-w-md bg-card border-white/10">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-bold tracking-tight text-white">Schedule New Session</DialogTitle>
+            <DialogDescription className="text-gray-400">
+              Select a patient and treatment modality to schedule.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-6 py-4">
+            <div className="space-y-2">
+              <Label className="text-xs font-bold uppercase tracking-widest text-primary">Select Patient</Label>
+              <div className="grid grid-cols-2 gap-2">
+                {horses.map((horse) => (
+                  <Button
+                    key={horse}
+                    variant="outline"
+                    className={cn(
+                      "justify-start font-medium border-white/5 bg-white/5 hover:bg-white/10 text-white",
+                      selectedHorse === horse && "border-primary bg-primary/10 text-primary"
+                    )}
+                    onClick={() => setSelectedHorse(horse)}
+                  >
+                    <Horse className="w-4 h-4 mr-2" />
+                    {horse}
+                  </Button>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Label className="text-xs font-bold uppercase tracking-widest text-primary">Treatment Modality</Label>
+              <div className="grid grid-cols-2 gap-2">
+                {treatments.map((t) => (
+                  <Button
+                    key={t.id}
+                    variant="outline"
+                    className="justify-start font-medium border-white/5 bg-white/5 hover:bg-white/10 text-white"
+                  >
+                    <t.icon className={cn("w-4 h-4 mr-2", t.color)} />
+                    {t.label}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold tracking-wide h-12 rounded-xl" onClick={() => setIsScheduleOpen(false)}>
+              Confirm Schedule
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
