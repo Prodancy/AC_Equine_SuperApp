@@ -400,54 +400,38 @@ const protocols = [
     intensity: 60,
     temp: -110,
   },
-  // Hock
+  // Feet (Left/Right)
   {
-    id: "p_hock_maintenance",
+    id: "p_feet_hoof_wall",
     bodyPart: "hoof-front-left",
-    name: "Hock Maintenance",
+    name: "Hoof Wall",
     duration: 0.5,
     intensity: 90,
     temp: -160,
   },
   {
-    id: "p_hock_pain",
+    id: "p_feet_laminitis",
     bodyPart: "hoof-front-left",
-    name: "Hock Pain",
+    name: "Laminitis",
     duration: 0.75,
     intensity: 80,
     temp: -140,
   },
   {
-    id: "p_hock_articular",
+    id: "p_feet_navicular",
     bodyPart: "hoof-front-left",
-    name: "Chronic Articular Lesions",
+    name: "Coronary band / Navicular Bursa",
     duration: 1,
     intensity: 70,
     temp: -130,
   },
   {
-    id: "p_hock_djd",
+    id: "p_feet_sepsis",
     bodyPart: "hoof-front-left",
-    name: "Degenerative Joint Disease",
+    name: "Sepsis / Cellulitis",
     duration: 1.5,
     intensity: 60,
     temp: -115,
-  },
-  {
-    id: "p_hock_tendinitis",
-    bodyPart: "hoof-front-left",
-    name: "Acute Tendinitis / Sprain",
-    duration: 2,
-    intensity: 50,
-    temp: -100,
-  },
-  {
-    id: "p_hock_custom",
-    bodyPart: "hoof-front-left",
-    name: "Custom",
-    duration: 11,
-    intensity: 65,
-    temp: -120,
   },
 ];
 
@@ -505,7 +489,7 @@ export default function Cryotherapy() {
     if (part === "stifle") return "Stifle";
     if (part === "joint-hind") return "Stifle";
     if (part === "leg-front-right") return "Feet";
-    if (part === "hoof-front-left") return "Hock";
+    if (part === "hoof-front-left") return "Feet";
     return part.replace("-", " ");
   };
 
@@ -1164,7 +1148,7 @@ export default function Cryotherapy() {
                   { id: "leg-front-left", top: "80.2%", left: "39.1%" },
                   { id: "leg-front-right", top: "83.6%", left: "67.9%" },
                   { id: "stifle", top: "54.2%", left: "77.5%" },
-                  { id: "hoof-front-left", top: "50%", left: "73.5%" },
+                  { id: "hoof-front-left", top: "84.2%", left: "86.1%" },
                 ].map((spot) => (
                   <button
                     key={spot.id}
