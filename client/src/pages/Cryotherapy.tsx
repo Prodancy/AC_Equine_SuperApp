@@ -647,11 +647,56 @@ export default function Cryotherapy() {
                 ))}
               </div>
               
-              <div className="mt-8 text-center">
-                <h3 className="text-xl font-bold tracking-tight text-white uppercase mb-2">
-                  {selectedPart.replace('-', ' ')} Protocols
-                </h3>
-                <p className="text-[#A9B3CE] text-xs uppercase tracking-widest">Select a hotspot to view specialized protocols</p>
+              <div className="mt-8 w-full max-w-2xl">
+                <div className="text-center mb-6">
+                  <h3 className="text-xl font-bold tracking-tight text-white uppercase mb-2">
+                    {selectedPart.replace('-', ' ')} Protocols
+                  </h3>
+                  <p className="text-[#A9B3CE] text-xs uppercase tracking-widest">Select a protocol to begin treatment</p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {filteredProtocols.slice(0, 5).map((p) => (
+                    <button
+                      key={`protocol-mode-${p.id}`}
+                      onClick={() => {
+                        setActiveProtocol(p.id);
+                        setActiveTab("controls");
+                        setIsPlaying(true);
+                        toast({
+                          title: "Protocol Started",
+                          description: `Starting ${p.name} for ${selectedPart.replace('-', ' ')}`,
+                        });
+                      }}
+                      className={cn(
+                        "group relative p-4 rounded-2xl border transition-all duration-300 text-left overflow-hidden",
+                        activeProtocol === p.id 
+                          ? "bg-[#3D63DD]/20 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.2)]" 
+                          : "bg-white/5 border-white/10 hover:border-white/20 hover:bg-white/[0.07]"
+                      )}
+                    >
+                      <div className="relative z-10">
+                        <p className="text-[10px] font-black text-[#3D63DD] uppercase tracking-[0.2em] mb-1">
+                          {p.name === "CUSTOM" ? "Manual" : "Preset"}
+                        </p>
+                        <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-2">{p.name}</h4>
+                        <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-1">
+                            <Activity className="w-3 h-3 text-[#A9B3CE]" />
+                            <span className="text-[10px] text-[#A9B3CE] font-medium">{p.intensity}%</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Thermometer className="w-3 h-3 text-[#A9B3CE]" />
+                            <span className="text-[10px] text-[#A9B3CE] font-medium">{p.temp}°C</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-40 transition-opacity">
+                        <Play className="w-4 h-4 text-white fill-current" />
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
