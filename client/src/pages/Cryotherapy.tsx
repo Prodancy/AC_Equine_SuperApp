@@ -799,12 +799,7 @@ export default function Cryotherapy() {
         <div className="flex px-4 md:px-8">
           <button
             onClick={() => setActiveTab("controls")}
-            className={cn(
-              "flex-1 py-3 tracking-[0.2em] transition-all relative text-[14px] font-extrabold",
-              activeTab === "controls"
-                ? "text-[#3D63DD]"
-                : "text-[#A9B3CE] hover:text-[#A9B3CE]/80",
-            )}
+            className="flex-1 py-3 tracking-[0.2em] transition-all relative text-[#3D63DD] font-semibold text-[18px]"
           >
             Manual Mode
             {activeTab === "controls" && (
