@@ -1,4 +1,4 @@
-import horse_anatomy from "@/assets/image_1771420930643.png";
+import horse_anatomy from "@/assets/image_1771412948862.png";
 import america_cryo_logo from "@/assets/logo-official.png";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
