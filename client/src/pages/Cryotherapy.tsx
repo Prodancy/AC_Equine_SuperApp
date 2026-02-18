@@ -73,6 +73,9 @@ export default function Cryotherapy() {
 
   const [activeTab, setActiveTab] = useState("controls");
   const [selectedNozzle, setSelectedNozzle] = useState("small");
+  const [fogNozzle, setFogNozzle] = useState(false);
+  const [massageNozzle, setMassageNozzle] = useState(false);
+  const [flowRate, setFlowRate] = useState([50]);
 
   const nozzles = [
     { id: "small", name: "Small", description: "Precision cooling" },
@@ -128,40 +131,81 @@ export default function Cryotherapy() {
         </div>
 
         {/* Nozzle Selection Section */}
-        <div className="px-4 md:px-8 py-6 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5">
-          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#A9B3CE] mb-4">Select Nozzle Type</p>
-          <div className="flex gap-3">
-            {nozzles.map((nozzle) => (
-              <button
-                key={nozzle.id}
-                onClick={() => setSelectedNozzle(nozzle.id)}
-                className={cn(
-                  "flex-1 group relative transition-all duration-300 active:scale-95",
-                  selectedNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60"
-                )}
-              >
-                <div className={cn(
-                  "h-20 rounded-2xl flex flex-col items-center justify-center gap-1 border transition-all duration-300",
-                  selectedNozzle === nozzle.id 
-                    ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
-                    : "bg-white/5 border-white/10 hover:border-white/20"
-                )}>
-                  <span className={cn(
-                    "text-xs font-black uppercase tracking-widest",
-                    selectedNozzle === nozzle.id ? "text-[#3D63DD]" : "text-[#A9B3CE]"
+        <div className="px-4 md:px-8 py-6 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5 space-y-6">
+          <div>
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#A9B3CE] mb-4">Select Nozzle Type</p>
+            <div className="flex gap-3">
+              {nozzles.map((nozzle) => (
+                <button
+                  key={nozzle.id}
+                  onClick={() => setSelectedNozzle(nozzle.id)}
+                  className={cn(
+                    "flex-1 group relative transition-all duration-300 active:scale-95",
+                    selectedNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60"
+                  )}
+                >
+                  <div className={cn(
+                    "h-20 rounded-2xl flex flex-col items-center justify-center gap-1 border transition-all duration-300",
+                    selectedNozzle === nozzle.id 
+                      ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                      : "bg-white/5 border-white/10 hover:border-white/20"
                   )}>
-                    {nozzle.name}
-                  </span>
-                  <span className="text-[8px] font-bold text-[#A9B3CE]/50 uppercase tracking-tighter">{nozzle.description}</span>
-                </div>
-                {selectedNozzle === nozzle.id && (
-                  <motion.div 
-                    layoutId="selected-nozzle-glow"
-                    className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
-                  />
-                )}
-              </button>
-            ))}
+                    <span className={cn(
+                      "text-xs font-black uppercase tracking-widest",
+                      selectedNozzle === nozzle.id ? "text-[#3D63DD]" : "text-[#A9B3CE]"
+                    )}>
+                      {nozzle.name}
+                    </span>
+                    <span className="text-[8px] font-bold text-[#A9B3CE]/50 uppercase tracking-tighter">{nozzle.description}</span>
+                  </div>
+                  {selectedNozzle === nozzle.id && (
+                    <motion.div 
+                      layoutId="selected-nozzle-glow"
+                      className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <button
+              onClick={() => setFogNozzle(!fogNozzle)}
+              className={cn(
+                "h-16 rounded-2xl flex items-center justify-center border transition-all duration-300 active:scale-95",
+                fogNozzle 
+                  ? "bg-[#3D63DD]/10 border-[#3D63DD] text-[#3D63DD] shadow-[0_0_15px_rgba(61,99,221,0.1)]" 
+                  : "bg-white/5 border-white/10 text-[#A9B3CE] hover:border-white/20"
+              )}
+            >
+              <span className="text-xs font-black uppercase tracking-widest">Fog Nozzle</span>
+            </button>
+            <button
+              onClick={() => setMassageNozzle(!massageNozzle)}
+              className={cn(
+                "h-16 rounded-2xl flex items-center justify-center border transition-all duration-300 active:scale-95",
+                massageNozzle 
+                  ? "bg-[#3D63DD]/10 border-[#3D63DD] text-[#3D63DD] shadow-[0_0_15px_rgba(61,99,221,0.1)]" 
+                  : "bg-white/5 border-white/10 text-[#A9B3CE] hover:border-white/20"
+              )}
+            >
+              <span className="text-xs font-black uppercase tracking-widest">Massage Nozzle</span>
+            </button>
+          </div>
+
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#A9B3CE]">Flow Rate</p>
+              <span className="text-xs font-bold text-[#3D63DD] tabular-nums">{flowRate[0]}%</span>
+            </div>
+            <Slider 
+              value={flowRate} 
+              onValueChange={setFlowRate} 
+              max={100} 
+              step={1} 
+              className="py-2" 
+            />
           </div>
         </div>
       </div>
