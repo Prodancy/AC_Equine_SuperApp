@@ -676,9 +676,6 @@ export default function Cryotherapy() {
                       )}
                     >
                       <div className="relative z-10">
-                        <p className="text-[10px] font-black text-[#3D63DD] uppercase tracking-[0.2em] mb-1">
-                          {p.name === "CUSTOM" ? "Manual" : "Preset"}
-                        </p>
                         <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-2">{p.name}</h4>
                         <div className="flex items-center gap-3">
                           <div className="flex items-center gap-1">
