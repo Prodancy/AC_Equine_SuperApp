@@ -346,7 +346,7 @@ const protocols = [
   },
   {
     id: "p1_joint",
-    bodyPart: "joint-hind",
+    bodyPart: "stifle",
     name: "Stifle Maintenance",
     duration: 0.5,
     intensity: 80,
@@ -354,7 +354,7 @@ const protocols = [
   },
   {
     id: "p25_joint",
-    bodyPart: "joint-hind",
+    bodyPart: "stifle",
     name: "Acute Tendinitis / Sprain",
     duration: 2,
     intensity: 45,
@@ -362,7 +362,7 @@ const protocols = [
   },
   {
     id: "p_joint_rupture",
-    bodyPart: "joint-hind",
+    bodyPart: "stifle",
     name: "Muscle / Tendon Rupture",
     duration: 3,
     intensity: 50,
@@ -370,7 +370,7 @@ const protocols = [
   },
   {
     id: "p4_joint",
-    bodyPart: "joint-hind",
+    bodyPart: "stifle",
     name: "Degenerative Joint Disease",
     duration: 1.5,
     intensity: 50,
@@ -378,7 +378,7 @@ const protocols = [
   },
   {
     id: "p_joint_post_op_early",
-    bodyPart: "joint-hind",
+    bodyPart: "stifle",
     name: "Post Operative (Early)",
     duration: 0.75,
     intensity: 70,
@@ -386,7 +386,7 @@ const protocols = [
   },
   {
     id: "p_joint_post_op_healing",
-    bodyPart: "joint-hind",
+    bodyPart: "stifle",
     name: "Post Operative (Healing)",
     duration: 1,
     intensity: 60,
@@ -394,7 +394,7 @@ const protocols = [
   },
   {
     id: "p3_joint",
-    bodyPart: "joint-hind",
+    bodyPart: "stifle",
     name: "Chronic Articular Lesions",
     duration: 1,
     intensity: 60,
@@ -501,6 +501,7 @@ export default function Cryotherapy() {
 
   const getPartLabel = (part: string) => {
     if (part === "leg-front-left") return "Fetlock";
+    if (part === "stifle") return "Stifle";
     if (part === "joint-hind") return "Stifle";
     if (part === "leg-front-right") return "Feet";
     return part.replace("-", " ");
@@ -1160,8 +1161,8 @@ export default function Cryotherapy() {
                   { id: "hip", top: "34.8%", left: "78.4%" },
                   { id: "leg-front-left", top: "80.2%", left: "39.1%" },
                   { id: "leg-front-right", top: "83.6%", left: "67.9%" },
-                  { id: "joint-hind", top: "54.2%", left: "77.5%" },
-                  { id: "hoof-front-left", top: "84.2%", left: "86.1%" },
+                  { id: "stifle", top: "54.2%", left: "77.5%" },
+                  { id: "hoof-front-left", top: "79.2%", left: "86.1%" },
                 ].map((spot) => (
                   <button
                     key={spot.id}
