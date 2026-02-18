@@ -631,8 +631,9 @@ export default function Cryotherapy() {
 
   if (showSession) {
     return (
-      <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
-        <div className="flex justify-between items-center mb-8">
+      <div className="fixed inset-0 z-[100] bg-[#030712] p-4 md:p-8 overflow-y-auto">
+        <div className="max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
+          <div className="flex justify-between items-center mb-8">
           <Button 
             variant="ghost" 
             onClick={() => setShowSession(false)}
