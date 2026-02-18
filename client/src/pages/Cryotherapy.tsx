@@ -400,24 +400,25 @@ const protocols = [
     intensity: 60,
     temp: -110,
   },
+  // Hock
   {
-    id: "p21",
+    id: "p_hock_maintenance",
     bodyPart: "hoof-front-left",
-    name: "Hoof Maintenance",
+    name: "Hock Maintenance",
     duration: 0.5,
     intensity: 90,
     temp: -160,
   },
   {
-    id: "p22",
+    id: "p_hock_pain",
     bodyPart: "hoof-front-left",
-    name: "Hoof Pain",
+    name: "Hock Pain",
     duration: 0.75,
     intensity: 80,
     temp: -140,
   },
   {
-    id: "p23",
+    id: "p_hock_articular",
     bodyPart: "hoof-front-left",
     name: "Chronic Articular Lesions",
     duration: 1,
@@ -425,7 +426,7 @@ const protocols = [
     temp: -130,
   },
   {
-    id: "p24",
+    id: "p_hock_djd",
     bodyPart: "hoof-front-left",
     name: "Degenerative Joint Disease",
     duration: 1.5,
@@ -433,7 +434,7 @@ const protocols = [
     temp: -115,
   },
   {
-    id: "p35",
+    id: "p_hock_tendinitis",
     bodyPart: "hoof-front-left",
     name: "Acute Tendinitis / Sprain",
     duration: 2,
@@ -441,7 +442,7 @@ const protocols = [
     temp: -100,
   },
   {
-    id: "p36",
+    id: "p_hock_custom",
     bodyPart: "hoof-front-left",
     name: "Custom",
     duration: 11,
@@ -504,6 +505,7 @@ export default function Cryotherapy() {
     if (part === "stifle") return "Stifle";
     if (part === "joint-hind") return "Stifle";
     if (part === "leg-front-right") return "Feet";
+    if (part === "hoof-front-left") return "Hock";
     return part.replace("-", " ");
   };
 
@@ -1162,7 +1164,7 @@ export default function Cryotherapy() {
                   { id: "leg-front-left", top: "80.2%", left: "39.1%" },
                   { id: "leg-front-right", top: "83.6%", left: "67.9%" },
                   { id: "stifle", top: "54.2%", left: "77.5%" },
-                  { id: "hoof-front-left", top: "79.2%", left: "86.1%" },
+                  { id: "hoof-front-left", top: "50%", left: "73.5%" },
                 ].map((spot) => (
                   <button
                     key={spot.id}
