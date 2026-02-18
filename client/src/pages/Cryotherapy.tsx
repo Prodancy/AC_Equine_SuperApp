@@ -1247,9 +1247,6 @@ export default function Cryotherapy() {
                           className="bg-transparent border-none outline-none text-white font-bold text-sm capitalize tracking-wider w-full focus:ring-0 p-0"
                         />
                       </div>
-                      <div className="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-40 transition-opacity">
-                        <Play className="w-4 h-4 text-white fill-current" />
-                      </div>
                     </div>
                   ))}
                 </div>
