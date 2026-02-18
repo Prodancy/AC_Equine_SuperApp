@@ -714,58 +714,58 @@ export default function Cryotherapy() {
           </div>
 
           <div className="space-y-6 order-2 md:order-1">
-            <div className="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6">
-              <h3 className="text-[#A9B3CE] uppercase tracking-[0.2em] text-[12px] font-bold mb-4">Session Details</h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center py-2 border-b border-white/5">
-                  <span className="text-[#A9B3CE]/60 text-sm">Treatment Site</span>
-                  <span className="text-white font-bold">{getPartLabel(selectedPart)}</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-white/5">
-                  <span className="text-[#A9B3CE]/60 text-sm">Protocol</span>
-                  <span className="text-white font-bold">{currentProtocol.name}</span>
-                </div>
-                {selectedControl && (
-                  <div className="flex justify-between items-center py-2 border-b border-white/5">
-                    <span className="text-[#A9B3CE]/60 text-sm">Nozzle</span>
-                    <span className="text-[#3D63DD] font-bold uppercase text-xs">
-                      {selectedControl.split('-')[1]}
-                    </span>
-                  </div>
-                )}
+          <div className="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6">
+            <h3 className="text-[#A9B3CE] tracking-[0.2em] text-[12px] font-bold mb-4">Session Details</h3>
+            <div className="space-y-4">
+              <div className="flex justify-between items-center py-2 border-b border-white/5">
+                <span className="text-[#A9B3CE]/60 text-sm">Treatment Site</span>
+                <span className="text-white font-bold">{getPartLabel(selectedPart)}</span>
               </div>
+              <div className="flex justify-between items-center py-2 border-b border-white/5">
+                <span className="text-[#A9B3CE]/60 text-sm">Protocol</span>
+                <span className="text-white font-bold">{currentProtocol.name}</span>
+              </div>
+              {selectedControl && (
+                <div className="flex justify-between items-center py-2 border-b border-white/5">
+                  <span className="text-[#A9B3CE]/60 text-sm">Nozzle</span>
+                  <span className="text-[#3D63DD] font-bold text-xs">
+                    {selectedControl.split('-')[1]}
+                  </span>
+                </div>
+              )}
             </div>
+          </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <Button
-                size="lg"
-                className={cn(
-                  "h-20 text-xl rounded-2xl font-black uppercase tracking-widest transition-all active:scale-95",
-                  isPlaying
-                    ? "bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/20"
-                    : "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20",
-                )}
-                onClick={() => setIsPlaying(!isPlaying)}
-              >
-                {isPlaying ? (
-                  <Pause className="w-8 h-8 mr-2 fill-current" />
-                ) : (
-                  <Play className="w-8 h-8 mr-2 fill-current" />
-                )}
-                {isPlaying ? "Pause" : "Resume"}
-              </Button>
-              <Button
-                size="lg"
-                variant="destructive"
-                className="h-20 text-xl rounded-2xl font-black uppercase tracking-widest bg-red-500/20 border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white transition-all active:scale-95"
-                onClick={() => {
-                  setIsPlaying(false);
-                  setShowSession(false);
-                }}
-              >
-                <Square className="w-8 h-8 mr-2 fill-current" />
-                End
-              </Button>
+                <Button
+                  size="lg"
+                  className={cn(
+                    "h-20 text-xl rounded-2xl font-black tracking-widest transition-all active:scale-95",
+                    isPlaying
+                      ? "bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/20"
+                      : "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20",
+                  )}
+                  onClick={() => setIsPlaying(!isPlaying)}
+                >
+                  {isPlaying ? (
+                    <Pause className="w-8 h-8 mr-2 fill-current" />
+                  ) : (
+                    <Play className="w-8 h-8 mr-2 fill-current" />
+                  )}
+                  {isPlaying ? "Pause" : "Resume"}
+                </Button>
+                <Button
+                  size="lg"
+                  variant="destructive"
+                  className="h-20 text-xl rounded-2xl font-black tracking-widest bg-red-500/20 border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white transition-all active:scale-95"
+                  onClick={() => {
+                    setIsPlaying(false);
+                    setShowSession(false);
+                  }}
+                >
+                  <Square className="w-8 h-8 mr-2 fill-current" />
+                  End
+                </Button>
             </div>
           </div>
         </div>
@@ -840,17 +840,17 @@ export default function Cryotherapy() {
               onClick={() => setIsNozzleExpanded(!isNozzleExpanded)}
               className="w-full flex items-center justify-between py-2 group"
             >
-              <p className="uppercase tracking-[0.3em] text-[#A9B3CE] text-[14px] group-hover:text-white transition-colors font-bold leading-tight text-left">
-                SELECT
-                <br />
-                NOZZLE TYPE
-              </p>
+                <p className="tracking-[0.3em] text-[#A9B3CE] text-[14px] group-hover:text-white transition-colors font-bold leading-tight text-left">
+                  Select
+                  <br />
+                  Nozzle Type
+                </p>
               <div className="flex-1" />
               {selectedControl && (
-                <span className="font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0 text-[12px]">
+                <span className="font-bold text-[#3D63DD] tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0 text-[12px]">
                   {selectedControl
                     .split("-")
-                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
                     .join(" ")}
                 </span>
               )}
@@ -874,7 +874,7 @@ export default function Cryotherapy() {
                 >
                   <div className="pt-6 space-y-6">
                     <div>
-                      <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">
+                      <p className="font-medium text-[#A9B3CE]/40 tracking-widest mb-4 text-[14px]">
                         Fog Nozzle
                       </p>
                       <div className="grid grid-cols-2 gap-3 mb-6">
@@ -911,7 +911,7 @@ export default function Cryotherapy() {
                                   className="w-full h-full object-contain filter brightness-110 contrast-110"
                                 />
                               </div>
-                              <span className="uppercase tracking-widest text-[#ffffff] text-[14px] font-medium">
+                              <span className="tracking-widest text-[#ffffff] text-[14px] font-medium">
                                 {nozzle.name}
                               </span>
                             </div>
@@ -919,7 +919,7 @@ export default function Cryotherapy() {
                         ))}
                       </div>
 
-                      <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">
+                      <p className="font-medium text-[#A9B3CE]/40 tracking-widest mb-4 text-[14px]">
                         Massage Nozzle
                       </p>
                       <div className="grid grid-cols-2 gap-3 mb-6">
@@ -970,7 +970,7 @@ export default function Cryotherapy() {
                                   className="w-full h-full object-contain filter brightness-110 contrast-110"
                                 />
                               </div>
-                              <span className="uppercase tracking-widest text-[#ffffff] text-[14px] font-medium">
+                              <span className="tracking-widest text-[#ffffff] text-[14px] font-medium">
                                 {nozzle.name}
                               </span>
                             </div>
@@ -978,7 +978,7 @@ export default function Cryotherapy() {
                         ))}
                       </div>
 
-                      <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">
+                      <p className="font-medium text-[#A9B3CE]/40 tracking-widest mb-4 text-[14px]">
                         Flow Rates
                       </p>
                       <div className="grid grid-cols-2 gap-3 mb-6">
@@ -1048,10 +1048,10 @@ export default function Cryotherapy() {
               className="w-full flex items-center justify-between py-2 group"
             >
               <div className="flex flex-col items-start">
-                <p className="uppercase tracking-[0.3em] text-[#A9B3CE] group-hover:text-white transition-colors text-[14px] font-bold text-left leading-tight">
-                  SET SESSION
+                <p className="tracking-[0.3em] text-[#A9B3CE] group-hover:text-white transition-colors text-[14px] font-bold text-left leading-tight">
+                  Set Session
                   <br />
-                  DURATION
+                  Duration
                 </p>
                 {!selectedControl && (
                   <span className="text-[8px] text-[#3D63DD] font-black uppercase tracking-widest mt-1 animate-pulse">
@@ -1060,14 +1060,12 @@ export default function Cryotherapy() {
                 )}
               </div>
               <div className="flex-1" />
-              {activeProtocol && selectedControl && (
-                <span className="font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0 text-[12px]">
+                <span className="font-bold text-[#3D63DD] tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0 text-[12px]">
                   {protocols.find((p) => p.id === activeProtocol)?.name ===
-                  "CUSTOM"
-                    ? `CUSTOM (${formatTime(customTime)})`
+                  "Custom"
+                    ? `Custom (${formatTime(customTime)})`
                     : protocols.find((p) => p.id === activeProtocol)?.name}
                 </span>
-              )}
               <motion.div
                 animate={{ rotate: isProtocolExpanded ? 180 : 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -1112,9 +1110,9 @@ export default function Cryotherapy() {
                                   : "bg-white/5 border-white/10 hover:border-white/20",
                               )}
                             >
-                              <p className="uppercase tracking-tight text-[13px] font-bold text-white">
-                                {p.name}
-                              </p>
+                            <p className="tracking-tight text-[13px] font-bold text-white">
+                              {p.name}
+                            </p>
                             </div>
                           </div>
                       ))}
@@ -1160,7 +1158,7 @@ export default function Cryotherapy() {
                               >
                                 <ChevronDown className="w-8 h-8" />
                               </button>
-                              <span className="font-black uppercase tracking-[0.2em] text-[#A9B3CE] mt-1 text-[14px]">
+                              <span className="font-black tracking-[0.2em] text-[#A9B3CE] mt-1 text-[14px]">
                                 mins
                               </span>
                             </div>
@@ -1203,7 +1201,7 @@ export default function Cryotherapy() {
                               >
                                 <ChevronDown className="w-8 h-8" />
                               </button>
-                              <span className="font-black uppercase tracking-[0.2em] text-[#A9B3CE] mt-1 text-[14px]">
+                              <span className="font-black tracking-[0.2em] text-[#A9B3CE] mt-1 text-[14px]">
                                 sec
                               </span>
                             </div>
