@@ -1,4 +1,4 @@
-import horse_anatomy from "@/assets/image_1771412948862.png";
+import horse_anatomy from "@assets/image_1771421514875.png";
 import america_cryo_logo from "@/assets/logo-official.png";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -605,12 +605,12 @@ export default function Cryotherapy() {
                 
                 {/* Hotspots matched to image with precise orange glowing points */}
                 {[
-                  { id: "head", top: "29%", left: "8.5%" },
+                  { id: "head", top: "30.5%", left: "8.5%" },
                   { id: "neck", top: "28.8%", left: "25.2%" },
                   { id: "shoulder", top: "41.1%", left: "34.2%" },
                   { id: "back-left", top: "32.8%", left: "54.7%" },
                   { id: "back-right", top: "34.8%", left: "78.4%" },
-                  { id: "leg-front-left", top: "79.2%", left: "39.1%" },
+                  { id: "leg-front-left", top: "80.2%", left: "39.1%" },
                   { id: "leg-front-right", top: "83.6%", left: "67.9%" },
                   { id: "joint-hind", top: "54.2%", left: "77.5%" },
                   { id: "hoof-front-left", top: "84.2%", left: "86.1%" },
