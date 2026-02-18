@@ -549,6 +549,7 @@ export default function Cryotherapy() {
 
   const getPartLabel = (part: string) => {
     if (part === "leg-front-left") return "Fetlock";
+    if (part === "joint-hind") return "Stifle";
     return part.replace("-", " ");
   };
 
