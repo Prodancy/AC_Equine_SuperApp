@@ -292,31 +292,6 @@ export default function Cryotherapy() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <button
-              onClick={() => setFogNozzle(!fogNozzle)}
-              className={cn(
-                "h-16 rounded-2xl flex items-center justify-center border transition-all duration-300 active:scale-95",
-                fogNozzle 
-                  ? "bg-[#3D63DD]/10 border-[#3D63DD] text-[#3D63DD] shadow-[0_0_15px_rgba(61,99,221,0.1)]" 
-                  : "bg-white/5 border-white/10 text-[#A9B3CE] hover:border-white/20"
-              )}
-            >
-              <span className="text-xs font-black uppercase tracking-widest">Fog Nozzle</span>
-            </button>
-            <button
-              onClick={() => setMassageNozzle(!massageNozzle)}
-              className={cn(
-                "h-16 rounded-2xl flex items-center justify-center border transition-all duration-300 active:scale-95",
-                massageNozzle 
-                  ? "bg-[#3D63DD]/10 border-[#3D63DD] text-[#3D63DD] shadow-[0_0_15px_rgba(61,99,221,0.1)]" 
-                  : "bg-white/5 border-white/10 text-[#A9B3CE] hover:border-white/20"
-              )}
-            >
-              <span className="text-xs font-black uppercase tracking-widest">Massage Nozzle</span>
-            </button>
-          </div>
-
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#A9B3CE]">Flow Rate</p>
