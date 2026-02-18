@@ -215,7 +215,7 @@ export default function Cryotherapy() {
               ))}
             </div>
 
-            <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Massage Nozzle</p>
+            <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Flow Rates</p>
             <div className="flex gap-3 mb-6">
               {nozzles.map((nozzle) => (
                 <button
