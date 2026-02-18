@@ -399,22 +399,75 @@ export default function Cryotherapy() {
 
                     <div className="space-y-4">
                       {currentProtocol.name === "CUSTOM" && (
-                        <div className="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
-                          <div className="flex justify-between items-center">
-                            <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Custom Duration</span>
-                            <span className="text-primary font-bold">{formatTime(customTime)}</span>
+                        <div className="bg-[#0a0f1d] border border-white/10 rounded-2xl p-6 flex flex-col items-center space-y-6">
+                          <div className="flex items-center justify-center gap-8">
+                            {/* Minutes Column */}
+                            <div className="flex flex-col items-center gap-1">
+                              <button 
+                                onClick={() => {
+                                  const mins = Math.floor(customTime / 60);
+                                  const secs = customTime % 60;
+                                  if (mins < 4) setCustomTime(Math.min(240, (mins + 1) * 60 + secs));
+                                }}
+                                className="text-white/20 hover:text-white/60 transition-colors p-1"
+                              >
+                                <ChevronDown className="w-8 h-8 rotate-180" />
+                              </button>
+                              <div className="w-20 h-28 bg-[#3D63DD]/10 border border-[#3D63DD]/30 rounded-2xl flex items-center justify-center relative overflow-hidden group">
+                                <div className="absolute inset-0 bg-gradient-to-b from-[#3D63DD]/5 via-transparent to-[#3D63DD]/5 pointer-events-none" />
+                                <span className="text-5xl font-black text-white tabular-nums tracking-tighter">
+                                  {Math.floor(customTime / 60).toString().padStart(2, '0')}
+                                </span>
+                              </div>
+                              <button 
+                                onClick={() => {
+                                  const mins = Math.floor(customTime / 60);
+                                  const secs = customTime % 60;
+                                  if (mins > 2) setCustomTime(Math.max(120, (mins - 1) * 60 + secs));
+                                }}
+                                className="text-white/20 hover:text-white/60 transition-colors p-1"
+                              >
+                                <ChevronDown className="w-8 h-8" />
+                              </button>
+                              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#A9B3CE] mt-1">mins</span>
+                            </div>
+
+                            {/* Divider */}
+                            <div className="flex flex-col gap-3 py-10">
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD]" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD]" />
+                            </div>
+
+                            {/* Seconds Column */}
+                            <div className="flex flex-col items-center gap-1">
+                              <button 
+                                onClick={() => {
+                                  if (customTime < 240) setCustomTime(Math.min(240, customTime + 1));
+                                }}
+                                className="text-white/20 hover:text-white/60 transition-colors p-1"
+                              >
+                                <ChevronDown className="w-8 h-8 rotate-180" />
+                              </button>
+                              <div className="w-20 h-28 bg-[#3D63DD]/10 border border-[#3D63DD]/30 rounded-2xl flex items-center justify-center relative overflow-hidden group">
+                                <div className="absolute inset-0 bg-gradient-to-b from-[#3D63DD]/5 via-transparent to-[#3D63DD]/5 pointer-events-none" />
+                                <span className="text-5xl font-black text-white tabular-nums tracking-tighter">
+                                  {(customTime % 60).toString().padStart(2, '0')}
+                                </span>
+                              </div>
+                              <button 
+                                onClick={() => {
+                                  if (customTime > 120) setCustomTime(Math.max(120, customTime - 1));
+                                }}
+                                className="text-white/20 hover:text-white/60 transition-colors p-1"
+                              >
+                                <ChevronDown className="w-8 h-8" />
+                              </button>
+                              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#A9B3CE] mt-1">sec</span>
+                            </div>
                           </div>
-                          <Slider 
-                            value={[customTime]} 
-                            onValueChange={(val) => setCustomTime(val[0])} 
-                            min={120} 
-                            max={240} 
-                            step={1} 
-                            className="py-2" 
-                          />
-                          <div className="flex justify-between text-[8px] text-gray-500 font-bold uppercase tracking-tighter">
-                            <span>2:00</span>
-                            <span>4:00</span>
+                          <div className="flex justify-between w-full px-2 text-[10px] text-[#A9B3CE]/40 font-black uppercase tracking-widest">
+                            <span>MIN 2:00</span>
+                            <span>MAX 4:00</span>
                           </div>
                         </div>
                       )}
@@ -489,22 +542,75 @@ export default function Cryotherapy() {
                   <div className="pt-2 space-y-6">
                     <div className="space-y-4">
                       {currentProtocol.name === "CUSTOM" && (
-                        <div className="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
-                          <div className="flex justify-between items-center">
-                            <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Custom Duration</span>
-                            <span className="text-primary font-bold">{formatTime(customTime)}</span>
+                        <div className="bg-[#0a0f1d] border border-white/10 rounded-2xl p-6 flex flex-col items-center space-y-6">
+                          <div className="flex items-center justify-center gap-8">
+                            {/* Minutes Column */}
+                            <div className="flex flex-col items-center gap-1">
+                              <button 
+                                onClick={() => {
+                                  const mins = Math.floor(customTime / 60);
+                                  const secs = customTime % 60;
+                                  if (mins < 4) setCustomTime(Math.min(240, (mins + 1) * 60 + secs));
+                                }}
+                                className="text-white/20 hover:text-white/60 transition-colors p-1"
+                              >
+                                <ChevronDown className="w-8 h-8 rotate-180" />
+                              </button>
+                              <div className="w-20 h-28 bg-[#3D63DD]/10 border border-[#3D63DD]/30 rounded-2xl flex items-center justify-center relative overflow-hidden group">
+                                <div className="absolute inset-0 bg-gradient-to-b from-[#3D63DD]/5 via-transparent to-[#3D63DD]/5 pointer-events-none" />
+                                <span className="text-5xl font-black text-white tabular-nums tracking-tighter">
+                                  {Math.floor(customTime / 60).toString().padStart(2, '0')}
+                                </span>
+                              </div>
+                              <button 
+                                onClick={() => {
+                                  const mins = Math.floor(customTime / 60);
+                                  const secs = customTime % 60;
+                                  if (mins > 2) setCustomTime(Math.max(120, (mins - 1) * 60 + secs));
+                                }}
+                                className="text-white/20 hover:text-white/60 transition-colors p-1"
+                              >
+                                <ChevronDown className="w-8 h-8" />
+                              </button>
+                              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#A9B3CE] mt-1">mins</span>
+                            </div>
+
+                            {/* Divider */}
+                            <div className="flex flex-col gap-3 py-10">
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD]" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD]" />
+                            </div>
+
+                            {/* Seconds Column */}
+                            <div className="flex flex-col items-center gap-1">
+                              <button 
+                                onClick={() => {
+                                  if (customTime < 240) setCustomTime(Math.min(240, customTime + 1));
+                                }}
+                                className="text-white/20 hover:text-white/60 transition-colors p-1"
+                              >
+                                <ChevronDown className="w-8 h-8 rotate-180" />
+                              </button>
+                              <div className="w-20 h-28 bg-[#3D63DD]/10 border border-[#3D63DD]/30 rounded-2xl flex items-center justify-center relative overflow-hidden group">
+                                <div className="absolute inset-0 bg-gradient-to-b from-[#3D63DD]/5 via-transparent to-[#3D63DD]/5 pointer-events-none" />
+                                <span className="text-5xl font-black text-white tabular-nums tracking-tighter">
+                                  {(customTime % 60).toString().padStart(2, '0')}
+                                </span>
+                              </div>
+                              <button 
+                                onClick={() => {
+                                  if (customTime > 120) setCustomTime(Math.max(120, customTime - 1));
+                                }}
+                                className="text-white/20 hover:text-white/60 transition-colors p-1"
+                              >
+                                <ChevronDown className="w-8 h-8" />
+                              </button>
+                              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#A9B3CE] mt-1">sec</span>
+                            </div>
                           </div>
-                          <Slider 
-                            value={[customTime]} 
-                            onValueChange={(val) => setCustomTime(val[0])} 
-                            min={120} 
-                            max={240} 
-                            step={1} 
-                            className="py-2" 
-                          />
-                          <div className="flex justify-between text-[8px] text-gray-500 font-bold uppercase tracking-tighter">
-                            <span>2:00</span>
-                            <span>4:00</span>
+                          <div className="flex justify-between w-full px-2 text-[10px] text-[#A9B3CE]/40 font-black uppercase tracking-widest">
+                            <span>MIN 2:00</span>
+                            <span>MAX 4:00</span>
                           </div>
                         </div>
                       )}
