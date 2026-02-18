@@ -337,7 +337,6 @@ export default function Cryotherapy() {
                 className="overflow-hidden"
               >
                   <div className="pb-4">
-                    <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Select Protocol</p>
                     <div className="grid grid-cols-2 gap-3 mb-6">
                       {protocols.map((p) => (
                         <button
