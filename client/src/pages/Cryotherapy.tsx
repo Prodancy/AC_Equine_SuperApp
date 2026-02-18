@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Play, Pause, Square, Thermometer, Bluetooth, Activity, Zap, ChevronLeft } from "lucide-react";
+import { Horse } from "@/components/icons/Horse";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
