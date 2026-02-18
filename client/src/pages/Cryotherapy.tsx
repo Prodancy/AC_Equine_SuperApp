@@ -353,9 +353,9 @@ export default function Cryotherapy() {
                               ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
                               : "bg-white/5 border-white/10 hover:border-white/20"
                           )}>
-                            <span className="uppercase tracking-tight text-[13px] font-bold text-white">
+                            <p className="uppercase tracking-tight text-[13px] font-bold text-white">
                               {p.name}
-                            </span>
+                            </p>
                           </div>
                         </button>
                       ))}
