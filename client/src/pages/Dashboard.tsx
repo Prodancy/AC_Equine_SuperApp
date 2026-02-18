@@ -192,26 +192,6 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Device Status Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Card className="bg-white/5 border-white/10 backdrop-blur-md overflow-hidden">
-              <CardContent className="p-6 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-orange-400/10 flex items-center justify-center">
-                    <Activity className="w-6 h-6 text-orange-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-sm">Thermal Status</h3>
-                    <p className="text-[10px] text-orange-400 font-bold tracking-widest uppercase">Ready</p>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <p className="text-[10px] text-gray-500 font-bold uppercase">Ambient Temp</p>
-                  <p className="text-sm font-bold">72°F</p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
         </div>
 
         {/* Sidebar Column */}
