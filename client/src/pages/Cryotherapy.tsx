@@ -135,7 +135,7 @@ export default function Cryotherapy() {
         <div className="px-4 md:px-8 py-6 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5 space-y-6">
           <div>
             <p className="font-black uppercase tracking-[0.3em] text-[#A9B3CE] mb-4 text-[14px]">Select Nozzle Type</p>
-            <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Choose the appropriate nozzle for the treatment area</p>
+            <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Fog Nozzle</p>
             <div className="flex gap-3">
               {nozzles.map((nozzle) => (
                 <button
