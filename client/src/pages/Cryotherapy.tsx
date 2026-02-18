@@ -216,39 +216,29 @@ export default function Cryotherapy() {
             </div>
 
             <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Flow Rates</p>
-            <div className="flex gap-3 mb-6">
-              {nozzles.map((nozzle) => (
+            <div className="grid grid-cols-3 gap-3 mb-6">
+              {[20, 40, 60, 80, 100].map((rate) => (
                 <button
-                  key={`massage2-${nozzle.id}`}
-                  onClick={() => setSelectedMassageNozzle(nozzle.id)}
+                  key={`flow-btn-${rate}`}
+                  onClick={() => setFlowRate([rate])}
                   className={cn(
-                    "flex-1 group relative transition-all duration-300 active:scale-95",
-                    selectedMassageNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60"
+                    "group relative transition-all duration-300 active:scale-95",
+                    flowRate[0] === rate ? "scale-[1.02] z-10" : "opacity-60"
                   )}
                 >
-                <div className={cn(
-                  "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
-                  selectedMassageNozzle === nozzle.id 
-                    ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
-                    : "bg-white/5 border-white/10 hover:border-white/20"
-                )}>
-                  <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
-                    <img 
-                      src={nozzle.image} 
-                      alt={nozzle.name} 
-                      className="w-full h-full object-contain filter brightness-110 contrast-110"
-                    />
+                  <div className={cn(
+                    "h-16 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300",
+                    flowRate[0] === rate 
+                      ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                      : "bg-white/5 border-white/10 hover:border-white/20"
+                  )}>
+                    <span className={cn(
+                      "text-xs font-black uppercase tracking-widest",
+                      flowRate[0] === rate ? "text-[#3D63DD]" : "text-[#ffffff]"
+                    )}>
+                      {rate}%
+                    </span>
                   </div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-[#ffffff]">
-                    {nozzle.name}
-                  </span>
-                </div>
-                  {selectedMassageNozzle === nozzle.id && (
-                    <motion.div 
-                      layoutId="selected-nozzle-glow-massage2"
-                      className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
-                    />
-                  )}
                 </button>
               ))}
             </div>
