@@ -348,7 +348,7 @@ export default function Cryotherapy() {
             <p className="uppercase tracking-[0.3em] text-[#A9B3CE] group-hover:text-white transition-colors text-[14px] font-bold text-left leading-tight">SET SESSION<br />DURATION</p>
             <div className="flex-1" />
             {activeProtocol && (
-              <span className="text-[10px] font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0">
+              <span className="font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0 text-[12px]">
                 {protocols.find(p => p.id === activeProtocol)?.name === "CUSTOM" 
                   ? `CUSTOM (${formatTime(customTime)})` 
                   : protocols.find(p => p.id === activeProtocol)?.name}
