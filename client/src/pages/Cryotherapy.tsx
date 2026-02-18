@@ -465,10 +465,6 @@ export default function Cryotherapy() {
                               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#A9B3CE] mt-1">sec</span>
                             </div>
                           </div>
-                          <div className="flex justify-between w-full px-2 text-[10px] text-[#A9B3CE]/40 font-black uppercase tracking-widest">
-                            <span>MIN 2:00</span>
-                            <span>MAX 4:00</span>
-                          </div>
                         </div>
                       )}
 
@@ -607,10 +603,6 @@ export default function Cryotherapy() {
                               </button>
                               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#A9B3CE] mt-1">sec</span>
                             </div>
-                          </div>
-                          <div className="flex justify-between w-full px-2 text-[10px] text-[#A9B3CE]/40 font-black uppercase tracking-widest">
-                            <span>MIN 2:00</span>
-                            <span>MAX 4:00</span>
                           </div>
                         </div>
                       )}
