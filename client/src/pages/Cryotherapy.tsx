@@ -277,11 +277,19 @@ export default function Cryotherapy() {
                         { id: "hard", label: "Hard - 0.9lpm", value: 80 },
                         { id: "extra-hard", label: "Extra Hard - 1.1lpm", value: 100 },
                       ].map((rate) => (
-                        <button
+                        <div
                           key={`flow-btn-${rate.value}`}
                           onClick={() => handleSelection('flow', rate.id, rate.value)}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              handleSelection('flow', rate.id, rate.value);
+                            }
+                          }}
                           className={cn(
-                            "group relative transition-all duration-300 active:scale-95",
+                            "group relative transition-all duration-300 active:scale-95 cursor-pointer outline-none",
                             selectedControl === `flow-${rate.id}` ? "scale-[1.02] z-10" : "opacity-60"
                           )}
                         >
@@ -291,11 +299,18 @@ export default function Cryotherapy() {
                               ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
                               : "bg-white/5 border-white/10 hover:border-white/20"
                           )}>
-                            <span className="uppercase tracking-tight text-[14px] font-medium text-[#ffffff]">
+                            <p 
+                              contentEditable 
+                              suppressContentEditableWarning
+                              className="uppercase tracking-tight text-[14px] font-medium text-[#ffffff] outline-none focus:ring-1 focus:ring-[#3D63DD]/50 rounded px-1 cursor-text select-text"
+                              onClick={(e) => e.stopPropagation()}
+                              onMouseDown={(e) => e.stopPropagation()}
+                              onPointerDown={(e) => e.stopPropagation()}
+                            >
                               {rate.label}
-                            </span>
+                            </p>
                           </div>
-                        </button>
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -339,11 +354,19 @@ export default function Cryotherapy() {
                   <div className="pt-4 pb-4">
                     <div className="grid grid-cols-2 gap-3 mb-6">
                       {protocols.map((p) => (
-                        <button
+                        <div
                           key={`protocol-btn-${p.id}`}
                           onClick={() => setActiveProtocol(p.id)}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              setActiveProtocol(p.id);
+                            }
+                          }}
                           className={cn(
-                            "group relative transition-all duration-300 active:scale-95",
+                            "group relative transition-all duration-300 active:scale-95 cursor-pointer outline-none",
                             activeProtocol === p.id ? "scale-[1.02] z-10" : "opacity-60"
                           )}
                         >
@@ -353,11 +376,18 @@ export default function Cryotherapy() {
                               ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
                               : "bg-white/5 border-white/10 hover:border-white/20"
                           )}>
-                            <p className="uppercase tracking-tight text-[13px] font-bold text-white">
+                            <p 
+                              contentEditable 
+                              suppressContentEditableWarning
+                              className="uppercase tracking-tight text-[13px] font-bold text-white outline-none focus:ring-1 focus:ring-[#3D63DD]/50 rounded px-1 cursor-text select-text"
+                              onClick={(e) => e.stopPropagation()}
+                              onMouseDown={(e) => e.stopPropagation()}
+                              onPointerDown={(e) => e.stopPropagation()}
+                            >
                               {p.name}
                             </p>
                           </div>
-                        </button>
+                        </div>
                       ))}
                     </div>
 
