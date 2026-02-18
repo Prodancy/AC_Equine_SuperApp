@@ -304,83 +304,109 @@ export default function Dashboard() {
         </Card>
       </div>
       <Dialog open={isScheduleOpen} onOpenChange={setIsScheduleOpen}>
-        <DialogContent className="sm:max-w-md bg-card border-white/10">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-bold tracking-tight text-white">Schedule New Session</DialogTitle>
-            <DialogDescription className="text-gray-400">
-              Select a patient and treatment modality to schedule.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="space-y-6 py-4 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
-            <div className="space-y-2">
-              <Label className="text-xs font-bold uppercase tracking-widest text-primary">Select Date</Label>
-              <input 
-                type="date" 
-                value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
-                className="w-full bg-[#1a2234] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-              />
-            </div>
+        <DialogContent className="sm:max-w-[800px] bg-[#0a0f1d] border-white/10 p-0 overflow-hidden shadow-2xl">
+          <div className="flex flex-col md:flex-row h-full">
+            {/* Left Panel: Date & Time */}
+            <div className="w-full md:w-[320px] bg-[#1a2234]/50 p-6 border-r border-white/5">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-1">When</h3>
+                  <p className="text-xs text-gray-400 mb-4">Select date and time slot</p>
+                  
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label className="text-[10px] font-black uppercase tracking-widest text-primary/70">Date</Label>
+                      <input 
+                        type="date" 
+                        value={selectedDate}
+                        onChange={(e) => setSelectedDate(e.target.value)}
+                        className="w-full bg-[#0a0f1d] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all"
+                      />
+                    </div>
 
-            <div className="space-y-2">
-              <Label className="text-xs font-bold uppercase tracking-widest text-primary">Available Slots</Label>
-              <div className="grid grid-cols-3 gap-2">
-                {["08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM"].map((time) => (
-                  <Button
-                    key={time}
-                    variant="outline"
-                    className={cn(
-                      "text-[10px] font-bold border-white/5 bg-white/5 hover:bg-white/10 text-white h-10",
-                      selectedTime === time && "border-primary bg-primary/20 text-primary"
-                    )}
-                    onClick={() => setSelectedTime(time)}
-                  >
-                    {time}
-                  </Button>
-                ))}
+                    <div className="space-y-2">
+                      <Label className="text-[10px] font-black uppercase tracking-widest text-primary/70">Available Slots</Label>
+                      <div className="grid grid-cols-2 gap-2 max-h-[280px] overflow-y-auto pr-2 custom-scrollbar">
+                        {["08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM"].map((time) => (
+                          <Button
+                            key={time}
+                            variant="outline"
+                            className={cn(
+                              "text-[10px] font-bold border-white/5 bg-white/5 hover:bg-white/10 text-white h-9 transition-all",
+                              selectedTime === time && "border-primary bg-primary/20 text-primary shadow-[0_0_15px_rgba(59,130,246,0.2)]"
+                            )}
+                            onClick={() => setSelectedTime(time)}
+                          >
+                            {time}
+                          </Button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label className="text-xs font-bold uppercase tracking-widest text-primary">Select Patient</Label>
-              <div className="grid grid-cols-2 gap-2">
-                {horses.map((horse) => (
-                  <Button
-                    key={horse}
-                    variant="outline"
-                    className={cn(
-                      "justify-start font-medium border-white/5 bg-white/5 hover:bg-white/10 text-white",
-                      selectedHorse === horse && "border-primary bg-primary/10 text-primary"
-                    )}
-                    onClick={() => setSelectedHorse(horse)}
-                  >
-                    <Horse className="w-4 h-4 mr-2" />
-                    {horse}
-                  </Button>
-                ))}
+            {/* Right Panel: Details */}
+            <div className="flex-1 p-6 flex flex-col">
+              <div className="flex justify-between items-start mb-6">
+                <div>
+                  <DialogTitle className="text-xl font-bold tracking-tight text-white">Schedule Session</DialogTitle>
+                  <DialogDescription className="text-gray-400 text-xs">Complete the session details below</DialogDescription>
+                </div>
+                <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white -mr-2 -mt-2" onClick={() => setIsScheduleOpen(false)}>
+                  <Plus className="w-5 h-5 rotate-45" />
+                </Button>
               </div>
-            </div>
-            <div className="space-y-2">
-              <Label className="text-xs font-bold uppercase tracking-widest text-primary">Treatment Modality</Label>
-              <div className="grid grid-cols-2 gap-2">
-                {treatments.map((t) => (
-                  <Button
-                    key={t.id}
-                    variant="outline"
-                    className="justify-start font-medium border-white/5 bg-white/5 hover:bg-white/10 text-white"
-                  >
-                    <t.icon className={cn("w-4 h-4 mr-2", t.color)} />
-                    {t.label}
-                  </Button>
-                ))}
+
+              <div className="flex-1 space-y-6">
+                <div className="space-y-3">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-primary/70">Select Patient</Label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {horses.map((horse) => (
+                      <Button
+                        key={horse}
+                        variant="outline"
+                        className={cn(
+                          "justify-start font-medium text-xs border-white/5 bg-white/5 hover:bg-white/10 text-white h-11 transition-all",
+                          selectedHorse === horse && "border-primary bg-primary/10 text-primary shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                        )}
+                        onClick={() => setSelectedHorse(horse)}
+                      >
+                        <Horse className="w-4 h-4 mr-2" />
+                        {horse}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-primary/70">Modality</Label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {treatments.map((t) => (
+                      <Button
+                        key={t.id}
+                        variant="outline"
+                        className="justify-start font-medium text-xs border-white/5 bg-white/5 hover:bg-white/10 text-white h-11 transition-all"
+                      >
+                        <t.icon className={cn("w-4 h-4 mr-2", t.color)} />
+                        {t.label}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/5">
+                <Button 
+                  className="w-full bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-[0.2em] text-[10px] h-12 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98]" 
+                  onClick={() => setIsScheduleOpen(false)}
+                >
+                  Confirm Appointment
+                </Button>
               </div>
             </div>
           </div>
-          <DialogFooter>
-            <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold tracking-wide h-12 rounded-xl" onClick={() => setIsScheduleOpen(false)}>
-              Confirm Schedule
-            </Button>
-          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
