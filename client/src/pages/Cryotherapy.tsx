@@ -212,7 +212,7 @@ export default function Cryotherapy() {
                         className="w-full h-full object-contain filter brightness-110 contrast-110"
                       />
                     </div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-[#ffffff]">
+                    <span className="uppercase tracking-widest text-[#ffffff] text-[14px] font-medium">
                       {nozzle.name}
                     </span>
                   </div>
