@@ -140,13 +140,17 @@ export default function Cryotherapy() {
             <p className="font-black uppercase tracking-[0.3em] text-[#A9B3CE] mb-4 text-[14px]">Select Nozzle Type</p>
             
             <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Fog Nozzle</p>
-            <div className="flex gap-3 mb-6">
-              {nozzles.map((nozzle) => (
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              {[
+                { id: "mild", name: "Mild Cone", image: nozzle6mm },
+                { id: "strong", name: "Strong Cone", image: nozzle15mm },
+                { id: "precision", name: "Precision", image: nozzle6mm },
+              ].map((nozzle) => (
                 <button
-                  key={`fog-${nozzle.id}`}
+                  key={`fog-nozzle-${nozzle.id}`}
                   onClick={() => setSelectedNozzle(nozzle.id)}
                   className={cn(
-                    "flex-1 group relative transition-all duration-300 active:scale-95",
+                    "group relative transition-all duration-300 active:scale-95",
                     selectedNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60"
                   )}
                 >
@@ -178,13 +182,17 @@ export default function Cryotherapy() {
             </div>
 
             <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Massage Nozzle</p>
-            <div className="flex gap-3 mb-6">
-              {nozzles.map((nozzle) => (
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              {[
+                { id: "mild", name: "Mild Cone", image: nozzle6mm },
+                { id: "strong", name: "Strong Cone", image: nozzle15mm },
+                { id: "precision", name: "Precision", image: nozzle6mm },
+              ].map((nozzle) => (
                 <button
                   key={`massage-${nozzle.id}`}
                   onClick={() => setSelectedMassageNozzle(nozzle.id)}
                   className={cn(
-                    "flex-1 group relative transition-all duration-300 active:scale-95",
+                    "group relative transition-all duration-300 active:scale-95",
                     selectedMassageNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60"
                   )}
                 >
