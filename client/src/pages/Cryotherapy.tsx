@@ -1009,7 +1009,7 @@ export default function Cryotherapy() {
                                   : "bg-white/5 border-white/10 hover:border-white/20",
                               )}
                             >
-                              <p className="uppercase tracking-tight text-[14px] font-medium text-[#ffffff] outline-none rounded px-1">
+                              <p className="tracking-tight text-[14px] font-medium text-[#ffffff] outline-none rounded px-1">
                                 {rate.label}
                               </p>
                             </div>
