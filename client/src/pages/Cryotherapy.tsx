@@ -607,7 +607,7 @@ export default function Cryotherapy() {
               <h1 className="text-xl md:text-2xl font-bold tracking-widest text-white">
                 Cryotherapy
               </h1>
-              <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block uppercase font-bold">
+              <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block font-bold">
                 Active Cryo Session
               </p>
             </div>
@@ -1179,8 +1179,8 @@ export default function Cryotherapy() {
                   { id: "hip", top: "34.8%", left: "78.4%" },
                   { id: "leg-front-left", top: "80.2%", left: "39.1%" },
                   { id: "leg-front-right", top: "83.6%", left: "67.9%" },
-                  { id: "stifle", top: "53%", left: "74%" },
-                  { id: "hoof-front-left", top: "58%", left: "75%" },
+                  { id: "stifle", top: "53%", left: "78%" },
+                  { id: "hoof-front-left", top: "64.5%", left: "86%" },
                 ].map((spot) => (
                   <button
                     key={spot.id}
@@ -1216,10 +1216,10 @@ export default function Cryotherapy() {
 
               <div className="mt-8 w-full max-w-2xl">
                 <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold tracking-tight text-white uppercase mb-2">
+                  <h3 className="text-xl font-bold tracking-tight text-white mb-2">
                     {getPartLabel(selectedPart)} Protocols
                   </h3>
-                  <p className="text-[#A9B3CE] text-xs uppercase tracking-widest">
+                  <p className="text-[#A9B3CE] text-xs tracking-widest">
                     Select a protocol to begin treatment
                   </p>
                 </div>
