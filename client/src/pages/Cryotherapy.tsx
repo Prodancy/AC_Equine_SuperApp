@@ -85,9 +85,9 @@ export default function Cryotherapy() {
   const [flowRate, setFlowRate] = useState([50]);
   const [fogRate, setFogRate] = useState(2);
 
-  const [selectedControl, setSelectedControl] = useState<string | null>("extra-soft");
-
   const [isNozzleExpanded, setIsNozzleExpanded] = useState(false);
+  const [isProtocolExpanded, setIsProtocolExpanded] = useState(false);
+  const [selectedControl, setSelectedControl] = useState<string | null>("extra-soft");
 
   const nozzles = [
     { id: "mild", name: "Mild Cone", image: nozzle6mm },
@@ -294,6 +294,65 @@ export default function Cryotherapy() {
                           </div>
                         </button>
                       ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Protocol Selection Section */}
+        <div className="px-4 md:px-8 py-4 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5">
+          <button 
+            onClick={() => setIsProtocolExpanded(!isProtocolExpanded)}
+            className="w-full flex items-center justify-between py-2 group"
+          >
+            <div className="flex items-center gap-3">
+              <p className="font-black uppercase tracking-[0.3em] text-[#A9B3CE] text-[14px] group-hover:text-white transition-colors">Select Protocol</p>
+              {activeProtocol && (
+                <span className="text-[10px] font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20">
+                  {protocols.find(p => p.id === activeProtocol)?.name}
+                </span>
+              )}
+            </div>
+            <motion.div
+              animate={{ rotate: isProtocolExpanded ? 180 : 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <ChevronDown className="w-5 h-5 text-[#A9B3CE] group-hover:text-white transition-colors" />
+            </motion.div>
+          </button>
+          
+          <AnimatePresence>
+            {isProtocolExpanded && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <div className="pt-6 space-y-4">
+                  <Select value={activeProtocol} onValueChange={setActiveProtocol} disabled={isPlaying}>
+                    <SelectTrigger className="w-full h-14 bg-white/5 border-white/10 rounded-xl text-white font-bold">
+                      <SelectValue placeholder="Select Protocol" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-[#1a2234] border-white/10 text-white">
+                      {protocols.map((p) => (
+                        <SelectItem key={p.id} value={p.id}>
+                          <span className="font-bold">{p.name}</span> <span className="text-muted-foreground text-[10px] ml-2 uppercase tracking-widest font-black">({p.duration}m)</span>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <div className="pb-4">
+                    <div className="space-y-4">
+                      <div className="flex justify-between text-[10px] font-black uppercase tracking-widest">
+                        <span className="text-gray-400">Target Intensity</span>
+                        <span className="text-primary">{intensity[0]}%</span>
+                      </div>
+                      <Slider value={intensity} onValueChange={setIntensity} max={100} step={5} className="py-2" />
                     </div>
                   </div>
                 </div>
