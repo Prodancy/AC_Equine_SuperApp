@@ -41,6 +41,8 @@ export default function Dashboard() {
   const [isScheduleOpen, setIsScheduleOpen] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState<'idle' | 'scanning' | 'connecting' | 'connected' | 'error'>('idle');
   const [selectedHorse, setSelectedHorse] = useState<string>("");
+  const [selectedDate, setSelectedDate] = useState<string>(new Date().toISOString().split('T')[0]);
+  const [selectedTime, setSelectedTime] = useState<string>("");
   const [isAddingNewHorse, setIsAddingNewHorse] = useState(false);
   const [newHorseName, setNewHorseName] = useState("");
 
@@ -309,7 +311,36 @@ export default function Dashboard() {
               Select a patient and treatment modality to schedule.
             </DialogDescription>
           </DialogHeader>
-          <div className="space-y-6 py-4">
+          <div className="space-y-6 py-4 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
+            <div className="space-y-2">
+              <Label className="text-xs font-bold uppercase tracking-widest text-primary">Select Date</Label>
+              <input 
+                type="date" 
+                value={selectedDate}
+                onChange={(e) => setSelectedDate(e.target.value)}
+                className="w-full bg-[#1a2234] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs font-bold uppercase tracking-widest text-primary">Available Slots</Label>
+              <div className="grid grid-cols-3 gap-2">
+                {["08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM"].map((time) => (
+                  <Button
+                    key={time}
+                    variant="outline"
+                    className={cn(
+                      "text-[10px] font-bold border-white/5 bg-white/5 hover:bg-white/10 text-white h-10",
+                      selectedTime === time && "border-primary bg-primary/20 text-primary"
+                    )}
+                    onClick={() => setSelectedTime(time)}
+                  >
+                    {time}
+                  </Button>
+                ))}
+              </div>
+            </div>
+
             <div className="space-y-2">
               <Label className="text-xs font-bold uppercase tracking-widest text-primary">Select Patient</Label>
               <div className="grid grid-cols-2 gap-2">
