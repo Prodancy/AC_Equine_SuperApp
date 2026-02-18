@@ -71,7 +71,7 @@ const protocols = [
   {
     id: "p1_neck",
     bodyPart: "neck",
-    name: "Neck Maintenance",
+    name: "30 Seconds",
     duration: 0.5,
     intensity: 80,
     temp: -140,
@@ -79,7 +79,7 @@ const protocols = [
   {
     id: "p2_neck",
     bodyPart: "neck",
-    name: "Neck Pain",
+    name: "45 Seconds",
     duration: 0.75,
     intensity: 70,
     temp: -120,
@@ -87,7 +87,7 @@ const protocols = [
   {
     id: "p3_neck",
     bodyPart: "neck",
-    name: "Hematoma",
+    name: "60 Seconds",
     duration: 1,
     intensity: 60,
     temp: -110,
@@ -95,7 +95,7 @@ const protocols = [
   {
     id: "p4_neck",
     bodyPart: "neck",
-    name: "Chronic Articular Lesions",
+    name: "90 Seconds",
     duration: 1.5,
     intensity: 50,
     temp: -100,
@@ -103,7 +103,7 @@ const protocols = [
   {
     id: "p25_neck",
     bodyPart: "neck",
-    name: "Degenerative Joint Disease",
+    name: "120 Seconds",
     duration: 2,
     intensity: 45,
     temp: -90,
@@ -111,7 +111,7 @@ const protocols = [
   {
     id: "p26_neck",
     bodyPart: "neck",
-    name: "Trigger Point / Myofascial Pain",
+    name: "Custom",
     duration: 10,
     intensity: 65,
     temp: -115,
@@ -1246,8 +1246,22 @@ export default function Cryotherapy() {
                             updateProtocolName(p.id, e.target.value);
                           }}
                           onClick={(e) => e.stopPropagation()}
-                          className="bg-transparent border-none outline-none text-white font-bold text-sm capitalize tracking-wider w-full focus:ring-0 p-0"
+                          className="bg-transparent border-none outline-none text-white font-bold text-sm capitalize tracking-wider mb-2 w-full focus:ring-0 p-0"
                         />
+                        <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-1">
+                            <Activity className="w-3 h-3 text-[#A9B3CE]" />
+                            <span className="text-[10px] text-[#A9B3CE] font-medium">
+                              {p.intensity}%
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Thermometer className="w-3 h-3 text-[#A9B3CE]" />
+                            <span className="text-[10px] text-[#A9B3CE] font-medium">
+                              {p.temp}°C
+                            </span>
+                          </div>
+                        </div>
                       </div>
                       <div className="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-40 transition-opacity">
                         <Play className="w-4 h-4 text-white fill-current" />
