@@ -78,7 +78,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050810] text-white p-4 md:p-8 pb-24 md:pb-8">
+    <div className="min-h-screen text-white p-4 md:p-8 pb-24 md:pb-8 bg-[#0a0f1d]">
       {/* Header Area */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
         <div className="space-y-1">
@@ -126,7 +126,6 @@ export default function Dashboard() {
           </DropdownMenu>
         </div>
       </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content Column */}
         <div className="lg:col-span-2 space-y-8">
@@ -282,7 +281,6 @@ export default function Dashboard() {
           </Card>
         </div>
       </div>
-
       {/* Bluetooth Connection Dialog */}
       <Dialog open={isConnectOpen} onOpenChange={setIsConnectOpen}>
         <DialogContent className="sm:max-w-md bg-[#0a0f1d] border-white/10 text-white rounded-[2rem]">
@@ -360,7 +358,6 @@ export default function Dashboard() {
           </div>
         </DialogContent>
       </Dialog>
-
       {/* Schedule Dialog */}
       <Dialog open={isScheduleOpen} onOpenChange={setIsScheduleOpen}>
         <DialogContent className="sm:max-w-lg bg-[#0a0f1d] border-white/10 text-white rounded-[2rem]">
