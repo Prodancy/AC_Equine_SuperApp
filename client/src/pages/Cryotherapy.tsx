@@ -120,7 +120,7 @@ const protocols = [
   {
     id: "p1_shoulder",
     bodyPart: "shoulder",
-    name: "30 Seconds",
+    name: "Shoulder Maintenance",
     duration: 0.5,
     intensity: 80,
     temp: -140,
@@ -128,7 +128,7 @@ const protocols = [
   {
     id: "p2_shoulder",
     bodyPart: "shoulder",
-    name: "45 Seconds",
+    name: "Shoulder Hematoma",
     duration: 0.75,
     intensity: 70,
     temp: -120,
@@ -136,7 +136,7 @@ const protocols = [
   {
     id: "p3_shoulder",
     bodyPart: "shoulder",
-    name: "60 Seconds",
+    name: "Chronic Articular Lesions",
     duration: 1,
     intensity: 60,
     temp: -110,
@@ -144,7 +144,7 @@ const protocols = [
   {
     id: "p4_shoulder",
     bodyPart: "shoulder",
-    name: "90 Seconds",
+    name: "Degenerative Joint Disease",
     duration: 1.5,
     intensity: 50,
     temp: -100,
@@ -152,7 +152,7 @@ const protocols = [
   {
     id: "p25_shoulder",
     bodyPart: "shoulder",
-    name: "120 Seconds",
+    name: "Acute Tendinitis / Sprain",
     duration: 2,
     intensity: 45,
     temp: -90,
@@ -169,7 +169,7 @@ const protocols = [
   {
     id: "p5",
     bodyPart: "back-left",
-    name: "30 Seconds",
+    name: "Back Maintenance",
     duration: 0.5,
     intensity: 75,
     temp: -130,
@@ -177,7 +177,7 @@ const protocols = [
   {
     id: "p6",
     bodyPart: "back-left",
-    name: "45 Seconds",
+    name: "Back Pain",
     duration: 0.75,
     intensity: 85,
     temp: -150,
@@ -185,7 +185,7 @@ const protocols = [
   {
     id: "p7",
     bodyPart: "back-left",
-    name: "60 Seconds",
+    name: "Chronic Articular Lesions",
     duration: 1,
     intensity: 65,
     temp: -115,
@@ -193,7 +193,7 @@ const protocols = [
   {
     id: "p8",
     bodyPart: "back-left",
-    name: "90 Seconds",
+    name: "Degenerative Joint Disease",
     duration: 1.5,
     intensity: 90,
     temp: -160,
@@ -201,7 +201,7 @@ const protocols = [
   {
     id: "p27",
     bodyPart: "back-left",
-    name: "120 Seconds",
+    name: "Custom",
     duration: 2,
     intensity: 70,
     temp: -125,
@@ -209,7 +209,7 @@ const protocols = [
   {
     id: "p28",
     bodyPart: "back-left",
-    name: "Custom",
+    name: "Acute Tendinitis / Sprain",
     duration: 5,
     intensity: 40,
     temp: -80,
@@ -218,7 +218,7 @@ const protocols = [
   {
     id: "p13",
     bodyPart: "back-right",
-    name: "30 Seconds",
+    name: "Back Maintenance",
     duration: 0.5,
     intensity: 70,
     temp: -125,
@@ -226,7 +226,7 @@ const protocols = [
   {
     id: "p14",
     bodyPart: "back-right",
-    name: "45 Seconds",
+    name: "Back Pain",
     duration: 0.75,
     intensity: 80,
     temp: -140,
@@ -234,7 +234,7 @@ const protocols = [
   {
     id: "p15",
     bodyPart: "back-right",
-    name: "60 Seconds",
+    name: "Chronic Articular Lesions",
     duration: 1,
     intensity: 65,
     temp: -115,
@@ -242,7 +242,7 @@ const protocols = [
   {
     id: "p16",
     bodyPart: "back-right",
-    name: "90 Seconds",
+    name: "Degenerative Joint Disease",
     duration: 1.5,
     intensity: 60,
     temp: -110,
@@ -250,7 +250,7 @@ const protocols = [
   {
     id: "p31",
     bodyPart: "back-right",
-    name: "120 Seconds",
+    name: "Custom",
     duration: 2,
     intensity: 75,
     temp: -130,
@@ -258,7 +258,7 @@ const protocols = [
   {
     id: "p32",
     bodyPart: "back-right",
-    name: "Custom",
+    name: "Acute Tendinitis / Sprain",
     duration: 15,
     intensity: 85,
     temp: -150,
@@ -267,7 +267,7 @@ const protocols = [
   {
     id: "p9",
     bodyPart: "leg-front-left",
-    name: "30 Seconds",
+    name: "Leg Maintenance",
     duration: 0.5,
     intensity: 60,
     temp: -110,
@@ -275,7 +275,7 @@ const protocols = [
   {
     id: "p10",
     bodyPart: "leg-front-left",
-    name: "45 Seconds",
+    name: "Leg Pain",
     duration: 0.75,
     intensity: 70,
     temp: -125,
@@ -283,7 +283,7 @@ const protocols = [
   {
     id: "p11",
     bodyPart: "leg-front-left",
-    name: "60 Seconds",
+    name: "Chronic Articular Lesions",
     duration: 1,
     intensity: 75,
     temp: -130,
@@ -291,7 +291,7 @@ const protocols = [
   {
     id: "p12",
     bodyPart: "leg-front-left",
-    name: "90 Seconds",
+    name: "Degenerative Joint Disease",
     duration: 1.5,
     intensity: 55,
     temp: -105,
@@ -299,7 +299,7 @@ const protocols = [
   {
     id: "p29",
     bodyPart: "leg-front-left",
-    name: "120 Seconds",
+    name: "Custom",
     duration: 2,
     intensity: 80,
     temp: -140,
@@ -307,7 +307,7 @@ const protocols = [
   {
     id: "p30",
     bodyPart: "leg-front-left",
-    name: "Custom",
+    name: "Acute Tendinitis / Sprain",
     duration: 11,
     intensity: 65,
     temp: -120,
@@ -316,7 +316,7 @@ const protocols = [
   {
     id: "p17",
     bodyPart: "leg-front-right",
-    name: "30 Seconds",
+    name: "Leg Maintenance",
     duration: 0.5,
     intensity: 75,
     temp: -135,
@@ -324,7 +324,7 @@ const protocols = [
   {
     id: "p18",
     bodyPart: "leg-front-right",
-    name: "45 Seconds",
+    name: "Leg Pain",
     duration: 0.75,
     intensity: 85,
     temp: -145,
@@ -332,7 +332,7 @@ const protocols = [
   {
     id: "p19",
     bodyPart: "leg-front-right",
-    name: "60 Seconds",
+    name: "Chronic Articular Lesions",
     duration: 1,
     intensity: 65,
     temp: -120,
@@ -340,7 +340,7 @@ const protocols = [
   {
     id: "p20",
     bodyPart: "leg-front-right",
-    name: "90 Seconds",
+    name: "Degenerative Joint Disease",
     duration: 1.5,
     intensity: 50,
     temp: -100,
@@ -348,7 +348,7 @@ const protocols = [
   {
     id: "p33",
     bodyPart: "leg-front-right",
-    name: "120 Seconds",
+    name: "Custom",
     duration: 2,
     intensity: 60,
     temp: -110,
@@ -356,16 +356,15 @@ const protocols = [
   {
     id: "p34",
     bodyPart: "leg-front-right",
-    name: "Custom",
+    name: "Acute Tendinitis / Sprain",
     duration: 13,
     intensity: 70,
     temp: -125,
   },
-  // Joint Hind
   {
     id: "p1_joint",
     bodyPart: "joint-hind",
-    name: "30 Seconds",
+    name: "Joint Maintenance",
     duration: 0.5,
     intensity: 80,
     temp: -140,
@@ -373,7 +372,7 @@ const protocols = [
   {
     id: "p2_joint",
     bodyPart: "joint-hind",
-    name: "45 Seconds",
+    name: "Joint Pain",
     duration: 0.75,
     intensity: 70,
     temp: -120,
@@ -381,7 +380,7 @@ const protocols = [
   {
     id: "p3_joint",
     bodyPart: "joint-hind",
-    name: "60 Seconds",
+    name: "Chronic Articular Lesions",
     duration: 1,
     intensity: 60,
     temp: -110,
@@ -389,7 +388,7 @@ const protocols = [
   {
     id: "p4_joint",
     bodyPart: "joint-hind",
-    name: "90 Seconds",
+    name: "Degenerative Joint Disease",
     duration: 1.5,
     intensity: 50,
     temp: -100,
@@ -397,7 +396,7 @@ const protocols = [
   {
     id: "p25_joint",
     bodyPart: "joint-hind",
-    name: "120 Seconds",
+    name: "Acute Tendinitis / Sprain",
     duration: 2,
     intensity: 45,
     temp: -90,
@@ -410,11 +409,10 @@ const protocols = [
     intensity: 65,
     temp: -115,
   },
-  // Hoof Front Left
   {
     id: "p21",
     bodyPart: "hoof-front-left",
-    name: "30 Seconds",
+    name: "Hoof Maintenance",
     duration: 0.5,
     intensity: 90,
     temp: -160,
@@ -422,7 +420,7 @@ const protocols = [
   {
     id: "p22",
     bodyPart: "hoof-front-left",
-    name: "45 Seconds",
+    name: "Hoof Pain",
     duration: 0.75,
     intensity: 80,
     temp: -140,
@@ -430,7 +428,7 @@ const protocols = [
   {
     id: "p23",
     bodyPart: "hoof-front-left",
-    name: "60 Seconds",
+    name: "Chronic Articular Lesions",
     duration: 1,
     intensity: 70,
     temp: -130,
@@ -438,7 +436,7 @@ const protocols = [
   {
     id: "p24",
     bodyPart: "hoof-front-left",
-    name: "90 Seconds",
+    name: "Degenerative Joint Disease",
     duration: 1.5,
     intensity: 60,
     temp: -115,
@@ -446,7 +444,7 @@ const protocols = [
   {
     id: "p35",
     bodyPart: "hoof-front-left",
-    name: "120 Seconds",
+    name: "Acute Tendinitis / Sprain",
     duration: 2,
     intensity: 50,
     temp: -100,
