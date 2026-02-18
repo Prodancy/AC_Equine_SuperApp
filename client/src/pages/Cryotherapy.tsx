@@ -349,7 +349,9 @@ export default function Cryotherapy() {
             <div className="flex-1" />
             {activeProtocol && (
               <span className="text-[10px] font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0">
-                {protocols.find(p => p.id === activeProtocol)?.name}
+                {protocols.find(p => p.id === activeProtocol)?.name === "CUSTOM" 
+                  ? `CUSTOM (${formatTime(customTime)})` 
+                  : protocols.find(p => p.id === activeProtocol)?.name}
               </span>
             )}
             <motion.div
