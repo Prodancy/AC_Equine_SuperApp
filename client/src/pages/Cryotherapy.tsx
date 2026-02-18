@@ -119,29 +119,6 @@ export default function Cryotherapy() {
             )}
           </button>
         </div>
-
-        {/* New Session Info Section */}
-        <div className="flex items-center justify-between px-6 py-4 bg-[#0a0f1d]/50 backdrop-blur-sm border-b border-white/5">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
-              <Horse className="w-5 h-5 text-primary" />
-            </div>
-            <div>
-              <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">Patient</p>
-              <h3 className="text-sm font-bold text-white uppercase tracking-tight">Thunder Spirit</h3>
-            </div>
-          </div>
-          <div className="flex items-center gap-8">
-            <div className="text-right">
-              <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">Protocol</p>
-              <h3 className="text-sm font-bold text-primary uppercase tracking-tight">Tendon Repair</h3>
-            </div>
-            <div className="text-right">
-              <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">Session</p>
-              <h3 className="text-sm font-bold text-white uppercase tracking-tight">04 / 12</h3>
-            </div>
-          </div>
-        </div>
       </div>
       <AnimatePresence mode="wait">
         {activeTab === "controls" ? (
