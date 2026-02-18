@@ -1234,7 +1234,7 @@ export default function Cryotherapy() {
             className="flex flex-col items-center"
           >
             <div className="w-full flex flex-col items-center">
-              <div className="relative w-full max-w-2xl aspect-[4/3] bg-[#0a0f1d] rounded-3xl p-8 border border-white/5 shadow-2xl overflow-hidden group">
+              <div className="relative w-full max-w-4xl aspect-[16/10] bg-[#0a0f1d] rounded-3xl p-4 border border-white/5 shadow-2xl overflow-hidden group">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                   <div className="absolute inset-0 bg-[radial-gradient(#3D63DD_1px,transparent_1px)] [background-size:20px_20px]" />
@@ -1243,7 +1243,7 @@ export default function Cryotherapy() {
                 <img
                   src={horse_anatomy}
                   alt="Horse Anatomy"
-                  className="w-full h-full object-contain relative z-10 filter brightness-110 contrast-110 drop-shadow-[0_0_30px_rgba(61,99,221,0.2)]"
+                  className="w-full h-full object-contain relative z-10 filter brightness-110 contrast-110 drop-shadow-[0_0_30px_rgba(61,99,221,0.2)] scale-110"
                 />
 
                 {/* Hotspots */}
@@ -1262,39 +1262,39 @@ export default function Cryotherapy() {
                     key={`hotspot-${spot.id}`}
                     onClick={() => setSelectedPart(spot.id)}
                     className={cn(
-                      "absolute w-8 h-8 md:w-10 md:h-10 z-20 group/spot transition-all duration-500",
+                      "absolute w-10 h-10 md:w-12 md:h-12 z-20 group/spot transition-all duration-500",
                       selectedPart === spot.id ? "scale-110" : "hover:scale-105",
                     )}
                     style={{ top: spot.top, left: spot.left }}
                   >
                     <div className="relative w-full h-full flex items-center justify-center">
-                      {/* Outer Ring */}
+                      {/* Orange Button Style */}
                       <div className={cn(
                         "absolute inset-0 rounded-full border-2 transition-all duration-500",
                         selectedPart === spot.id 
-                          ? "border-[#3D63DD] bg-[#3D63DD]/20 shadow-[0_0_15px_rgba(61,99,221,0.5)]" 
-                          : "border-white/40 bg-black/40 group-hover/spot:border-[#3D63DD]/60"
+                          ? "border-[#FF8A00] bg-[#FF8A00]/40 shadow-[0_0_20px_rgba(255,138,0,0.6)]" 
+                          : "border-[#FF8A00]/60 bg-[#FF8A00]/10 group-hover/spot:border-[#FF8A00] group-hover/spot:bg-[#FF8A00]/20"
                       )} />
                       
                       {/* Inner Core */}
                       <div className={cn(
-                        "w-2.5 h-2.5 rounded-full transition-all duration-500",
+                        "w-3 h-3 rounded-full transition-all duration-500",
                         selectedPart === spot.id 
-                          ? "bg-[#3D63DD] scale-125" 
-                          : "bg-white/60 group-hover/spot:bg-[#3D63DD]/60"
+                          ? "bg-white scale-125 shadow-[0_0_10px_white]" 
+                          : "bg-[#FF8A00]/80 group-hover/spot:bg-[#FF8A00]"
                       )} />
 
                       {/* Label tooltip */}
                       <div className={cn(
-                        "absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-md bg-black/80 border border-white/10 text-[10px] font-bold text-white whitespace-nowrap opacity-0 group-hover/spot:opacity-100 transition-opacity pointer-events-none z-30",
-                        selectedPart === spot.id && "opacity-100 bg-[#3D63DD]/90 border-[#3D63DD]/50"
+                        "absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 rounded-md bg-[#FF8A00] text-[11px] font-bold text-white whitespace-nowrap opacity-0 group-hover/spot:opacity-100 transition-opacity pointer-events-none z-30 shadow-lg",
+                        selectedPart === spot.id && "opacity-100 translate-y-1"
                       )}>
                         {spot.label}
                       </div>
 
-                      {/* Outer pulse for active part */}
+                      {/* Pulse effect */}
                       {selectedPart === spot.id && (
-                        <div className="absolute inset-[-8px] rounded-full border-2 border-[#FF8A00] animate-ping opacity-40" />
+                        <div className="absolute inset-[-10px] rounded-full border-2 border-[#FF8A00] animate-ping opacity-40" />
                       )}
                     </div>
                   </button>
