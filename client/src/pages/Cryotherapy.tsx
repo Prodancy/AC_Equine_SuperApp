@@ -418,11 +418,7 @@ export default function Cryotherapy() {
                           </div>
                         </div>
                       )}
-                      <div className="flex justify-between text-[10px] font-black uppercase tracking-widest">
-                        <span className="text-gray-400">Target Intensity</span>
-                        <span className="text-primary">{intensity[0]}%</span>
-                      </div>
-                      <Slider value={intensity} onValueChange={setIntensity} max={100} step={5} className="py-2" />
+
                     </div>
                   </div>
               </motion.div>
@@ -512,11 +508,7 @@ export default function Cryotherapy() {
                           </div>
                         </div>
                       )}
-                      <div className="flex justify-between text-[10px] font-black uppercase tracking-widest">
-                        <span className="text-gray-400">Target Intensity</span>
-                        <span className="text-primary">{intensity[0]}%</span>
-                      </div>
-                      <Slider value={intensity} onValueChange={setIntensity} max={100} step={5} className="py-2" />
+
                     </div>
                   </div>
                 </CardContent>
