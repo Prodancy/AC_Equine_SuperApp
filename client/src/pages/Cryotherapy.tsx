@@ -1216,9 +1216,11 @@ export default function Cryotherapy() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {filteredProtocols.map((p) => (
-                    <div
-                      key={`protocol-mode-${p.id}`}
+                  {filteredProtocols
+                    .filter((p) => p.name.toLowerCase() !== "custom")
+                    .map((p) => (
+                      <div
+                        key={`protocol-mode-${p.id}`}
                       className={cn(
                         "group relative p-4 rounded-2xl border transition-all duration-300 text-left overflow-hidden cursor-pointer",
                         activeProtocol === p.id
