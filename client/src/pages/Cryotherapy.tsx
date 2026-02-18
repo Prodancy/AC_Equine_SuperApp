@@ -75,6 +75,8 @@ export default function Cryotherapy() {
 
   const [activeTab, setActiveTab] = useState("controls");
   const [selectedNozzle, setSelectedNozzle] = useState("small");
+  const [selectedMassageNozzle, setSelectedMassageNozzle] = useState("small");
+  const [selectedNozzleType, setSelectedNozzleType] = useState("small");
   const [fogNozzle, setFogNozzle] = useState(false);
   const [massageNozzle, setMassageNozzle] = useState(false);
   const [flowRate, setFlowRate] = useState([50]);
@@ -136,11 +138,12 @@ export default function Cryotherapy() {
         <div className="px-4 md:px-8 py-6 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5 space-y-6">
           <div>
             <p className="font-black uppercase tracking-[0.3em] text-[#A9B3CE] mb-4 text-[14px]">Select Nozzle Type</p>
+            
             <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Fog Nozzle</p>
-            <div className="flex gap-3">
+            <div className="flex gap-3 mb-6">
               {nozzles.map((nozzle) => (
                 <button
-                  key={nozzle.id}
+                  key={`fog-${nozzle.id}`}
                   onClick={() => setSelectedNozzle(nozzle.id)}
                   className={cn(
                     "flex-1 group relative transition-all duration-300 active:scale-95",
@@ -166,7 +169,121 @@ export default function Cryotherapy() {
                 </div>
                   {selectedNozzle === nozzle.id && (
                     <motion.div 
-                      layoutId="selected-nozzle-glow"
+                      layoutId="selected-nozzle-glow-fog"
+                      className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+
+            <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Massage Nozzle</p>
+            <div className="flex gap-3 mb-6">
+              {nozzles.map((nozzle) => (
+                <button
+                  key={`massage-${nozzle.id}`}
+                  onClick={() => setSelectedMassageNozzle(nozzle.id)}
+                  className={cn(
+                    "flex-1 group relative transition-all duration-300 active:scale-95",
+                    selectedMassageNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60"
+                  )}
+                >
+                <div className={cn(
+                  "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
+                  selectedMassageNozzle === nozzle.id 
+                    ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                    : "bg-white/5 border-white/10 hover:border-white/20"
+                )}>
+                  <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={nozzle.image} 
+                      alt={nozzle.name} 
+                      className="w-full h-full object-contain filter brightness-110 contrast-110"
+                    />
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#ffffff]">
+                    {nozzle.name}
+                  </span>
+                </div>
+                  {selectedMassageNozzle === nozzle.id && (
+                    <motion.div 
+                      layoutId="selected-nozzle-glow-massage"
+                      className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+
+            <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Massage Nozzle</p>
+            <div className="flex gap-3 mb-6">
+              {nozzles.map((nozzle) => (
+                <button
+                  key={`massage2-${nozzle.id}`}
+                  onClick={() => setSelectedMassageNozzle(nozzle.id)}
+                  className={cn(
+                    "flex-1 group relative transition-all duration-300 active:scale-95",
+                    selectedMassageNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60"
+                  )}
+                >
+                <div className={cn(
+                  "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
+                  selectedMassageNozzle === nozzle.id 
+                    ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                    : "bg-white/5 border-white/10 hover:border-white/20"
+                )}>
+                  <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={nozzle.image} 
+                      alt={nozzle.name} 
+                      className="w-full h-full object-contain filter brightness-110 contrast-110"
+                    />
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#ffffff]">
+                    {nozzle.name}
+                  </span>
+                </div>
+                  {selectedMassageNozzle === nozzle.id && (
+                    <motion.div 
+                      layoutId="selected-nozzle-glow-massage2"
+                      className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+
+            <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Nozzle Type</p>
+            <div className="flex gap-3">
+              {nozzles.map((nozzle) => (
+                <button
+                  key={`type-${nozzle.id}`}
+                  onClick={() => setSelectedNozzleType(nozzle.id)}
+                  className={cn(
+                    "flex-1 group relative transition-all duration-300 active:scale-95",
+                    selectedNozzleType === nozzle.id ? "scale-[1.02] z-10" : "opacity-60"
+                  )}
+                >
+                <div className={cn(
+                  "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
+                  selectedNozzleType === nozzle.id 
+                    ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                    : "bg-white/5 border-white/10 hover:border-white/20"
+                )}>
+                  <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={nozzle.image} 
+                      alt={nozzle.name} 
+                      className="w-full h-full object-contain filter brightness-110 contrast-110"
+                    />
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#ffffff]">
+                    {nozzle.name}
+                  </span>
+                </div>
+                  {selectedNozzleType === nozzle.id && (
+                    <motion.div 
+                      layoutId="selected-nozzle-glow-type"
                       className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
                     />
                   )}
