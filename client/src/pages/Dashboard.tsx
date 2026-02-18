@@ -87,7 +87,7 @@ export default function Dashboard() {
             <span className="text-[10px] tracking-[0.3em] font-black uppercase">Clinical Dashboard</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Welcome, <span className="text-primary">Dr. Anderson</span>
+            Welcome, <span className="text-[#3d63dd]">Dr. Anderson</span>
           </h1>
           <p className="text-gray-400 text-sm">You have 5 sessions scheduled for today.</p>
         </div>
