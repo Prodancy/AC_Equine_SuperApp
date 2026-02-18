@@ -229,11 +229,11 @@ export default function Cryotherapy() {
             <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Flow Rates</p>
             <div className="grid grid-cols-2 gap-3 mb-6">
               {[
-                { label: "Extra Soft", value: 20 },
-                { label: "Soft", value: 40 },
-                { label: "Medium", value: 60 },
-                { label: "Hard", value: 80 },
-                { label: "Extra Hard", value: 100 },
+                { label: "Extra Soft - 0.3lpm", value: 20 },
+                { label: "Soft - 0.5lpm", value: 40 },
+                { label: "Medium - 0.7lpm", value: 60 },
+                { label: "Hard - 0.9lpm", value: 80 },
+                { label: "Extra Hard - 1.1lpm", value: 100 },
               ].map((rate) => (
                 <button
                   key={`flow-btn-${rate.value}`}
