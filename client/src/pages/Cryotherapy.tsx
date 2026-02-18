@@ -85,10 +85,19 @@ export default function Cryotherapy() {
   const [flowRate, setFlowRate] = useState([50]);
   const [fogRate, setFogRate] = useState(2);
 
+  const [selectedControl, setSelectedControl] = useState<string | null>("extra-soft");
+
   const nozzles = [
-    { id: "small", name: "Mild Cone", image: nozzle6mm },
-    { id: "medium", name: "Strong Cone", image: nozzle15mm },
+    { id: "mild", name: "Mild Cone", image: nozzle6mm },
+    { id: "strong", name: "Strong Cone", image: nozzle15mm },
   ];
+
+  const handleSelection = (type: 'fog' | 'massage' | 'flow', id: string, value?: number) => {
+    setSelectedControl(`${type}-${id}`);
+    if (type === 'fog') setSelectedNozzle(id);
+    if (type === 'massage') setSelectedMassageNozzle(id);
+    if (type === 'flow' && value !== undefined) setFlowRate([value]);
+  };
 
   return (
     <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
@@ -150,15 +159,15 @@ export default function Cryotherapy() {
               ].map((nozzle) => (
                 <button
                   key={`fog-nozzle-${nozzle.id}`}
-                  onClick={() => setSelectedNozzle(nozzle.id)}
+                  onClick={() => handleSelection('fog', nozzle.id)}
                   className={cn(
                     "group relative transition-all duration-300 active:scale-95",
-                    selectedNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60"
+                    selectedControl === `fog-${nozzle.id}` ? "scale-[1.02] z-10" : "opacity-60"
                   )}
                 >
                 <div className={cn(
                   "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
-                  selectedNozzle === nozzle.id 
+                  selectedControl === `fog-${nozzle.id}` 
                     ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
                     : "bg-white/5 border-white/10 hover:border-white/20"
                 )}>
@@ -173,7 +182,7 @@ export default function Cryotherapy() {
                     {nozzle.name}
                   </span>
                 </div>
-                  {selectedNozzle === nozzle.id && (
+                  {selectedControl === `fog-${nozzle.id}` && (
                     <motion.div 
                       layoutId="selected-nozzle-glow-fog"
                       className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
@@ -192,16 +201,16 @@ export default function Cryotherapy() {
               ].map((nozzle, index) => (
                 <button
                   key={`massage-${nozzle.id}`}
-                  onClick={() => setSelectedMassageNozzle(nozzle.id)}
+                  onClick={() => handleSelection('massage', nozzle.id)}
                   className={cn(
                     "group relative transition-all duration-300 active:scale-95",
-                    selectedMassageNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60",
+                    selectedControl === `massage-${nozzle.id}` ? "scale-[1.02] z-10" : "opacity-60",
                     index === 2 ? "col-span-2 w-1/2 mx-auto" : "w-full"
                   )}
                 >
                   <div className={cn(
                     "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300 w-full",
-                    selectedMassageNozzle === nozzle.id 
+                    selectedControl === `massage-${nozzle.id}` 
                       ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
                       : "bg-white/5 border-white/10 hover:border-white/20"
                   )}>
@@ -216,7 +225,7 @@ export default function Cryotherapy() {
                       {nozzle.name}
                     </span>
                   </div>
-                  {selectedMassageNozzle === nozzle.id && (
+                  {selectedControl === `massage-${nozzle.id}` && (
                     <motion.div 
                       layoutId="selected-nozzle-glow-massage"
                       className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
@@ -229,23 +238,23 @@ export default function Cryotherapy() {
             <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Flow Rates</p>
             <div className="grid grid-cols-2 gap-3 mb-6">
               {[
-                { label: "Extra Soft - 0.3lpm", value: 20 },
-                { label: "Soft - 0.5lpm", value: 40 },
-                { label: "Medium - 0.7lpm", value: 60 },
-                { label: "Hard - 0.9lpm", value: 80 },
-                { label: "Extra Hard - 1.1lpm", value: 100 },
+                { id: "extra-soft", label: "Extra Soft - 0.3lpm", value: 20 },
+                { id: "soft", label: "Soft - 0.5lpm", value: 40 },
+                { id: "medium", label: "Medium - 0.7lpm", value: 60 },
+                { id: "hard", label: "Hard - 0.9lpm", value: 80 },
+                { id: "extra-hard", label: "Extra Hard - 1.1lpm", value: 100 },
               ].map((rate) => (
                 <button
                   key={`flow-btn-${rate.value}`}
-                  onClick={() => setFlowRate([rate.value])}
+                  onClick={() => handleSelection('flow', rate.id, rate.value)}
                   className={cn(
                     "group relative transition-all duration-300 active:scale-95",
-                    flowRate[0] === rate.value ? "scale-[1.02] z-10" : "opacity-60"
+                    selectedControl === `flow-${rate.id}` ? "scale-[1.02] z-10" : "opacity-60"
                   )}
                 >
                   <div className={cn(
                     "h-16 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
-                    flowRate[0] === rate.value 
+                    selectedControl === `flow-${rate.id}` 
                       ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
                       : "bg-white/5 border-white/10 hover:border-white/20"
                   )}>
