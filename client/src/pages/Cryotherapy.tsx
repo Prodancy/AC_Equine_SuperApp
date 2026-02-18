@@ -909,7 +909,7 @@ export default function Cryotherapy() {
                         ))}
                       </div>
 
-                      <p className="font-medium text-[#A9B3CE]/40 tracking-widest mb-4 text-[14px]">
+                      <p className="font-medium tracking-widest mb-4 text-[14px] text-[#ffffff]">
                         Massage Nozzle
                       </p>
                       <div className="grid grid-cols-2 gap-3 mb-6">
