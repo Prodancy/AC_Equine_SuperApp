@@ -258,19 +258,6 @@ export default function Cryotherapy() {
             </div>
           </div>
 
-          <div className="space-y-3">
-            <div className="flex justify-between items-center">
-              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#A9B3CE]">Flow Rate</p>
-              <span className="text-xs font-bold text-[#3D63DD] tabular-nums">{flowRate[0]}%</span>
-            </div>
-            <Slider 
-              value={flowRate} 
-              onValueChange={setFlowRate} 
-              max={100} 
-              step={1} 
-              className="py-2" 
-            />
-          </div>
 
           <div className="space-y-3">
             <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#A9B3CE]">Fog Rate</p>
