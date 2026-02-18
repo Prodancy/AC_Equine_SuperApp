@@ -1246,22 +1246,8 @@ export default function Cryotherapy() {
                             updateProtocolName(p.id, e.target.value);
                           }}
                           onClick={(e) => e.stopPropagation()}
-                          className="bg-transparent border-none outline-none text-white font-bold text-sm capitalize tracking-wider mb-2 w-full focus:ring-0 p-0"
+                          className="bg-transparent border-none outline-none text-white font-bold text-sm capitalize tracking-wider w-full focus:ring-0 p-0"
                         />
-                        <div className="flex items-center gap-3">
-                          <div className="flex items-center gap-1">
-                            <Activity className="w-3 h-3 text-[#A9B3CE]" />
-                            <span className="text-[10px] text-[#A9B3CE] font-medium">
-                              {p.intensity}%
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Thermometer className="w-3 h-3 text-[#A9B3CE]" />
-                            <span className="text-[10px] text-[#A9B3CE] font-medium">
-                              {p.temp}°C
-                            </span>
-                          </div>
-                        </div>
                       </div>
                       <div className="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-40 transition-opacity">
                         <Play className="w-4 h-4 text-white fill-current" />
