@@ -23,12 +23,12 @@ import massageStrong from "@/assets/image_1771412940321.png";
 import massagePrecision from "@/assets/image_1771412948862.png";
 
 const protocols = [
-  { id: "c1", name: "Localized Inflammation", duration: 10, intensity: 80, temp: -140, bodyPart: "leg-front-left" },
-  { id: "c2", name: "Muscle Recovery", duration: 15, intensity: 70, temp: -120, bodyPart: "back-left" },
-  { id: "c3", name: "Post-Surgical", duration: 8, intensity: 60, temp: -110, bodyPart: "neck" },
-  { id: "c4", name: "Tendon Repair", duration: 12, intensity: 75, temp: -130, bodyPart: "leg-front-right" },
-  { id: "c5", name: "Chronic Pain", duration: 20, intensity: 65, temp: -115, bodyPart: "back-right" },
-  { id: "c6", name: "Hoof Therapy", duration: 10, intensity: 90, temp: -150, bodyPart: "hoof-front-left" },
+  { id: "c1", name: "Localized Inflammation", duration: 10, intensity: 80, temp: -140, bodyPart: "leg-front-left", subProtocols: ["Acute Phase", "Sub-acute Phase", "Chronic Phase", "Maintenance"] },
+  { id: "c2", name: "Muscle Recovery", duration: 15, intensity: 70, temp: -120, bodyPart: "back-left", subProtocols: ["Post-Exercise", "Deep Tissue", "Lactic Acid Flush", "Pre-Competition"] },
+  { id: "c3", name: "Post-Surgical", duration: 8, intensity: 60, temp: -110, bodyPart: "neck", subProtocols: ["Wound Healing", "Edema Control", "Scar Tissue", "Range of Motion"] },
+  { id: "c4", name: "Tendon Repair", duration: 12, intensity: 75, temp: -130, bodyPart: "leg-front-right", subProtocols: ["Initial Loading", "Fiber Alignment", "Strengthening", "Return to Work"] },
+  { id: "c5", name: "Chronic Pain", duration: 20, intensity: 65, temp: -115, bodyPart: "back-right", subProtocols: ["Pain Management", "Nerve Desensitization", "Mobility Boost", "Daily Relief"] },
+  { id: "c6", name: "Hoof Therapy", duration: 10, intensity: 90, temp: -150, bodyPart: "hoof-front-left", subProtocols: ["Laminitis Relief", "Abscess Drain", "Wall Growth", "General Care"] },
 ];
 
 export default function Cryotherapy() {
@@ -371,7 +371,7 @@ export default function Cryotherapy() {
                           )}
                         >
                           <div className={cn(
-                            "h-20 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
+                            "h-24 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
                             activeProtocol === p.id 
                               ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
                               : "bg-white/5 border-white/10 hover:border-white/20"
@@ -379,13 +379,20 @@ export default function Cryotherapy() {
                             <p 
                               contentEditable 
                               suppressContentEditableWarning
-                              className="uppercase tracking-tight text-[13px] font-bold text-white outline-none focus:ring-1 focus:ring-[#3D63DD]/50 rounded px-1 cursor-text select-text"
+                              className="uppercase tracking-tight text-[11px] font-bold text-white outline-none focus:ring-1 focus:ring-[#3D63DD]/50 rounded px-1 cursor-text select-text mb-2"
                               onClick={(e) => e.stopPropagation()}
                               onMouseDown={(e) => e.stopPropagation()}
                               onPointerDown={(e) => e.stopPropagation()}
                             >
                               {p.name}
                             </p>
+                            <div className="grid grid-cols-2 gap-1 w-full mt-1">
+                              {(p as any).subProtocols?.map((sub: string, i: number) => (
+                                <span key={i} className="text-[8px] text-[#A9B3CE] uppercase tracking-tighter bg-white/5 py-0.5 rounded px-1 truncate">
+                                  {sub}
+                                </span>
+                              ))}
+                            </div>
                           </div>
                         </div>
                       ))}
