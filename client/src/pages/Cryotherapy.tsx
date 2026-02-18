@@ -253,44 +253,6 @@ export default function Cryotherapy() {
                 </button>
               ))}
             </div>
-
-            <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Nozzle Type</p>
-            <div className="flex gap-3">
-              {nozzles.map((nozzle) => (
-                <button
-                  key={`type-${nozzle.id}`}
-                  onClick={() => setSelectedNozzleType(nozzle.id)}
-                  className={cn(
-                    "flex-1 group relative transition-all duration-300 active:scale-95",
-                    selectedNozzleType === nozzle.id ? "scale-[1.02] z-10" : "opacity-60"
-                  )}
-                >
-                <div className={cn(
-                  "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
-                  selectedNozzleType === nozzle.id 
-                    ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
-                    : "bg-white/5 border-white/10 hover:border-white/20"
-                )}>
-                  <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
-                    <img 
-                      src={nozzle.image} 
-                      alt={nozzle.name} 
-                      className="w-full h-full object-contain filter brightness-110 contrast-110"
-                    />
-                  </div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-[#ffffff]">
-                    {nozzle.name}
-                  </span>
-                </div>
-                  {selectedNozzleType === nozzle.id && (
-                    <motion.div 
-                      layoutId="selected-nozzle-glow-type"
-                      className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
-                    />
-                  )}
-                </button>
-              ))}
-            </div>
           </div>
 
           <div className="space-y-3">
