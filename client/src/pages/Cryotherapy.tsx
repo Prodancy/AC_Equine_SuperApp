@@ -336,7 +336,7 @@ export default function Cryotherapy() {
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="overflow-hidden"
               >
-                  <div className="pb-4">
+                  <div className="pt-4 pb-4">
                     <div className="grid grid-cols-2 gap-3 mb-6">
                       {protocols.map((p) => (
                         <button
