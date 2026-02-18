@@ -186,9 +186,9 @@ export default function Cryotherapy() {
             <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Massage Nozzle</p>
             <div className="grid grid-cols-2 gap-3 mb-6">
               {[
-                { id: "mild", name: "Mild Cone", image: massageMild },
-                { id: "strong", name: "Strong Cone", image: massageStrong },
-                { id: "precision", name: "Precision", image: massagePrecision },
+                { id: "mild", name: "Dome Nozzle", image: massageMild },
+                { id: "strong", name: "Thin Nozzle", image: massageStrong },
+                { id: "precision", name: "Flat Contact Nozzle", image: massagePrecision },
               ].map((nozzle, index) => (
                 <button
                   key={`massage-${nozzle.id}`}
