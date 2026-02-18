@@ -144,7 +144,6 @@ export default function Cryotherapy() {
               {[
                 { id: "mild", name: "Mild Cone", image: nozzle6mm },
                 { id: "strong", name: "Strong Cone", image: nozzle15mm },
-                { id: "precision", name: "Precision", image: nozzle6mm },
               ].map((nozzle) => (
                 <button
                   key={`fog-nozzle-${nozzle.id}`}
@@ -186,7 +185,6 @@ export default function Cryotherapy() {
               {[
                 { id: "mild", name: "Mild Cone", image: nozzle6mm },
                 { id: "strong", name: "Strong Cone", image: nozzle15mm },
-                { id: "precision", name: "Precision", image: nozzle6mm },
               ].map((nozzle) => (
                 <button
                   key={`massage-${nozzle.id}`}
