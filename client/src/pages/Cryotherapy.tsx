@@ -23,12 +23,12 @@ import massageStrong from "@/assets/image_1771412940321.png";
 import massagePrecision from "@/assets/image_1771412948862.png";
 
 const protocols = [
-  { id: "c1", name: "Localized Inflammation", duration: 10, intensity: 80, temp: -140 },
-  { id: "c2", name: "Muscle Recovery", duration: 15, intensity: 70, temp: -120 },
-  { id: "c3", name: "Post-Surgical", duration: 8, intensity: 60, temp: -110 },
-  { id: "c4", name: "Tendon Repair", duration: 12, intensity: 75, temp: -130 },
-  { id: "c5", name: "Chronic Pain", duration: 20, intensity: 65, temp: -115 },
-  { id: "c6", name: "Hoof Therapy", duration: 10, intensity: 90, temp: -150 },
+  { id: "c1", name: "Localized Inflammation", duration: 10, intensity: 80, temp: -140, bodyPart: "leg-front-left" },
+  { id: "c2", name: "Muscle Recovery", duration: 15, intensity: 70, temp: -120, bodyPart: "back-left" },
+  { id: "c3", name: "Post-Surgical", duration: 8, intensity: 60, temp: -110, bodyPart: "neck" },
+  { id: "c4", name: "Tendon Repair", duration: 12, intensity: 75, temp: -130, bodyPart: "leg-front-right" },
+  { id: "c5", name: "Chronic Pain", duration: 20, intensity: 65, temp: -115, bodyPart: "back-right" },
+  { id: "c6", name: "Hoof Therapy", duration: 10, intensity: 90, temp: -150, bodyPart: "hoof-front-left" },
 ];
 
 export default function Cryotherapy() {
@@ -326,7 +326,7 @@ export default function Cryotherapy() {
             onClick={() => setIsProtocolExpanded(!isProtocolExpanded)}
             className="w-full flex items-center justify-between py-2 group"
           >
-            <p className="uppercase tracking-[0.3em] text-[#A9B3CE] group-hover:text-white transition-colors text-[14px] font-bold text-left leading-tight">SET SESSION<br />DURATION</p>
+            <p className="uppercase tracking-[0.3em] text-[#A9B3CE] group-hover:text-white transition-colors text-[14px] font-bold text-left leading-tight">SET SESSION<br /><span className="lowercase">duration</span></p>
             <div className="flex-1" />
             {activeProtocol && (
               <span className="text-[10px] font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0">

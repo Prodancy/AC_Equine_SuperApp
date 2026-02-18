@@ -1,12 +1,55 @@
 import { LucideProps } from "lucide-react";
 
-export const Horse = (props: LucideProps) => (
-  <svg 
-    viewBox="0 0 256 256" 
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <path d="M228,124a8,8,0,0,1-8,8h-8.2c-5,0-10,1.8-13.4,5l-19.4,18.4A47.7,47.7,0,0,1,145,168H104a8,8,0,0,1-6.1-2.8l-32-38.4a8,8,0,1,1,12.3-10.3l28,33.5h38.8a31.8,31.8,0,0,0,22.7-9.4l19.4-18.4c7.6-7.2,18.3-11.2,29-11.2h12.3A8,8,0,0,1,228,124ZM90.4,85.2a8,8,0,0,0-10.8,2.4L64,113.1,48.4,87.6a8,8,0,1,0-13.7,8.3L54,127.1,34.7,158.4a8,8,0,1,0,13.7,8.3L64,141.1l15.6,25.6a8,8,0,1,0,13.7-8.3L74,127.1l18.8-31.1A8,8,0,0,0,90.4,85.2ZM192,48a48.1,48.1,0,0,0-48,48v16a8,8,0,0,0,16,0V96a32,32,0,0,1,64,0,8,8,0,0,0,16,0A48.1,48.1,0,0,0,192,48Z"/>
-  </svg>
-);
+interface HorseProps extends LucideProps {
+  activePart?: string;
+}
+
+export const Horse = ({ activePart, ...props }: HorseProps) => {
+  const parts = [
+    { id: "neck", d: "M100,60 Q120,40 140,60 T160,100", label: "Neck" },
+    { id: "back-left", d: "M160,100 Q200,80 240,100", label: "Back Left" },
+    { id: "back-right", d: "M160,110 Q200,90 240,110", label: "Back Right" },
+    { id: "leg-front-left", d: "M100,160 L100,240", label: "Front Leg Left" },
+    { id: "leg-front-right", d: "M120,160 L120,240", label: "Front Leg Right" },
+    { id: "hoof-front-left", d: "M90,240 L110,240", label: "Hoof Front Left" },
+  ];
+
+  return (
+    <svg 
+      viewBox="0 0 256 256" 
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      {/* Base Horse Shape - Simplified for anatomical hotspots */}
+      <path d="M40,160 Q60,140 100,160 T160,160 T220,140" strokeOpacity="0.2" />
+      <path d="M100,160 L80,100 L120,40 L160,100 L160,160" strokeOpacity="0.2" />
+      
+      {/* Hotspots */}
+      {parts.map((part) => (
+        <g key={part.id}>
+          <path 
+            d={part.d} 
+            stroke={activePart === part.id ? "#FF8A00" : "currentColor"}
+            strokeWidth={activePart === part.id ? "4" : "2"}
+            strokeOpacity={activePart === part.id ? "1" : "0.2"}
+            className="transition-all duration-300"
+          />
+          {activePart === part.id && (
+            <circle 
+              cx={part.d.split(/[MLQ ]/)[1]} 
+              cy={part.d.split(/[MLQ ]/)[2]} 
+              r="4" 
+              fill="#FF8A00"
+              className="animate-pulse"
+            />
+          )}
+        </g>
+      ))}
+    </svg>
+  );
+};
