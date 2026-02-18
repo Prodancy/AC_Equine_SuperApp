@@ -79,9 +79,9 @@ export default function Cryotherapy() {
   const [fogRate, setFogRate] = useState(2);
 
   const nozzles = [
-    { id: "small", name: "Small", description: "Precision cooling" },
-    { id: "medium", name: "Medium", description: "General recovery" },
-    { id: "large", name: "Large", description: "Broad area" },
+    { id: "small", name: "Small", description: "6mm" },
+    { id: "medium", name: "Medium", description: "15mm" },
+    { id: "large", name: "Large", description: "32mm" },
   ];
 
   return (
