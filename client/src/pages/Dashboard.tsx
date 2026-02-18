@@ -197,29 +197,6 @@ export default function Dashboard() {
             <Card className="bg-white/5 border-white/10 backdrop-blur-md overflow-hidden">
               <CardContent className="p-6 flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-                    <Bluetooth className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-sm">ESP32 Controller</h3>
-                    <p className="text-[10px] text-green-500 font-bold tracking-widest uppercase">Connected</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="text-right">
-                    <p className="text-[10px] text-gray-500 font-bold uppercase">Battery</p>
-                    <p className="text-sm font-bold">85%</p>
-                  </div>
-                  <div className="w-10 h-5 bg-white/5 border border-white/10 rounded-md p-0.5">
-                    <div className="h-full bg-green-500 rounded-[2px]" style={{ width: '85%' }} />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white/5 border-white/10 backdrop-blur-md overflow-hidden">
-              <CardContent className="p-6 flex items-center justify-between">
-                <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-orange-400/10 flex items-center justify-center">
                     <Activity className="w-6 h-6 text-orange-400" />
                   </div>
