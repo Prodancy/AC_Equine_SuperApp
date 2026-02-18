@@ -81,8 +81,8 @@ export default function Cryotherapy() {
   const [fogRate, setFogRate] = useState(2);
 
   const nozzles = [
-    { id: "small", name: "6mm Nozzle", description: "Precision", image: nozzle6mm },
-    { id: "medium", name: "15mm Nozzle", description: "Recovery", image: nozzle15mm },
+    { id: "small", name: "6mm Nozzle", image: nozzle6mm },
+    { id: "medium", name: "15mm Nozzle", image: nozzle15mm },
   ];
 
   return (
@@ -166,7 +166,6 @@ export default function Cryotherapy() {
                   )}>
                     {nozzle.name}
                   </span>
-                  <span className="text-[8px] font-bold text-[#A9B3CE]/50 uppercase tracking-tighter">{nozzle.description}</span>
                 </div>
                   {selectedNozzle === nozzle.id && (
                     <motion.div 
