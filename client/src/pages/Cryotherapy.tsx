@@ -78,6 +78,8 @@ export default function Cryotherapy() {
   const [intensity, setIntensity] = useState([filteredProtocols[0].intensity]);
   const { toast } = useToast();
 
+  const [customTime, setCustomTime] = useState(120);
+
   const currentProtocol = protocols.find(p => p.id === activeProtocol) || filteredProtocols[0];
 
   useEffect(() => {
@@ -88,12 +90,16 @@ export default function Cryotherapy() {
   }, [selectedPart]);
 
   useEffect(() => {
-    setTimeLeft(currentProtocol.duration * 60);
+    if (currentProtocol.name === "CUSTOM") {
+      setTimeLeft(customTime);
+    } else {
+      setTimeLeft(currentProtocol.duration * 60);
+    }
     setTargetTemp(currentProtocol.temp);
     setIntensity([currentProtocol.intensity]);
     setIsPlaying(false);
     setCurrentTemp(20);
-  }, [activeProtocol]);
+  }, [activeProtocol, customTime]);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -392,6 +398,26 @@ export default function Cryotherapy() {
                     </div>
 
                     <div className="space-y-4">
+                      {currentProtocol.name === "CUSTOM" && (
+                        <div className="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Custom Duration</span>
+                            <span className="text-primary font-bold">{formatTime(customTime)}</span>
+                          </div>
+                          <Slider 
+                            value={[customTime]} 
+                            onValueChange={(val) => setCustomTime(val[0])} 
+                            min={120} 
+                            max={240} 
+                            step={1} 
+                            className="py-2" 
+                          />
+                          <div className="flex justify-between text-[8px] text-gray-500 font-bold uppercase tracking-tighter">
+                            <span>2:00</span>
+                            <span>4:00</span>
+                          </div>
+                        </div>
+                      )}
                       <div className="flex justify-between text-[10px] font-black uppercase tracking-widest">
                         <span className="text-gray-400">Target Intensity</span>
                         <span className="text-primary">{intensity[0]}%</span>
@@ -466,6 +492,26 @@ export default function Cryotherapy() {
                   </Select>
                   <div className="pt-2 space-y-6">
                     <div className="space-y-4">
+                      {currentProtocol.name === "CUSTOM" && (
+                        <div className="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Custom Duration</span>
+                            <span className="text-primary font-bold">{formatTime(customTime)}</span>
+                          </div>
+                          <Slider 
+                            value={[customTime]} 
+                            onValueChange={(val) => setCustomTime(val[0])} 
+                            min={120} 
+                            max={240} 
+                            step={1} 
+                            className="py-2" 
+                          />
+                          <div className="flex justify-between text-[8px] text-gray-500 font-bold uppercase tracking-tighter">
+                            <span>2:00</span>
+                            <span>4:00</span>
+                          </div>
+                        </div>
+                      )}
                       <div className="flex justify-between text-[10px] font-black uppercase tracking-widest">
                         <span className="text-gray-400">Target Intensity</span>
                         <span className="text-primary">{intensity[0]}%</span>
