@@ -1331,8 +1331,7 @@ export default function Cryotherapy() {
                       )}
                       onClick={() => {
                         setActiveProtocol(p.id);
-                        setActiveTab("controls");
-                        setIsPlaying(true);
+                        startSession();
                         toast({
                           title: "Protocol Started",
                           description: `Starting ${getFullTitleCase(p.name)} for ${getPartLabel(selectedPart)}`,
