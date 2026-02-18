@@ -157,7 +157,7 @@ export default function Cryotherapy() {
             onClick={() => setIsNozzleExpanded(!isNozzleExpanded)}
             className="w-full flex items-center justify-between py-2 group"
           >
-            <p className="uppercase tracking-[0.3em] text-[#A9B3CE] text-[14px] group-hover:text-white transition-colors font-bold leading-tight">SELECT<br />NOZZLE TYPE</p>
+            <p className="uppercase tracking-[0.3em] text-[#A9B3CE] text-[14px] group-hover:text-white transition-colors font-bold leading-tight text-left">SELECT<br />NOZZLE TYPE</p>
             <div className="flex-1" />
             {selectedControl && (
               <span className="text-[10px] font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0">
