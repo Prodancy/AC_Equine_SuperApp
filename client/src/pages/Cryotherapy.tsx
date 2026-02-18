@@ -971,7 +971,7 @@ export default function Cryotherapy() {
                       </div>
 
                       <p className="font-medium tracking-widest mb-4 text-[14px] text-[#FFFFFF]">
-                        Flow Rates
+                        Regular Spray - Flow Rates
                       </p>
                       <div className="grid grid-cols-2 gap-3 mb-6">
                         {[
@@ -1083,7 +1083,6 @@ export default function Cryotherapy() {
                             key={`protocol-btn-${p.id}`}
                             onClick={() => {
                               setActiveProtocol(p.id);
-                              startSession();
                             }}
                             role="button"
                             tabIndex={0}
@@ -1205,6 +1204,20 @@ export default function Cryotherapy() {
                 </motion.div>
               )}
             </AnimatePresence>
+
+            <div className="mt-6">
+              <Button
+                size="lg"
+                disabled={!selectedControl}
+                className={cn(
+                  "w-full h-20 text-xl rounded-2xl font-black uppercase tracking-widest transition-all active:scale-95 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20",
+                )}
+                onClick={startSession}
+              >
+                <Play className="w-8 h-8 mr-2 fill-current" />
+                Start Session
+              </Button>
+            </div>
           </div>
         )}
       </div>
@@ -1215,108 +1228,9 @@ export default function Cryotherapy() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="grid gap-6 md:grid-cols-2"
+            className="hidden"
           >
-            <div className="space-y-6 order-1 md:order-2">
-              <Card className="flex flex-col justify-between overflow-hidden relative border-blue-400/20 shadow-lg bg-card">
-                <CardHeader className="text-center pb-0 pt-4">
-                  <CardTitle className="text-blue-400/60 tracking-widest text-[10px] md:text-xs">
-                    Cooling Progress
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex-1 flex flex-col items-center justify-center space-y-6 md:space-y-8 relative z-10 py-6 md:py-8">
-                  <div className="relative w-56 h-56 md:w-64 md:h-64 flex items-center justify-center">
-                    <svg className="w-full h-full transform -rotate-90">
-                      <circle
-                        cx="50%"
-                        cy="50%"
-                        r="45%"
-                        stroke="currentColor"
-                        strokeWidth="8"
-                        fill="transparent"
-                        className="text-secondary"
-                      />
-                      <circle
-                        cx="50%"
-                        cy="50%"
-                        r="45%"
-                        stroke="currentColor"
-                        strokeWidth="8"
-                        fill="transparent"
-                        strokeDasharray="283"
-                        strokeDashoffset={283 * (1 - progress / 100)}
-                        className="text-blue-400 transition-all duration-1000 ease-linear"
-                      />
-                    </svg>
-                    <div className="absolute flex flex-col items-center">
-                      <span className="text-5xl md:text-6xl font-bold tracking-tighter tabular-nums text-white">
-                        {formatTime(timeLeft)}
-                      </span>
-                      <span className="text-xs text-blue-400/80 mt-1 font-semibold tracking-wider">
-                        Remaining
-                      </span>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4 md:gap-8 w-full">
-                    <div className="flex flex-col items-center bg-blue-500/5 p-3 md:p-4 rounded-xl border border-blue-500/10">
-                      <Thermometer className="w-5 h-5 md:w-6 md:h-6 text-blue-400 mb-1" />
-                      <span className="text-xl md:text-2xl font-bold tabular-nums text-white">
-                        {Math.round(currentTemp)}°C
-                      </span>
-                      <span className="text-[10px] md:text-xs text-blue-400/60 font-bold capitalize tracking-wider">
-                        Nozzle Temp
-                      </span>
-                    </div>
-                    <div className="flex flex-col items-center bg-blue-500/5 p-3 md:p-4 rounded-xl border border-blue-500/10">
-                      <Zap className="w-5 h-5 md:w-6 md:h-6 text-blue-400 mb-1" />
-                      <span className="text-xl md:text-2xl font-bold tabular-nums text-white">
-                        {intensity[0]}%
-                      </span>
-                      <span className="text-[10px] md:text-xs text-blue-400/60 font-bold capitalize tracking-wider">
-                        Intensity
-                      </span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="space-y-4 md:space-y-6 order-2 md:order-1">
-              <div
-                className={cn(
-                  "grid grid-cols-2 gap-3 md:gap-4 transition-all duration-300",
-                  !selectedControl &&
-                    "opacity-40 grayscale pointer-events-none",
-                )}
-              >
-                  <Button
-                    size="lg"
-                    disabled={!selectedControl}
-                    className={cn(
-                      "h-20 text-xl rounded-2xl font-black uppercase tracking-widest transition-all active:scale-95",
-                      isPlaying
-                        ? "bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/20"
-                        : "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20",
-                    )}
-                    onClick={startSession}
-                  >
-                    <Play className="w-8 h-8 mr-2 fill-current" />
-                    Start Session
-                  </Button>
-                <Button
-                  size="lg"
-                  variant="destructive"
-                  className="h-20 text-xl rounded-2xl font-black uppercase tracking-widest bg-red-500/20 border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white transition-all active:scale-95"
-                  onClick={() => setIsPlaying(false)}
-                  disabled={
-                    !isPlaying && timeLeft === currentProtocol.duration * 60
-                  }
-                >
-                  <Square className="w-8 h-8 mr-2 fill-current" />
-                  Stop
-                </Button>
-              </div>
-            </div>
+            {/* The controls were moved inside the Set Session section above */}
           </motion.div>
         ) : (
           <motion.div
