@@ -23,24 +23,57 @@ import massageStrong from "@/assets/image_1771412940321.png";
 import massagePrecision from "@/assets/image_1771412948862.png";
 
 const protocols = [
-  { id: "c1", name: "Localized Inflammation", duration: 10, intensity: 80, temp: -140, bodyPart: "leg-front-left", subProtocols: ["Acute Phase", "Sub-acute Phase", "Chronic Phase", "Maintenance"] },
-  { id: "c2", name: "Muscle Recovery", duration: 15, intensity: 70, temp: -120, bodyPart: "back-left", subProtocols: ["Post-Exercise", "Deep Tissue", "Lactic Acid Flush", "Pre-Competition"] },
-  { id: "c3", name: "Post-Surgical", duration: 8, intensity: 60, temp: -110, bodyPart: "neck", subProtocols: ["Wound Healing", "Edema Control", "Scar Tissue", "Range of Motion"] },
-  { id: "c4", name: "Tendon Repair", duration: 12, intensity: 75, temp: -130, bodyPart: "leg-front-right", subProtocols: ["Initial Loading", "Fiber Alignment", "Strengthening", "Return to Work"] },
-  { id: "c5", name: "Chronic Pain", duration: 20, intensity: 65, temp: -115, bodyPart: "back-right", subProtocols: ["Pain Management", "Nerve Desensitization", "Mobility Boost", "Daily Relief"] },
-  { id: "c6", name: "Hoof Therapy", duration: 10, intensity: 90, temp: -150, bodyPart: "hoof-front-left", subProtocols: ["Laminitis Relief", "Abscess Drain", "Wall Growth", "General Care"] },
+  // Neck
+  { id: "p1", bodyPart: "neck", name: "Cervical Relief", duration: 10, intensity: 80, temp: -140 },
+  { id: "p2", bodyPart: "neck", name: "Muscle Tension", duration: 12, intensity: 70, temp: -120 },
+  { id: "p3", bodyPart: "neck", name: "Edema Control", duration: 15, intensity: 60, temp: -110 },
+  { id: "p4", bodyPart: "neck", name: "Maintenance", duration: 8, intensity: 50, temp: -100 },
+  // Back Left
+  { id: "p5", bodyPart: "back-left", name: "Deep Tissue", duration: 15, intensity: 75, temp: -130 },
+  { id: "p6", bodyPart: "back-left", name: "Lactic Flush", duration: 20, intensity: 85, temp: -150 },
+  { id: "p7", bodyPart: "back-left", name: "Pre-Competition", duration: 10, intensity: 65, temp: -115 },
+  { id: "p8", bodyPart: "back-left", name: "Soreness Relief", duration: 8, intensity: 90, temp: -160 },
+  // Front Leg Left
+  { id: "p9", bodyPart: "leg-front-left", name: "Wound Healing", duration: 8, intensity: 60, temp: -110 },
+  { id: "p10", bodyPart: "leg-front-left", name: "Acute Phase", duration: 12, intensity: 70, temp: -125 },
+  { id: "p11", bodyPart: "leg-front-left", name: "Scar Tissue", duration: 15, intensity: 75, temp: -130 },
+  { id: "p12", bodyPart: "leg-front-left", name: "Mobility Boost", duration: 10, intensity: 55, temp: -105 },
+  // Back Right
+  { id: "p13", bodyPart: "back-right", name: "Spine Alignment", duration: 15, intensity: 70, temp: -125 },
+  { id: "p14", bodyPart: "back-right", name: "Muscle Spasm", duration: 12, intensity: 80, temp: -140 },
+  { id: "p15", bodyPart: "back-right", name: "Nerve Calming", duration: 18, intensity: 65, temp: -115 },
+  { id: "p16", bodyPart: "back-right", name: "Flexibility", duration: 10, intensity: 60, temp: -110 },
+  // Front Leg Right
+  { id: "p17", bodyPart: "leg-front-right", name: "Tendon Support", duration: 12, intensity: 75, temp: -135 },
+  { id: "p18", bodyPart: "leg-front-right", name: "Ligament Care", duration: 15, intensity: 85, temp: -145 },
+  { id: "p19", bodyPart: "leg-front-right", name: "Joint Mobility", duration: 10, intensity: 65, temp: -120 },
+  { id: "p20", bodyPart: "leg-front-right", name: "Cool Down", duration: 8, intensity: 50, temp: -100 },
+  // Hoof Front Left
+  { id: "p21", bodyPart: "hoof-front-left", name: "Laminitis", duration: 15, intensity: 90, temp: -160 },
+  { id: "p22", bodyPart: "hoof-front-left", name: "Wall Repair", duration: 10, intensity: 80, temp: -140 },
+  { id: "p23", bodyPart: "hoof-front-left", name: "Abscess Relief", duration: 12, intensity: 70, temp: -130 },
+  { id: "p24", bodyPart: "hoof-front-left", name: "Growth Boost", duration: 20, intensity: 60, temp: -115 },
 ];
 
 export default function Cryotherapy() {
-  const [activeProtocol, setActiveProtocol] = useState(protocols[0].id);
+  const [selectedPart, setSelectedPart] = useState<string>("neck");
+  const filteredProtocols = protocols.filter(p => p.bodyPart === selectedPart);
+  const [activeProtocol, setActiveProtocol] = useState(filteredProtocols[0].id);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(protocols[0].duration * 60);
+  const [timeLeft, setTimeLeft] = useState(filteredProtocols[0].duration * 60);
   const [currentTemp, setCurrentTemp] = useState(20);
-  const [targetTemp, setTargetTemp] = useState(protocols[0].temp);
-  const [intensity, setIntensity] = useState([protocols[0].intensity]);
+  const [targetTemp, setTargetTemp] = useState(filteredProtocols[0].temp);
+  const [intensity, setIntensity] = useState([filteredProtocols[0].intensity]);
   const { toast } = useToast();
 
-  const currentProtocol = protocols.find(p => p.id === activeProtocol) || protocols[0];
+  const currentProtocol = protocols.find(p => p.id === activeProtocol) || filteredProtocols[0];
+
+  useEffect(() => {
+    const partProtocols = protocols.filter(p => p.bodyPart === selectedPart);
+    if (partProtocols.length > 0) {
+      setActiveProtocol(partProtocols[0].id);
+    }
+  }, [selectedPart]);
 
   useEffect(() => {
     setTimeLeft(currentProtocol.duration * 60);
@@ -82,20 +115,11 @@ export default function Cryotherapy() {
   const [activeTab, setActiveTab] = useState("controls");
   const [selectedNozzle, setSelectedNozzle] = useState("small");
   const [selectedMassageNozzle, setSelectedMassageNozzle] = useState("small");
-  const [selectedNozzleType, setSelectedNozzleType] = useState("small");
-  const [fogNozzle, setFogNozzle] = useState(false);
-  const [massageNozzle, setMassageNozzle] = useState(false);
   const [flowRate, setFlowRate] = useState([50]);
-  const [fogRate, setFogRate] = useState(2);
 
   const [isNozzleExpanded, setIsNozzleExpanded] = useState(false);
-  const [isProtocolExpanded, setIsProtocolExpanded] = useState(false);
+  const [isProtocolExpanded, setIsProtocolExpanded] = useState(true);
   const [selectedControl, setSelectedControl] = useState<string | null>("extra-soft");
-
-  const nozzles = [
-    { id: "mild", name: "Mild Cone", image: nozzle6mm },
-    { id: "strong", name: "Strong Cone", image: nozzle15mm },
-  ];
 
   const handleSelection = (type: 'fog' | 'massage' | 'flow', id: string, value?: number) => {
     setSelectedControl(`${type}-${id}`);
@@ -215,12 +239,6 @@ export default function Cryotherapy() {
                             {nozzle.name}
                           </span>
                         </div>
-                          {selectedControl === `fog-${nozzle.id}` && (
-                            <motion.div 
-                              layoutId="selected-nozzle-glow-fog"
-                              className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
-                            />
-                          )}
                         </button>
                       ))}
                     </div>
@@ -258,12 +276,6 @@ export default function Cryotherapy() {
                               {nozzle.name}
                             </span>
                           </div>
-                          {selectedControl === `massage-${nozzle.id}` && (
-                            <motion.div 
-                              layoutId="selected-nozzle-glow-massage"
-                              className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
-                            />
-                          )}
                         </button>
                       ))}
                     </div>
@@ -282,12 +294,6 @@ export default function Cryotherapy() {
                           onClick={() => handleSelection('flow', rate.id, rate.value)}
                           role="button"
                           tabIndex={0}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                              e.preventDefault();
-                              handleSelection('flow', rate.id, rate.value);
-                            }
-                          }}
                           className={cn(
                             "group relative transition-all duration-300 active:scale-95 cursor-pointer outline-none",
                             selectedControl === `flow-${rate.id}` ? "scale-[1.02] z-10" : "opacity-60"
@@ -300,12 +306,7 @@ export default function Cryotherapy() {
                               : "bg-white/5 border-white/10 hover:border-white/20"
                           )}>
                             <p 
-                              contentEditable 
-                              suppressContentEditableWarning
-                              className="uppercase tracking-tight text-[14px] font-medium text-[#ffffff] outline-none focus:ring-1 focus:ring-[#3D63DD]/50 rounded px-1 cursor-text select-text"
-                              onClick={(e) => e.stopPropagation()}
-                              onMouseDown={(e) => e.stopPropagation()}
-                              onPointerDown={(e) => e.stopPropagation()}
+                              className="uppercase tracking-tight text-[14px] font-medium text-[#ffffff] outline-none rounded px-1"
                             >
                               {rate.label}
                             </p>
@@ -353,46 +354,26 @@ export default function Cryotherapy() {
               >
                   <div className="pt-4 pb-4">
                     <div className="grid grid-cols-2 gap-3 mb-6">
-                      {protocols.map((p) => (
+                      {filteredProtocols.map((p) => (
                         <div
                           key={`protocol-btn-${p.id}`}
                           onClick={() => setActiveProtocol(p.id)}
                           role="button"
                           tabIndex={0}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                              e.preventDefault();
-                              setActiveProtocol(p.id);
-                            }
-                          }}
                           className={cn(
                             "group relative transition-all duration-300 active:scale-95 cursor-pointer outline-none",
                             activeProtocol === p.id ? "scale-[1.02] z-10" : "opacity-60"
                           )}
                         >
                           <div className={cn(
-                            "h-24 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
+                            "h-20 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
                             activeProtocol === p.id 
                               ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
                               : "bg-white/5 border-white/10 hover:border-white/20"
                           )}>
-                            <p 
-                              contentEditable 
-                              suppressContentEditableWarning
-                              className="uppercase tracking-tight text-[11px] font-bold text-white outline-none focus:ring-1 focus:ring-[#3D63DD]/50 rounded px-1 cursor-text select-text mb-2"
-                              onClick={(e) => e.stopPropagation()}
-                              onMouseDown={(e) => e.stopPropagation()}
-                              onPointerDown={(e) => e.stopPropagation()}
-                            >
+                            <p className="uppercase tracking-tight text-[13px] font-bold text-white">
                               {p.name}
                             </p>
-                            <div className="grid grid-cols-2 gap-1 w-full mt-1">
-                              {(p as any).subProtocols?.map((sub: string, i: number) => (
-                                <span key={i} className="text-[8px] text-[#A9B3CE] uppercase tracking-tighter bg-white/5 py-0.5 rounded px-1 truncate">
-                                  {sub}
-                                </span>
-                              ))}
-                            </div>
                           </div>
                         </div>
                       ))}
@@ -411,6 +392,7 @@ export default function Cryotherapy() {
           </AnimatePresence>
         </div>
       </div>
+
       <AnimatePresence mode="wait">
         {activeTab === "controls" ? (
           <motion.div 
@@ -512,14 +494,51 @@ export default function Cryotherapy() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="flex flex-col items-center justify-center min-h-[400px] border-2 border-dashed border-white/5 rounded-[2rem] bg-white/5"
+            className="flex flex-col items-center justify-center min-h-[400px] border-2 border-white/5 rounded-[2rem] bg-white/5 relative"
           >
-            <Activity className="w-16 h-16 text-primary mb-4 opacity-50" />
-            <h3 className="text-xl font-bold tracking-tight text-white">Thermal Imaging</h3>
-            <p className="text-gray-500 text-sm mt-2">Connect a thermal camera to view live feed.</p>
-            <Button className="mt-8 bg-primary hover:bg-primary/90 text-white rounded-xl px-8 font-black tracking-widest uppercase">
-              Connect Camera
-            </Button>
+            <div className="absolute inset-0 flex items-center justify-center p-8 opacity-20 pointer-events-none">
+              <Horse className="w-full h-full text-white" activePart={selectedPart} />
+            </div>
+            
+            <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-8">
+              <div className="relative w-full max-w-md aspect-[4/3]">
+                <Horse 
+                  className="w-full h-full text-[#3D63DD]/20" 
+                  activePart={selectedPart}
+                />
+                
+                {/* Hotspots */}
+                {[
+                  { id: "neck", top: "35%", left: "45%" },
+                  { id: "back-left", top: "45%", left: "60%" },
+                  { id: "back-right", top: "45%", left: "75%" },
+                  { id: "leg-front-left", top: "70%", left: "35%" },
+                  { id: "leg-front-right", top: "70%", left: "45%" },
+                  { id: "hoof-front-left", top: "90%", left: "35%" },
+                ].map((spot) => (
+                  <button
+                    key={spot.id}
+                    onClick={() => setSelectedPart(spot.id)}
+                    className={cn(
+                      "absolute w-6 h-6 rounded-full border-2 transition-all duration-300 flex items-center justify-center",
+                      selectedPart === spot.id 
+                        ? "bg-[#FF8A00] border-white scale-125 shadow-[0_0_20px_#FF8A00]" 
+                        : "bg-[#FF8A00]/40 border-[#FF8A00]/60 hover:bg-[#FF8A00] hover:scale-110"
+                    )}
+                    style={{ top: spot.top, left: spot.left }}
+                  >
+                    <div className="w-2 h-2 rounded-full bg-white opacity-50" />
+                  </button>
+                ))}
+              </div>
+              
+              <div className="mt-8 text-center">
+                <h3 className="text-xl font-bold tracking-tight text-white uppercase mb-2">
+                  {selectedPart.replace('-', ' ')} Protocols
+                </h3>
+                <p className="text-[#A9B3CE] text-xs uppercase tracking-widest">Select a hotspot to view specialized protocols</p>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
