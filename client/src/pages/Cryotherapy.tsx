@@ -1184,7 +1184,7 @@ export default function Cryotherapy() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="flex flex-col items-center justify-center min-h-[400px] border-2 border-white/5 rounded-[2rem] bg-white/5 relative"
+            className="flex flex-col items-center justify-center min-h-[400px] relative"
           >
             <div className="absolute inset-0 flex items-center justify-center p-8 opacity-20 pointer-events-none">
               <Horse
@@ -1193,8 +1193,8 @@ export default function Cryotherapy() {
               />
             </div>
 
-            <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-4">
-              <div className="relative w-full max-w-2xl aspect-[1.1/1] flex items-center justify-center overflow-hidden rounded-[2.5rem] border border-white/10 shadow-2xl bg-[#0a0f1d]">
+            <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
+              <div className="relative w-full max-w-2xl aspect-[1.1/1] flex items-center justify-center overflow-hidden rounded-[2.5rem]">
                 <img
                   src={horse_anatomy}
                   alt="Horse Anatomy"
