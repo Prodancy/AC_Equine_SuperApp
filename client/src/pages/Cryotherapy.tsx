@@ -16,8 +16,8 @@ import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import nozzle6mm from "@/assets/nozzle-6mm.png";
-import nozzle15mm from "@/assets/nozzle-15mm.png";
+import nozzle6mm from "@/assets/nozzle-white.png";
+import nozzle15mm from "@/assets/nozzle-black.png";
 
 const protocols = [
   { id: "c1", name: "Localized Inflammation", duration: 10, intensity: 80, temp: -140 },
