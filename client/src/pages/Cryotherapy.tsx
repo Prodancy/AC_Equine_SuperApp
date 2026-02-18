@@ -499,23 +499,34 @@ const protocols = [
 ];
 
 export default function Cryotherapy() {
+  const { toast } = useToast();
   const [selectedPart, setSelectedPart] = useState<string>("neck");
   const [localProtocols, setLocalProtocols] = useState(protocols);
   const [activeProtocol, setActiveProtocol] = useState(protocols[0].id);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(protocols[0].duration * 60);
-  const [currentTemp, setCurrentTemp] = useState(20);
-  const [targetTemp, setTargetTemp] = useState(protocols[0].temp);
-  const [intensity, setIntensity] = useState([protocols[0].intensity]);
 
-  useEffect(() => {
-    const active = localProtocols.find((p) => p.id === activeProtocol);
-    if (active) {
-      setTargetTemp(active.temp);
-      setIntensity([active.intensity]);
-      setTimeLeft(active.duration * 60);
-    }
-  }, [activeProtocol]);
+  const [activeTab, setActiveTab] = useState("controls");
+  const [selectedNozzle, setSelectedNozzle] = useState("small");
+  const [selectedMassageNozzle, setSelectedMassageNozzle] = useState("small");
+  const [flowRate, setFlowRate] = useState([50]);
+
+  const [isNozzleExpanded, setIsNozzleExpanded] = useState(true);
+  const [isProtocolExpanded, setIsProtocolExpanded] = useState(false);
+  const [selectedControl, setSelectedControl] = useState<string | null>(null);
+
+  const [customTime, setCustomTime] = useState(120);
+
+  const filteredProtocols = localProtocols.filter(
+    (p) => p.bodyPart === selectedPart,
+  );
+
+  const currentProtocol =
+    localProtocols.find((p) => p.id === activeProtocol) || filteredProtocols[0] || protocols[0];
+
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(currentProtocol.duration * 60);
+  const [currentTemp, setCurrentTemp] = useState(20);
+  const [targetTemp, setTargetTemp] = useState(currentProtocol.temp);
+  const [intensity, setIntensity] = useState([currentProtocol.intensity]);
 
   const updateProtocolName = (id: string, newName: string) => {
     setLocalProtocols((prev) =>
@@ -523,12 +534,29 @@ export default function Cryotherapy() {
     );
   };
 
-  const filteredProtocols = localProtocols.filter(
-    (p) => p.bodyPart === selectedPart,
-  );
-  const { toast } = useToast();
+  const handleSelection = (
+    type: "fog" | "massage" | "flow",
+    id: string,
+    value?: number,
+  ) => {
+    setSelectedControl(`${type}-${id}`);
+    if (type === "fog") setSelectedNozzle(id);
+    if (type === "massage") setSelectedMassageNozzle(id);
+    if (type === "flow" && value !== undefined) setFlowRate([value]);
+    setIsProtocolExpanded(true);
+    setIsNozzleExpanded(false);
+  };
 
-  const [customTime, setCustomTime] = useState(120);
+  const getPartLabel = (part: string) => {
+    if (part === "leg-front-left") return "Fetlock";
+    return part.replace("-", " ");
+  };
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
+  };
 
   useEffect(() => {
     const partProtocols = localProtocols.filter((p) => p.bodyPart === selectedPart);
@@ -550,7 +578,7 @@ export default function Cryotherapy() {
     setIntensity([currentProtocol.intensity]);
     setIsPlaying(false);
     setCurrentTemp(20);
-  }, [activeProtocol, customTime]);
+  }, [activeProtocol, customTime, currentProtocol]);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -576,46 +604,10 @@ export default function Cryotherapy() {
     return () => clearInterval(interval);
   }, [isPlaying, targetTemp, toast]);
 
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, "0")}`;
-  };
-
   const progress =
     ((currentProtocol.duration * 60 - timeLeft) /
       (currentProtocol.duration * 60)) *
     100;
-
-  const [activeTab, setActiveTab] = useState("controls");
-  const [selectedNozzle, setSelectedNozzle] = useState("small");
-  const [selectedMassageNozzle, setSelectedMassageNozzle] = useState("small");
-  const [flowRate, setFlowRate] = useState([50]);
-
-  const [isNozzleExpanded, setIsNozzleExpanded] = useState(true);
-  const [isProtocolExpanded, setIsProtocolExpanded] = useState(false);
-  const [selectedControl, setSelectedControl] = useState<string | null>(null);
-
-  const handleSelection = (
-    type: "fog" | "massage" | "flow",
-    id: string,
-    value?: number,
-  ) => {
-    setSelectedControl(`${type}-${id}`);
-    if (type === "fog") setSelectedNozzle(id);
-    if (type === "massage") setSelectedMassageNozzle(id);
-    if (type === "flow" && value !== undefined) setFlowRate([value]);
-    setIsProtocolExpanded(true);
-    setIsNozzleExpanded(false);
-  };
-
-  const getPartLabel = (part: string) => {
-    if (part === "leg-front-left") return "Fetlock";
-    return part.replace("-", " ");
-  };
-
-  const currentProtocol =
-    localProtocols.find((p) => p.id === activeProtocol) || filteredProtocols[0];
 
   return (
     <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
