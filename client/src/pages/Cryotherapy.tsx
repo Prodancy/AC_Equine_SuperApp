@@ -222,62 +222,45 @@ const protocols = [
     intensity: 60,
     temp: -110,
   },
-  // Back Right
   {
     id: "p13",
-    bodyPart: "back-right",
-    name: "Back Maintenance",
-    duration: 0.5,
-    intensity: 70,
-    temp: -125,
-  },
-  {
-    id: "p14",
-    bodyPart: "back-right",
-    name: "Low Back Pain",
-    duration: 0.75,
+    bodyPart: "hip",
+    name: "Sepsis / Cellulitis",
+    duration: 1.5,
     intensity: 80,
     temp: -140,
   },
   {
+    id: "p14",
+    bodyPart: "hip",
+    name: "Chronic Articular Lesions",
+    duration: 2,
+    intensity: 70,
+    temp: -120,
+  },
+  {
     id: "p15",
-    bodyPart: "back-right",
+    bodyPart: "hip",
     name: "Degenerative Joint Disease",
-    duration: 1,
-    intensity: 65,
-    temp: -115,
+    duration: 2.5,
+    intensity: 60,
+    temp: -110,
   },
   {
     id: "p16",
-    bodyPart: "back-right",
-    name: "Rheumatology (Neurologic Pain)",
-    duration: 1.5,
-    intensity: 60,
-    temp: -110,
+    bodyPart: "hip",
+    name: "Muscle / Tendon Rupture",
+    duration: 3,
+    intensity: 50,
+    temp: -100,
   },
   {
     id: "p31",
-    bodyPart: "back-right",
-    name: "Post Operative (Early)",
-    duration: 2,
-    intensity: 75,
-    temp: -130,
-  },
-  {
-    id: "p32",
-    bodyPart: "back-right",
-    name: "Post Operative (Healing)",
-    duration: 15,
-    intensity: 85,
-    temp: -150,
-  },
-  {
-    id: "p_back_right_trigger",
-    bodyPart: "back-right",
-    name: "Trigger Point / Myofascial Pain",
-    duration: 3,
-    intensity: 60,
-    temp: -110,
+    bodyPart: "hip",
+    name: "Rheumatology",
+    duration: 1,
+    intensity: 45,
+    temp: -90,
   },
   // Front Leg Left -> Fetlock
   {
@@ -547,21 +530,18 @@ export default function Cryotherapy() {
 
   const [customTime, setCustomTime] = useState(120);
 
-  const currentProtocol =
-    localProtocols.find((p) => p.id === activeProtocol) || filteredProtocols[0];
-
   useEffect(() => {
-    const partProtocols = protocols.filter((p) => p.bodyPart === selectedPart);
+    const partProtocols = localProtocols.filter((p) => p.bodyPart === selectedPart);
     if (partProtocols.length > 0) {
       setActiveProtocol(partProtocols[0].id);
       setSelectedControl(null);
       setIsNozzleExpanded(true);
       setIsProtocolExpanded(false);
     }
-  }, [selectedPart]);
+  }, [selectedPart, localProtocols]);
 
   useEffect(() => {
-    if (currentProtocol.name === "CUSTOM") {
+    if (currentProtocol.name === "Custom") {
       setTimeLeft(customTime);
     } else {
       setTimeLeft(currentProtocol.duration * 60);
@@ -628,6 +608,14 @@ export default function Cryotherapy() {
     setIsProtocolExpanded(true);
     setIsNozzleExpanded(false);
   };
+
+  const getPartLabel = (part: string) => {
+    if (part === "leg-front-left") return "Fetlock";
+    return part.replace("-", " ");
+  };
+
+  const currentProtocol =
+    localProtocols.find((p) => p.id === activeProtocol) || filteredProtocols[0];
 
   return (
     <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
@@ -1223,7 +1211,7 @@ export default function Cryotherapy() {
                   { id: "neck", top: "28.8%", left: "25.2%" },
                   { id: "shoulder", top: "41.1%", left: "34.2%" },
                   { id: "back-left", top: "32.8%", left: "54.7%" },
-                  { id: "back-right", top: "34.8%", left: "78.4%" },
+                  { id: "hip", top: "34.8%", left: "78.4%" },
                   { id: "leg-front-left", top: "80.2%", left: "39.1%" },
                   { id: "leg-front-right", top: "83.6%", left: "67.9%" },
                   { id: "joint-hind", top: "54.2%", left: "77.5%" },
@@ -1264,7 +1252,7 @@ export default function Cryotherapy() {
               <div className="mt-8 w-full max-w-2xl">
                 <div className="text-center mb-6">
                   <h3 className="text-xl font-bold tracking-tight text-white uppercase mb-2">
-                    {selectedPart === "leg-front-left" ? "Fetlock" : selectedPart.replace("-", " ")} Protocols
+                    {getPartLabel(selectedPart)} Protocols
                   </h3>
                   <p className="text-[#A9B3CE] text-xs uppercase tracking-widest">
                     Select a protocol to begin treatment
