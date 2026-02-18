@@ -90,13 +90,22 @@ const protocols = [
 
 export default function Cryotherapy() {
   const [selectedPart, setSelectedPart] = useState<string>("neck");
-  const filteredProtocols = protocols.filter(p => p.bodyPart === selectedPart);
-  const [activeProtocol, setActiveProtocol] = useState(filteredProtocols[0].id);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(filteredProtocols[0].duration * 60);
-  const [currentTemp, setCurrentTemp] = useState(20);
-  const [targetTemp, setTargetTemp] = useState(filteredProtocols[0].temp);
-  const [intensity, setIntensity] = useState([filteredProtocols[0].intensity]);
+  const [localProtocols, setLocalProtocols] = useState(protocols);
+
+  useEffect(() => {
+    const active = localProtocols.find(p => p.id === activeProtocol);
+    if (active) {
+      setTargetTemp(active.temp);
+      setIntensity([active.intensity]);
+      setTimeLeft(active.duration * 60);
+    }
+  }, [activeProtocol]);
+
+  const updateProtocolName = (id: string, newName: string) => {
+    setLocalProtocols(prev => prev.map(p => p.id === id ? { ...p, name: newName } : p));
+  };
+
+  const filteredProtocols = localProtocols.filter(p => p.bodyPart === selectedPart);
   const { toast } = useToast();
 
   const [customTime, setCustomTime] = useState(120);
@@ -657,8 +666,14 @@ export default function Cryotherapy() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {filteredProtocols.slice(0, 5).map((p) => (
-                    <button
+                    <div
                       key={`protocol-mode-${p.id}`}
+                      className={cn(
+                        "group relative p-4 rounded-2xl border transition-all duration-300 text-left overflow-hidden cursor-pointer",
+                        activeProtocol === p.id 
+                          ? "bg-[#3D63DD]/20 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.2)]" 
+                          : "bg-white/5 border-white/10 hover:border-white/20 hover:bg-white/[0.07]"
+                      )}
                       onClick={() => {
                         setActiveProtocol(p.id);
                         setActiveTab("controls");
@@ -668,15 +683,18 @@ export default function Cryotherapy() {
                           description: `Starting ${p.name} for ${selectedPart.replace('-', ' ')}`,
                         });
                       }}
-                      className={cn(
-                        "group relative p-4 rounded-2xl border transition-all duration-300 text-left overflow-hidden",
-                        activeProtocol === p.id 
-                          ? "bg-[#3D63DD]/20 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.2)]" 
-                          : "bg-white/5 border-white/10 hover:border-white/20 hover:bg-white/[0.07]"
-                      )}
                     >
                       <div className="relative z-10">
-                        <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-2">{p.name}</h4>
+                        <input
+                          type="text"
+                          value={p.name}
+                          onChange={(e) => {
+                            e.stopPropagation();
+                            updateProtocolName(p.id, e.target.value);
+                          }}
+                          onClick={(e) => e.stopPropagation()}
+                          className="bg-transparent border-none outline-none text-white font-bold text-sm uppercase tracking-wider mb-2 w-full focus:ring-0 p-0"
+                        />
                         <div className="flex items-center gap-3">
                           <div className="flex items-center gap-1">
                             <Activity className="w-3 h-3 text-[#A9B3CE]" />
@@ -691,7 +709,7 @@ export default function Cryotherapy() {
                       <div className="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-40 transition-opacity">
                         <Play className="w-4 h-4 text-white fill-current" />
                       </div>
-                    </button>
+                    </div>
                   ))}
                 </div>
               </div>
