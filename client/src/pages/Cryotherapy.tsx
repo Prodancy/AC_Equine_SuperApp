@@ -484,6 +484,8 @@ export default function Cryotherapy() {
 
   const [customTime, setCustomTime] = useState(120);
 
+  const [showSession, setShowSession] = useState(false);
+
   const filteredProtocols = localProtocols.filter(
     (p) => p.bodyPart === selectedPart,
   );
@@ -514,6 +516,11 @@ export default function Cryotherapy() {
     if (type === "flow" && value !== undefined) setFlowRate([value]);
     setIsProtocolExpanded(true);
     setIsNozzleExpanded(false);
+  };
+
+  const startSession = () => {
+    setShowSession(true);
+    setIsPlaying(true);
   };
 
   const getPartLabel = (part: string) => {
@@ -622,6 +629,150 @@ export default function Cryotherapy() {
       (currentProtocol.duration * 60)) *
     100;
 
+  if (showSession) {
+    return (
+      <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
+        <div className="flex justify-between items-center mb-8">
+          <Button 
+            variant="ghost" 
+            onClick={() => setShowSession(false)}
+            className="text-[#A9B3CE] hover:text-white"
+          >
+            <ChevronLeft className="w-5 h-5 mr-2" />
+            Back to Setup
+          </Button>
+          <img
+            src={america_cryo_logo}
+            alt="America Cryo Logo"
+            className="h-10 md:h-12 w-auto"
+          />
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="space-y-6 order-1 md:order-2">
+            <Card className="flex flex-col justify-between overflow-hidden relative border-blue-400/20 shadow-lg bg-card">
+              <CardHeader className="text-center pb-0 pt-4">
+                <CardTitle className="text-blue-400/60 tracking-widest text-[10px] md:text-xs">
+                  Cooling Progress
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex-1 flex flex-col items-center justify-center space-y-6 md:space-y-8 relative z-10 py-6 md:py-8">
+                <div className="relative w-56 h-56 md:w-64 md:h-64 flex items-center justify-center">
+                  <svg className="w-full h-full transform -rotate-90">
+                    <circle
+                      cx="50%"
+                      cy="50%"
+                      r="45%"
+                      stroke="currentColor"
+                      strokeWidth="8"
+                      fill="transparent"
+                      className="text-secondary"
+                    />
+                    <circle
+                      cx="50%"
+                      cy="50%"
+                      r="45%"
+                      stroke="currentColor"
+                      strokeWidth="8"
+                      fill="transparent"
+                      strokeDasharray="283"
+                      strokeDashoffset={283 * (1 - progress / 100)}
+                      className="text-blue-400 transition-all duration-1000 ease-linear"
+                    />
+                  </svg>
+                  <div className="absolute flex flex-col items-center">
+                    <span className="text-5xl md:text-6xl font-bold tracking-tighter tabular-nums text-white">
+                      {formatTime(timeLeft)}
+                    </span>
+                    <span className="text-xs text-blue-400/80 mt-1 font-semibold tracking-wider">
+                      Remaining
+                    </span>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4 md:gap-8 w-full">
+                  <div className="flex flex-col items-center bg-blue-500/5 p-3 md:p-4 rounded-xl border border-blue-500/10">
+                    <Thermometer className="w-5 h-5 md:w-6 md:h-6 text-blue-400 mb-1" />
+                    <span className="text-xl md:text-2xl font-bold tabular-nums text-white">
+                      {Math.round(currentTemp)}°C
+                    </span>
+                    <span className="text-[10px] md:text-xs text-blue-400/60 font-bold capitalize tracking-wider">
+                      Nozzle Temp
+                    </span>
+                  </div>
+                  <div className="flex-1 flex flex-col items-center bg-blue-500/5 p-3 md:p-4 rounded-xl border border-blue-500/10">
+                    <Zap className="w-5 h-5 md:w-6 md:h-6 text-blue-400 mb-1" />
+                    <span className="text-xl md:text-2xl font-bold tabular-nums text-white">
+                      {intensity[0]}%
+                    </span>
+                    <span className="text-[10px] md:text-xs text-blue-400/60 font-bold capitalize tracking-wider">
+                      Intensity
+                    </span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="space-y-6 order-2 md:order-1">
+            <div className="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6">
+              <h3 className="text-[#A9B3CE] uppercase tracking-[0.2em] text-[12px] font-bold mb-4">Session Details</h3>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center py-2 border-b border-white/5">
+                  <span className="text-[#A9B3CE]/60 text-sm">Treatment Site</span>
+                  <span className="text-white font-bold">{getPartLabel(selectedPart)}</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-white/5">
+                  <span className="text-[#A9B3CE]/60 text-sm">Protocol</span>
+                  <span className="text-white font-bold">{currentProtocol.name}</span>
+                </div>
+                {selectedControl && (
+                  <div className="flex justify-between items-center py-2 border-b border-white/5">
+                    <span className="text-[#A9B3CE]/60 text-sm">Nozzle</span>
+                    <span className="text-[#3D63DD] font-bold uppercase text-xs">
+                      {selectedControl.split('-')[1]}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <Button
+                size="lg"
+                className={cn(
+                  "h-20 text-xl rounded-2xl font-black uppercase tracking-widest transition-all active:scale-95",
+                  isPlaying
+                    ? "bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/20"
+                    : "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20",
+                )}
+                onClick={() => setIsPlaying(!isPlaying)}
+              >
+                {isPlaying ? (
+                  <Pause className="w-8 h-8 mr-2 fill-current" />
+                ) : (
+                  <Play className="w-8 h-8 mr-2 fill-current" />
+                )}
+                {isPlaying ? "Pause" : "Resume"}
+              </Button>
+              <Button
+                size="lg"
+                variant="destructive"
+                className="h-20 text-xl rounded-2xl font-black uppercase tracking-widest bg-red-500/20 border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white transition-all active:scale-95"
+                onClick={() => {
+                  setIsPlaying(false);
+                  setShowSession(false);
+                }}
+              >
+                <Square className="w-8 h-8 mr-2 fill-current" />
+                End
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
       <div className="flex justify-center mb-6">
@@ -631,7 +782,7 @@ export default function Cryotherapy() {
           className="h-10 md:h-12 w-auto"
         />
       </div>
-      <div className="flex flex-col bg-card/30 backdrop-blur-md sticky top-0 z-50 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
+      <div className="flex flex-col bg-card sticky top-0 z-50 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
         <div className="flex justify-between items-center py-4 px-4 md:px-8">
           <div className="flex items-center gap-4">
             <div>
@@ -684,7 +835,7 @@ export default function Cryotherapy() {
 
         {/* Nozzle Selection Section - Only in Manual Mode */}
         {activeTab === "controls" && (
-          <div className="px-4 md:px-8 py-4 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5">
+          <div className="px-4 md:px-8 py-4 bg-[#0a0f1d] border-t border-white/5">
             <button
               onClick={() => setIsNozzleExpanded(!isNozzleExpanded)}
               className="w-full flex items-center justify-between py-2 group"
@@ -887,7 +1038,7 @@ export default function Cryotherapy() {
         {activeTab === "controls" && (
           <div
             className={cn(
-              "px-4 md:px-8 py-4 bg-[#0a0f1d]/40 backdrop-blur-md border-t border-white/5 transition-all duration-300",
+              "px-4 md:px-8 py-4 bg-[#0a0f1d] border-t border-white/5 transition-all duration-300",
               !selectedControl && "opacity-40 grayscale pointer-events-none",
             )}
           >
@@ -938,31 +1089,34 @@ export default function Cryotherapy() {
                   <div className="pt-4 pb-4">
                     <div className="grid grid-cols-2 gap-3 mb-6">
                       {filteredProtocols.map((p) => (
-                        <div
-                          key={`protocol-btn-${p.id}`}
-                          onClick={() => setActiveProtocol(p.id)}
-                          role="button"
-                          tabIndex={0}
-                          className={cn(
-                            "group relative transition-all duration-300 active:scale-95 cursor-pointer outline-none",
-                            activeProtocol === p.id
-                              ? "scale-[1.02] z-10"
-                              : "opacity-60",
-                          )}
-                        >
                           <div
+                            key={`protocol-btn-${p.id}`}
+                            onClick={() => {
+                              setActiveProtocol(p.id);
+                              startSession();
+                            }}
+                            role="button"
+                            tabIndex={0}
                             className={cn(
-                              "h-20 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
+                              "group relative transition-all duration-300 active:scale-95 cursor-pointer outline-none",
                               activeProtocol === p.id
-                                ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]"
-                                : "bg-white/5 border-white/10 hover:border-white/20",
+                                ? "scale-[1.02] z-10"
+                                : "opacity-60",
                             )}
                           >
-                            <p className="uppercase tracking-tight text-[13px] font-bold text-white">
-                              {p.name}
-                            </p>
+                            <div
+                              className={cn(
+                                "h-20 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
+                                activeProtocol === p.id
+                                  ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]"
+                                  : "bg-white/5 border-white/10 hover:border-white/20",
+                              )}
+                            >
+                              <p className="uppercase tracking-tight text-[13px] font-bold text-white">
+                                {p.name}
+                              </p>
+                            </div>
                           </div>
-                        </div>
                       ))}
                     </div>
 
@@ -1145,24 +1299,20 @@ export default function Cryotherapy() {
                     "opacity-40 grayscale pointer-events-none",
                 )}
               >
-                <Button
-                  size="lg"
-                  disabled={!selectedControl}
-                  className={cn(
-                    "h-20 text-xl rounded-2xl font-black uppercase tracking-widest transition-all active:scale-95",
-                    isPlaying
-                      ? "bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/20"
-                      : "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20",
-                  )}
-                  onClick={() => setIsPlaying(!isPlaying)}
-                >
-                  {isPlaying ? (
-                    <Pause className="w-8 h-8 mr-2 fill-current" />
-                  ) : (
+                  <Button
+                    size="lg"
+                    disabled={!selectedControl}
+                    className={cn(
+                      "h-20 text-xl rounded-2xl font-black uppercase tracking-widest transition-all active:scale-95",
+                      isPlaying
+                        ? "bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/20"
+                        : "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20",
+                    )}
+                    onClick={startSession}
+                  >
                     <Play className="w-8 h-8 mr-2 fill-current" />
-                  )}
-                  {isPlaying ? "Pause" : "Start"}
-                </Button>
+                    Start Session
+                  </Button>
                 <Button
                   size="lg"
                   variant="destructive"
