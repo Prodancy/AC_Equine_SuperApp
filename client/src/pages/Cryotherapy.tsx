@@ -228,26 +228,38 @@ export default function Cryotherapy() {
 
             <p className="font-medium text-[#A9B3CE]/40 uppercase tracking-widest mb-4 text-[14px]">Flow Rates</p>
             <div className="grid grid-cols-2 gap-3 mb-6">
-              {[20, 40, 60, 80, 100].map((rate) => (
+              {[
+                { label: "Extra Soft", sub: "0.3lpm", value: 20 },
+                { label: "Soft", sub: "0.5lpm", value: 40 },
+                { label: "Medium", sub: "0.7lpm", value: 60 },
+                { label: "Hard", sub: "0.9lpm", value: 80 },
+                { label: "Extra Hard", sub: "1.1lpm", value: 100 },
+              ].map((rate) => (
                 <button
-                  key={`flow-btn-${rate}`}
-                  onClick={() => setFlowRate([rate])}
+                  key={`flow-btn-${rate.value}`}
+                  onClick={() => setFlowRate([rate.value])}
                   className={cn(
                     "group relative transition-all duration-300 active:scale-95",
-                    flowRate[0] === rate ? "scale-[1.02] z-10" : "opacity-60"
+                    flowRate[0] === rate.value ? "scale-[1.02] z-10" : "opacity-60"
                   )}
                 >
                   <div className={cn(
-                    "h-16 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300",
-                    flowRate[0] === rate 
+                    "h-16 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
+                    flowRate[0] === rate.value 
                       ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
                       : "bg-white/5 border-white/10 hover:border-white/20"
                   )}>
                     <span className={cn(
-                      "text-xs font-black uppercase tracking-widest",
-                      flowRate[0] === rate ? "text-[#3D63DD]" : "text-[#ffffff]"
+                      "text-[10px] font-black uppercase tracking-tight leading-tight",
+                      flowRate[0] === rate.value ? "text-[#3D63DD]" : "text-[#ffffff]"
                     )}>
-                      {rate}%
+                      {rate.label}
+                    </span>
+                    <span className={cn(
+                      "text-[8px] font-bold opacity-60 mt-0.5",
+                      flowRate[0] === rate.value ? "text-[#3D63DD]" : "text-[#ffffff]"
+                    )}>
+                      {rate.sub}
                     </span>
                   </div>
                 </button>
