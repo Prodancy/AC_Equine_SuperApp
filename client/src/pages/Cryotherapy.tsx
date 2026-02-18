@@ -177,7 +177,7 @@ const protocols = [
   {
     id: "p6",
     bodyPart: "back-left",
-    name: "Back Pain",
+    name: "Low Back Pain",
     duration: 0.75,
     intensity: 85,
     temp: -150,
@@ -185,7 +185,7 @@ const protocols = [
   {
     id: "p7",
     bodyPart: "back-left",
-    name: "Chronic Articular Lesions",
+    name: "Degenerative Joint Disease",
     duration: 1,
     intensity: 65,
     temp: -115,
@@ -193,7 +193,7 @@ const protocols = [
   {
     id: "p8",
     bodyPart: "back-left",
-    name: "Degenerative Joint Disease",
+    name: "Rheumatology (Neurologic Pain)",
     duration: 1.5,
     intensity: 90,
     temp: -160,
@@ -201,7 +201,7 @@ const protocols = [
   {
     id: "p27",
     bodyPart: "back-left",
-    name: "Custom",
+    name: "Post Operative (Early)",
     duration: 2,
     intensity: 70,
     temp: -125,
@@ -209,10 +209,18 @@ const protocols = [
   {
     id: "p28",
     bodyPart: "back-left",
-    name: "Acute Tendinitis / Sprain",
+    name: "Post Operative (Healing)",
     duration: 5,
     intensity: 40,
     temp: -80,
+  },
+  {
+    id: "p_back_left_trigger",
+    bodyPart: "back-left",
+    name: "Trigger Point / Myofascial Pain",
+    duration: 3,
+    intensity: 60,
+    temp: -110,
   },
   // Back Right
   {
@@ -226,7 +234,7 @@ const protocols = [
   {
     id: "p14",
     bodyPart: "back-right",
-    name: "Back Pain",
+    name: "Low Back Pain",
     duration: 0.75,
     intensity: 80,
     temp: -140,
@@ -234,7 +242,7 @@ const protocols = [
   {
     id: "p15",
     bodyPart: "back-right",
-    name: "Chronic Articular Lesions",
+    name: "Degenerative Joint Disease",
     duration: 1,
     intensity: 65,
     temp: -115,
@@ -242,7 +250,7 @@ const protocols = [
   {
     id: "p16",
     bodyPart: "back-right",
-    name: "Degenerative Joint Disease",
+    name: "Rheumatology (Neurologic Pain)",
     duration: 1.5,
     intensity: 60,
     temp: -110,
@@ -250,7 +258,7 @@ const protocols = [
   {
     id: "p31",
     bodyPart: "back-right",
-    name: "Custom",
+    name: "Post Operative (Early)",
     duration: 2,
     intensity: 75,
     temp: -130,
@@ -258,10 +266,18 @@ const protocols = [
   {
     id: "p32",
     bodyPart: "back-right",
-    name: "Acute Tendinitis / Sprain",
+    name: "Post Operative (Healing)",
     duration: 15,
     intensity: 85,
     temp: -150,
+  },
+  {
+    id: "p_back_right_trigger",
+    bodyPart: "back-right",
+    name: "Trigger Point / Myofascial Pain",
+    duration: 3,
+    intensity: 60,
+    temp: -110,
   },
   // Front Leg Left -> Fetlock
   {
