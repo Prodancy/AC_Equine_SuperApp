@@ -339,7 +339,7 @@ export default function Cryotherapy() {
             onClick={() => setIsProtocolExpanded(!isProtocolExpanded)}
             className="w-full flex items-center justify-between py-2 group"
           >
-            <p className="uppercase tracking-[0.3em] text-[#A9B3CE] group-hover:text-white transition-colors text-[14px] font-bold text-left leading-tight">SET SESSION<br /><span className="lowercase">duration</span></p>
+            <p className="uppercase tracking-[0.3em] text-[#A9B3CE] group-hover:text-white transition-colors text-[14px] font-bold text-left leading-tight">SET SESSION<br />DURATION</p>
             <div className="flex-1" />
             {activeProtocol && (
               <span className="text-[10px] font-bold text-[#3D63DD] uppercase tracking-widest bg-[#3D63DD]/10 px-2 py-0.5 rounded-full border border-[#3D63DD]/20 shrink-0">
