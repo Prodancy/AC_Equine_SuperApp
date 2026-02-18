@@ -187,39 +187,40 @@ export default function Cryotherapy() {
                 { id: "strong", name: "Strong Cone", image: nozzle15mm },
                 { id: "precision", name: "Precision", image: nozzle6mm },
               ].map((nozzle, index) => (
-                <button
-                  key={`massage-${nozzle.id}`}
-                  onClick={() => setSelectedMassageNozzle(nozzle.id)}
-                  className={cn(
-                    "group relative transition-all duration-300 active:scale-95",
-                    selectedMassageNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60",
-                    index === 2 ? "col-span-2" : ""
-                  )}
-                >
-                  <div className={cn(
-                    "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
-                    selectedMassageNozzle === nozzle.id 
-                      ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
-                      : "bg-white/5 border-white/10 hover:border-white/20"
-                  )}>
-                    <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
-                      <img 
-                        src={nozzle.image} 
-                        alt={nozzle.name} 
-                        className="w-full h-full object-contain filter brightness-110 contrast-110"
-                      />
+                <div key={`massage-container-${nozzle.id}`} className={cn(index === 2 ? "col-span-2 flex justify-center" : "")}>
+                  <button
+                    onClick={() => setSelectedMassageNozzle(nozzle.id)}
+                    className={cn(
+                      "group relative transition-all duration-300 active:scale-95",
+                      selectedMassageNozzle === nozzle.id ? "scale-[1.02] z-10" : "opacity-60",
+                      index === 2 ? "w-1/2" : "w-full"
+                    )}
+                  >
+                    <div className={cn(
+                      "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300 w-full",
+                      selectedMassageNozzle === nozzle.id 
+                        ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]" 
+                        : "bg-white/5 border-white/10 hover:border-white/20"
+                    )}>
+                      <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
+                        <img 
+                          src={nozzle.image} 
+                          alt={nozzle.name} 
+                          className="w-full h-full object-contain filter brightness-110 contrast-110"
+                        />
+                      </div>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-[#ffffff]">
+                        {nozzle.name}
+                      </span>
                     </div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-[#ffffff]">
-                      {nozzle.name}
-                    </span>
-                  </div>
-                  {selectedMassageNozzle === nozzle.id && (
-                    <motion.div 
-                      layoutId="selected-nozzle-glow-massage"
-                      className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
-                    />
-                  )}
-                </button>
+                    {selectedMassageNozzle === nozzle.id && (
+                      <motion.div 
+                        layoutId="selected-nozzle-glow-massage"
+                        className="absolute inset-0 bg-[#3D63DD]/10 blur-xl -z-10 rounded-2xl"
+                      />
+                    )}
+                  </button>
+                </div>
               ))}
             </div>
 
