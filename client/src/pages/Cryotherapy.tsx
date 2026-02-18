@@ -900,8 +900,8 @@ export default function Cryotherapy() {
                               className={cn(
                                 "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300",
                                 selectedControl === `fog-${nozzle.id}`
-                                  ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]"
-                                  : "bg-white/5 border-white/10 hover:border-white/20",
+                                  ? "bg-[#3D63DD] border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]"
+                                  : "bg-[#151b2e] border-white/10 hover:border-white/20",
                               )}
                             >
                               <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
@@ -959,8 +959,8 @@ export default function Cryotherapy() {
                               className={cn(
                                 "h-32 rounded-2xl flex flex-col items-center justify-center p-2 border transition-all duration-300 w-full",
                                 selectedControl === `massage-${nozzle.id}`
-                                  ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]"
-                                  : "bg-white/5 border-white/10 hover:border-white/20",
+                                  ? "bg-[#3D63DD] border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]"
+                                  : "bg-[#151b2e] border-white/10 hover:border-white/20",
                               )}
                             >
                               <div className="w-16 h-16 mb-2 flex items-center justify-center overflow-hidden">
@@ -1015,8 +1015,8 @@ export default function Cryotherapy() {
                               className={cn(
                                 "h-16 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
                                 selectedControl === `flow-${rate.id}`
-                                  ? "bg-[#3D63DD]/10 border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]"
-                                  : "bg-white/5 border-white/10 hover:border-white/20",
+                                  ? "bg-[#3D63DD] border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]"
+                                  : "bg-[#151b2e] border-white/10 hover:border-white/20",
                               )}
                             >
                               <p className="tracking-tight font-medium text-[#ffffff] outline-none rounded px-1 text-[16px]">
@@ -1102,7 +1102,12 @@ export default function Cryotherapy() {
                             )}
                           >
                             <div
-                              className="h-20 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center bg-white/5 border-white/10 hover:border-white/20 text-[20px] font-semibold"
+                              className={cn(
+                                "h-20 rounded-2xl flex flex-col items-center justify-center border transition-all duration-300 px-2 text-center",
+                                activeProtocol === p.id
+                                  ? "bg-[#3D63DD] border-[#3D63DD] shadow-[0_0_20px_rgba(61,99,221,0.15)]"
+                                  : "bg-[#151b2e] border-white/10 hover:border-white/20",
+                              )}
                             >
                             <p className="tracking-tight text-white text-[18px] font-semibold">
                               {p.name}
