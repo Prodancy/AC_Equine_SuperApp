@@ -263,11 +263,11 @@ const protocols = [
     intensity: 85,
     temp: -150,
   },
-  // Front Leg Left
+  // Front Leg Left -> Fetlock
   {
     id: "p9",
     bodyPart: "leg-front-left",
-    name: "Leg Maintenance",
+    name: "Fetlock Maintenance",
     duration: 0.5,
     intensity: 60,
     temp: -110,
@@ -275,7 +275,7 @@ const protocols = [
   {
     id: "p10",
     bodyPart: "leg-front-left",
-    name: "Leg Pain",
+    name: "Fetlock Tendinitis / Sprain",
     duration: 0.75,
     intensity: 70,
     temp: -125,
@@ -283,7 +283,7 @@ const protocols = [
   {
     id: "p11",
     bodyPart: "leg-front-left",
-    name: "Chronic Articular Lesions",
+    name: "Degenerative Joint Disease",
     duration: 1,
     intensity: 75,
     temp: -130,
@@ -291,7 +291,7 @@ const protocols = [
   {
     id: "p12",
     bodyPart: "leg-front-left",
-    name: "Degenerative Joint Disease",
+    name: "Post Operative (Early)",
     duration: 1.5,
     intensity: 55,
     temp: -105,
@@ -299,7 +299,7 @@ const protocols = [
   {
     id: "p29",
     bodyPart: "leg-front-left",
-    name: "Custom",
+    name: "Post Operative (Healing)",
     duration: 2,
     intensity: 80,
     temp: -140,
@@ -307,7 +307,7 @@ const protocols = [
   {
     id: "p30",
     bodyPart: "leg-front-left",
-    name: "Acute Tendinitis / Sprain",
+    name: "Chronic Articular Lesions",
     duration: 11,
     intensity: 65,
     temp: -120,
@@ -1208,7 +1208,7 @@ export default function Cryotherapy() {
               <div className="mt-8 w-full max-w-2xl">
                 <div className="text-center mb-6">
                   <h3 className="text-xl font-bold tracking-tight text-white uppercase mb-2">
-                    {selectedPart.replace("-", " ")} Protocols
+                    {selectedPart === "leg-front-left" ? "Fetlock" : selectedPart.replace("-", " ")} Protocols
                   </h3>
                   <p className="text-[#A9B3CE] text-xs uppercase tracking-widest">
                     Select a protocol to begin treatment
