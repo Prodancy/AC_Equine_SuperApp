@@ -26,7 +26,6 @@ import {
   Thermometer,
   Bluetooth,
   Activity,
-  Target,
   Zap,
   ChevronLeft,
   ChevronDown,
@@ -796,62 +795,30 @@ export default function Cryotherapy() {
             </div>
 
             <div className="space-y-6">
-              <div className="bg-[#0a0f1d]/40 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-10 shadow-[0_22px_70px_4px_rgba(0,0,0,0.56)] relative overflow-hidden group">
-                {/* Refined decorative elements */}
-                <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-[#3D63DD]/20 to-transparent rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 opacity-50 group-hover:opacity-80 transition-opacity duration-1000" />
-                <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[#3D63DD]/10 to-transparent rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 opacity-30" />
-                
-                <div className="relative z-10 flex flex-col md:flex-row items-stretch gap-12 md:gap-0">
-                  {/* Left Column: Treatment Site */}
-                  <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left px-6">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#3D63DD]/20 to-[#3D63DD]/5 flex items-center justify-center border border-[#3D63DD]/30 shadow-lg shadow-[#3D63DD]/10">
-                        <Target className="w-6 h-6 text-[#3D63DD]" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-[#A9B3CE]/40 uppercase tracking-[0.4em] text-[10px] font-black leading-none mb-1">Location</span>
-                        <span className="text-[#3D63DD] text-[10px] font-bold uppercase tracking-widest">Active Site</span>
-                      </div>
-                    </div>
-                    <h2 className="text-white font-bold text-3xl sm:text-4xl tracking-tight leading-none">
+              <div className="bg-[#0a0f1d]/60 backdrop-blur-md border border-white/5 rounded-3xl p-8 shadow-2xl">
+                <div className="flex flex-col gap-6">
+                  <div className="bg-white/5 rounded-2xl p-6 border border-white/5 flex flex-col items-center text-center pt-[0px] pb-[0px]">
+                    <p className="text-[#A9B3CE]/60 uppercase tracking-[0.2em] mb-2 text-[16px] font-semibold">Treatment Site</p>
+                    <p className="text-white font-bold text-2xl tracking-tight">
                       {activeTab === "controls" 
                         ? (selectedControl?.startsWith('flow') ? "Regular spray" : selectedControl?.startsWith('massage') ? "Massage" : "Nozzle spray")
                         : getPartLabel(selectedPart)
                       }
-                    </h2>
-                    <p className="mt-3 text-[#A9B3CE]/60 text-xs font-medium tracking-wide">Precise targeting applied</p>
+                    </p>
                   </div>
 
-                  {/* Elegant Divider */}
-                  <div className="flex items-center justify-center md:mx-4">
-                    <div className="w-full md:w-px h-px md:h-32 bg-gradient-to-b md:bg-gradient-to-t from-transparent via-white/10 to-transparent" />
-                  </div>
-
-                  {/* Right Column: Configuration/Protocol */}
-                  <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left px-6">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 shadow-lg">
-                        <Activity className="w-6 h-6 text-[#A9B3CE]" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-[#A9B3CE]/40 uppercase tracking-[0.4em] text-[10px] font-black leading-none mb-1">Mode</span>
-                        <span className="text-[#A9B3CE] text-[10px] font-bold uppercase tracking-widest">
-                          {activeTab === "controls" ? "Manual Config" : "System Protocol"}
-                        </span>
-                      </div>
-                    </div>
-                    <h2 className="text-[#3D63DD] font-bold text-3xl sm:text-4xl tracking-tight leading-none drop-shadow-[0_0_15px_rgba(61,99,221,0.3)]">
+                  <div className="bg-white/5 rounded-2xl p-6 border border-white/5 flex flex-col items-center text-center pt-[0px] pb-[0px]">
+                    <p className="text-[#A9B3CE]/60 text-[11px] uppercase tracking-[0.2em] font-black mb-2">
+                      {activeTab === "controls" ? "Configuration" : "Protocol"}
+                    </p>
+                    <p className="text-[#3D63DD] font-bold text-2xl tracking-tight">
                       {activeTab === "controls" 
                         ? (selectedControl ? selectedControl.split('-')[1].charAt(0).toUpperCase() + selectedControl.split('-')[1].slice(1) : "Not set")
                         : currentProtocol.name
                       }
-                    </h2>
-                    <p className="mt-3 text-[#3D63DD]/60 text-xs font-medium tracking-wide">Optimized frequency active</p>
+                    </p>
                   </div>
                 </div>
-
-                {/* Bottom glass reflection */}
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50" />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
