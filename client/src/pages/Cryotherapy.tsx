@@ -1248,8 +1248,8 @@ export default function Cryotherapy() {
 
                 {/* Hotspots */}
                 {[
-                  { id: "head", top: "20%", left: "10%", label: "Head" },
-                  { id: "neck", top: "17.5%", left: "24%", label: "Neck" },
+                  { id: "head", top: "19%", left: "10%", label: "Head" },
+                  { id: "neck", top: "16.5%", left: "24%", label: "Neck" },
                   { id: "shoulder", top: "31%", left: "31.5%", label: "Shoulder" },
                   { id: "back-left", top: "22%", left: "49%", label: "Back" },
                   { id: "hip", top: "24%", left: "69%", label: "Hip" },
