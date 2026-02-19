@@ -738,9 +738,10 @@ export default function Cryotherapy() {
                         stroke="currentColor"
                         strokeWidth="8"
                         fill="transparent"
-                        strokeDasharray="283"
-                        strokeDashoffset={283 * (1 - progress / 100)}
-                        className="text-blue-400 transition-all duration-1000 ease-linear"
+                        strokeDasharray="301.6"
+                        strokeDashoffset={301.6 * (1 - progress / 100)}
+                        className="text-[#3D63DD] transition-all duration-1000 ease-linear"
+                        style={{ transformOrigin: 'center', transform: 'scaleX(-1)' }}
                       />
                     </svg>
                   </div>
