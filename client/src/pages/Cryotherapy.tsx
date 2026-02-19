@@ -696,12 +696,9 @@ export default function Cryotherapy() {
                     Cooling progress
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square w-60 h-60 mx-auto shadow-2xl bg-[#0a0f1d]">
-                  {/* Background Layers */}
-                  <div className="absolute inset-0 rounded-full border-[12px] border-blue-900/20 z-0" />
-                  
+                <CardContent className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square border-8 border-blue-600/20 w-60 h-60 mx-auto shadow-2xl">
                   {/* Top Section: Time */}
-                  <div className="w-full h-1/3 flex items-center justify-center gap-3 border-b border-white/5 relative z-10">
+                  <div className="w-full h-1/3 bg-[#0a0f1d] flex items-center justify-center gap-3 border-b border-white/5 relative">
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-full border-2 border-white/90 flex items-center justify-center relative">
                         <div className="absolute top-[3px] left-1/2 w-[2px] h-[8px] bg-white origin-bottom -translate-x-1/2" />
@@ -715,7 +712,7 @@ export default function Cryotherapy() {
                   </div>
 
                   {/* Middle Section: Temperature */}
-                  <div className="w-full h-1/3 bg-[#1d4ed8] flex items-center justify-center gap-3 relative z-10">
+                  <div className="w-full h-1/3 bg-[#1d4ed8] flex items-center justify-center gap-3 relative">
                     <Thermometer className="w-10 h-10 text-white" />
                     <span className="font-black text-white tabular-nums tracking-tighter text-[48px]">
                       {Math.round(currentTemp)}° C
@@ -723,7 +720,7 @@ export default function Cryotherapy() {
                   </div>
 
                   {/* Bottom Section: Intensity */}
-                  <div className="w-full h-1/3 bg-[#b91c1c] flex items-center justify-center gap-3 relative z-10">
+                  <div className="w-full h-1/3 bg-[#b91c1c] flex items-center justify-center gap-3 relative">
                     <div className="w-8 h-8 flex items-center justify-center">
                       <div className="w-7 h-5 border-2 border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
                         <div className="w-4 h-[2px] bg-white" />
@@ -736,19 +733,28 @@ export default function Cryotherapy() {
                     </span>
                   </div>
 
-                  {/* Progress Ring Overlay - Outermost Position */}
-                  <div className="absolute inset-0 pointer-events-none z-20">
+                  {/* Progress Ring Overlay */}
+                  <div className="absolute inset-0 pointer-events-none p-0">
                     <svg className="w-full h-full">
+                      {/* Background Track */}
+                      <circle
+                        cx="50%"
+                        cy="50%"
+                        r="48%"
+                        stroke="rgba(61,99,221,0.1)"
+                        strokeWidth="10"
+                        fill="transparent"
+                      />
                       {/* Progress Indicator */}
                       <circle
                         cx="50%"
                         cy="50%"
-                        r="47.5%"
+                        r="48%"
                         stroke="#3D63DD"
-                        strokeWidth="12"
+                        strokeWidth="10"
                         fill="transparent"
-                        strokeDasharray="716"
-                        strokeDashoffset={716 * (1 - progress / 100)}
+                        strokeDasharray="723"
+                        strokeDashoffset={723 * (progress / 100)}
                         strokeLinecap="round"
                         className="transition-all duration-1000 ease-linear"
                         style={{ 
