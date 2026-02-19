@@ -80,6 +80,7 @@
   }
 }
 
+/* Global Scrollbar Removal */
 html, body, #root {
   overflow: hidden !important;
   height: 100vh !important;
@@ -90,11 +91,8 @@ html, body, #root {
   touch-action: none;
   -webkit-overflow-scrolling: none;
   overscroll-behavior: none;
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
 }
 
-/* Hide scrollbar for all elements */
 * {
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
