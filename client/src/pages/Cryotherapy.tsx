@@ -1,4 +1,4 @@
-import horse_anatomy from "@assets/image_1771421514875.png";
+import horse_anatomy from "@assets/image_1771493483374.png";
 import america_cryo_logo from "@/assets/logo-official.png";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -1302,8 +1302,8 @@ export default function Cryotherapy() {
             exit={{ opacity: 0, y: -20 }}
             className="flex flex-col items-center"
           >
-            <div className="w-full flex flex-col items-center">
-              <div className="relative w-full max-w-[600px] aspect-[1536/1024] bg-[#0a0f1d] rounded-3xl border border-white/5 shadow-2xl overflow-hidden group">
+            <div className="w-full">
+              <div className="relative w-full aspect-[1536/1024] bg-[#0a0f1d] overflow-hidden group">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                   <div className="absolute inset-0 bg-[radial-gradient(#3D63DD_1px,transparent_1px)] [background-size:20px_20px]" />
