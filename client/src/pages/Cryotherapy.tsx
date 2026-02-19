@@ -1303,7 +1303,7 @@ export default function Cryotherapy() {
             className="flex flex-col items-center"
           >
             <div className="w-full flex flex-col items-center">
-              <div className="relative w-full max-w-[600px] aspect-[4/5] bg-[#0a0f1d] rounded-3xl p-4 border border-white/5 shadow-2xl overflow-hidden group">
+              <div className="relative w-full max-w-[600px] aspect-[1536/1024] bg-[#0a0f1d] rounded-3xl border border-white/5 shadow-2xl overflow-hidden group">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                   <div className="absolute inset-0 bg-[radial-gradient(#3D63DD_1px,transparent_1px)] [background-size:20px_20px]" />
@@ -1317,21 +1317,21 @@ export default function Cryotherapy() {
 
                 {/* Hotspots */}
                 {[
-                  { id: "head", top: "30.58%", left: "8.57%", label: "Head" },
-                  { id: "neck", top: "28.99%", left: "25.48%", label: "Neck" },
-                  { id: "shoulder", top: "41.14%", left: "34.41%", label: "Shoulder" },
-                  { id: "back-left", top: "33.26%", left: "54.96%", label: "Back" },
-                  { id: "hip", top: "35.64%", left: "78.85%", label: "Hip" },
-                  { id: "stifle", top: "54.54%", left: "77.92%", label: "Stifle" },
-                  { id: "leg-front-left", top: "79.99%", left: "39.59%", label: "Fetlock" },
-                  { id: "hoof-front-left", top: "64.51%", left: "85.23%", label: "Hock" },
-                  { id: "leg-front-right", top: "83.98%", left: "68.61%", label: "Feet" },
+                  { id: "head", top: "34.5%", left: "9%", label: "Head" },
+                  { id: "neck", top: "32.5%", left: "25%", label: "Neck" },
+                  { id: "shoulder", top: "47.5%", left: "35%", label: "Shoulder" },
+                  { id: "back-left", top: "37.5%", left: "55%", label: "Back" },
+                  { id: "hip", top: "40.5%", left: "79%", label: "Hip" },
+                  { id: "stifle", top: "64.0%", left: "78%", label: "Stifle" },
+                  { id: "leg-front-left", top: "84.0%", left: "40%", label: "Fetlock" },
+                  { id: "hoof-front-left", top: "70.5%", left: "86%", label: "Hock" },
+                  { id: "leg-front-right", top: "89.5%", left: "69%", label: "Feet" },
                 ].map((spot) => (
                   <button
                     key={`hotspot-${spot.id}`}
                     onClick={() => setSelectedPart(spot.id)}
                     className={cn(
-                      "absolute w-10 h-10 md:w-12 md:h-12 z-20 group/spot transition-all duration-500",
+                      "absolute w-10 h-10 md:w-12 md:h-12 z-20 group/spot transition-all duration-500 -translate-x-1/2 -translate-y-1/2",
                       selectedPart === spot.id ? "scale-110" : "hover:scale-105",
                     )}
                     style={{ top: spot.top, left: spot.left }}
