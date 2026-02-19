@@ -22,9 +22,9 @@ import BottomNav from "@/components/BottomNav";
 
 function Router() {
   return (
-    <div className="flex h-screen bg-background flex-col md:flex-row overflow-hidden">
+    <div className="flex h-screen bg-background flex-col md:flex-row overflow-hidden safe-top safe-bottom">
       <Sidebar />
-      <main className="flex-1 h-full overflow-y-auto overflow-x-hidden touch-pan-y scroll-smooth overscroll-contain pb-20 md:pb-0">
+      <main className="flex-1 h-full overflow-y-auto overflow-x-hidden touch-pan-y scroll-smooth overscroll-contain pb-24 md:pb-0 px-safe">
         <Switch>
           <Route path="/" component={Dashboard} />
           <Route path="/horses" component={Horses} />
