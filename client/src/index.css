@@ -80,22 +80,17 @@
   }
 }
 
-/* Global Scrollbar Removal with scrolling enabled */
-html, body {
-  min-height: 100%;
-  width: 100%;
+/* Global Scrollbar Removal */
+html, body, #root {
+  overflow: hidden !important;
+  height: 100vh !important;
+  width: 100vw !important;
+  position: fixed;
   margin: 0;
   padding: 0;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-}
-
-#root {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
+  touch-action: none;
+  -webkit-overflow-scrolling: none;
+  overscroll-behavior: none;
 }
 
 * {
