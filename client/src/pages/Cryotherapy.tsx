@@ -693,7 +693,6 @@ export default function Cryotherapy() {
         <div className="flex justify-center mb-0 pt-6">
           <img src={america_cryo_logo} alt="America Cryo Logo" className="h-7 md:h-9 w-auto" />
         </div>
-
         <div className="flex flex-col bg-[#0a0f1d] border-b border-white/5 mt-4">
           <div className="flex justify-between items-center py-4 px-4 md:px-8">
             <div className="flex items-center gap-4">
@@ -710,7 +709,6 @@ export default function Cryotherapy() {
             </div>
           </div>
         </div>
-
         <div className="flex-1 overflow-y-auto px-4 md:px-8 pt-8 pb-24">
           <div className="max-w-5xl mx-auto space-y-6">
             <div className="grid gap-6 md:grid-cols-2">
@@ -809,7 +807,7 @@ export default function Cryotherapy() {
                     </p>
                   </div>
 
-                  <div className="bg-white/5 rounded-2xl p-6 border border-white/5 flex flex-col items-center text-center">
+                  <div className="bg-white/5 rounded-2xl p-6 border border-white/5 flex flex-col items-center text-center pt-[0px] pb-[0px]">
                     <p className="text-[#A9B3CE]/60 text-[11px] uppercase tracking-[0.2em] font-black mb-2">
                       {activeTab === "controls" ? "Configuration" : "Protocol"}
                     </p>
@@ -853,7 +851,7 @@ export default function Cryotherapy() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
     );
   }
 
