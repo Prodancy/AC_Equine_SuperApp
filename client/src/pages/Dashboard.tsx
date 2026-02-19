@@ -100,29 +100,6 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content Column */}
         <div className="lg:col-span-2 space-y-8">
-          {/* Quick Stats Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {[
-              { label: "Active", value: "3", sub: "Sessions", icon: Activity, color: "text-primary", bg: "bg-primary/10" },
-              { label: "Recovery", value: "94%", sub: "Avg Rate", icon: ShieldCheck, color: "text-green-400", bg: "bg-green-400/10" },
-              { label: "Patients", value: "48", sub: "Registered", icon: Horse, color: "text-blue-400", bg: "bg-blue-400/10" },
-              { label: "Revenue", value: "$12k", sub: "This Month", icon: CreditCard, color: "text-orange-400", bg: "bg-orange-400/10" },
-            ].map((stat, i) => (
-              <Card key={i} className="bg-white/5 border-white/10 backdrop-blur-md hover:bg-white/10 transition-all group overflow-hidden relative">
-                <div className={cn("absolute top-0 right-0 w-16 h-16 opacity-10 -mr-4 -mt-4 transition-transform group-hover:scale-110", stat.color)}>
-                  <stat.icon className="w-full h-full" />
-                </div>
-                <CardContent className="p-4 space-y-1 relative">
-                  <p className="text-[10px] font-semibold text-gray-500">{stat.label}</p>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-2xl font-bold">{stat.value}</span>
-                    <span className="text-[10px] text-gray-500 font-medium">{stat.sub}</span>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
           {/* Hero Action Card */}
           <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-primary/20 via-[#0a0f1d] to-[#050810] border border-white/10 shadow-2xl">
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
