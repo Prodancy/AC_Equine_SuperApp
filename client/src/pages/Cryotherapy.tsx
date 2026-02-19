@@ -689,20 +689,41 @@ export default function Cryotherapy() {
 
   if (showSession) {
     return (
-      <div className="fixed inset-0 z-[100] bg-[#030712] p-4 md:p-8 overflow-hidden h-screen flex flex-col">
-        <div className="flex justify-center mb-6 pt-4">
-          <div className="flex flex-col items-center">
-            <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto mb-1" />
-          </div>
+      <div className="fixed inset-0 z-[100] bg-[#030712] p-0 overflow-hidden h-screen flex flex-col">
+        <div className="flex justify-center mb-0 pt-6">
+          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-7 md:h-9 w-auto" />
         </div>
-        <div className="max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
-          <div className="flex justify-between items-center mb-8">
+
+        <div className="flex flex-col bg-[#0a0f1d] border-b border-white/5 mt-4">
+          <div className="flex justify-between items-center py-4 px-4 md:px-8">
             <div className="flex items-center gap-4">
-              <h1 className="text-2xl font-bold text-white tracking-tight">Session Details</h1>
+              <div>
+                <h1 className="text-xl md:text-2xl font-bold tracking-widest text-white">
+                  Session Details
+                </h1>
+                <p className="text-[10px] text-muted-foreground tracking-tight hidden md:block font-bold uppercase">
+                  Active treatment session
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <Button 
+                variant="outline" 
+                size="sm"
+                className={cn(
+                  "h-8 md:h-9 text-[10px] md:text-xs font-bold tracking-wider border-green-500/20 bg-green-500/10 text-green-500 pointer-events-none"
+                )}
+              >
+                <div className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse" />
+                Connected
+              </Button>
             </div>
           </div>
+        </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+        <div className="flex-1 overflow-y-auto px-4 md:px-8 pt-8 pb-24">
+          <div className="max-w-5xl mx-auto space-y-6">
+            <div className="grid gap-6 md:grid-cols-2">
             {/* Cooling Progress Card - Moved to Top and Span 2 Columns */}
             <div className="md:col-span-2 flex justify-center">
               <div className="flex flex-col justify-between overflow-hidden relative w-full max-w-2xl">
