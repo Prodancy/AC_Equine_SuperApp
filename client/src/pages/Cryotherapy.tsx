@@ -797,25 +797,34 @@ export default function Cryotherapy() {
             </div>
 
             <div className="space-y-6">
-              <div className="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6">
-                <h3 className="text-[#A9B3CE] font-bold mb-4 text-[17px]">Session details</h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center py-2 border-b border-white/5">
-                    <span className="text-[#A9B3CE]/60 text-sm">Treatment site</span>
-                    <span className="text-white font-bold">{getPartLabel(selectedPart)}</span>
+              <div className="bg-[#0a0f1d]/60 backdrop-blur-md border border-white/5 rounded-3xl p-6 shadow-2xl">
+                <div className="flex items-center gap-2 mb-6">
+                  <div className="w-1.5 h-6 bg-[#3D63DD] rounded-full" />
+                  <h3 className="text-white font-bold tracking-tight text-lg">Session Summary</h3>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
+                    <p className="text-[#A9B3CE]/60 text-[10px] uppercase tracking-widest font-bold mb-1">Treatment Site</p>
+                    <p className="text-white font-bold text-sm truncate">
+                      {activeTab === "controls" 
+                        ? (selectedControl?.startsWith('flow') ? "Regular spray" : selectedControl?.startsWith('massage') ? "Massage" : "Nozzle spray")
+                        : getPartLabel(selectedPart)
+                      }
+                    </p>
                   </div>
-                  <div className="flex justify-between items-center py-2 border-b border-white/5">
-                    <span className="text-[#A9B3CE]/60 text-sm">Protocol</span>
-                    <span className="text-white font-bold">{currentProtocol.name}</span>
+
+                  <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
+                    <p className="text-[#A9B3CE]/60 text-[10px] uppercase tracking-widest font-bold mb-1">
+                      {activeTab === "controls" ? "Configuration" : "Protocol"}
+                    </p>
+                    <p className="text-[#3D63DD] font-bold text-sm truncate">
+                      {activeTab === "controls" 
+                        ? (selectedControl ? selectedControl.split('-')[1].charAt(0).toUpperCase() + selectedControl.split('-')[1].slice(1) : "Not set")
+                        : currentProtocol.name
+                      }
+                    </p>
                   </div>
-                  {selectedControl && (
-                    <div className="flex justify-between items-center py-2 border-b border-white/5">
-                      <span className="text-[#A9B3CE]/60 text-sm">Nozzle</span>
-                      <span className="text-[#3D63DD] font-bold text-xs">
-                        {selectedControl.split('-')[1]}
-                      </span>
-                    </div>
-                  )}
                 </div>
               </div>
 
