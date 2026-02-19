@@ -1206,17 +1206,6 @@ export default function Cryotherapy() {
                           <div className="flex items-center justify-center gap-8 py-4">
                             {/* Minutes Column */}
                             <div className="flex flex-col items-center">
-                              <button 
-                                onClick={() => {
-                                  const mins = Math.floor(customTime / 60);
-                                  const secs = customTime % 60;
-                                  if (mins < 4) setCustomTime(Math.min(240, (mins + 1) * 60 + secs));
-                                }}
-                                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mb-4 group/btn"
-                              >
-                                <ChevronUp className="w-5 h-5 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
-                              </button>
-                              
                               <div className="relative flex flex-col items-center">
                                 <div className="absolute inset-0 bg-[#3D63DD]/5 blur-2xl rounded-full" />
                                 <span className="relative font-light text-white tabular-nums tracking-tighter text-8xl leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
@@ -1236,15 +1225,6 @@ export default function Cryotherapy() {
 
                             {/* Seconds Column */}
                             <div className="flex flex-col items-center">
-                              <button 
-                                onClick={() => {
-                                  if (customTime < 240) setCustomTime(prev => Math.min(240, prev + 1));
-                                }}
-                                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mb-4 group/btn"
-                              >
-                                <ChevronUp className="w-5 h-5 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
-                              </button>
-                              
                               <div className="relative flex flex-col items-center">
                                 <div className="absolute inset-0 bg-[#3D63DD]/5 blur-2xl rounded-full" />
                                 <span className="relative font-light text-white tabular-nums tracking-tighter text-8xl leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
