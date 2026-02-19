@@ -285,7 +285,7 @@ export default function Dashboard() {
             
             <div className="space-y-6 py-4 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
               <div className="space-y-3">
-                <Label className="text-[10px] font-semibold text-primary">1. Select date</Label>
+                <Label className="text-xs font-semibold text-primary uppercase tracking-wider">Select date</Label>
                 <input 
                   type="date" 
                   value={selectedDate}
@@ -295,7 +295,7 @@ export default function Dashboard() {
               </div>
 
               <div className="space-y-3">
-                <Label className="text-[10px] font-semibold text-primary">2. Available slots</Label>
+                <Label className="text-xs font-semibold text-primary uppercase tracking-wider">Available slots</Label>
                 <div className="flex overflow-x-auto gap-2 pb-2 no-scrollbar -mx-1 px-1">
                 {["09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM"].map((time) => (
                   <Button
@@ -315,7 +315,7 @@ export default function Dashboard() {
 
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <Label className="text-[10px] font-semibold text-primary">3. Select patient</Label>
+                  <Label className="text-xs font-semibold text-primary uppercase tracking-wider">Select patient</Label>
                   <Button variant="ghost" className="h-6 text-[10px] text-primary hover:bg-primary/10 px-2 rounded-lg gap-1">
                     <Plus className="w-3 h-3" /> New horse
                   </Button>
@@ -354,7 +354,7 @@ export default function Dashboard() {
               </div>
 
               <div className="space-y-3">
-                <Label className="text-[10px] font-semibold text-primary">4. Treatment modality</Label>
+                <Label className="text-xs font-semibold text-primary uppercase tracking-wider">Treatment modality</Label>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button
