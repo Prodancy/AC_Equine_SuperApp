@@ -707,16 +707,6 @@ export default function Cryotherapy() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <Button 
-                variant="outline" 
-                size="sm"
-                className={cn(
-                  "h-8 md:h-9 text-[10px] md:text-xs font-bold tracking-wider border-green-500/20 bg-green-500/10 text-green-500 pointer-events-none"
-                )}
-              >
-                <div className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse" />
-                Connected
-              </Button>
             </div>
           </div>
         </div>
