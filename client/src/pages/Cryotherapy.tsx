@@ -1302,8 +1302,8 @@ export default function Cryotherapy() {
             exit={{ opacity: 0, y: -20 }}
             className="flex flex-col items-center"
           >
-            <div className="w-full flex justify-center">
-              <div className="relative w-full max-w-[1000px] aspect-[1536/1024] bg-[#0a0f1d] overflow-hidden group rounded-3xl border border-white/5 shadow-2xl">
+            <div className="w-full">
+              <div className="relative w-full aspect-[1536/1024] bg-[#0a0f1d] overflow-hidden group">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                   <div className="absolute inset-0 bg-[radial-gradient(#3D63DD_1px,transparent_1px)] [background-size:20px_20px]" />
