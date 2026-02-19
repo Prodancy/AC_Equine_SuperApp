@@ -714,7 +714,7 @@ export default function Cryotherapy() {
                   {/* Middle Section: Temperature */}
                   <div className="w-full h-1/3 bg-[#1d4ed8] flex items-center justify-center gap-3 relative">
                     <Thermometer className="w-10 h-10 text-white" />
-                    <span className="text-7xl font-black text-white tabular-nums leading-none tracking-tighter">
+                    <span className="font-black text-white tabular-nums tracking-tighter text-[48px]">
                       {Math.round(currentTemp)}° C
                     </span>
                   </div>
