@@ -319,23 +319,38 @@ export default function Dashboard() {
                     <Plus className="w-3 h-3" /> New horse
                   </Button>
                 </div>
-                <div className="grid grid-cols-2 gap-2">
-                {horses.slice(0, 4).map((horse) => (
-                  <Button
-                    key={horse}
-                    variant="outline"
-                    className={cn(
-                      "justify-start font-bold border-white/5 bg-white/5 hover:bg-white/10 text-white rounded-xl h-12 truncate px-4",
-                      selectedHorse === horse && "border-primary bg-primary/20 text-primary"
-                    )}
-                    onClick={() => setSelectedHorse(horse)}
-                  >
-                    <Horse className="w-4 h-4 mr-3 shrink-0" />
-                    {horse}
-                  </Button>
-                ))}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className={cn(
+                        "w-full justify-between font-bold border-white/5 bg-white/5 hover:bg-white/10 text-white rounded-xl h-12 px-4 transition-all",
+                        selectedHorse && "border-primary/50 bg-primary/5"
+                      )}
+                    >
+                      <div className="flex items-center">
+                        <Horse className="w-4 h-4 mr-3 shrink-0 text-primary" />
+                        <span className={cn(!selectedHorse && "text-gray-500 font-medium")}>
+                          {selectedHorse || "Select a patient..."}
+                        </span>
+                      </div>
+                      <ChevronDown className="w-4 h-4 opacity-50" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-[var(--radix-dropdown-menu-trigger-width)] bg-[#121826] border-white/10 text-white rounded-xl">
+                    {horses.map((horse) => (
+                      <DropdownMenuItem
+                        key={horse}
+                        onClick={() => setSelectedHorse(horse)}
+                        className="hover:bg-primary/20 cursor-pointer py-3 px-4 flex items-center gap-3 transition-colors"
+                      >
+                        <Horse className="w-4 h-4 text-primary/70" />
+                        <span className="font-medium">{horse}</span>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
-            </div>
 
               <div className="space-y-3">
                 <Label className="text-[10px] font-semibold text-primary">4. Treatment modality</Label>
