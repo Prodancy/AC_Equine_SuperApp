@@ -1,3 +1,4 @@
+import "@fontsource/open-sans";
 import horse_anatomy from "@assets/image_1771493483374.png";
 import america_cryo_logo from "@/assets/logo-official.png";
 import { useState, useEffect } from "react";
@@ -723,7 +724,7 @@ export default function Cryotherapy() {
                         <div className="w-1.5 h-1.5 rounded-full bg-white z-10" />
                         <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-[2px] bg-white rounded-full" />
                       </div>
-                      <span className="font-bold text-white tabular-nums tracking-tight text-[28px]">
+                      <span className="font-bold text-white tabular-nums tracking-tight text-[28px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                         {timeLeft}s
                       </span>
                     </div>
@@ -735,7 +736,7 @@ export default function Cryotherapy() {
                     (currentTemp < 0.5 || currentTemp > 8.1) ? "bg-[#b91c1c]" : "bg-[#1d4ed8]"
                   )}>
                     <Thermometer className="w-10 h-10 text-white" />
-                    <span className="font-black text-white tabular-nums tracking-tighter text-[48px]">
+                    <span className="font-black text-white tabular-nums tracking-tighter text-[28px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                       {currentTemp.toFixed(1)}° C
                     </span>
                   </div>
@@ -752,7 +753,7 @@ export default function Cryotherapy() {
                         <div className="w-4 h-[2px] bg-white" />
                       </div>
                     </div>
-                    <span className="font-black text-white tabular-nums tracking-tight text-[28px]">
+                    <span className="font-black text-white tabular-nums tracking-tight text-[28px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                       {Math.round(intensity[0])} cm
                     </span>
                   </div>
