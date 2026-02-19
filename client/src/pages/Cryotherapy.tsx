@@ -1300,9 +1300,9 @@ export default function Cryotherapy() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="w-full flex flex-col items-center"
+            className="flex flex-col items-center"
           >
-            <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+            <div className="w-full">
               <div className="relative w-full aspect-[1536/1024] bg-[#0a0f1d] overflow-hidden group">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
