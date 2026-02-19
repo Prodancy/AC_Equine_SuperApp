@@ -1312,7 +1312,7 @@ export default function Cryotherapy() {
                 <img
                   src={horse_anatomy}
                   alt="Horse Anatomy"
-                  className="h-full w-auto object-contain relative z-10 filter brightness-110 contrast-110 drop-shadow-[0_0_30px_rgba(61,99,221,0.2)]"
+                  className="w-full h-full object-contain relative z-10 filter brightness-110 contrast-110 drop-shadow-[0_0_30px_rgba(61,99,221,0.2)]"
                 />
 
                 {/* Hotspots */}
