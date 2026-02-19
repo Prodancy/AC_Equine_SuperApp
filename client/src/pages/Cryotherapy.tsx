@@ -697,14 +697,20 @@ export default function Cryotherapy() {
         </div>
         <div className="max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
           <div className="flex justify-between items-center mb-8">
-            <Button 
-              variant="ghost" 
-              onClick={() => setShowSession(false)}
-              className="text-[#A9B3CE] hover:text-white"
-            >
-              <ChevronLeft className="w-5 h-5 mr-2" />
-              Back to Setup
-            </Button>
+            <div className="flex items-center gap-4">
+              <Button 
+                variant="ghost" 
+                onClick={() => setShowSession(false)}
+                className="text-[#A9B3CE] hover:text-white p-0 h-auto"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </Button>
+              <h1 className="text-2xl font-bold text-white tracking-tight">Session Details</h1>
+            </div>
+            <div className="flex items-center gap-2 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-[10px] font-bold text-green-500 uppercase tracking-widest">Live session</span>
+            </div>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
