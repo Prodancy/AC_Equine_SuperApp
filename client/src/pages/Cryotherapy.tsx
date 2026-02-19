@@ -1198,7 +1198,7 @@ export default function Cryotherapy() {
                               onTouchEnd={() => setLastTouchY(null)}
                             >
                               <div className="flex flex-col items-center py-4 transition-transform group-hover:scale-105">
-                                <span className="font-extralight text-white tabular-nums tracking-tighter text-[60px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                                <span className="text-8xl font-extralight text-white tabular-nums tracking-tighter leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                                   {(customTime % 60).toString().padStart(2, "0")}
                                 </span>
                                 <span className="text-[10px] uppercase tracking-[0.4em] text-[#A9B3CE] font-bold mt-2 ml-[0.4em]">
