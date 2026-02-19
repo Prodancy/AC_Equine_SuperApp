@@ -740,25 +740,26 @@ export default function Cryotherapy() {
                       <circle
                         cx="50%"
                         cy="50%"
-                        r="48.5%"
-                        stroke="rgba(61,99,221,0.05)"
-                        strokeWidth="8"
+                        r="48%"
+                        stroke="rgba(61,99,221,0.1)"
+                        strokeWidth="10"
                         fill="transparent"
                       />
+                      {/* Progress Indicator */}
                       <circle
                         cx="50%"
                         cy="50%"
-                        r="48.5%"
+                        r="48%"
                         stroke="#3D63DD"
-                        strokeWidth="8"
+                        strokeWidth="10"
                         fill="transparent"
-                        strokeDasharray="730"
-                        strokeDashoffset={730 * (1 - progress / 100)}
+                        strokeDasharray="723"
+                        strokeDashoffset={723 * (progress / 100)}
                         strokeLinecap="round"
                         className="transition-all duration-1000 ease-linear"
                         style={{ 
                           transformOrigin: 'center', 
-                          transform: 'rotate(-90deg) scaleX(-1)' 
+                          transform: 'rotate(-90deg) scaleY(-1)' 
                         }}
                       />
                     </svg>
