@@ -705,7 +705,7 @@ export default function Cryotherapy() {
                         <div className="w-1.5 h-1.5 rounded-full bg-white z-10" />
                         <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-[2px] bg-white rounded-full" />
                       </div>
-                      <span className="text-4xl font-bold text-white tabular-nums tracking-tight">
+                      <span className="font-bold text-white tabular-nums tracking-tight text-[28px]">
                         {timeLeft}s
                       </span>
                     </div>
