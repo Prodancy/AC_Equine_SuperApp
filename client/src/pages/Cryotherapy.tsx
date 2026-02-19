@@ -797,11 +797,11 @@ export default function Cryotherapy() {
             </div>
 
             <div className="space-y-6">
-              <div className="bg-[#0a0f1d]/60 backdrop-blur-md border border-white/5 rounded-3xl p-6 shadow-2xl">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
-                    <p className="text-[#A9B3CE]/60 text-[10px] uppercase tracking-widest font-bold mb-1">Treatment Site</p>
-                    <p className="text-white font-bold text-sm truncate">
+              <div className="bg-[#0a0f1d]/60 backdrop-blur-md border border-white/5 rounded-3xl p-8 shadow-2xl">
+                <div className="flex flex-col gap-6">
+                  <div className="bg-white/5 rounded-2xl p-6 border border-white/5 flex flex-col items-center text-center">
+                    <p className="text-[#A9B3CE]/60 text-[11px] uppercase tracking-[0.2em] font-black mb-2">Treatment Site</p>
+                    <p className="text-white font-bold text-2xl tracking-tight">
                       {activeTab === "controls" 
                         ? (selectedControl?.startsWith('flow') ? "Regular spray" : selectedControl?.startsWith('massage') ? "Massage" : "Nozzle spray")
                         : getPartLabel(selectedPart)
@@ -809,11 +809,11 @@ export default function Cryotherapy() {
                     </p>
                   </div>
 
-                  <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
-                    <p className="text-[#A9B3CE]/60 text-[10px] uppercase tracking-widest font-bold mb-1">
+                  <div className="bg-white/5 rounded-2xl p-6 border border-white/5 flex flex-col items-center text-center">
+                    <p className="text-[#A9B3CE]/60 text-[11px] uppercase tracking-[0.2em] font-black mb-2">
                       {activeTab === "controls" ? "Configuration" : "Protocol"}
                     </p>
-                    <p className="text-[#3D63DD] font-bold text-sm truncate">
+                    <p className="text-[#3D63DD] font-bold text-2xl tracking-tight">
                       {activeTab === "controls" 
                         ? (selectedControl ? selectedControl.split('-')[1].charAt(0).toUpperCase() + selectedControl.split('-')[1].slice(1) : "Not set")
                         : currentProtocol.name
