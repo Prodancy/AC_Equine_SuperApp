@@ -1203,125 +1203,76 @@ export default function Cryotherapy() {
                     <div className="space-y-4">
                       {activeProtocol === "m_custom" && (
                         <div className="bg-[#0a0f1d] border border-white/10 rounded-2xl p-6 flex flex-col items-center space-y-6">
-                          <div className="flex items-center justify-center gap-4">
+                          <div className="flex items-center justify-center gap-8 py-4">
                             {/* Minutes Column */}
-                            <div className="flex flex-col items-center gap-2">
+                            <div className="flex flex-col items-center">
                               <button 
                                 onClick={() => {
                                   const mins = Math.floor(customTime / 60);
                                   const secs = customTime % 60;
                                   if (mins < 4) setCustomTime(Math.min(240, (mins + 1) * 60 + secs));
                                 }}
-                                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 active:scale-95 transition-all"
+                                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mb-4 group/btn"
                               >
-                                <ChevronUp className="w-6 h-6 text-[#3D63DD]" />
+                                <ChevronUp className="w-5 h-5 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
                               </button>
-                              <div 
-                                className="flex flex-col items-center cursor-ns-resize select-none group px-4 hover:bg-white/[0.03] rounded-2xl transition-all duration-300"
-                                onWheel={(e) => {
-                                  const mins = Math.floor(customTime / 60);
-                                  const secs = customTime % 60;
-                                  if (e.deltaY < 0 && mins < 4) {
-                                    setCustomTime(Math.min(240, (mins + 1) * 60 + secs));
-                                  } else if (e.deltaY > 0 && mins > 0) {
-                                    setCustomTime(Math.max(0, (mins - 1) * 60 + secs));
-                                  }
-                                }}
-                                onTouchStart={(e) => setLastTouchY(e.touches[0].clientY)}
-                                onTouchMove={(e) => {
-                                  if (lastTouchY === null) return;
-                                  const currentY = e.touches[0].clientY;
-                                  const deltaY = lastTouchY - currentY;
-                                  if (Math.abs(deltaY) > 10) {
-                                    const mins = Math.floor(customTime / 60);
-                                    const secs = customTime % 60;
-                                    if (deltaY > 0 && mins < 4) {
-                                      setCustomTime(Math.min(240, (mins + 1) * 60 + secs));
-                                    } else if (deltaY < 0 && mins > 0) {
-                                      setCustomTime(Math.max(0, (mins - 1) * 60 + secs));
-                                    }
-                                    setLastTouchY(currentY);
-                                  }
-                                }}
-                                onTouchEnd={() => setLastTouchY(null)}
-                              >
-                                <div className="flex flex-col items-center py-2 transition-transform group-hover:scale-105">
-                                  <span className="font-extralight text-white tabular-nums tracking-tighter text-[70px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
-                                    {Math.floor(customTime / 60)
-                                      .toString()
-                                      .padStart(2, "0")}
-                                  </span>
-                                  <span className="text-[10px] uppercase tracking-[0.4em] text-[#A9B3CE] font-bold mt-1 ml-[0.4em]">
-                                    minutes
-                                  </span>
-                                </div>
+                              
+                              <div className="relative flex flex-col items-center">
+                                <div className="absolute inset-0 bg-[#3D63DD]/5 blur-2xl rounded-full" />
+                                <span className="relative font-light text-white tabular-nums tracking-tighter text-8xl leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                                  {Math.floor(customTime / 60).toString().padStart(2, "0")}
+                                </span>
+                                <span className="text-[10px] uppercase tracking-[0.3em] text-[#3D63DD] font-bold mt-2">
+                                  min
+                                </span>
                               </div>
+
                               <button 
                                 onClick={() => {
                                   const mins = Math.floor(customTime / 60);
                                   const secs = customTime % 60;
                                   if (mins > 0) setCustomTime(Math.max(0, (mins - 1) * 60 + secs));
                                 }}
-                                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 active:scale-95 transition-all"
+                                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mt-4 group/btn"
                               >
-                                <ChevronDown className="w-6 h-6 text-[#3D63DD]" />
+                                <ChevronDown className="w-5 h-5 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
                               </button>
                             </div>
 
                             {/* Separator */}
-                            <div className="text-6xl font-extralight text-white/5 self-center pb-8 select-none">:</div>
+                            <div className="flex flex-col gap-3 py-12">
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD] animate-pulse" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD] animate-pulse delay-75" />
+                            </div>
 
                             {/* Seconds Column */}
-                            <div className="flex flex-col items-center gap-2">
+                            <div className="flex flex-col items-center">
                               <button 
                                 onClick={() => {
                                   if (customTime < 240) setCustomTime(prev => Math.min(240, prev + 1));
                                 }}
-                                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 active:scale-95 transition-all"
+                                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mb-4 group/btn"
                               >
-                                <ChevronUp className="w-6 h-6 text-[#3D63DD]" />
+                                <ChevronUp className="w-5 h-5 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
                               </button>
-                              <div 
-                                className="flex flex-col items-center cursor-ns-resize select-none group px-4 hover:bg-white/[0.03] rounded-2xl transition-all duration-300"
-                                onWheel={(e) => {
-                                  if (e.deltaY < 0 && customTime < 240) {
-                                    setCustomTime(prev => Math.min(240, prev + 1));
-                                  } else if (e.deltaY > 0 && customTime > 0) {
-                                    setCustomTime(prev => Math.max(0, prev - 1));
-                                  }
-                                }}
-                                onTouchStart={(e) => setLastTouchY(e.touches[0].clientY)}
-                                onTouchMove={(e) => {
-                                  if (lastTouchY === null) return;
-                                  const currentY = e.touches[0].clientY;
-                                  const deltaY = lastTouchY - currentY;
-                                  if (Math.abs(deltaY) > 10) {
-                                    if (deltaY > 0 && customTime < 240) {
-                                      setCustomTime(prev => Math.min(240, prev + 1));
-                                    } else if (deltaY < 0 && customTime > 0) {
-                                      setCustomTime(prev => Math.max(0, prev - 1));
-                                    }
-                                    setLastTouchY(currentY);
-                                  }
-                                }}
-                                onTouchEnd={() => setLastTouchY(null)}
-                              >
-                                <div className="flex flex-col items-center py-2 transition-transform group-hover:scale-105">
-                                  <span className="font-extralight text-white tabular-nums tracking-tighter text-[70px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
-                                    {(customTime % 60).toString().padStart(2, "0")}
-                                  </span>
-                                  <span className="text-[10px] uppercase tracking-[0.4em] text-[#A9B3CE] font-bold mt-1 ml-[0.4em]">
-                                    seconds
-                                  </span>
-                                </div>
+                              
+                              <div className="relative flex flex-col items-center">
+                                <div className="absolute inset-0 bg-[#3D63DD]/5 blur-2xl rounded-full" />
+                                <span className="relative font-light text-white tabular-nums tracking-tighter text-8xl leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                                  {(customTime % 60).toString().padStart(2, "0")}
+                                </span>
+                                <span className="text-[10px] uppercase tracking-[0.3em] text-[#3D63DD] font-bold mt-2">
+                                  sec
+                                </span>
                               </div>
+
                               <button 
                                 onClick={() => {
                                   if (customTime > 0) setCustomTime(prev => Math.max(0, prev - 1));
                                 }}
-                                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 active:scale-95 transition-all"
+                                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mt-4 group/btn"
                               >
-                                <ChevronDown className="w-6 h-6 text-[#3D63DD]" />
+                                <ChevronDown className="w-5 h-5 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
                               </button>
                             </div>
                           </div>
