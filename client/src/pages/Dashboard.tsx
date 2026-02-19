@@ -109,7 +109,7 @@ export default function Dashboard() {
                   <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-none">
                     Equine therapy <br/><span className="text-primary">solutions</span>
                   </h2>
-                  <p className="text-gray-400 text-sm md:text-lg max-w-md leading-relaxed">
+                  <p className="text-gray-400 text-sm md:text-lg max-w-md leading-relaxed text-left">
                     Precision equine care powered by America Cryo's advanced recovery protocols.
                   </p>
                 </div>
