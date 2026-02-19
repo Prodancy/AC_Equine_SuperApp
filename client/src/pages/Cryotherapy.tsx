@@ -1203,7 +1203,7 @@ export default function Cryotherapy() {
                     <div className="space-y-4">
                       {activeProtocol === "m_custom" && (
                         <div className="bg-[#0a0f1d] border border-white/10 rounded-2xl p-6 flex flex-col items-center space-y-6">
-                          <div className="flex items-center justify-between w-full gap-4 py-4">
+                          <div className="flex items-center justify-between w-full gap-2 py-2">
                             {/* Minutes Dial (Left) */}
                             <div className="flex flex-col items-center flex-1">
                               <button 
@@ -1212,17 +1212,17 @@ export default function Cryotherapy() {
                                   const secs = customTime % 60;
                                   if (mins < 4) setCustomTime(Math.min(240, (mins + 1) * 60 + secs));
                                 }}
-                                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mb-4 group/btn"
+                                className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mb-2 group/btn"
                               >
-                                <ChevronUp className="w-6 h-6 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
+                                <ChevronUp className="w-4 h-4 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
                               </button>
                               
                               <div className="relative flex flex-col items-center">
-                                <div className="absolute inset-0 bg-[#3D63DD]/5 blur-3xl rounded-full" />
-                                <span className="relative font-light text-white tabular-nums tracking-tighter text-8xl leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                                <div className="absolute inset-0 bg-[#3D63DD]/5 blur-2xl rounded-full" />
+                                <span className="relative font-light text-white tabular-nums tracking-tighter text-6xl leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                                   {Math.floor(customTime / 60).toString().padStart(2, "0")}
                                 </span>
-                                <span className="text-[12px] uppercase tracking-[0.4em] text-[#3D63DD] font-bold mt-3">
+                                <span className="text-[10px] uppercase tracking-[0.3em] text-[#3D63DD] font-bold mt-2">
                                   min
                                 </span>
                               </div>
@@ -1233,16 +1233,16 @@ export default function Cryotherapy() {
                                   const secs = customTime % 60;
                                   if (mins > 0) setCustomTime(Math.max(0, (mins - 1) * 60 + secs));
                                 }}
-                                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mt-4 group/btn"
+                                className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mt-2 group/btn"
                               >
-                                <ChevronDown className="w-6 h-6 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
+                                <ChevronDown className="w-4 h-4 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
                               </button>
                             </div>
 
                             {/* Center Separator */}
-                            <div className="flex flex-col gap-4 py-12 shrink-0">
-                              <div className="w-2 h-2 rounded-full bg-[#3D63DD] animate-pulse shadow-[0_0_10px_#3D63DD]" />
-                              <div className="w-2 h-2 rounded-full bg-[#3D63DD] animate-pulse delay-150 shadow-[0_0_10px_#3D63DD]" />
+                            <div className="flex flex-col gap-3 py-8 shrink-0">
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD] animate-pulse shadow-[0_0_8px_#3D63DD]" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD] animate-pulse delay-150 shadow-[0_0_8px_#3D63DD]" />
                             </div>
 
                             {/* Seconds Dial (Right) */}
@@ -1251,17 +1251,17 @@ export default function Cryotherapy() {
                                 onClick={() => {
                                   if (customTime < 240) setCustomTime(prev => Math.min(240, prev + 1));
                                 }}
-                                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mb-4 group/btn"
+                                className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mb-2 group/btn"
                               >
-                                <ChevronUp className="w-6 h-6 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
+                                <ChevronUp className="w-4 h-4 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
                               </button>
                               
                               <div className="relative flex flex-col items-center">
-                                <div className="absolute inset-0 bg-[#3D63DD]/5 blur-3xl rounded-full" />
-                                <span className="relative font-light text-white tabular-nums tracking-tighter text-8xl leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                                <div className="absolute inset-0 bg-[#3D63DD]/5 blur-2xl rounded-full" />
+                                <span className="relative font-light text-white tabular-nums tracking-tighter text-6xl leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                                   {(customTime % 60).toString().padStart(2, "0")}
                                 </span>
-                                <span className="text-[12px] uppercase tracking-[0.4em] text-[#3D63DD] font-bold mt-3">
+                                <span className="text-[10px] uppercase tracking-[0.3em] text-[#3D63DD] font-bold mt-2">
                                   sec
                                 </span>
                               </div>
@@ -1270,9 +1270,9 @@ export default function Cryotherapy() {
                                 onClick={() => {
                                   if (customTime > 0) setCustomTime(prev => Math.max(0, prev - 1));
                                 }}
-                                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mt-4 group/btn"
+                                className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mt-2 group/btn"
                               >
-                                <ChevronDown className="w-6 h-6 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
+                                <ChevronDown className="w-4 h-4 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
                               </button>
                             </div>
                           </div>
