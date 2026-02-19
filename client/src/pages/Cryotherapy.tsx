@@ -728,7 +728,7 @@ export default function Cryotherapy() {
                         <div className="w-4 h-[2px] bg-white" />
                       </div>
                     </div>
-                    <span className="text-5xl font-black text-white tabular-nums leading-none tracking-tight">
+                    <span className="font-black text-white tabular-nums tracking-tight text-[40px]">
                       {intensity[0]} in
                     </span>
                   </div>
