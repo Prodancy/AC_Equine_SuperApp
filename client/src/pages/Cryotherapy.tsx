@@ -859,6 +859,7 @@ export default function Cryotherapy() {
           </div>
         </div>
       </div>
+    </div>
     );
   }
 
