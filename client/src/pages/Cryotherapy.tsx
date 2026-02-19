@@ -714,7 +714,7 @@ export default function Cryotherapy() {
             <div className="grid gap-6 md:grid-cols-2">
             {/* Cooling Progress Card - Moved to Top and Span 2 Columns */}
             <div className="md:col-span-2 flex justify-center">
-              <div className="flex flex-col justify-between overflow-hidden relative w-full max-w-2xl">
+              <div className="flex flex-col justify-between overflow-hidden relative w-full max-w-2xl mt-[-25px] mb-[-25px]">
                 <div className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square w-[360px] h-[360px] mx-auto my-8">
                   {/* Top Section: Time */}
                   <div className="w-full h-1/3 bg-[#0a0f1d] flex flex-col items-center justify-end relative transition-colors duration-300 border-b border-white/5 pb-1">
