@@ -716,7 +716,7 @@ export default function Cryotherapy() {
                     Cooling progress
                   </h2>
                 </div>
-                <div className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square border-[12px] border-blue-600/20 w-[360px] h-[360px] mx-auto my-8">
+                <div className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square w-[360px] h-[360px] mx-auto my-8">
                   {/* Top Section: Time */}
                   <div className="w-full h-1/3 bg-[#0a0f1d] flex items-center justify-center gap-4 border-b border-white/5 relative">
                     <div className="flex items-center gap-3">
@@ -768,7 +768,7 @@ export default function Cryotherapy() {
                         cy="180"
                         r="172.5"
                         stroke="rgba(61,99,221,0.1)"
-                        strokeWidth="15"
+                        strokeWidth="35"
                         fill="transparent"
                       />
                       {/* Progress Indicator */}
@@ -777,7 +777,7 @@ export default function Cryotherapy() {
                         cy="180"
                         r="172.5"
                         stroke="#3D63DD"
-                        strokeWidth="15"
+                        strokeWidth="35"
                         fill="transparent"
                         strokeDasharray="1083.8"
                         strokeDashoffset={1083.8 * (progress / 100)}
