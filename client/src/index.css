@@ -82,14 +82,19 @@
 
 /* Global Scrollbar Removal with scrolling enabled */
 html, body, #root {
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow-y: auto !important; /* Enable vertical scrolling */
+  overflow-y: visible !important;
   overflow-x: hidden !important;
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-  position: relative; /* Remove fixed positioning */
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
 }
 
 * {
