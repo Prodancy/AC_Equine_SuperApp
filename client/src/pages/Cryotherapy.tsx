@@ -692,7 +692,7 @@ export default function Cryotherapy() {
             <div className="space-y-6 order-1 md:order-2">
               <Card className="flex flex-col justify-between overflow-hidden relative border-blue-400/20 shadow-lg bg-card">
                 <CardHeader className="text-center pb-0 pt-4">
-                  <CardTitle className="text-blue-400/60 tracking-widest text-[10px] md:text-xs">
+                  <CardTitle className="font-semibold text-blue-400/60 tracking-widest md:text-xs text-[17px]">
                     Cooling Progress
                   </CardTitle>
                 </CardHeader>
