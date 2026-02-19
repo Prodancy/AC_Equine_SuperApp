@@ -696,22 +696,45 @@ export default function Cryotherapy() {
                     Cooling Progress
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="flex-1 flex flex-col items-center justify-center space-y-6 md:space-y-8 relative z-10 py-6 md:py-8">
-                  <div className="relative w-56 h-56 md:w-64 md:h-64 flex items-center justify-center">
+                <CardContent className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square border-4 border-blue-600/30 w-72 h-72 mx-auto">
+                  {/* Top Section: Time */}
+                  <div className="w-full h-1/3 bg-[#0a0f1d] flex items-center justify-center gap-3 border-b border-white/5">
+                    <div className="w-6 h-6 rounded-full border border-white/80 flex items-center justify-center relative">
+                      <div className="absolute top-1/2 left-1/2 w-0.5 h-1.5 bg-white origin-bottom -translate-x-1/2 -translate-y-full" />
+                      <div className="w-0.5 h-0.5 rounded-full bg-white" />
+                    </div>
+                    <span className="text-3xl font-bold text-white tabular-nums tracking-tight">
+                      {formatTime(timeLeft)}
+                    </span>
+                  </div>
+
+                  {/* Middle Section: Temperature */}
+                  <div className="w-full h-1/3 bg-[#1d4ed8] flex items-center justify-center gap-3">
+                    <Thermometer className="w-8 h-8 text-white" />
+                    <span className="text-6xl font-black text-white tabular-nums leading-none">
+                      {Math.round(currentTemp)}° C
+                    </span>
+                  </div>
+
+                  {/* Bottom Section: Intensity */}
+                  <div className="w-full h-1/3 bg-[#b91c1c] flex items-center justify-center gap-3">
+                    <div className="w-8 h-8 border border-white rounded-sm flex flex-col items-center justify-around py-1">
+                      <div className="w-5 h-0.5 bg-white" />
+                      <div className="w-5 h-0.5 bg-white" />
+                      <div className="w-5 h-0.5 bg-white" />
+                    </div>
+                    <span className="text-5xl font-black text-white tabular-nums leading-none">
+                      {intensity[0]} in
+                    </span>
+                  </div>
+
+                  {/* Progress Ring Overlay */}
+                  <div className="absolute inset-0 pointer-events-none p-1">
                     <svg className="w-full h-full transform -rotate-90">
                       <circle
                         cx="50%"
                         cy="50%"
-                        r="45%"
-                        stroke="currentColor"
-                        strokeWidth="8"
-                        fill="transparent"
-                        className="text-secondary"
-                      />
-                      <circle
-                        cx="50%"
-                        cy="50%"
-                        r="45%"
+                        r="48%"
                         stroke="currentColor"
                         strokeWidth="8"
                         fill="transparent"
@@ -720,34 +743,6 @@ export default function Cryotherapy() {
                         className="text-blue-400 transition-all duration-1000 ease-linear"
                       />
                     </svg>
-                    <div className="absolute flex flex-col items-center">
-                      <span className="text-5xl md:text-6xl font-bold tracking-tight tabular-nums text-white">
-                        {formatTime(timeLeft)}
-                      </span>
-                      <span className="text-xs text-blue-400/80 mt-1 font-semibold">
-                        Remaining
-                      </span>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4 md:gap-8 w-full">
-                    <div className="flex flex-col items-center bg-blue-500/5 p-3 md:p-4 rounded-xl border border-blue-500/10">
-                      <Thermometer className="w-5 h-5 md:w-6 md:h-6 text-blue-400 mb-1" />
-                      <span className="text-xl md:text-2xl font-bold tabular-nums text-white">
-                        {Math.round(currentTemp)}°C
-                      </span>
-                      <span className="text-[10px] md:text-xs text-blue-400/60 font-semibold capitalize">
-                        Nozzle temp
-                      </span>
-                    </div>
-                    <div className="flex-1 flex flex-col items-center bg-blue-500/5 p-3 md:p-4 rounded-xl border border-blue-500/10">
-                      <Zap className="w-5 h-5 md:w-6 md:h-6 text-blue-400 mb-1" />
-                      <span className="text-xl md:text-2xl font-bold tabular-nums text-white">
-                        {intensity[0]}%
-                      </span>
-                      <span className="text-[10px] md:text-xs text-blue-400/60 font-semibold capitalize">
-                        Intensity
-                      </span>
-                    </div>
                   </div>
                 </CardContent>
               </Card>
