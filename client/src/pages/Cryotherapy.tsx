@@ -718,8 +718,8 @@ export default function Cryotherapy() {
                 </div>
                 <div className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square w-[360px] h-[360px] mx-auto my-8">
                   {/* Top Section: Time */}
-                  <div className="w-full h-1/3 bg-[#0a0f1d] flex flex-col items-center justify-end relative transition-colors duration-300 border-b border-white/5 pb-1">
-                    <div className="flex items-center gap-1">
+                  <div className="w-full h-1/3 bg-[#0a0f1d] flex items-center justify-center relative transition-colors duration-300 border-b border-white/5">
+                    <div className="flex items-center gap-1 -translate-y-[150px]">
                       <div className="w-9 h-9 rounded-full border-[3px] border-white/90 flex items-center justify-center relative">
                         <div className="absolute top-[4px] left-1/2 w-[3px] h-[12px] bg-white origin-bottom -translate-x-1/2" />
                         <div className="w-2 h-2 rounded-full bg-white z-10" />
@@ -736,7 +736,7 @@ export default function Cryotherapy() {
                     "w-full h-1/3 flex items-center justify-center relative transition-colors duration-300",
                     (currentTemp < 0.5 || currentTemp > 8.1) ? "bg-[#b91c1c]" : "bg-[#1d4ed8]"
                   )}>
-                    <div className="flex items-center gap-0">
+                    <div className="flex items-center gap-0 -translate-y-[150px]">
                       <Thermometer className="w-12 h-12 text-white" />
                       <span className="text-white tabular-nums tracking-tighter font-semibold text-[56px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                         {currentTemp.toFixed(1)}°C
@@ -749,8 +749,8 @@ export default function Cryotherapy() {
                     "w-full h-1/3 flex items-center justify-center relative transition-colors duration-300",
                     (intensity[0] < 10 || intensity[0] > 15) ? "bg-[#b91c1c]" : "bg-[#1d4ed8]"
                   )}>
-                    <div className="flex items-center gap-1">
-                      <div className="w-12 h-12 flex items-center justify-center">
+                    <div className="flex items-center gap-1 -translate-y-[200px]">
+                      <div className="w-12 h-12 flex items-top justify-top">
                         <div className="w-10 h-7 border-[3px] border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
                           <div className="w-6 h-[3px] bg-white" />
                           <div className="w-6 h-[3px] bg-white" />
