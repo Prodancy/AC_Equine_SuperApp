@@ -754,7 +754,7 @@ export default function Cryotherapy() {
             </div>
 
             <div className="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6">
-              <h3 className="text-[#A9B3CE] text-[12px] font-bold mb-4">Session details</h3>
+              <h3 className="text-[#A9B3CE] font-bold mb-4 text-[16px]">Session details</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-2 border-b border-white/5">
                   <span className="text-[#A9B3CE]/60 text-sm">Treatment Site</span>
