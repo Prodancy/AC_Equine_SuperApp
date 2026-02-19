@@ -109,26 +109,6 @@ export default function Dashboard() {
           <Button variant="outline" size="icon" className="rounded-xl border-white/10 bg-white/5 hover:bg-white/10">
             <Bell className="w-5 h-5" />
           </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="bg-primary hover:bg-primary/90 text-white rounded-xl px-4 flex items-center gap-2 font-bold shadow-lg shadow-primary/20">
-                <Plus className="w-5 h-5" />
-                <span className="hidden sm:inline">Quick Action</span>
-                <ChevronDown className="w-4 h-4" />
-              </Button>
-            </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-[#121826] border-white/10 text-white">
-                <DropdownMenuItem onClick={() => setIsScheduleOpen(true)} className="hover:bg-white/5 cursor-pointer flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-primary" /> New schedule
-                </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-white/5 cursor-pointer flex items-center gap-2">
-                  <Horse className="w-4 h-4 text-primary" /> Register patient
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setIsConnectOpen(true)} className="hover:bg-white/5 cursor-pointer flex items-center gap-2">
-                  <Bluetooth className="w-4 h-4 text-primary" /> Connect device
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-          </DropdownMenu>
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
