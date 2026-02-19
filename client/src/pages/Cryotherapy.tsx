@@ -1020,7 +1020,7 @@ export default function Cryotherapy() {
                                   : "bg-[#151b2e] border-white/10 hover:border-white/20",
                               )}
                             >
-                              <p className="tracking-tight font-medium text-[#ffffff] outline-none rounded px-1 text-[16px]">
+                              <p className="tracking-tight font-medium text-[#ffffff] outline-none rounded px-1 text-[14px]">
                                 {rate.label}
                               </p>
                             </div>
@@ -1223,7 +1223,6 @@ export default function Cryotherapy() {
           </div>
         )}
       </div>
-
       <AnimatePresence mode="wait">
         {activeTab === "thermal" && (
           <motion.div
