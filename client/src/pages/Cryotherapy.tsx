@@ -1127,21 +1127,19 @@ export default function Cryotherapy() {
                         <div className="bg-[#0a0f1d] border border-white/10 rounded-2xl p-6 flex flex-col items-center space-y-6">
                           <div className="flex items-center justify-center gap-8">
                             {/* Minutes Column */}
-                            <div className="flex flex-col items-center">
-                              <button
-                                onClick={() => {
-                                  const mins = Math.floor(customTime / 60);
-                                  const secs = customTime % 60;
-                                  if (mins < 4)
-                                    setCustomTime(
-                                      Math.min(240, (mins + 1) * 60 + secs),
-                                    );
-                                }}
-                                className="text-[#3D63DD] hover:text-white transition-colors mb-3 group/btn"
-                              >
-                                <ChevronDown className="w-6 h-6 rotate-180 group-hover/btn:scale-110 transition-transform" strokeWidth={2} />
-                              </button>
-                              <div className="flex flex-col items-center">
+                            <div 
+                              className="flex flex-col items-center cursor-ns-resize select-none"
+                              onWheel={(e) => {
+                                const mins = Math.floor(customTime / 60);
+                                const secs = customTime % 60;
+                                if (e.deltaY < 0 && mins < 4) {
+                                  setCustomTime(Math.min(240, (mins + 1) * 60 + secs));
+                                } else if (e.deltaY > 0 && mins > 0) {
+                                  setCustomTime(Math.max(0, (mins - 1) * 60 + secs));
+                                }
+                              }}
+                            >
+                              <div className="flex flex-col items-center py-4">
                                 <span className="text-8xl font-extralight text-white tabular-nums tracking-tighter leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                                   {Math.floor(customTime / 60)
                                     .toString()
@@ -1151,38 +1149,23 @@ export default function Cryotherapy() {
                                   minutes
                                 </span>
                               </div>
-                              <button
-                                onClick={() => {
-                                  const mins = Math.floor(customTime / 60);
-                                  const secs = customTime % 60;
-                                  if (mins > 0)
-                                    setCustomTime(
-                                      Math.max(0, (mins - 1) * 60 + secs),
-                                    );
-                                }}
-                                className="text-[#3D63DD] hover:text-white transition-colors mt-3 group/btn"
-                              >
-                                <ChevronDown className="w-6 h-6 group-hover/btn:scale-110 transition-transform" strokeWidth={2} />
-                              </button>
                             </div>
 
                             {/* Separator */}
                             <div className="text-6xl font-extralight text-white/10 pb-10 select-none mx-4">:</div>
 
                             {/* Seconds Column */}
-                            <div className="flex flex-col items-center">
-                              <button
-                                onClick={() => {
-                                  if (customTime < 240)
-                                    setCustomTime(
-                                      Math.min(240, customTime + 1),
-                                    );
-                                }}
-                                className="text-[#3D63DD] hover:text-white transition-colors mb-3 group/btn"
-                              >
-                                <ChevronDown className="w-6 h-6 rotate-180 group-hover/btn:scale-110 transition-transform" strokeWidth={2} />
-                              </button>
-                              <div className="flex flex-col items-center">
+                            <div 
+                              className="flex flex-col items-center cursor-ns-resize select-none"
+                              onWheel={(e) => {
+                                if (e.deltaY < 0 && customTime < 240) {
+                                  setCustomTime(Math.min(240, customTime + 1));
+                                } else if (e.deltaY > 0 && customTime > 0) {
+                                  setCustomTime(Math.max(0, customTime - 1));
+                                }
+                              }}
+                            >
+                              <div className="flex flex-col items-center py-4">
                                 <span className="text-8xl font-extralight text-white tabular-nums tracking-tighter leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                                   {(customTime % 60).toString().padStart(2, "0")}
                                 </span>
@@ -1190,17 +1173,6 @@ export default function Cryotherapy() {
                                   seconds
                                 </span>
                               </div>
-                              <button
-                                onClick={() => {
-                                  if (customTime > 0)
-                                    setCustomTime(
-                                      Math.max(0, customTime - 1),
-                                    );
-                                }}
-                                className="text-[#3D63DD] hover:text-white transition-colors mt-3 group/btn"
-                              >
-                                <ChevronDown className="w-6 h-6 group-hover/btn:scale-110 transition-transform" strokeWidth={2} />
-                              </button>
                             </div>
                           </div>
                         </div>
