@@ -80,17 +80,16 @@
   }
 }
 
-/* Global Scrollbar Removal */
+/* Global Scrollbar Removal with scrolling enabled */
 html, body, #root {
-  overflow: hidden !important;
-  height: 100vh !important;
-  width: 100vw !important;
-  position: fixed;
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
-  touch-action: none;
-  -webkit-overflow-scrolling: none;
-  overscroll-behavior: none;
+  overflow-y: auto !important; /* Enable vertical scrolling */
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  position: relative; /* Remove fixed positioning */
 }
 
 * {
