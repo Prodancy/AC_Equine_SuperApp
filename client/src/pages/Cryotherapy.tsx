@@ -707,10 +707,6 @@ export default function Cryotherapy() {
               </Button>
               <h1 className="text-2xl font-bold text-white tracking-tight">Session Details</h1>
             </div>
-            <div className="flex items-center gap-2 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-[10px] font-bold text-green-500 uppercase tracking-widest">Live session</span>
-            </div>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
