@@ -103,7 +103,7 @@ export default function Dashboard() {
         {/* Main Content Column */}
         <div className="lg:col-span-2 space-y-8">
           {/* Hero Action Card */}
-          <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-primary/20 via-[#0a0f1d] to-[#050810] shadow-2xl">
+          <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-primary/20 via-[#0a0f1d] to-[#050810] border border-white/10 shadow-2xl">
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
             <div className="p-4 md:p-6 relative flex flex-col md:flex-row items-center gap-6">
               <div className="flex-1 space-y-4">
@@ -117,19 +117,19 @@ export default function Dashboard() {
                 </div>
                 <div className="grid grid-cols-2 gap-3 w-full">
                   <Link href="/treatment">
-                    <Button className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold shadow-lg shadow-primary/20 flex items-center justify-center gap-2 active:scale-95 transition-all text-xs border-none">
+                    <Button className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold shadow-lg shadow-primary/20 flex items-center justify-center gap-2 active:scale-95 transition-all text-xs">
                       <ThermometerSnowflake className="w-5 h-5" />
                       Start session
                     </Button>
                   </Link>
                   <Link href="/diagnose">
-                    <Button variant="outline" className="w-full h-14 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs border-none">
+                    <Button variant="outline" className="w-full h-14 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs">
                       <Activity className="w-5 h-5 text-primary" />
                       New diagnosis
                     </Button>
                   </Link>
                   <Link href="/billing">
-                    <Button variant="outline" className="w-full h-14 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs border-none">
+                    <Button variant="outline" className="w-full h-14 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs">
                       <CreditCard className="w-5 h-5 text-primary" />
                       Create invoice
                     </Button>
@@ -137,7 +137,7 @@ export default function Dashboard() {
                   <Button 
                     onClick={() => setIsScheduleOpen(true)}
                     variant="outline" 
-                    className="w-full h-14 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs border-none"
+                    className="w-full h-14 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs"
                   >
                     <Calendar className="w-5 h-5 text-primary" />
                     Schedule
@@ -157,7 +157,7 @@ export default function Dashboard() {
 
         {/* Sidebar Column */}
         <div className="space-y-8">
-          <Card className="bg-white/5 border-none backdrop-blur-xl rounded-[2rem] overflow-hidden sticky top-8">
+          <Card className="bg-white/5 border-white/10 backdrop-blur-xl rounded-[2rem] overflow-hidden sticky top-8">
             <div className="h-1.5 bg-gradient-to-r from-primary/50 via-primary to-primary/50 w-full" />
             <CardHeader className="p-6 pb-2">
               <div className="flex items-center justify-between">
@@ -175,7 +175,7 @@ export default function Dashboard() {
                 { time: "03:00 PM", horse: "Midnight Star", protocol: "Manual", status: "Confirmed", modalities: ["class_iv"] },
                 { time: "04:30 PM", horse: "Storm", protocol: "Recovery", status: "Confirmed", modalities: ["cryo"] },
               ].map((row, i) => (
-                <div key={i} className="group flex items-center gap-4 p-3 rounded-2xl bg-[#121826]/50 hover:bg-primary/5 transition-all cursor-pointer">
+                <div key={i} className="group flex items-center gap-4 p-3 rounded-2xl bg-[#121826]/50 border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
                   <div className="text-center min-w-[50px]">
                     <p className="text-[9px] font-semibold text-primary">{row.time.split(' ')[1]}</p>
                     <p className="text-sm font-bold text-white leading-tight">{row.time.split(' ')[0]}</p>
@@ -192,7 +192,7 @@ export default function Dashboard() {
                   </div>
                 </div>
               ))}
-              <Button className="w-full bg-white/5 hover:bg-white/10 text-white border-none rounded-xl h-12 text-xs font-bold mt-2">
+              <Button className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl h-12 text-xs font-bold mt-2">
                 View all schedule
               </Button>
             </CardContent>
@@ -201,7 +201,7 @@ export default function Dashboard() {
       </div>
       {/* Bluetooth Connection Dialog */}
       <Dialog open={isConnectOpen} onOpenChange={setIsConnectOpen}>
-        <DialogContent className="sm:max-w-md bg-[#0a0f1d] text-white rounded-[2rem]">
+        <DialogContent className="sm:max-w-md bg-[#0a0f1d] border-white/10 text-white rounded-[2rem]">
           <DialogHeader>
             <DialogTitle className="text-xl font-bold tracking-tight">Device Connection</DialogTitle>
             <DialogDescription className="text-gray-400 text-sm">
@@ -218,7 +218,7 @@ export default function Dashboard() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
-                    className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center"
+                    className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20"
                   >
                     <Bluetooth className="w-12 h-12 text-primary" />
                   </motion.div>
@@ -241,7 +241,7 @@ export default function Dashboard() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
-                    className="w-24 h-24 rounded-full bg-green-500/10 flex items-center justify-center"
+                    className="w-24 h-24 rounded-full bg-green-500/10 flex items-center justify-center border border-green-500/20"
                   >
                     <CheckCircle2 className="w-12 h-12 text-green-500" />
                   </motion.div>
@@ -278,7 +278,7 @@ export default function Dashboard() {
       </Dialog>
       {/* Schedule Dialog */}
       <Dialog open={isScheduleOpen} onOpenChange={setIsScheduleOpen}>
-        <DialogContent className="sm:max-w-lg bg-[#0a0f1d] text-white rounded-[2rem]">
+        <DialogContent className="sm:max-w-lg bg-[#0a0f1d] border-white/10 text-white rounded-[2rem]">
             <DialogHeader>
               <DialogTitle className="text-xl font-bold tracking-tight">Schedule new session</DialogTitle>
             </DialogHeader>
@@ -290,7 +290,7 @@ export default function Dashboard() {
                   type="date" 
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
-                  className="w-full bg-white/5 border-none rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
                 />
               </div>
 

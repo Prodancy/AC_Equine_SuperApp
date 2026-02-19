@@ -82,7 +82,7 @@ export default function Treatment() {
         </div>
       </div>
 
-      <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 -mx-4 md:-mx-8 mb-6">
+      <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
         <div className="flex items-center gap-4">
           <div>
             <h1 className="text-xl md:text-2xl font-bold tracking-tight text-foreground">Treatments</h1>
@@ -101,12 +101,12 @@ export default function Treatment() {
           >
             <Link href={therapy.href}>
               <Card className={cn(
-                "group cursor-pointer overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] bg-card/50 backdrop-blur hover:border-primary/30",
+                "group cursor-pointer overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] border-white/5 bg-card/50 backdrop-blur hover:border-primary/30",
                 "relative"
               )}>
                 <div className={cn("absolute top-0 right-0 w-32 h-32 -mr-8 -mt-8 rounded-full blur-3xl opacity-20 transition-opacity group-hover:opacity-40", therapy.bg)} />
                 <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <div className={cn("p-3 rounded-2xl transition-transform group-hover:scale-110 shadow-lg", therapy.bg)}>
+                  <div className={cn("p-3 rounded-2xl transition-transform group-hover:scale-110 shadow-lg", therapy.bg, therapy.border)}>
                     <therapy.icon className={cn("w-6 h-6", therapy.color)} />
                   </div>
                   <div>
@@ -129,7 +129,7 @@ export default function Treatment() {
       </div>
 
       <Dialog open={isConnectOpen} onOpenChange={setIsConnectOpen}>
-        <DialogContent className="sm:max-w-md bg-card">
+        <DialogContent className="sm:max-w-md bg-card border-white/10">
           <DialogHeader>
             <DialogTitle>Bluetooth Connection</DialogTitle>
             <DialogDescription>

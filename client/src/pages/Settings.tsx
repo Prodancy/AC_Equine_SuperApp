@@ -23,7 +23,7 @@ export default function Settings() {
           <img src={america_cryo_logo} alt="America Cryo Logo" className="h-7 md:h-9 w-auto mb-1" />
         </div>
       </div>
-      <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 -mx-4 md:-mx-8 mb-6">
+      <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
         <div className="flex items-center gap-4">
           <div>
             <h1 className="text-xl md:text-2xl font-bold tracking-widest text-foreground">Settings</h1>
@@ -32,7 +32,7 @@ export default function Settings() {
         </div>
       </div>
 
-      <Card className="border-none bg-white/5 backdrop-blur-sm">
+      <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-lg">
             <User className="w-5 h-5 text-primary" /> Clinic Profile
@@ -55,12 +55,12 @@ export default function Settings() {
             </div>
           </div>
         </CardContent>
-        <CardFooter className="bg-secondary/10 px-6 py-4">
+        <CardFooter className="border-t bg-secondary/10 px-6 py-4">
           <Button className="w-full md:w-auto">Save Changes</Button>
         </CardFooter>
       </Card>
 
-      <Card className="border-none bg-white/5 backdrop-blur-sm">
+      <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-lg">
             <Smartphone className="w-5 h-5 text-primary" /> Device Connection
@@ -86,22 +86,22 @@ export default function Settings() {
         </CardContent>
       </Card>
 
-      <Card className="border-none bg-white/5 backdrop-blur-sm">
+      <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-lg">
             <Info className="w-5 h-5 text-primary" /> About
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-sm text-muted-foreground">
-          <div className="flex justify-between py-2">
+          <div className="flex justify-between py-2 border-b">
             <span>Software Version</span>
             <span className="text-foreground">v2.4.1 (Stable)</span>
           </div>
-          <div className="flex justify-between py-2">
+          <div className="flex justify-between py-2 border-b">
             <span>Firmware Version (Handheld)</span>
             <span className="text-foreground">FW-2024-02-15</span>
           </div>
-          <div className="flex justify-between py-2">
+          <div className="flex justify-between py-2 border-b">
             <span>Support Contact</span>
             <span className="text-primary hover:underline cursor-pointer">support@americacryo.com</span>
           </div>

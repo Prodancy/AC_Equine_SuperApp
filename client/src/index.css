@@ -199,58 +199,27 @@ html, body, #root {
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: transparent;
+  --border: 215 25% 20%;
   --input: 215 25% 20%;
   --ring: 221 70% 45%;
 }
 
-/* Mobile Safe Areas and Native Feel */
-:root {
-  --sat: env(safe-area-inset-top);
-  --sar: env(safe-area-inset-right);
-  --sab: env(safe-area-inset-bottom);
-  --sal: env(safe-area-inset-left);
-}
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
 
-html, body, #root {
-  @apply h-full w-full overflow-hidden bg-[#0a0f1d] select-none;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-}
-
-.px-safe {
-  padding-left: max(10px, var(--sal));
-  padding-right: max(10px, var(--sar));
-}
-
-/* Eliminate tap delay and highlight */
-* {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-/* Allow selection in inputs */
-input, textarea {
-  -webkit-user-select: text;
-  user-select: text;
-}
-
-/* Native-like button active states */
-button:active {
-  opacity: 0.7;
-  transform: scale(0.98);
-  transition: all 0.1s ease;
-}
-
-/* Native-like transitions */
-.page-transition-enter {
-  opacity: 0;
-  transform: translateY(20px);
-}
-.page-transition-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
