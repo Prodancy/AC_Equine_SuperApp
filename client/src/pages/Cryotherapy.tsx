@@ -798,11 +798,6 @@ export default function Cryotherapy() {
 
             <div className="space-y-6">
               <div className="bg-[#0a0f1d]/60 backdrop-blur-md border border-white/5 rounded-3xl p-6 shadow-2xl">
-                <div className="flex items-center gap-2 mb-6">
-                  <div className="w-1.5 h-6 bg-[#3D63DD] rounded-full" />
-                  <h3 className="text-white font-bold tracking-tight text-lg">Session Summary</h3>
-                </div>
-                
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
                     <p className="text-[#A9B3CE]/60 text-[10px] uppercase tracking-widest font-bold mb-1">Treatment Site</p>
