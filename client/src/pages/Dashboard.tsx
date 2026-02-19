@@ -117,19 +117,19 @@ export default function Dashboard() {
                 </div>
                 <div className="grid grid-cols-2 gap-3 w-full">
                   <Link href="/treatment">
-                    <Button className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold shadow-lg shadow-primary/20 flex items-center justify-center gap-2 active:scale-95 transition-all text-xs">
+                    <Button className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold shadow-lg shadow-primary/20 flex items-center justify-center gap-2 active:scale-95 transition-all text-xs border-none">
                       <ThermometerSnowflake className="w-5 h-5" />
                       Start session
                     </Button>
                   </Link>
                   <Link href="/diagnose">
-                    <Button variant="outline" className="w-full h-14 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs">
+                    <Button variant="outline" className="w-full h-14 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs border-none">
                       <Activity className="w-5 h-5 text-primary" />
                       New diagnosis
                     </Button>
                   </Link>
                   <Link href="/billing">
-                    <Button variant="outline" className="w-full h-14 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs">
+                    <Button variant="outline" className="w-full h-14 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs border-none">
                       <CreditCard className="w-5 h-5 text-primary" />
                       Create invoice
                     </Button>
@@ -137,7 +137,7 @@ export default function Dashboard() {
                   <Button 
                     onClick={() => setIsScheduleOpen(true)}
                     variant="outline" 
-                    className="w-full h-14 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs"
+                    className="w-full h-14 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs border-none"
                   >
                     <Calendar className="w-5 h-5 text-primary" />
                     Schedule
@@ -192,7 +192,7 @@ export default function Dashboard() {
                   </div>
                 </div>
               ))}
-              <Button className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl h-12 text-xs font-bold mt-2">
+              <Button className="w-full bg-white/5 hover:bg-white/10 text-white border-none rounded-xl h-12 text-xs font-bold mt-2">
                 View all schedule
               </Button>
             </CardContent>
@@ -201,7 +201,7 @@ export default function Dashboard() {
       </div>
       {/* Bluetooth Connection Dialog */}
       <Dialog open={isConnectOpen} onOpenChange={setIsConnectOpen}>
-        <DialogContent className="sm:max-w-md bg-[#0a0f1d] border-white/10 text-white rounded-[2rem]">
+        <DialogContent className="sm:max-w-md bg-[#0a0f1d] text-white rounded-[2rem]">
           <DialogHeader>
             <DialogTitle className="text-xl font-bold tracking-tight">Device Connection</DialogTitle>
             <DialogDescription className="text-gray-400 text-sm">
@@ -218,7 +218,7 @@ export default function Dashboard() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
-                    className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20"
+                    className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center"
                   >
                     <Bluetooth className="w-12 h-12 text-primary" />
                   </motion.div>
@@ -241,7 +241,7 @@ export default function Dashboard() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
-                    className="w-24 h-24 rounded-full bg-green-500/10 flex items-center justify-center border border-green-500/20"
+                    className="w-24 h-24 rounded-full bg-green-500/10 flex items-center justify-center"
                   >
                     <CheckCircle2 className="w-12 h-12 text-green-500" />
                   </motion.div>
@@ -278,7 +278,7 @@ export default function Dashboard() {
       </Dialog>
       {/* Schedule Dialog */}
       <Dialog open={isScheduleOpen} onOpenChange={setIsScheduleOpen}>
-        <DialogContent className="sm:max-w-lg bg-[#0a0f1d] border-white/10 text-white rounded-[2rem]">
+        <DialogContent className="sm:max-w-lg bg-[#0a0f1d] text-white rounded-[2rem]">
             <DialogHeader>
               <DialogTitle className="text-xl font-bold tracking-tight">Schedule new session</DialogTitle>
             </DialogHeader>
@@ -290,7 +290,7 @@ export default function Dashboard() {
                   type="date" 
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
+                  className="w-full bg-white/5 border-none rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
                 />
               </div>
 

@@ -101,12 +101,12 @@ export default function Treatment() {
           >
             <Link href={therapy.href}>
               <Card className={cn(
-                "group cursor-pointer overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] border-white/5 bg-card/50 backdrop-blur hover:border-primary/30",
+                "group cursor-pointer overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] bg-card/50 backdrop-blur hover:border-primary/30",
                 "relative"
               )}>
                 <div className={cn("absolute top-0 right-0 w-32 h-32 -mr-8 -mt-8 rounded-full blur-3xl opacity-20 transition-opacity group-hover:opacity-40", therapy.bg)} />
                 <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <div className={cn("p-3 rounded-2xl transition-transform group-hover:scale-110 shadow-lg", therapy.bg, therapy.border)}>
+                  <div className={cn("p-3 rounded-2xl transition-transform group-hover:scale-110 shadow-lg", therapy.bg)}>
                     <therapy.icon className={cn("w-6 h-6", therapy.color)} />
                   </div>
                   <div>
@@ -129,7 +129,7 @@ export default function Treatment() {
       </div>
 
       <Dialog open={isConnectOpen} onOpenChange={setIsConnectOpen}>
-        <DialogContent className="sm:max-w-md bg-card border-white/10">
+        <DialogContent className="sm:max-w-md bg-card">
           <DialogHeader>
             <DialogTitle>Bluetooth Connection</DialogTitle>
             <DialogDescription>

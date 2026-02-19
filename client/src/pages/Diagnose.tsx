@@ -38,7 +38,7 @@ export default function Diagnose() {
           <img src={america_cryo_logo} alt="America Cryo Logo" className="h-7 md:h-9 w-auto mb-1" />
         </div>
       </div>
-      <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6 ml-[0px] mr-[0px]">
+      <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 -mx-4 md:-mx-8 mb-6 ml-[0px] mr-[0px]">
         <div className="flex items-center gap-4">
           <div>
             <h1 className="text-xl md:text-2xl font-bold tracking-tight text-foreground">Diagnose</h1>
@@ -52,14 +52,14 @@ export default function Diagnose() {
         </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="md:col-span-2 bg-card/50 backdrop-blur border-white/5 overflow-hidden">
-          <CardHeader className="border-b border-white/5 bg-white/[0.02]">
+        <Card className="md:col-span-2 bg-card/50 backdrop-blur overflow-hidden">
+          <CardHeader className="bg-white/[0.02]">
             <CardTitle className="text-[10px] font-semibold text-white">Assessment registry</CardTitle>
             <CardDescription className="text-gray-500 text-xs">A comprehensive list of all clinical evaluations</CardDescription>
           </CardHeader>
           <CardContent className="p-0">
             <ScrollArea className="h-[600px]">
-              <div className="divide-y divide-white/5">
+            <div className="divide-y-0">
                 {previousDiagnoses.map((diag, i) => (
                   <div key={i} className="p-4 hover:bg-white/[0.02] transition-colors cursor-pointer group">
                     <div className="flex justify-between items-start mb-2">
@@ -98,8 +98,8 @@ export default function Diagnose() {
           </CardContent>
         </Card>
 
-        <Card className="bg-card/50 backdrop-blur border-white/5 overflow-hidden h-fit">
-          <CardHeader className="border-b border-white/5 bg-white/[0.02]">
+        <Card className="bg-card/50 backdrop-blur overflow-hidden h-fit">
+          <CardHeader className="bg-white/[0.02]">
             <CardTitle className="text-[10px] tracking-[0.2em] text-white font-black">Statistics</CardTitle>
           </CardHeader>
           <CardContent className="p-6 space-y-6">
@@ -108,11 +108,11 @@ export default function Diagnose() {
               <p className="text-4xl font-black text-white text-center tracking-tighter">124</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-3 rounded-xl bg-white/5 border border-white/5 text-center">
+              <div className="p-3 rounded-xl bg-white/5 text-center">
                 <p className="text-[8px] text-gray-600 font-black tracking-widest mb-1">Success Rate</p>
                 <p className="text-lg font-bold text-green-400">92%</p>
               </div>
-              <div className="p-3 rounded-xl bg-white/5 border border-white/5 text-center">
+              <div className="p-3 rounded-xl bg-white/5 text-center">
                 <p className="text-[8px] text-gray-600 font-black tracking-widest mb-1">Active Cases</p>
                 <p className="text-lg font-bold text-primary">12</p>
               </div>

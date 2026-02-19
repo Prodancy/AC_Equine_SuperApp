@@ -191,7 +191,7 @@ export default function Horses() {
         </Dialog>
       </div>
 
-      <div className="flex items-center gap-2 bg-card p-3 rounded-xl border shadow-sm max-w-md w-full">
+      <div className="flex items-center gap-2 bg-card p-3 rounded-xl shadow-sm max-w-md w-full">
         <Search className="w-5 h-5 text-muted-foreground ml-1" />
         <Input 
           className="border-0 shadow-none focus-visible:ring-0 bg-transparent h-auto p-0 text-base" 
@@ -209,7 +209,7 @@ export default function Horses() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.2 }}
           >
-            <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-primary active:scale-[0.99] transition-transform overflow-hidden">
+            <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-primary active:scale-[0.99] transition-transform overflow-hidden border-x-0 border-b-0">
               <CardHeader className="pb-2 p-4 md:p-6">
                 <div className="flex justify-between items-start">
                   <div>
@@ -257,7 +257,7 @@ export default function Horses() {
                         <div className="space-y-2 pt-3">
                           {horse.history?.map((entry, idx) => (
                             <Link key={idx} href={`/horses/${horse.id}/history/${entry.date.replace(/ /g, '-')}`}>
-                              <div className="bg-[#1a2234]/40 rounded-lg p-3 border border-white/5 flex justify-between items-center cursor-pointer hover:border-primary/50 hover:bg-primary/5 transition-all active:scale-[0.98] group mb-2">
+                              <div className="bg-[#1a2234]/40 rounded-lg p-3 flex justify-between items-center cursor-pointer hover:border-primary/50 hover:bg-primary/5 transition-all active:scale-[0.98] group mb-2">
                                 <div className="space-y-1">
                                   <div className="text-[10px] text-muted-foreground flex items-center gap-1.5 font-bold tracking-tighter">
                                     <Clock className="w-3 h-3 text-primary" />

@@ -39,7 +39,7 @@ export default function Billing() {
         </div>
       </div>
 
-      <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 border-b border-white/5 -mx-4 md:-mx-8 mb-6">
+      <div className="flex justify-between items-center bg-card/30 backdrop-blur-md sticky top-0 z-50 py-4 px-4 md:px-8 -mx-4 md:-mx-8 mb-6">
         <div className="flex items-center gap-4">
           <div>
             <h1 className="text-xl md:text-2xl font-bold tracking-widest text-foreground">Billing</h1>
@@ -54,7 +54,7 @@ export default function Billing() {
       </div>
 
       {!isStripeConnected && (
-        <Card className="bg-primary/5 border-primary/20 overflow-hidden relative shadow-2xl">
+        <Card className="bg-primary/5 overflow-hidden relative shadow-2xl">
           <div className="absolute top-0 right-0 p-8 opacity-10">
             <CreditCard className="w-32 h-32 text-primary" />
           </div>
@@ -84,7 +84,7 @@ export default function Billing() {
           animate={{ opacity: 1, y: 0 }}
           className="grid gap-6 md:grid-cols-3"
         >
-          <Card className="bg-card/50 backdrop-blur border-white/5 shadow-xl">
+          <Card className="bg-card/50 backdrop-blur shadow-xl">
             <CardHeader className="pb-2">
               <CardTitle className="text-[10px] tracking-widest text-muted-foreground flex items-center gap-2">
                 <DollarSign className="w-3 h-3 text-green-400" /> Stripe Balance
@@ -97,7 +97,7 @@ export default function Billing() {
               </p>
             </CardContent>
           </Card>
-          <Card className="bg-card/50 backdrop-blur border-white/5 shadow-xl">
+          <Card className="bg-card/50 backdrop-blur shadow-xl">
             <CardHeader className="pb-2">
               <CardTitle className="text-[10px] tracking-widest text-muted-foreground flex items-center gap-2">
                 <Clock className="w-3 h-3 text-orange-400" /> Pending Payouts
@@ -108,7 +108,7 @@ export default function Billing() {
               <p className="text-[10px] text-gray-500 mt-1">Next payout: Feb 28</p>
             </CardContent>
           </Card>
-          <Card className="bg-card/50 backdrop-blur border-white/5 shadow-xl border-t-2 border-t-primary">
+          <Card className="bg-card/50 backdrop-blur shadow-xl border-t-2 border-t-primary">
             <CardHeader className="pb-2">
               <CardTitle className="text-[10px] tracking-widest text-muted-foreground flex items-center gap-2">
                 <ShieldCheck className="w-3 h-3 text-primary" /> Stripe Status
@@ -127,8 +127,8 @@ export default function Billing() {
         </motion.div>
       )}
 
-      <Card className="bg-card/50 backdrop-blur border-white/5 shadow-xl overflow-hidden">
-        <CardHeader className="bg-white/[0.02] border-b border-white/5">
+      <Card className="bg-card/50 backdrop-blur shadow-xl overflow-hidden">
+        <CardHeader className="bg-white/[0.02]">
           <div className="flex flex-col md:flex-row justify-between md:items-center gap-4">
             <div>
               <CardTitle className="text-[10px] tracking-[0.2em] text-primary font-black">Recent Invoices</CardTitle>
@@ -136,13 +136,13 @@ export default function Billing() {
             </div>
             <div className="relative w-full md:w-64">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <Input className="pl-10 h-10 bg-black/20 border-white/10 text-xs rounded-xl" placeholder="Search invoices..." />
+              <Input className="pl-10 h-10 bg-black/20 border-none text-xs rounded-xl" placeholder="Search invoices..." />
             </div>
           </div>
         </CardHeader>
         <CardContent className="p-0">
           <ScrollArea className="h-[400px]">
-            <div className="divide-y divide-white/5">
+            <div className="divide-y-0">
               {invoices.map((inv, i) => (
                 <div key={i} className="p-4 hover:bg-white/[0.02] transition-colors group cursor-pointer">
                   <div className="flex justify-between items-center">
@@ -178,7 +178,7 @@ export default function Billing() {
             </div>
           </ScrollArea>
         </CardContent>
-        <CardFooter className="bg-white/[0.02] border-t border-white/5 p-4 justify-center">
+        <CardFooter className="bg-white/[0.02] p-4 justify-center">
           <Button variant="ghost" size="sm" className="text-[10px] font-black tracking-widest text-muted-foreground hover:text-primary transition-colors">
             View All Billing History <ChevronRight className="w-3 h-3 ml-1" />
           </Button>
