@@ -808,7 +808,7 @@ export default function Cryotherapy() {
                   </div>
 
                   <div className="bg-white/5 rounded-2xl p-6 border border-white/5 flex flex-col items-center text-center pt-[0px] pb-[0px]">
-                    <p className="text-[#A9B3CE]/60 text-[11px] uppercase tracking-[0.2em] font-black mb-2">
+                    <p className="text-[#A9B3CE]/60 uppercase tracking-[0.2em] mb-2 text-[18px] font-semibold">
                       {activeTab === "controls" ? "Configuration" : "Protocol"}
                     </p>
                     <p className="text-[#3D63DD] font-bold text-2xl tracking-tight">
