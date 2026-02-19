@@ -1125,10 +1125,10 @@ export default function Cryotherapy() {
                     <div className="space-y-4">
                       {activeProtocol === "m_custom" && (
                         <div className="bg-[#0a0f1d] border border-white/10 rounded-2xl p-6 flex flex-col items-center space-y-6">
-                          <div className="flex items-center justify-center gap-8">
+                          <div className="flex items-center justify-center gap-2">
                             {/* Minutes Column */}
                             <div 
-                              className="flex flex-col items-center cursor-ns-resize select-none"
+                              className="flex flex-col items-center cursor-ns-resize select-none group px-6 hover:bg-white/[0.03] rounded-2xl transition-all duration-300"
                               onWheel={(e) => {
                                 const mins = Math.floor(customTime / 60);
                                 const secs = customTime % 60;
@@ -1139,37 +1139,37 @@ export default function Cryotherapy() {
                                 }
                               }}
                             >
-                              <div className="flex flex-col items-center py-4">
+                              <div className="flex flex-col items-center py-4 transition-transform group-hover:scale-105">
                                 <span className="text-8xl font-extralight text-white tabular-nums tracking-tighter leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                                   {Math.floor(customTime / 60)
                                     .toString()
                                     .padStart(2, "0")}
                                 </span>
-                                <span className="text-[10px] uppercase tracking-[0.4em] text-[#A9B3CE] font-bold mt-3 ml-[0.4em]">
+                                <span className="text-[10px] uppercase tracking-[0.4em] text-[#A9B3CE] font-bold mt-2 ml-[0.4em]">
                                   minutes
                                 </span>
                               </div>
                             </div>
 
                             {/* Separator */}
-                            <div className="text-6xl font-extralight text-white/10 pb-10 select-none mx-4">:</div>
+                            <div className="text-6xl font-extralight text-white/5 pb-10 select-none">:</div>
 
                             {/* Seconds Column */}
                             <div 
-                              className="flex flex-col items-center cursor-ns-resize select-none"
+                              className="flex flex-col items-center cursor-ns-resize select-none group px-6 hover:bg-white/[0.03] rounded-2xl transition-all duration-300"
                               onWheel={(e) => {
                                 if (e.deltaY < 0 && customTime < 240) {
-                                  setCustomTime(Math.min(240, customTime + 1));
+                                  setCustomTime(prev => Math.min(240, prev + 1));
                                 } else if (e.deltaY > 0 && customTime > 0) {
-                                  setCustomTime(Math.max(0, customTime - 1));
+                                  setCustomTime(prev => Math.max(0, prev - 1));
                                 }
                               }}
                             >
-                              <div className="flex flex-col items-center py-4">
+                              <div className="flex flex-col items-center py-4 transition-transform group-hover:scale-105">
                                 <span className="text-8xl font-extralight text-white tabular-nums tracking-tighter leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                                   {(customTime % 60).toString().padStart(2, "0")}
                                 </span>
-                                <span className="text-[10px] uppercase tracking-[0.4em] text-[#A9B3CE] font-bold mt-3 ml-[0.4em]">
+                                <span className="text-[10px] uppercase tracking-[0.4em] text-[#A9B3CE] font-bold mt-2 ml-[0.4em]">
                                   seconds
                                 </span>
                               </div>
