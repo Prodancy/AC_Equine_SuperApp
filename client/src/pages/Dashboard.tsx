@@ -136,19 +136,31 @@ export default function Dashboard() {
                     Precision equine care powered by America Cryo's advanced recovery protocols.
                   </p>
                 </div>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/treatment" className="flex-1">
-                    <Button className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-2xl font-bold shadow-xl shadow-primary/20 flex items-center justify-center gap-3 active:scale-95 transition-all">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                  <Link href="/treatment">
+                    <Button className="w-full h-16 bg-primary hover:bg-primary/90 text-white rounded-2xl font-bold shadow-xl shadow-primary/20 flex items-center justify-center gap-3 active:scale-95 transition-all">
                       <ThermometerSnowflake className="w-6 h-6" />
-                      Start new session
+                      Start session
+                    </Button>
+                  </Link>
+                  <Link href="/diagnose">
+                    <Button variant="outline" className="w-full h-16 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-bold active:scale-95 transition-all flex items-center justify-center gap-3">
+                      <Activity className="w-6 h-6 text-primary" />
+                      New diagnosis
+                    </Button>
+                  </Link>
+                  <Link href="/billing">
+                    <Button variant="outline" className="w-full h-16 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-bold active:scale-95 transition-all flex items-center justify-center gap-3">
+                      <CreditCard className="w-6 h-6 text-primary" />
+                      Create invoice
                     </Button>
                   </Link>
                   <Button 
                     onClick={() => setIsScheduleOpen(true)}
                     variant="outline" 
-                    className="flex-1 h-14 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-bold active:scale-95 transition-all"
+                    className="w-full h-16 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-bold active:scale-95 transition-all flex items-center justify-center gap-3"
                   >
-                    <Calendar className="w-5 h-5 mr-3 text-primary" />
+                    <Calendar className="w-6 h-6 text-primary" />
                     Schedule
                   </Button>
                 </div>
