@@ -761,26 +761,26 @@ export default function Cryotherapy() {
 
                   {/* Progress Ring Overlay */}
                   <div className="absolute inset-0 pointer-events-none p-0">
-                    <svg className="w-full h-full">
+                    <svg className="w-full h-full" viewBox="0 0 360 360">
                       {/* Background Track */}
                       <circle
-                        cx="50%"
-                        cy="50%"
-                        r="48%"
+                        cx="180"
+                        cy="180"
+                        r="177"
                         stroke="rgba(61,99,221,0.1)"
-                        strokeWidth="15"
+                        strokeWidth="6"
                         fill="transparent"
                       />
                       {/* Progress Indicator */}
                       <circle
-                        cx="50%"
-                        cy="50%"
-                        r="48%"
+                        cx="180"
+                        cy="180"
+                        r="177"
                         stroke="#3D63DD"
-                        strokeWidth="15"
+                        strokeWidth="6"
                         fill="transparent"
-                        strokeDasharray="1086"
-                        strokeDashoffset={1086 * (progress / 100)}
+                        strokeDasharray="1112"
+                        strokeDashoffset={1112 * (progress / 100)}
                         strokeLinecap="round"
                         className="transition-all duration-1000 ease-linear"
                         style={{ 
