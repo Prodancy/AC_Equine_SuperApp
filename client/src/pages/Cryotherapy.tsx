@@ -1303,7 +1303,7 @@ export default function Cryotherapy() {
             className="flex flex-col items-center"
           >
             <div className="w-full flex flex-col items-center">
-              <div className="relative w-full max-w-4xl aspect-[16/10] bg-[#0a0f1d] rounded-3xl p-4 border border-white/5 shadow-2xl overflow-hidden group">
+              <div className="relative w-full max-w-[600px] aspect-[4/5] bg-[#0a0f1d] rounded-3xl p-4 border border-white/5 shadow-2xl overflow-hidden group">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                   <div className="absolute inset-0 bg-[radial-gradient(#3D63DD_1px,transparent_1px)] [background-size:20px_20px]" />
@@ -1312,20 +1312,20 @@ export default function Cryotherapy() {
                 <img
                   src={horse_anatomy}
                   alt="Horse Anatomy"
-                  className="w-full h-full object-contain relative z-10 filter brightness-110 contrast-110 drop-shadow-[0_0_30px_rgba(61,99,221,0.2)] scale-[1.404]"
+                  className="w-full h-full object-contain relative z-10 filter brightness-110 contrast-110 drop-shadow-[0_0_30px_rgba(61,99,221,0.2)]"
                 />
 
                 {/* Hotspots */}
                 {[
-                  { id: "head", top: "19%", left: "10%", label: "Head" },
-                  { id: "neck", top: "16.5%", left: "24%", label: "Neck" },
-                  { id: "shoulder", top: "31%", left: "31.5%", label: "Shoulder" },
-                  { id: "back-left", top: "22%", left: "49%", label: "Back" },
-                  { id: "hip", top: "24%", left: "69%", label: "Hip" },
-                  { id: "stifle", top: "47%", left: "68%", label: "Stifle" },
-                  { id: "leg-front-left", top: "78%", left: "36%", label: "Fetlock" },
-                  { id: "hoof-front-left", top: "58.5%", left: "74.5%", label: "Hock" },
-                  { id: "leg-front-right", top: "83%", left: "60%", label: "Feet" },
+                  { id: "head", top: "22%", left: "15%", label: "Head" },
+                  { id: "neck", top: "18%", left: "28%", label: "Neck" },
+                  { id: "shoulder", top: "32%", left: "34%", label: "Shoulder" },
+                  { id: "back-left", top: "24%", left: "52%", label: "Back" },
+                  { id: "hip", top: "26%", left: "72%", label: "Hip" },
+                  { id: "stifle", top: "49%", left: "70%", label: "Stifle" },
+                  { id: "leg-front-left", top: "75%", left: "38%", label: "Fetlock" },
+                  { id: "hoof-front-left", top: "60%", left: "76%", label: "Hock" },
+                  { id: "leg-front-right", top: "85%", left: "62%", label: "Feet" },
                 ].map((spot) => (
                   <button
                     key={`hotspot-${spot.id}`}
