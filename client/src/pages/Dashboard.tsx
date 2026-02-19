@@ -280,9 +280,6 @@ export default function Dashboard() {
         <DialogContent className="sm:max-w-lg bg-[#0a0f1d] border-white/10 text-white rounded-[2rem]">
             <DialogHeader>
               <DialogTitle className="text-xl font-bold tracking-tight">Schedule new session</DialogTitle>
-              <DialogDescription className="text-gray-400 text-sm">
-                Book a new therapy session for your equine patient.
-              </DialogDescription>
             </DialogHeader>
             
             <div className="space-y-6 py-4 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
