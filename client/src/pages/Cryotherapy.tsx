@@ -791,7 +791,7 @@ export default function Cryotherapy() {
               <Button
                 size="lg"
                 variant="destructive"
-                className="h-20 text-xl rounded-2xl font-bold bg-red-500/20 border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white transition-all active:scale-95"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover-elevate active-elevate-2 shadow-sm min-h-10 px-8 h-20 rounded-2xl font-bold bg-red-500/20 border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white transition-all active:scale-95 text-[17px]"
                 onClick={() => {
                   setIsPlaying(false);
                   setShowSession(false);
