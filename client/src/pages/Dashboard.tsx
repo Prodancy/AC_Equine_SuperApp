@@ -93,7 +93,7 @@ export default function Dashboard() {
             <div className="h-px w-6 bg-primary/50" />
             <span className="text-[10px] font-semibold">Clinical dashboard</span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
+          <h1 className="md:text-4xl tracking-tight text-[26px] text-left font-semibold">
             Welcome, <span className="text-[#3d63dd]">Dr. Anderson</span>
           </h1>
           <p className="text-gray-400 text-sm">You have 5 sessions scheduled for today.</p>
