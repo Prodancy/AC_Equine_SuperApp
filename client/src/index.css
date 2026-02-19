@@ -83,14 +83,12 @@
 /* Global Scrollbar Removal */
 html, body, #root {
   overflow: hidden !important;
-  height: 100vh !important;
-  width: 100vw !important;
-  position: fixed;
+  height: 100% !important;
+  width: 100% !important;
   margin: 0;
   padding: 0;
-  touch-action: none;
-  -webkit-overflow-scrolling: none;
-  overscroll-behavior: none;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
 }
 
 * {
