@@ -716,9 +716,9 @@ export default function Cryotherapy() {
                     Cooling progress
                   </h2>
                 </div>
-                <div className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square border-[12px] border-blue-600/20 w-[360px] h-[360px] mx-auto my-8">
+                <div className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 rounded-full aspect-square border-[12px] border-blue-600/20 w-[360px] h-[360px] mx-auto my-8 bg-[#0a0f1d] overflow-visible">
                   {/* Top Section: Time */}
-                  <div className="w-full h-1/3 bg-[#0a0f1d] flex items-center justify-center gap-4 border-b border-white/5 relative">
+                  <div className="w-full h-1/3 flex items-center justify-center gap-4 border-b border-white/5 relative">
                     <div className="flex items-center gap-3">
                       <div className="w-9 h-9 rounded-full border-[3px] border-white/90 flex items-center justify-center relative">
                         <div className="absolute top-[4px] left-1/2 w-[3px] h-[12px] bg-white origin-bottom -translate-x-1/2" />
@@ -760,27 +760,27 @@ export default function Cryotherapy() {
                   </div>
 
                   {/* Progress Ring Overlay */}
-                  <div className="absolute inset-0 pointer-events-none p-0">
-                    <svg className="w-full h-full" viewBox="0 0 360 360">
+                  <div className="absolute inset-0 pointer-events-none p-0 overflow-visible">
+                    <svg className="w-[390px] h-[390px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" viewBox="0 0 390 390">
                       {/* Background Track */}
                       <circle
-                        cx="180"
-                        cy="180"
-                        r="172.5"
+                        cx="195"
+                        cy="195"
+                        r="187.5"
                         stroke="rgba(61,99,221,0.1)"
                         strokeWidth="15"
                         fill="transparent"
                       />
                       {/* Progress Indicator */}
                       <circle
-                        cx="180"
-                        cy="180"
-                        r="172.5"
+                        cx="195"
+                        cy="195"
+                        r="187.5"
                         stroke="#3D63DD"
                         strokeWidth="15"
                         fill="transparent"
-                        strokeDasharray="1083.8"
-                        strokeDashoffset={1083.8 * (progress / 100)}
+                        strokeDasharray="1178.1"
+                        strokeDashoffset={1178.1 * (progress / 100)}
                         strokeLinecap="round"
                         className="transition-all duration-1000 ease-linear"
                         style={{ 
