@@ -62,6 +62,7 @@ export default function Dashboard() {
     { id: "3b_laser", label: "3B Laser", icon: Activity, color: "text-red-400" },
     { id: "shockwave", label: "Shockwave", icon: Waves, color: "text-orange-400" },
     { id: "class_iv", label: "Class IV Laser", icon: ShieldCheck, color: "text-purple-400" },
+    { id: "assessment", label: "New Assessment", icon: Activity, color: "text-green-400" },
   ];
 
   const handleConnect = async () => {
@@ -297,8 +298,8 @@ export default function Dashboard() {
 
               <div className="space-y-3">
                 <Label className="text-[10px] font-semibold text-primary">2. Available slots</Label>
-                <div className="grid grid-cols-3 gap-2">
-                {["08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM"].map((time) => (
+                <div className="grid grid-cols-2 gap-2">
+                {["09:00 AM", "11:00 AM", "02:00 PM", "04:00 PM"].map((time) => (
                   <Button
                     key={time}
                     variant="outline"
@@ -315,9 +316,14 @@ export default function Dashboard() {
             </div>
 
               <div className="space-y-3">
-                <Label className="text-[10px] font-semibold text-primary">3. Select patient</Label>
+                <div className="flex items-center justify-between">
+                  <Label className="text-[10px] font-semibold text-primary">3. Select patient</Label>
+                  <Button variant="ghost" className="h-6 text-[10px] text-primary hover:bg-primary/10 px-2 rounded-lg gap-1">
+                    <Plus className="w-3 h-3" /> New horse
+                  </Button>
+                </div>
                 <div className="grid grid-cols-2 gap-2">
-                {horses.map((horse) => (
+                {horses.slice(0, 4).map((horse) => (
                   <Button
                     key={horse}
                     variant="outline"
