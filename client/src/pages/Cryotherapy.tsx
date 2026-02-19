@@ -1203,37 +1203,77 @@ export default function Cryotherapy() {
                     <div className="space-y-4">
                       {activeProtocol === "m_custom" && (
                         <div className="bg-[#0a0f1d] border border-white/10 rounded-2xl p-6 flex flex-col items-center space-y-6">
-                          <div className="flex items-center justify-center gap-8 py-4">
-                            {/* Minutes Column */}
-                            <div className="flex flex-col items-center">
+                          <div className="flex items-center justify-between w-full gap-4 py-4">
+                            {/* Minutes Dial (Left) */}
+                            <div className="flex flex-col items-center flex-1">
+                              <button 
+                                onClick={() => {
+                                  const mins = Math.floor(customTime / 60);
+                                  const secs = customTime % 60;
+                                  if (mins < 4) setCustomTime(Math.min(240, (mins + 1) * 60 + secs));
+                                }}
+                                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mb-4 group/btn"
+                              >
+                                <ChevronUp className="w-6 h-6 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
+                              </button>
+                              
                               <div className="relative flex flex-col items-center">
-                                <div className="absolute inset-0 bg-[#3D63DD]/5 blur-2xl rounded-full" />
+                                <div className="absolute inset-0 bg-[#3D63DD]/5 blur-3xl rounded-full" />
                                 <span className="relative font-light text-white tabular-nums tracking-tighter text-8xl leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                                   {Math.floor(customTime / 60).toString().padStart(2, "0")}
                                 </span>
-                                <span className="text-[10px] uppercase tracking-[0.3em] text-[#3D63DD] font-bold mt-2">
+                                <span className="text-[12px] uppercase tracking-[0.4em] text-[#3D63DD] font-bold mt-3">
                                   min
                                 </span>
                               </div>
+
+                              <button 
+                                onClick={() => {
+                                  const mins = Math.floor(customTime / 60);
+                                  const secs = customTime % 60;
+                                  if (mins > 0) setCustomTime(Math.max(0, (mins - 1) * 60 + secs));
+                                }}
+                                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mt-4 group/btn"
+                              >
+                                <ChevronDown className="w-6 h-6 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
+                              </button>
                             </div>
 
-                            {/* Separator */}
-                            <div className="flex flex-col gap-3 py-12">
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD] animate-pulse" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD] animate-pulse delay-75" />
+                            {/* Center Separator */}
+                            <div className="flex flex-col gap-4 py-12 shrink-0">
+                              <div className="w-2 h-2 rounded-full bg-[#3D63DD] animate-pulse shadow-[0_0_10px_#3D63DD]" />
+                              <div className="w-2 h-2 rounded-full bg-[#3D63DD] animate-pulse delay-150 shadow-[0_0_10px_#3D63DD]" />
                             </div>
 
-                            {/* Seconds Column */}
-                            <div className="flex flex-col items-center">
+                            {/* Seconds Dial (Right) */}
+                            <div className="flex flex-col items-center flex-1">
+                              <button 
+                                onClick={() => {
+                                  if (customTime < 240) setCustomTime(prev => Math.min(240, prev + 1));
+                                }}
+                                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mb-4 group/btn"
+                              >
+                                <ChevronUp className="w-6 h-6 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
+                              </button>
+                              
                               <div className="relative flex flex-col items-center">
-                                <div className="absolute inset-0 bg-[#3D63DD]/5 blur-2xl rounded-full" />
+                                <div className="absolute inset-0 bg-[#3D63DD]/5 blur-3xl rounded-full" />
                                 <span className="relative font-light text-white tabular-nums tracking-tighter text-8xl leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                                   {(customTime % 60).toString().padStart(2, "0")}
                                 </span>
-                                <span className="text-[10px] uppercase tracking-[0.3em] text-[#3D63DD] font-bold mt-2">
+                                <span className="text-[12px] uppercase tracking-[0.4em] text-[#3D63DD] font-bold mt-3">
                                   sec
                                 </span>
                               </div>
+
+                              <button 
+                                onClick={() => {
+                                  if (customTime > 0) setCustomTime(prev => Math.max(0, prev - 1));
+                                }}
+                                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mt-4 group/btn"
+                              >
+                                <ChevronDown className="w-6 h-6 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
+                              </button>
                             </div>
                           </div>
                         </div>
