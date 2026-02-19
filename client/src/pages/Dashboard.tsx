@@ -96,12 +96,6 @@ export default function Dashboard() {
           </h1>
           <p className="text-gray-400 text-sm">You have 5 sessions scheduled for today.</p>
         </div>
-
-        <div className="flex items-center gap-3">
-          <Button variant="outline" size="icon" className="rounded-xl border-white/10 bg-white/5 hover:bg-white/10">
-            <Bell className="w-5 h-5" />
-          </Button>
-        </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content Column */}
