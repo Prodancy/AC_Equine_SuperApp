@@ -1317,15 +1317,15 @@ export default function Cryotherapy() {
 
                 {/* Hotspots */}
                 {[
-                  { id: "head", top: "34.5%", left: "9%", label: "Head" },
-                  { id: "neck", top: "32.5%", left: "25%", label: "Neck" },
-                  { id: "shoulder", top: "47.5%", left: "35%", label: "Shoulder" },
-                  { id: "back-left", top: "37.5%", left: "55%", label: "Back" },
-                  { id: "hip", top: "40.5%", left: "79%", label: "Hip" },
-                  { id: "stifle", top: "64.0%", left: "78%", label: "Stifle" },
-                  { id: "leg-front-left", top: "84.0%", left: "40%", label: "Fetlock" },
-                  { id: "hoof-front-left", top: "70.5%", left: "86%", label: "Hock" },
-                  { id: "leg-front-right", top: "89.5%", left: "69%", label: "Feet" },
+                  { id: "head", top: "25.75%", left: "11.23%", label: "Head" },
+                  { id: "neck", top: "23.77%", left: "26.64%", label: "Neck" },
+                  { id: "shoulder", top: "38.86%", left: "34.78%", label: "Shoulder" },
+                  { id: "back-left", top: "29.07%", left: "53.50%", label: "Back" },
+                  { id: "hip", top: "32.03%", left: "75.29%", label: "Hip" },
+                  { id: "stifle", top: "55.48%", left: "74.41%", label: "Stifle" },
+                  { id: "leg-front-left", top: "87.03%", left: "39.50%", label: "Fetlock" },
+                  { id: "hoof-front-left", top: "67.87%", left: "81.08%", label: "Hock" },
+                  { id: "leg-front-right", top: "91.98%", left: "65.94%", label: "Feet" },
                 ].map((spot) => (
                   <button
                     key={`hotspot-${spot.id}`}
