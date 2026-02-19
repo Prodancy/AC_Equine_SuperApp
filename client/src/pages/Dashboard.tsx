@@ -296,13 +296,13 @@ export default function Dashboard() {
 
               <div className="space-y-3">
                 <Label className="text-[10px] font-semibold text-primary">2. Available slots</Label>
-                <div className="grid grid-cols-2 gap-2">
-                {["09:00 AM", "11:00 AM", "02:00 PM", "04:00 PM"].map((time) => (
+                <div className="flex overflow-x-auto gap-2 pb-2 no-scrollbar -mx-1 px-1">
+                {["09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM"].map((time) => (
                   <Button
                     key={time}
                     variant="outline"
                     className={cn(
-                      "text-[10px] font-black border-white/5 bg-white/5 hover:bg-white/10 text-white h-12 rounded-xl transition-all",
+                      "text-[10px] font-black border-white/5 bg-white/5 hover:bg-white/10 text-white h-12 rounded-xl transition-all flex-shrink-0 min-w-[90px]",
                       selectedTime === time && "border-primary bg-primary/20 text-primary scale-105"
                     )}
                     onClick={() => setSelectedTime(time)}
@@ -310,8 +310,8 @@ export default function Dashboard() {
                     {time}
                   </Button>
                 ))}
+                </div>
               </div>
-            </div>
 
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
