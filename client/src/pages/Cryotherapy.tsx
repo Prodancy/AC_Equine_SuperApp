@@ -1127,7 +1127,7 @@ export default function Cryotherapy() {
                         <div className="bg-[#0a0f1d] border border-white/10 rounded-2xl p-6 flex flex-col items-center space-y-6">
                           <div className="flex items-center justify-center gap-8">
                             {/* Minutes Column */}
-                            <div className="flex flex-col items-center gap-1">
+                            <div className="flex flex-col items-center">
                               <button
                                 onClick={() => {
                                   const mins = Math.floor(customTime / 60);
@@ -1137,44 +1137,40 @@ export default function Cryotherapy() {
                                       Math.min(240, (mins + 1) * 60 + secs),
                                     );
                                 }}
-                                className="text-white/20 hover:text-white/60 transition-colors p-1"
+                                className="text-[#3D63DD] hover:text-white transition-colors mb-3 group/btn"
                               >
-                                <ChevronDown className="w-8 h-8 rotate-180" />
+                                <ChevronDown className="w-6 h-6 rotate-180 group-hover/btn:scale-110 transition-transform" strokeWidth={2} />
                               </button>
-                              <div className="w-20 h-28 bg-[#3D63DD]/10 border border-[#3D63DD]/30 rounded-2xl flex items-center justify-center relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-gradient-to-b from-[#3D63DD]/5 via-transparent to-[#3D63DD]/5 pointer-events-none" />
-                                <span className="text-5xl font-black text-white tabular-nums tracking-tighter">
+                              <div className="flex flex-col items-center">
+                                <span className="text-8xl font-extralight text-white tabular-nums tracking-tighter leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                                   {Math.floor(customTime / 60)
                                     .toString()
                                     .padStart(2, "0")}
+                                </span>
+                                <span className="text-[10px] uppercase tracking-[0.4em] text-[#A9B3CE] font-bold mt-3 ml-[0.4em]">
+                                  minutes
                                 </span>
                               </div>
                               <button
                                 onClick={() => {
                                   const mins = Math.floor(customTime / 60);
                                   const secs = customTime % 60;
-                                  if (mins > 2)
+                                  if (mins > 0)
                                     setCustomTime(
-                                      Math.max(120, (mins - 1) * 60 + secs),
+                                      Math.max(0, (mins - 1) * 60 + secs),
                                     );
                                 }}
-                                className="text-white/20 hover:text-white/60 transition-colors p-1"
+                                className="text-[#3D63DD] hover:text-white transition-colors mt-3 group/btn"
                               >
-                                <ChevronDown className="w-8 h-8" />
+                                <ChevronDown className="w-6 h-6 group-hover/btn:scale-110 transition-transform" strokeWidth={2} />
                               </button>
-                              <span className="font-black tracking-[0.2em] text-[#A9B3CE] mt-1 text-[14px]">
-                                mins
-                              </span>
                             </div>
 
-                            {/* Divider */}
-                            <div className="flex flex-col gap-3 py-10">
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD]" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#3D63DD]" />
-                            </div>
+                            {/* Separator */}
+                            <div className="text-6xl font-extralight text-white/10 pb-10 select-none mx-4">:</div>
 
                             {/* Seconds Column */}
-                            <div className="flex flex-col items-center gap-1">
+                            <div className="flex flex-col items-center">
                               <button
                                 onClick={() => {
                                   if (customTime < 240)
@@ -1182,30 +1178,29 @@ export default function Cryotherapy() {
                                       Math.min(240, customTime + 1),
                                     );
                                 }}
-                                className="text-white/20 hover:text-white/60 transition-colors p-1"
+                                className="text-[#3D63DD] hover:text-white transition-colors mb-3 group/btn"
                               >
-                                <ChevronDown className="w-8 h-8 rotate-180" />
+                                <ChevronDown className="w-6 h-6 rotate-180 group-hover/btn:scale-110 transition-transform" strokeWidth={2} />
                               </button>
-                              <div className="w-20 h-28 bg-[#3D63DD]/10 border border-[#3D63DD]/30 rounded-2xl flex items-center justify-center relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-gradient-to-b from-[#3D63DD]/5 via-transparent to-[#3D63DD]/5 pointer-events-none" />
-                                <span className="text-5xl font-black text-white tabular-nums tracking-tighter">
+                              <div className="flex flex-col items-center">
+                                <span className="text-8xl font-extralight text-white tabular-nums tracking-tighter leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                                   {(customTime % 60).toString().padStart(2, "0")}
+                                </span>
+                                <span className="text-[10px] uppercase tracking-[0.4em] text-[#A9B3CE] font-bold mt-3 ml-[0.4em]">
+                                  seconds
                                 </span>
                               </div>
                               <button
                                 onClick={() => {
-                                  if (customTime > 120)
+                                  if (customTime > 0)
                                     setCustomTime(
-                                      Math.max(120, customTime - 1),
+                                      Math.max(0, customTime - 1),
                                     );
                                 }}
-                                className="text-white/20 hover:text-white/60 transition-colors p-1"
+                                className="text-[#3D63DD] hover:text-white transition-colors mt-3 group/btn"
                               >
-                                <ChevronDown className="w-8 h-8" />
+                                <ChevronDown className="w-6 h-6 group-hover/btn:scale-110 transition-transform" strokeWidth={2} />
                               </button>
-                              <span className="font-black tracking-[0.2em] text-[#A9B3CE] mt-1 text-[14px]">
-                                secs
-                              </span>
                             </div>
                           </div>
                         </div>
