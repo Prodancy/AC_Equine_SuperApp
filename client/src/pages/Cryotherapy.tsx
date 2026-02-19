@@ -716,16 +716,16 @@ export default function Cryotherapy() {
                     Cooling progress
                   </h2>
                 </div>
-                <div className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square border-[12px] border-blue-600/20 w-[360px] h-[360px] mx-auto my-8">
+                <div className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square border-[8px] border-blue-600/10 w-[360px] h-[360px] mx-auto my-8">
                   {/* Top Section: Time */}
-                  <div className="w-full h-1/3 bg-[#0a0f1d] flex items-center justify-center gap-4 border-b border-white/5 relative">
+                  <div className="w-full h-1/3 flex items-center justify-center gap-4 border-b border-white/5 relative">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full border-[3px] border-white/90 flex items-center justify-center relative">
-                        <div className="absolute top-[4px] left-1/2 w-[3px] h-[12px] bg-white origin-bottom -translate-x-1/2" />
-                        <div className="w-2 h-2 rounded-full bg-white z-10" />
-                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-[3px] bg-white rounded-full" />
+                      <div className="w-10 h-10 rounded-full border-[3px] border-white/90 flex items-center justify-center relative">
+                        <div className="absolute top-[4px] left-1/2 w-[3px] h-[14px] bg-white origin-bottom -translate-x-1/2" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-white z-10" />
+                        <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-5 h-[3px] bg-white rounded-full" />
                       </div>
-                      <span className="font-bold text-white tabular-nums tracking-tight text-[42px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                      <span className="font-bold text-white tabular-nums tracking-tight text-[48px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                         {timeLeft}s
                       </span>
                     </div>
@@ -736,8 +736,8 @@ export default function Cryotherapy() {
                     "w-full h-1/3 flex items-center justify-center gap-4 relative transition-colors duration-300",
                     (currentTemp < 0.5 || currentTemp > 8.1) ? "bg-[#b91c1c]" : "bg-[#1d4ed8]"
                   )}>
-                    <Thermometer className="w-16 h-16 text-white" />
-                    <span className="text-white tabular-nums tracking-tighter font-semibold text-[42px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                    <Thermometer className="w-20 h-20 text-white" />
+                    <span className="text-white tabular-nums tracking-tighter font-semibold text-[48px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                       {currentTemp.toFixed(1)}°C
                     </span>
                   </div>
@@ -747,14 +747,14 @@ export default function Cryotherapy() {
                     "w-full h-1/3 flex items-center justify-center gap-4 relative transition-colors duration-300",
                     (intensity[0] < 10 || intensity[0] > 15) ? "bg-[#b91c1c]" : "bg-[#1d4ed8]"
                   )}>
-                    <div className="w-12 h-12 flex items-center justify-center">
-                      <div className="w-10 h-7 border-[3px] border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
-                        <div className="w-6 h-[3px] bg-white" />
-                        <div className="w-6 h-[3px] bg-white" />
-                        <div className="w-6 h-[3px] bg-white" />
+                    <div className="w-14 h-14 flex items-center justify-center">
+                      <div className="w-12 h-8 border-[3px] border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
+                        <div className="w-8 h-[3px] bg-white" />
+                        <div className="w-8 h-[3px] bg-white" />
+                        <div className="w-8 h-[3px] bg-white" />
                       </div>
                     </div>
-                    <span className="text-white tabular-nums tracking-tight font-semibold text-[42px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                    <span className="text-white tabular-nums tracking-tight font-semibold text-[48px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                       {Math.round(intensity[0])} cm
                     </span>
                   </div>
@@ -766,21 +766,21 @@ export default function Cryotherapy() {
                       <circle
                         cx="50%"
                         cy="50%"
-                        r="48%"
-                        stroke="rgba(61,99,221,0.1)"
-                        strokeWidth="15"
+                        r="34%"
+                        stroke="rgba(61,99,221,0.3)"
+                        strokeWidth="150"
                         fill="transparent"
                       />
                       {/* Progress Indicator */}
                       <circle
                         cx="50%"
                         cy="50%"
-                        r="48%"
+                        r="34%"
                         stroke="#3D63DD"
-                        strokeWidth="15"
+                        strokeWidth="150"
                         fill="transparent"
-                        strokeDasharray="1086"
-                        strokeDashoffset={1086 * (progress / 100)}
+                        strokeDasharray="769"
+                        strokeDashoffset={769 * (progress / 100)}
                         strokeLinecap="round"
                         className="transition-all duration-1000 ease-linear"
                         style={{ 
