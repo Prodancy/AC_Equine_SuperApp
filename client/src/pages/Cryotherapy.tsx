@@ -759,7 +759,7 @@ export default function Cryotherapy() {
                         className="transition-all duration-1000 ease-linear"
                         style={{ 
                           transformOrigin: 'center', 
-                          transform: 'rotate(-90deg)' 
+                          transform: 'rotate(-90deg) scaleX(-1)' 
                         }}
                       />
                     </svg>
