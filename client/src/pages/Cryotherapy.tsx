@@ -735,7 +735,7 @@ export default function Cryotherapy() {
 
                   {/* Progress Ring Overlay */}
                   <div className="absolute inset-0 pointer-events-none p-0">
-                    <svg className="w-full h-full transform -rotate-90">
+                    <svg className="w-full h-full">
                       {/* Background Track */}
                       <circle
                         cx="50%"
@@ -757,7 +757,10 @@ export default function Cryotherapy() {
                         strokeDashoffset={723 * (progress / 100)}
                         strokeLinecap="round"
                         className="transition-all duration-1000 ease-linear"
-                        style={{ transformOrigin: 'center', transform: 'scaleX(-1)' }}
+                        style={{ 
+                          transformOrigin: 'center', 
+                          transform: 'rotate(-90deg) scaleY(-1)' 
+                        }}
                       />
                     </svg>
                   </div>
