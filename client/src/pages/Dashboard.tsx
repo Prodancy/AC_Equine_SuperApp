@@ -129,7 +129,6 @@ export default function Dashboard() {
             <div className="p-8 md:p-12 relative flex flex-col md:flex-row items-center gap-8">
               <div className="flex-1 space-y-6">
                 <div className="space-y-2 text-center md:text-left">
-                  <Badge className="bg-primary/20 text-primary border-primary/30 text-[10px] font-semibold mb-2">Ready to start</Badge>
                   <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-none">
                     Equine therapy <br/><span className="text-primary">solutions</span>
                   </h2>
