@@ -797,7 +797,7 @@ export default function Cryotherapy() {
             <div className="space-y-6">
               <div className="bg-[#0a0f1d]/60 backdrop-blur-md border border-white/5 rounded-3xl p-8 shadow-2xl">
                 <div className="flex flex-col gap-6">
-                  <div className="bg-white/5 rounded-2xl p-6 border border-white/5 flex flex-col items-center text-center">
+                  <div className="bg-white/5 rounded-2xl p-6 border border-white/5 flex flex-col items-center text-center pt-[0px] pb-[0px]">
                     <p className="text-[#A9B3CE]/60 text-[11px] uppercase tracking-[0.2em] font-black mb-2">Treatment Site</p>
                     <p className="text-white font-bold text-2xl tracking-tight">
                       {activeTab === "controls" 
