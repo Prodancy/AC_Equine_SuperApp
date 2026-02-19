@@ -105,41 +105,41 @@ export default function Dashboard() {
           {/* Hero Action Card */}
           <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-primary/20 via-[#0a0f1d] to-[#050810] border border-white/10 shadow-2xl">
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
-            <div className="p-8 md:p-12 relative flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-1 space-y-6">
+            <div className="p-4 md:p-6 relative flex flex-col md:flex-row items-center gap-6">
+              <div className="flex-1 space-y-4">
                 <div className="space-y-2 text-center md:text-left">
-                  <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-none text-left">
+                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-none text-left">
                     Equine therapy <br/><span className="text-primary">solutions</span>
                   </h2>
-                  <p className="text-gray-400 text-sm md:text-lg max-w-md leading-relaxed text-left">
+                  <p className="text-gray-400 text-xs md:text-sm max-w-md leading-relaxed text-left">
                     Precision equine care powered by America Cryo's advanced recovery protocols.
                   </p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                <div className="grid grid-cols-2 gap-3 w-full">
                   <Link href="/treatment">
-                    <Button className="w-full h-16 bg-primary hover:bg-primary/90 text-white rounded-2xl font-bold shadow-xl shadow-primary/20 flex items-center justify-center gap-3 active:scale-95 transition-all">
-                      <ThermometerSnowflake className="w-6 h-6" />
+                    <Button className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold shadow-lg shadow-primary/20 flex items-center justify-center gap-2 active:scale-95 transition-all text-xs">
+                      <ThermometerSnowflake className="w-5 h-5" />
                       Start session
                     </Button>
                   </Link>
                   <Link href="/diagnose">
-                    <Button variant="outline" className="w-full h-16 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-bold active:scale-95 transition-all flex items-center justify-center gap-3">
-                      <Activity className="w-6 h-6 text-primary" />
+                    <Button variant="outline" className="w-full h-14 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs">
+                      <Activity className="w-5 h-5 text-primary" />
                       New diagnosis
                     </Button>
                   </Link>
                   <Link href="/billing">
-                    <Button variant="outline" className="w-full h-16 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-bold active:scale-95 transition-all flex items-center justify-center gap-3">
-                      <CreditCard className="w-6 h-6 text-primary" />
+                    <Button variant="outline" className="w-full h-14 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs">
+                      <CreditCard className="w-5 h-5 text-primary" />
                       Create invoice
                     </Button>
                   </Link>
                   <Button 
                     onClick={() => setIsScheduleOpen(true)}
                     variant="outline" 
-                    className="w-full h-16 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-bold active:scale-95 transition-all flex items-center justify-center gap-3"
+                    className="w-full h-14 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 text-xs"
                   >
-                    <Calendar className="w-6 h-6 text-primary" />
+                    <Calendar className="w-5 h-5 text-primary" />
                     Schedule
                   </Button>
                 </div>
