@@ -754,7 +754,7 @@ export default function Cryotherapy() {
                         strokeWidth="8"
                         fill="transparent"
                         strokeDasharray="730"
-                        strokeDashoffset={730 * (1 - progress / 100)}
+                        strokeDashoffset={730 * (progress / 100)}
                         strokeLinecap="round"
                         className="transition-all duration-1000 ease-linear"
                         style={{ 
