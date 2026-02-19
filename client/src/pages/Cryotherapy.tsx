@@ -710,13 +710,13 @@ export default function Cryotherapy() {
           <div className="grid gap-6 md:grid-cols-2">
             {/* Cooling Progress Card - Moved to Top and Span 2 Columns */}
             <div className="md:col-span-2 flex justify-center">
-              <Card className="flex flex-col justify-between overflow-hidden relative border-blue-400/20 shadow-lg bg-card w-full max-w-2xl">
-                <CardHeader className="text-center pb-0 pt-6">
-                  <CardTitle className="font-semibold text-[#3D63DD]/60 tracking-widest text-[25px]">
+              <div className="flex flex-col justify-between overflow-hidden relative w-full max-w-2xl">
+                <div className="text-center pb-0 pt-6">
+                  <h2 className="font-semibold text-[#3D63DD]/60 tracking-widest text-[25px]">
                     Cooling progress
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square border-[12px] border-blue-600/20 w-[360px] h-[360px] mx-auto shadow-2xl my-8">
+                  </h2>
+                </div>
+                <div className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square border-[12px] border-blue-600/20 w-[360px] h-[360px] mx-auto my-8">
                   {/* Top Section: Time */}
                   <div className="w-full h-1/3 bg-[#0a0f1d] flex items-center justify-center gap-4 border-b border-white/5 relative">
                     <div className="flex items-center gap-3">
@@ -790,8 +790,8 @@ export default function Cryotherapy() {
                       />
                     </svg>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
 
             <div className="space-y-6">
