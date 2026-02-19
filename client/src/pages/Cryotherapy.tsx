@@ -1226,17 +1226,6 @@ export default function Cryotherapy() {
                                   min
                                 </span>
                               </div>
-
-                              <button 
-                                onClick={() => {
-                                  const mins = Math.floor(customTime / 60);
-                                  const secs = customTime % 60;
-                                  if (mins > 0) setCustomTime(Math.max(0, (mins - 1) * 60 + secs));
-                                }}
-                                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mt-4 group/btn"
-                              >
-                                <ChevronDown className="w-5 h-5 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
-                              </button>
                             </div>
 
                             {/* Separator */}
@@ -1265,15 +1254,6 @@ export default function Cryotherapy() {
                                   sec
                                 </span>
                               </div>
-
-                              <button 
-                                onClick={() => {
-                                  if (customTime > 0) setCustomTime(prev => Math.max(0, prev - 1));
-                                }}
-                                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#3D63DD]/20 hover:border-[#3D63DD]/50 active:scale-90 transition-all mt-4 group/btn"
-                              >
-                                <ChevronDown className="w-5 h-5 text-[#A9B3CE] group-hover/btn:text-[#3D63DD] transition-colors" />
-                              </button>
                             </div>
                           </div>
                         </div>
