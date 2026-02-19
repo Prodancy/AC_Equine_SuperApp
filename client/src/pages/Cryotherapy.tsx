@@ -12,6 +12,13 @@ import {
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
   Play,
   Pause,
   Square,
@@ -492,6 +499,22 @@ export default function Cryotherapy() {
     { id: "m_custom", name: "Custom", duration: 2, temp: -120, intensity: 70 },
   ]);
 
+  const [isConnectOpen, setIsConnectOpen] = useState(false);
+  const [connectionStatus, setConnectionStatus] = useState<'idle' | 'scanning' | 'connecting' | 'connected' | 'error'>('idle');
+
+  const handleConnect = async () => {
+    setConnectionStatus('scanning');
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setConnectionStatus('connecting');
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setConnectionStatus('connected');
+    
+    setTimeout(() => {
+      setIsConnectOpen(false);
+      setConnectionStatus('idle');
+    }, 2000);
+  };
+
   const [showSession, setShowSession] = useState(false);
   const [lastTouchY, setLastTouchY] = useState<number | null>(null);
 
@@ -662,6 +685,19 @@ export default function Cryotherapy() {
             >
               <ChevronLeft className="w-5 h-5 mr-2" />
               Back to Setup
+            </Button>
+
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={() => setIsConnectOpen(true)}
+              className={cn(
+                "h-9 text-xs font-bold tracking-wider border-white/10 transition-all",
+                connectionStatus === 'connected' ? "bg-green-500/10 text-green-500 border-green-500/20 hover:bg-green-500/20" : "bg-white/5 hover:bg-white/10 text-white"
+              )}
+            >
+              <Bluetooth className={cn("w-4 h-4 mr-1.5", connectionStatus === 'connected' && "animate-pulse")} />
+              {connectionStatus === 'connected' ? "Connected" : "Connect Device"}
             </Button>
           </div>
 
@@ -1350,6 +1386,35 @@ export default function Cryotherapy() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <Dialog open={isConnectOpen} onOpenChange={setIsConnectOpen}>
+        <DialogContent className="sm:max-w-md bg-[#0a0f1d] border-white/10 text-white">
+          <DialogHeader>
+            <DialogTitle>Bluetooth Connection</DialogTitle>
+            <DialogDescription className="text-[#A9B3CE]">
+              Connect to your America Cryo ESP32 handheld device.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="flex flex-col items-center justify-center py-8 space-y-6">
+            <div className="text-center space-y-1">
+              <p className="text-sm font-semibold text-white tracking-wider">
+                {connectionStatus === 'idle' && "Ready to Connect"}
+                {connectionStatus === 'scanning' && "Scanning for Devices..."}
+                {connectionStatus === 'connecting' && "Pairing with ESP32-Cryo..."}
+                {connectionStatus === 'connected' && "Connection Successful"}
+              </p>
+            </div>
+            <Button 
+              onClick={handleConnect}
+              disabled={connectionStatus !== 'idle'}
+              className="w-full h-12 text-base font-bold tracking-wide bg-[#3D63DD] hover:bg-[#3D63DD]/90"
+            >
+              {connectionStatus === 'idle' ? "Start Scanning" : "Connected"}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
