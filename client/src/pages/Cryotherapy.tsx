@@ -821,7 +821,7 @@ export default function Cryotherapy() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4 mt-[40px] mb-[40px]">
                 <Button
                   size="lg"
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover-elevate active-elevate-2 text-primary-foreground border border-primary-border min-h-10 px-8 h-20 rounded-2xl font-bold transition-all active:scale-95 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 text-[17px]"
