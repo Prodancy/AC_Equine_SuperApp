@@ -696,60 +696,65 @@ export default function Cryotherapy() {
                     Cooling progress
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square border-4 border-blue-600/30 w-60 h-60 mx-auto">
+                <CardContent className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square border-8 border-blue-600/20 w-60 h-60 mx-auto shadow-2xl">
                   {/* Top Section: Time */}
-                  <div className="w-full h-1/3 bg-[#0a0f1d] flex items-center justify-center gap-2 border-b border-white/5">
-                    <div className="w-5 h-5 rounded-full border border-white/80 flex items-center justify-center relative">
-                      <div className="absolute top-1/2 left-1/2 w-0.5 h-1.5 bg-white origin-bottom -translate-x-1/2 -translate-y-full" />
-                      <div className="w-0.5 h-0.5 rounded-full bg-white" />
+                  <div className="w-full h-1/3 bg-[#0a0f1d] flex items-center justify-center gap-3 border-b border-white/5 relative">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full border-2 border-white/90 flex items-center justify-center relative">
+                        <div className="absolute top-[3px] left-1/2 w-[2px] h-[8px] bg-white origin-bottom -translate-x-1/2" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-white z-10" />
+                        <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-[2px] bg-white rounded-full" />
+                      </div>
+                      <span className="text-4xl font-bold text-white tabular-nums tracking-tight">
+                        {timeLeft}s
+                      </span>
                     </div>
-                    <span className="text-2xl font-bold text-white tabular-nums tracking-tight">
-                      {formatTime(timeLeft)}
-                    </span>
                   </div>
 
                   {/* Middle Section: Temperature */}
-                  <div className="w-full h-1/3 bg-[#1d4ed8] flex items-center justify-center gap-2">
-                    <Thermometer className="w-6 h-6 text-white" />
-                    <span className="text-5xl font-black text-white tabular-nums leading-none">
+                  <div className="w-full h-1/3 bg-[#1d4ed8] flex items-center justify-center gap-3 relative">
+                    <Thermometer className="w-10 h-10 text-white" />
+                    <span className="text-7xl font-black text-white tabular-nums leading-none tracking-tighter">
                       {Math.round(currentTemp)}° C
                     </span>
                   </div>
 
                   {/* Bottom Section: Intensity */}
-                  <div className="w-full h-1/3 bg-[#b91c1c] flex items-center justify-center gap-2">
-                    <div className="w-6 h-6 border border-white rounded-sm flex flex-col items-center justify-around py-1">
-                      <div className="w-4 h-0.5 bg-white" />
-                      <div className="w-4 h-0.5 bg-white" />
-                      <div className="w-4 h-0.5 bg-white" />
+                  <div className="w-full h-1/3 bg-[#b91c1c] flex items-center justify-center gap-3 relative">
+                    <div className="w-8 h-8 flex items-center justify-center">
+                      <div className="w-7 h-5 border-2 border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
+                        <div className="w-4 h-[2px] bg-white" />
+                        <div className="w-4 h-[2px] bg-white" />
+                        <div className="w-4 h-[2px] bg-white" />
+                      </div>
                     </div>
-                    <span className="text-4xl font-black text-white tabular-nums leading-none">
+                    <span className="text-5xl font-black text-white tabular-nums leading-none tracking-tight">
                       {intensity[0]} in
                     </span>
                   </div>
 
                   {/* Progress Ring Overlay */}
-                  <div className="absolute inset-0 pointer-events-none p-1.5">
+                  <div className="absolute inset-0 pointer-events-none p-0">
                     <svg className="w-full h-full transform -rotate-90">
                       {/* Background Track */}
                       <circle
                         cx="50%"
                         cy="50%"
-                        r="44%"
-                        stroke="rgba(255,255,255,0.05)"
-                        strokeWidth="8"
+                        r="48%"
+                        stroke="rgba(61,99,221,0.1)"
+                        strokeWidth="10"
                         fill="transparent"
                       />
                       {/* Progress Indicator */}
                       <circle
                         cx="50%"
                         cy="50%"
-                        r="44%"
+                        r="48%"
                         stroke="#3D63DD"
-                        strokeWidth="8"
+                        strokeWidth="10"
                         fill="transparent"
-                        strokeDasharray="276.5"
-                        strokeDashoffset={276.5 * (progress / 100)}
+                        strokeDasharray="723"
+                        strokeDashoffset={723 * (progress / 100)}
                         strokeLinecap="round"
                         className="transition-all duration-1000 ease-linear"
                         style={{ transformOrigin: 'center', transform: 'scaleX(-1)' }}
