@@ -627,12 +627,12 @@ export default function Cryotherapy() {
     }
   }, [selectedPart, localProtocols]);
 
-  const [totalSessionTime, setTotalSessionTime] = useState(protocols[0].duration * 60);
-
   useEffect(() => {
-    const time = currentProtocol.name === "Custom" ? customTime : currentProtocol.duration * 60;
-    setTimeLeft(time);
-    setTotalSessionTime(time);
+    if (currentProtocol.name === "Custom") {
+      setTimeLeft(customTime);
+    } else {
+      setTimeLeft(currentProtocol.duration * 60);
+    }
     setTargetTemp(currentProtocol.temp);
     setIntensity([currentProtocol.intensity]);
     setIsPlaying(false);
@@ -679,9 +679,12 @@ export default function Cryotherapy() {
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [isPlaying, toast]);
+  }, [isPlaying, targetTemp, toast]);
 
-  const progress = totalSessionTime > 0 ? ((totalSessionTime - timeLeft) / totalSessionTime) * 100 : 0;
+  const progress =
+    ((currentProtocol.duration * 60 - timeLeft) /
+      (currentProtocol.duration * 60)) *
+    100;
 
   if (showSession) {
     return (
@@ -775,7 +778,7 @@ export default function Cryotherapy() {
                         strokeWidth="10"
                         fill="transparent"
                         strokeDasharray="723"
-                        strokeDashoffset={723 * (1 - progress / 100)}
+                        strokeDashoffset={723 * (progress / 100)}
                         strokeLinecap="round"
                         className="transition-all duration-1000 ease-linear"
                         style={{ 
