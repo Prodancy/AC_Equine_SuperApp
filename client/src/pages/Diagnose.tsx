@@ -33,7 +33,7 @@ export default function Diagnose() {
 
   return (
     <div className="p-3 md:p-6 max-w-7xl mx-auto space-y-6 pb-20 md:pb-6">
-      <div className="flex justify-center mb-5 pt-3">
+      <div className="flex justify-center pt-[0px] pb-[0px] mt-[16px] mb-[16px]">
         <div className="flex flex-col items-center">
           <img src={america_cryo_logo} alt="America Cryo Logo" className="h-7 md:h-9 w-auto mb-1" />
         </div>
@@ -51,7 +51,6 @@ export default function Diagnose() {
           </Button>
         </Link>
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="md:col-span-2 bg-card/50 backdrop-blur border-white/5 overflow-hidden">
           <CardHeader className="border-b border-white/5 bg-white/[0.02]">
