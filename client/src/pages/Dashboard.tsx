@@ -108,7 +108,7 @@ export default function Dashboard() {
             <div className="p-4 md:p-6 relative flex flex-col md:flex-row items-center gap-6">
               <div className="flex-1 space-y-4">
                 <div className="space-y-2 text-center md:text-left">
-                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-none text-left">
+                  <h2 className="text-3xl md:text-4xl tracking-tight leading-none text-left font-bold">
                     Equine therapy <br/><span className="text-primary">solutions</span>
                   </h2>
                   <p className="text-gray-400 text-xs md:text-sm max-w-md leading-relaxed text-left">
