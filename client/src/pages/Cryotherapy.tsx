@@ -753,7 +753,7 @@ export default function Cryotherapy() {
                         <div className="w-4 h-[2px] bg-white" />
                       </div>
                     </div>
-                    <span className="font-black text-white tabular-nums tracking-tight text-[28px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                    <span className="text-white tabular-nums tracking-tight font-semibold text-[22px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                       {Math.round(intensity[0])} cm
                     </span>
                   </div>
