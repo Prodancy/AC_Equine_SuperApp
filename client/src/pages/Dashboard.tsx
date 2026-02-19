@@ -123,44 +123,46 @@ export default function Dashboard() {
             ))}
           </div>
 
-          {/* Hero Action Card */}
-          <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-primary/20 via-[#0a0f1d] to-[#050810] border border-white/10 shadow-2xl">
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
-            <div className="p-8 md:p-12 relative flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-1 space-y-6">
-                <div className="space-y-2 text-center md:text-left">
-                  <Badge className="bg-primary/20 text-primary border-primary/30 text-[10px] font-semibold mb-2">Ready to start</Badge>
-                  <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-none">
-                    Equine therapy <br/><span className="text-primary">solutions</span>
-                  </h2>
-                  <p className="text-gray-400 text-sm md:text-lg max-w-md leading-relaxed">
-                    Precision equine care powered by America Cryo's advanced recovery protocols.
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/treatment" className="flex-1">
-                    <Button className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-2xl font-bold shadow-xl shadow-primary/20 flex items-center justify-center gap-3 active:scale-95 transition-all">
-                      <ThermometerSnowflake className="w-6 h-6" />
-                      Start new session
-                    </Button>
-                  </Link>
-                  <Button 
-                    onClick={() => setIsScheduleOpen(true)}
-                    variant="outline" 
-                    className="flex-1 h-14 border-white/10 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-bold active:scale-95 transition-all"
-                  >
-                    <Calendar className="w-5 h-5 mr-3 text-primary" />
-                    Schedule
-                  </Button>
-                </div>
+          {/* Quick Actions Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <Button 
+              onClick={() => setIsScheduleOpen(true)}
+              className="h-32 flex flex-col items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-3xl transition-all group active:scale-95"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                <Calendar className="w-6 h-6" />
               </div>
-              <div className="hidden md:block w-1/3 aspect-square relative">
-                <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl" />
-                <div className="relative z-10 w-full h-full flex items-center justify-center">
-                  <Horse className="w-32 h-32 text-primary opacity-80" />
-                </div>
+              <span className="text-xs font-bold text-gray-300">Schedule a session</span>
+            </Button>
+
+            <Button 
+              className="h-32 flex flex-col items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-3xl transition-all group active:scale-95"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-red-400/20 flex items-center justify-center text-red-400 group-hover:scale-110 transition-transform">
+                <Activity className="w-6 h-6" />
               </div>
-            </div>
+              <span className="text-xs font-bold text-gray-300">Start new diagnosis</span>
+            </Button>
+
+            <Button 
+              className="h-32 flex flex-col items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-3xl transition-all group active:scale-95"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-orange-400/20 flex items-center justify-center text-orange-400 group-hover:scale-110 transition-transform">
+                <CreditCard className="w-6 h-6" />
+              </div>
+              <span className="text-xs font-bold text-gray-300">Create new invoice</span>
+            </Button>
+
+            <Link href="/treatment" className="contents">
+              <Button 
+                className="h-32 flex flex-col items-center justify-center gap-3 bg-primary hover:bg-primary/90 border border-primary/20 rounded-3xl transition-all group active:scale-95 shadow-lg shadow-primary/20"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                  <ThermometerSnowflake className="w-6 h-6" />
+                </div>
+                <span className="text-xs font-bold text-white">Start new therapy</span>
+              </Button>
+            </Link>
           </div>
 
         </div>
