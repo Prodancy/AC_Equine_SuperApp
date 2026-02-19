@@ -493,6 +493,7 @@ export default function Cryotherapy() {
   ]);
 
   const [showSession, setShowSession] = useState(false);
+  const [lastTouchY, setLastTouchY] = useState<number | null>(null);
 
   const filteredProtocols = localProtocols.filter(
     (p) => p.bodyPart === selectedPart,
@@ -1126,7 +1127,6 @@ export default function Cryotherapy() {
                       {activeProtocol === "m_custom" && (
                         <div className="bg-[#0a0f1d] border border-white/10 rounded-2xl p-6 flex flex-col items-center space-y-6">
                           <div className="flex items-center justify-center gap-2">
-                            {/* Minutes Column */}
                             <div 
                               className="flex flex-col items-center cursor-ns-resize select-none group px-6 hover:bg-white/[0.03] rounded-2xl transition-all duration-300"
                               onWheel={(e) => {
@@ -1138,6 +1138,23 @@ export default function Cryotherapy() {
                                   setCustomTime(Math.max(0, (mins - 1) * 60 + secs));
                                 }
                               }}
+                              onTouchStart={(e) => setLastTouchY(e.touches[0].clientY)}
+                              onTouchMove={(e) => {
+                                if (lastTouchY === null) return;
+                                const currentY = e.touches[0].clientY;
+                                const deltaY = lastTouchY - currentY;
+                                if (Math.abs(deltaY) > 10) {
+                                  const mins = Math.floor(customTime / 60);
+                                  const secs = customTime % 60;
+                                  if (deltaY > 0 && mins < 4) {
+                                    setCustomTime(Math.min(240, (mins + 1) * 60 + secs));
+                                  } else if (deltaY < 0 && mins > 0) {
+                                    setCustomTime(Math.max(0, (mins - 1) * 60 + secs));
+                                  }
+                                  setLastTouchY(currentY);
+                                }
+                              }}
+                              onTouchEnd={() => setLastTouchY(null)}
                             >
                               <div className="flex flex-col items-center py-4 transition-transform group-hover:scale-105">
                                 <span className="text-8xl font-extralight text-white tabular-nums tracking-tighter leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
@@ -1164,6 +1181,21 @@ export default function Cryotherapy() {
                                   setCustomTime(prev => Math.max(0, prev - 1));
                                 }
                               }}
+                              onTouchStart={(e) => setLastTouchY(e.touches[0].clientY)}
+                              onTouchMove={(e) => {
+                                if (lastTouchY === null) return;
+                                const currentY = e.touches[0].clientY;
+                                const deltaY = lastTouchY - currentY;
+                                if (Math.abs(deltaY) > 10) {
+                                  if (deltaY > 0 && customTime < 240) {
+                                    setCustomTime(prev => Math.min(240, prev + 1));
+                                  } else if (deltaY < 0 && customTime > 0) {
+                                    setCustomTime(prev => Math.max(0, prev - 1));
+                                  }
+                                  setLastTouchY(currentY);
+                                }
+                              }}
+                              onTouchEnd={() => setLastTouchY(null)}
                             >
                               <div className="flex flex-col items-center py-4 transition-transform group-hover:scale-105">
                                 <span className="text-8xl font-extralight text-white tabular-nums tracking-tighter leading-none" style={{ fontFamily: "'Open Sans', sans-serif" }}>
