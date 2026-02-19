@@ -523,7 +523,11 @@ export default function Cryotherapy() {
   ) => {
     setSelectedControl(`${type}-${id}`);
     if (type === "fog") setSelectedNozzle(id);
-    if (type === "massage") setSelectedMassageNozzle(id);
+    if (type === "massage") {
+      setSelectedMassageNozzle(id);
+      setActiveProtocol("m_custom");
+      setCustomTime(3);
+    }
     if (type === "flow" && value !== undefined) setFlowRate([value]);
     setIsProtocolExpanded(true);
     setIsNozzleExpanded(false);
