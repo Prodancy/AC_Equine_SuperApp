@@ -692,8 +692,8 @@ export default function Cryotherapy() {
             <div className="space-y-6 order-1 md:order-2">
               <Card className="flex flex-col justify-between overflow-hidden relative border-blue-400/20 shadow-lg bg-card">
                 <CardHeader className="text-center pb-0 pt-4">
-                  <CardTitle className="font-semibold text-blue-400/60 tracking-widest md:text-xs text-[17px]">
-                    Cooling Progress
+                  <CardTitle className="font-semibold text-[#3D63DD]/60 tracking-widest text-[17px]">
+                    Cooling progress
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square border-4 border-blue-600/30 w-72 h-72 mx-auto">
@@ -729,18 +729,29 @@ export default function Cryotherapy() {
                   </div>
 
                   {/* Progress Ring Overlay */}
-                  <div className="absolute inset-0 pointer-events-none p-1">
+                  <div className="absolute inset-0 pointer-events-none p-2">
                     <svg className="w-full h-full transform -rotate-90">
+                      {/* Background Track */}
                       <circle
                         cx="50%"
                         cy="50%"
-                        r="48%"
-                        stroke="currentColor"
-                        strokeWidth="8"
+                        r="43%"
+                        stroke="rgba(255,255,255,0.05)"
+                        strokeWidth="10"
                         fill="transparent"
-                        strokeDasharray="301.6"
-                        strokeDashoffset={301.6 * (1 - progress / 100)}
-                        className="text-[#3D63DD] transition-all duration-1000 ease-linear"
+                      />
+                      {/* Progress Indicator */}
+                      <circle
+                        cx="50%"
+                        cy="50%"
+                        r="43%"
+                        stroke="#3D63DD"
+                        strokeWidth="10"
+                        fill="transparent"
+                        strokeDasharray="270"
+                        strokeDashoffset={270 * (progress / 100)}
+                        strokeLinecap="round"
+                        className="transition-all duration-1000 ease-linear"
                         style={{ transformOrigin: 'center', transform: 'scaleX(-1)' }}
                       />
                     </svg>
@@ -750,10 +761,10 @@ export default function Cryotherapy() {
             </div>
 
             <div className="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6">
-              <h3 className="text-[#A9B3CE] font-bold mb-4 text-[16px]">Session details</h3>
+              <h3 className="text-[#A9B3CE] font-bold mb-4 text-[17px]">Session details</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-2 border-b border-white/5">
-                  <span className="text-[#A9B3CE]/60 text-sm">Treatment Site</span>
+                  <span className="text-[#A9B3CE]/60 text-sm">Treatment site</span>
                   <span className="text-white font-bold">{getPartLabel(selectedPart)}</span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-white/5">
@@ -843,9 +854,9 @@ export default function Cryotherapy() {
         <div className="flex px-4 md:px-8">
           <button
             onClick={() => setActiveTab("controls")}
-            className="flex-1 py-3 tracking-[0.2em] transition-all relative text-[#3D63DD] font-semibold text-[18px]"
+            className="flex-1 py-3 tracking-[0.2em] transition-all relative text-[#3D63DD] font-semibold text-[17px]"
           >
-            Manual Mode
+            Manual mode
             {activeTab === "controls" && (
               <motion.div
                 layoutId="activeTab"
@@ -855,9 +866,9 @@ export default function Cryotherapy() {
           </button>
           <button
             onClick={() => setActiveTab("thermal")}
-            className="flex-1 py-3 tracking-[0.2em] transition-all relative text-[14px] text-[#A9B3CE] hover:text-[#A9B3CE]/80 font-semibold"
+            className="flex-1 py-3 tracking-[0.2em] transition-all relative text-[17px] text-[#A9B3CE] hover:text-[#A9B3CE]/80 font-semibold"
           >
-            Protocol Mode
+            Protocol mode
             {activeTab === "thermal" && (
               <motion.div
                 layoutId="activeTab"
@@ -874,10 +885,8 @@ export default function Cryotherapy() {
               onClick={() => setIsNozzleExpanded(!isNozzleExpanded)}
               className="w-full flex items-center justify-between py-2 group"
             >
-                <p className="tracking-[0.3em] text-[#A9B3CE] text-[14px] group-hover:text-white transition-colors font-bold leading-tight text-left">
-                  Select
-                  <br />
-                  Nozzle Type
+                <p className="tracking-[0.3em] text-[#A9B3CE] text-[17px] group-hover:text-white transition-colors font-bold leading-tight text-left">
+                  Select nozzle type
                 </p>
               <div className="flex-1" />
               {selectedControl && (
@@ -908,8 +917,8 @@ export default function Cryotherapy() {
                 >
                   <div className="pt-6 space-y-6">
                     <div>
-                      <p className="font-medium tracking-widest mb-4 text-[14px] text-[#ffffff]">
-                        Fog Nozzle
+                      <p className="font-medium tracking-widest mb-4 text-[17px] text-[#ffffff]">
+                        Fog nozzle
                       </p>
                       <div className="grid grid-cols-2 gap-3 mb-6">
                         {[
@@ -953,8 +962,8 @@ export default function Cryotherapy() {
                         ))}
                       </div>
 
-                      <p className="font-medium tracking-widest mb-4 text-[14px] text-[#ffffff]">
-                        Massage Nozzle
+                      <p className="font-medium tracking-widest mb-4 text-[17px] text-[#ffffff]">
+                        Massage nozzle
                       </p>
                       <div className="grid grid-cols-2 gap-3 mb-6">
                         {[
@@ -1012,8 +1021,8 @@ export default function Cryotherapy() {
                         ))}
                       </div>
 
-                      <p className="font-medium tracking-widest mb-4 text-[14px] text-[#FFFFFF]">
-                        Regular Spray - Flow Rates
+                      <p className="font-medium tracking-widest mb-4 text-[17px] text-[#FFFFFF]">
+                        Regular spray - flow rates
                       </p>
                       <div className="grid grid-cols-2 gap-3 mb-6">
                         {[
@@ -1082,10 +1091,8 @@ export default function Cryotherapy() {
               className="w-full flex items-center justify-between py-2 group"
             >
               <div className="flex flex-col items-start">
-                <p className="tracking-[0.3em] text-[#A9B3CE] group-hover:text-white transition-colors text-[14px] font-bold text-left leading-tight">
-                  Set Session
-                  <br />
-                  Duration
+                <p className="tracking-[0.3em] text-[#A9B3CE] group-hover:text-white transition-colors text-[17px] font-bold text-left leading-tight">
+                  Set session duration
                 </p>
                 {!selectedControl && (
                   <span className="text-[8px] text-[#3D63DD] font-black uppercase tracking-widest mt-1 animate-pulse">
