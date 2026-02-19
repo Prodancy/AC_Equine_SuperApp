@@ -798,7 +798,7 @@ export default function Cryotherapy() {
               <div className="bg-[#0a0f1d]/60 backdrop-blur-md border border-white/5 rounded-3xl p-5 shadow-2xl mt-[0px] mb-[0px] pt-[0px] pb-[0px] pl-[10px] pr-[10px]">
                 <div className="flex flex-col gap-3">
                   <div className="bg-white/5 rounded-2xl p-4 border border-white/5 flex flex-col items-center text-center">
-                    <p className="uppercase tracking-[0.2em] mb-1 text-[12px] font-bold text-[#ffffff]">Treatment Site</p>
+                    <p className="text-[#A9B3CE]/60 uppercase tracking-[0.2em] mb-1 text-[12px] font-bold">Treatment Site</p>
                     <p className="text-white font-bold text-xl tracking-tight">
                       {activeTab === "controls" 
                         ? (selectedControl?.startsWith('flow') ? "Regular spray" : selectedControl?.startsWith('massage') ? "Massage" : "Nozzle spray")
