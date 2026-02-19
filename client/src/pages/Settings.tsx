@@ -55,7 +55,7 @@ export default function Settings() {
             </div>
           </div>
         </CardContent>
-        <CardFooter className="border-t bg-secondary/10 px-6 py-4">
+        <CardFooter className="bg-secondary/10 px-6 py-4">
           <Button className="w-full md:w-auto">Save Changes</Button>
         </CardFooter>
       </Card>
@@ -93,15 +93,15 @@ export default function Settings() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-sm text-muted-foreground">
-          <div className="flex justify-between py-2 border-b">
+          <div className="flex justify-between py-2">
             <span>Software Version</span>
             <span className="text-foreground">v2.4.1 (Stable)</span>
           </div>
-          <div className="flex justify-between py-2 border-b">
+          <div className="flex justify-between py-2">
             <span>Firmware Version (Handheld)</span>
             <span className="text-foreground">FW-2024-02-15</span>
           </div>
-          <div className="flex justify-between py-2 border-b">
+          <div className="flex justify-between py-2">
             <span>Support Contact</span>
             <span className="text-primary hover:underline cursor-pointer">support@americacryo.com</span>
           </div>

@@ -232,7 +232,7 @@ export default function Horses() {
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-white/5">
+                <div className="pt-2">
                   <Button 
                     variant="ghost" 
                     size="sm" 
