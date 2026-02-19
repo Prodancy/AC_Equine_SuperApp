@@ -708,23 +708,24 @@ export default function Cryotherapy() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="space-y-6 order-1 md:order-2">
-              <Card className="flex flex-col justify-between overflow-hidden relative border-blue-400/20 shadow-lg bg-card">
-                <CardHeader className="text-center pb-0 pt-4">
-                  <CardTitle className="font-semibold text-[#3D63DD]/60 tracking-widest text-[17px]">
+            {/* Cooling Progress Card - Moved to Top and Span 2 Columns */}
+            <div className="md:col-span-2 flex justify-center">
+              <Card className="flex flex-col justify-between overflow-hidden relative border-blue-400/20 shadow-lg bg-card w-full max-w-2xl">
+                <CardHeader className="text-center pb-0 pt-6">
+                  <CardTitle className="font-semibold text-[#3D63DD]/60 tracking-widest text-[25px]">
                     Cooling progress
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square border-8 border-blue-600/20 w-60 h-60 mx-auto shadow-2xl">
+                <CardContent className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square border-[12px] border-blue-600/20 w-[360px] h-[360px] mx-auto shadow-2xl my-8">
                   {/* Top Section: Time */}
-                  <div className="w-full h-1/3 bg-[#0a0f1d] flex items-center justify-center gap-3 border-b border-white/5 relative">
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-full border-2 border-white/90 flex items-center justify-center relative">
-                        <div className="absolute top-[3px] left-1/2 w-[2px] h-[8px] bg-white origin-bottom -translate-x-1/2" />
-                        <div className="w-1.5 h-1.5 rounded-full bg-white z-10" />
-                        <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-[2px] bg-white rounded-full" />
+                  <div className="w-full h-1/3 bg-[#0a0f1d] flex items-center justify-center gap-4 border-b border-white/5 relative">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full border-[3px] border-white/90 flex items-center justify-center relative">
+                        <div className="absolute top-[4px] left-1/2 w-[3px] h-[12px] bg-white origin-bottom -translate-x-1/2" />
+                        <div className="w-2 h-2 rounded-full bg-white z-10" />
+                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-[3px] bg-white rounded-full" />
                       </div>
-                      <span className="font-bold text-white tabular-nums tracking-tight text-[28px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                      <span className="font-bold text-white tabular-nums tracking-tight text-[42px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                         {timeLeft}s
                       </span>
                     </div>
@@ -732,28 +733,28 @@ export default function Cryotherapy() {
 
                   {/* Middle Section: Temperature */}
                   <div className={cn(
-                    "w-full h-1/3 flex items-center justify-center gap-3 relative transition-colors duration-300",
+                    "w-full h-1/3 flex items-center justify-center gap-4 relative transition-colors duration-300",
                     (currentTemp < 0.5 || currentTemp > 8.1) ? "bg-[#b91c1c]" : "bg-[#1d4ed8]"
                   )}>
-                    <Thermometer className="w-10 h-10 text-white" />
-                    <span className="text-white tabular-nums tracking-tighter font-semibold text-[28px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                    <Thermometer className="w-16 h-16 text-white" />
+                    <span className="text-white tabular-nums tracking-tighter font-semibold text-[42px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                       {currentTemp.toFixed(1)}°C
                     </span>
                   </div>
 
                   {/* Bottom Section: Intensity */}
                   <div className={cn(
-                    "w-full h-1/3 flex items-center justify-center gap-3 relative transition-colors duration-300",
+                    "w-full h-1/3 flex items-center justify-center gap-4 relative transition-colors duration-300",
                     (intensity[0] < 10 || intensity[0] > 15) ? "bg-[#b91c1c]" : "bg-[#1d4ed8]"
                   )}>
-                    <div className="w-8 h-8 flex items-center justify-center">
-                      <div className="w-7 h-5 border-2 border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
-                        <div className="w-4 h-[2px] bg-white" />
-                        <div className="w-4 h-[2px] bg-white" />
-                        <div className="w-4 h-[2px] bg-white" />
+                    <div className="w-12 h-12 flex items-center justify-center">
+                      <div className="w-10 h-7 border-[3px] border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
+                        <div className="w-6 h-[3px] bg-white" />
+                        <div className="w-6 h-[3px] bg-white" />
+                        <div className="w-6 h-[3px] bg-white" />
                       </div>
                     </div>
-                    <span className="text-white tabular-nums tracking-tight font-semibold text-[28px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                    <span className="text-white tabular-nums tracking-tight font-semibold text-[42px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                       {Math.round(intensity[0])} cm
                     </span>
                   </div>
@@ -767,7 +768,7 @@ export default function Cryotherapy() {
                         cy="50%"
                         r="48%"
                         stroke="rgba(61,99,221,0.1)"
-                        strokeWidth="10"
+                        strokeWidth="15"
                         fill="transparent"
                       />
                       {/* Progress Indicator */}
@@ -776,10 +777,10 @@ export default function Cryotherapy() {
                         cy="50%"
                         r="48%"
                         stroke="#3D63DD"
-                        strokeWidth="10"
+                        strokeWidth="15"
                         fill="transparent"
-                        strokeDasharray="723"
-                        strokeDashoffset={723 * (progress / 100)}
+                        strokeDasharray="1086"
+                        strokeDashoffset={1086 * (progress / 100)}
                         strokeLinecap="round"
                         className="transition-all duration-1000 ease-linear"
                         style={{ 
@@ -793,53 +794,55 @@ export default function Cryotherapy() {
               </Card>
             </div>
 
-            <div className="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6">
-              <h3 className="text-[#A9B3CE] font-bold mb-4 text-[17px]">Session details</h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center py-2 border-b border-white/5">
-                  <span className="text-[#A9B3CE]/60 text-sm">Treatment site</span>
-                  <span className="text-white font-bold">{getPartLabel(selectedPart)}</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-white/5">
-                  <span className="text-[#A9B3CE]/60 text-sm">Protocol</span>
-                  <span className="text-white font-bold">{currentProtocol.name}</span>
-                </div>
-                {selectedControl && (
+            <div className="space-y-6">
+              <div className="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6">
+                <h3 className="text-[#A9B3CE] font-bold mb-4 text-[17px]">Session details</h3>
+                <div className="space-y-4">
                   <div className="flex justify-between items-center py-2 border-b border-white/5">
-                    <span className="text-[#A9B3CE]/60 text-sm">Nozzle</span>
-                    <span className="text-[#3D63DD] font-bold text-xs">
-                      {selectedControl.split('-')[1]}
-                    </span>
+                    <span className="text-[#A9B3CE]/60 text-sm">Treatment site</span>
+                    <span className="text-white font-bold">{getPartLabel(selectedPart)}</span>
                   </div>
-                )}
+                  <div className="flex justify-between items-center py-2 border-b border-white/5">
+                    <span className="text-[#A9B3CE]/60 text-sm">Protocol</span>
+                    <span className="text-white font-bold">{currentProtocol.name}</span>
+                  </div>
+                  {selectedControl && (
+                    <div className="flex justify-between items-center py-2 border-b border-white/5">
+                      <span className="text-[#A9B3CE]/60 text-sm">Nozzle</span>
+                      <span className="text-[#3D63DD] font-bold text-xs">
+                        {selectedControl.split('-')[1]}
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <Button
-                size="lg"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover-elevate active-elevate-2 text-primary-foreground border border-primary-border min-h-10 px-8 h-20 rounded-2xl font-bold transition-all active:scale-95 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 text-[17px]"
-                onClick={() => setIsPlaying(!isPlaying)}
-              >
-                {isPlaying ? (
-                  <Pause className="w-8 h-8 mr-2 fill-current" />
-                ) : (
-                  <Play className="w-8 h-8 mr-2 fill-current" />
-                )}
-                {isPlaying ? "Pause session" : "Start session"}
-              </Button>
-              <Button
-                size="lg"
-                variant="destructive"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover-elevate active-elevate-2 shadow-sm min-h-10 px-8 h-20 rounded-2xl font-bold bg-red-500/20 border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white transition-all active:scale-95 text-[17px]"
-                onClick={() => {
-                  setIsPlaying(false);
-                  setShowSession(false);
-                }}
-              >
-                <Square className="w-8 h-8 mr-2 fill-current" />
-                Stop session
-              </Button>
+              <div className="grid grid-cols-2 gap-4">
+                <Button
+                  size="lg"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover-elevate active-elevate-2 text-primary-foreground border border-primary-border min-h-10 px-8 h-20 rounded-2xl font-bold transition-all active:scale-95 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 text-[17px]"
+                  onClick={() => setIsPlaying(!isPlaying)}
+                >
+                  {isPlaying ? (
+                    <Pause className="w-8 h-8 mr-2 fill-current" />
+                  ) : (
+                    <Play className="w-8 h-8 mr-2 fill-current" />
+                  )}
+                  {isPlaying ? "Pause session" : "Start session"}
+                </Button>
+                <Button
+                  size="lg"
+                  variant="destructive"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover-elevate active-elevate-2 shadow-sm min-h-10 px-8 h-20 rounded-2xl font-bold bg-red-500/20 border border-red-500/30 text-red-500 hover:bg-red-500 hover:text-white transition-all active:scale-95 text-[17px]"
+                  onClick={() => {
+                    setIsPlaying(false);
+                    setShowSession(false);
+                  }}
+                >
+                  <Square className="w-8 h-8 mr-2 fill-current" />
+                  Stop session
+                </Button>
+              </div>
             </div>
           </div>
         </div>
