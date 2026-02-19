@@ -686,19 +686,6 @@ export default function Cryotherapy() {
               <ChevronLeft className="w-5 h-5 mr-2" />
               Back to Setup
             </Button>
-
-            <Button 
-              variant="outline" 
-              size="sm"
-              onClick={() => setIsConnectOpen(true)}
-              className={cn(
-                "h-9 text-xs font-bold tracking-wider border-white/10 transition-all",
-                connectionStatus === 'connected' ? "bg-green-500/10 text-green-500 border-green-500/20 hover:bg-green-500/20" : "bg-white/5 hover:bg-white/10 text-white"
-              )}
-            >
-              <Bluetooth className={cn("w-4 h-4 mr-1.5", connectionStatus === 'connected' && "animate-pulse")} />
-              {connectionStatus === 'connected' ? "Connected" : "Connect Device"}
-            </Button>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
