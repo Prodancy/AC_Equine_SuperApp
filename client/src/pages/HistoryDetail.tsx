@@ -48,10 +48,10 @@ export default function HistoryDetail() {
   };
 
   return (
-    <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-6 pb-24 md:pb-8">
-      <div className="flex justify-center mb-6">
+    <div className="p-3 md:p-6 max-w-5xl mx-auto space-y-6 pb-20 md:pb-6">
+      <div className="flex justify-center mb-5">
         <div className="flex flex-col items-center">
-          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto mb-1" />
+          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-7 md:h-9 w-auto mb-1" />
         </div>
       </div>
 

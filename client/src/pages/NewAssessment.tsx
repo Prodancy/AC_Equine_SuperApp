@@ -62,9 +62,9 @@ export default function NewAssessment() {
 
   return (
     <div className="flex flex-col h-screen bg-[#0a0f1d] overflow-hidden">
-      <div className="flex justify-center mb-6 pt-4">
+      <div className="flex justify-center mb-5 pt-3">
         <div className="flex flex-col items-center">
-          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto mb-1" />
+          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-7 md:h-9 w-auto mb-1" />
         </div>
       </div>
       <header className="p-4 md:p-6 border-b border-white/5 bg-[#111827]/50 backdrop-blur-md flex items-center justify-between shrink-0 sticky top-0 z-50">
