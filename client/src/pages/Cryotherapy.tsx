@@ -1286,8 +1286,8 @@ export default function Cryotherapy() {
 
                       {/* Label tooltip */}
                       <div className={cn(
-                        "absolute -bottom-7 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-md bg-[#FF8A00] text-[10px] font-bold text-white whitespace-nowrap opacity-0 group-hover/spot:opacity-100 transition-opacity pointer-events-none z-30 shadow-lg",
-                        selectedPart === spot.id && "opacity-100 translate-y-0.5"
+                        "absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-md bg-[#FF8A00] text-[10px] font-bold text-white whitespace-nowrap opacity-0 group-hover/spot:opacity-100 transition-opacity pointer-events-none z-30 shadow-lg",
+                        selectedPart === spot.id && "opacity-100 -translate-y-0.5"
                       )}>
                         {spot.label}
                       </div>
