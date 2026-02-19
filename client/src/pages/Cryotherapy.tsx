@@ -745,7 +745,7 @@ export default function Cryotherapy() {
                   </div>
 
                   {/* Bottom Section: Intensity */}
-                  <div className="w-full h-1/3 flex items-center justify-center relative transition-colors duration-300 bg-[#b91c1c] pt-[-20px] pb-[-20px]">
+                  <div className="w-full h-1/3 flex items-center justify-center relative transition-colors duration-300 bg-[#b91c1c] mt-[1px] mb-[1px] pt-[0px] pb-[0px] ml-[0px] mr-[0px]">
                     <div className="flex items-center gap-1">
                       <div className="w-12 h-12 flex items-center justify-center">
                         <div className="w-10 h-7 border-[3px] border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
@@ -754,7 +754,7 @@ export default function Cryotherapy() {
                           <div className="w-6 h-[3px] bg-white" />
                         </div>
                       </div>
-                      <span className="text-white tabular-nums tracking-tight font-semibold text-[40px] mt-[0px] mb-[0px] pt-[-10px] pb-[-10px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                      <span className="text-white tabular-nums tracking-tight font-semibold text-[40px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                         {Math.round(intensity[0])} cm
                       </span>
                     </div>
