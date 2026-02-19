@@ -24,7 +24,7 @@ function Router() {
   return (
     <div className="flex h-screen bg-background flex-col md:flex-row overflow-hidden">
       <Sidebar />
-      <main className="flex-1 overflow-y-auto pb-20 md:pb-0 scroll-smooth no-scrollbar">
+      <main className="flex-1 overflow-hidden pb-20 md:pb-0 scroll-smooth">
         <Switch>
           <Route path="/" component={Dashboard} />
           <Route path="/horses" component={Horses} />

@@ -283,7 +283,7 @@ export default function Dashboard() {
               <DialogTitle className="text-xl font-bold tracking-tight">Schedule new session</DialogTitle>
             </DialogHeader>
             
-            <div className="space-y-6 py-4 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
+            <div className="space-y-6 py-4 max-h-[70vh] overflow-hidden pr-2">
               <div className="space-y-3">
                 <Label className="text-xs font-semibold text-primary uppercase tracking-wider">Select date</Label>
                 <input 

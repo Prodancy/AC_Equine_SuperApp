@@ -689,7 +689,7 @@ export default function Cryotherapy() {
 
   if (showSession) {
     return (
-      <div className="fixed inset-0 z-[100] bg-[#030712] p-4 md:p-8 overflow-y-auto">
+      <div className="fixed inset-0 z-[100] bg-[#030712] p-4 md:p-8 overflow-hidden h-screen flex flex-col">
         <div className="flex justify-center mb-6 pt-4">
           <div className="flex flex-col items-center">
             <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto mb-1" />
@@ -745,10 +745,10 @@ export default function Cryotherapy() {
                   </div>
 
                   {/* Bottom Section: Intensity */}
-                  <div className="w-full h-1/3 flex items-center justify-center relative transition-colors duration-300 bg-[#b91c1c] mt-[1px] mb-[1px] pt-[0px] pb-[0px] ml-[0px] mr-[0px]">
+                  <div className="w-full h-1/3 flex items-center justify-center relative transition-colors duration-300 bg-[#b91c1c]">
                     <div className="flex items-center gap-1">
-                      <div className="w-12 h-12 flex items-center justify-center">
-                        <div className="w-10 h-7 border-[3px] border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
+                      <div className="w-12 h-12 flex items-center justify-top">
+                        <div className="w-10 h-7 border-[2px] border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
                           <div className="w-6 h-[3px] bg-white" />
                           <div className="w-6 h-[3px] bg-white" />
                           <div className="w-6 h-[3px] bg-white" />
@@ -852,7 +852,7 @@ export default function Cryotherapy() {
   }
 
   return (
-    <div className="p-3 md:p-6 max-w-5xl mx-auto space-y-4 pb-20 md:pb-6">
+    <div className="p-3 md:p-6 max-w-5xl mx-auto space-y-4 pb-20 md:pb-6 h-screen overflow-hidden flex flex-col">
       <div className="flex justify-center mb-4 pt-3">
         <img
           src={america_cryo_logo}
