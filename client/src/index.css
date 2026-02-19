@@ -199,7 +199,7 @@ html, body, #root {
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 215 25% 20%;
+  --border: transparent;
   --input: 215 25% 20%;
   --ring: 221 70% 45%;
 }

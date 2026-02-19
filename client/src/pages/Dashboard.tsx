@@ -103,7 +103,7 @@ export default function Dashboard() {
         {/* Main Content Column */}
         <div className="lg:col-span-2 space-y-8">
           {/* Hero Action Card */}
-          <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-primary/20 via-[#0a0f1d] to-[#050810] border border-white/10 shadow-2xl">
+          <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-primary/20 via-[#0a0f1d] to-[#050810] shadow-2xl">
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
             <div className="p-4 md:p-6 relative flex flex-col md:flex-row items-center gap-6">
               <div className="flex-1 space-y-4">
@@ -157,7 +157,7 @@ export default function Dashboard() {
 
         {/* Sidebar Column */}
         <div className="space-y-8">
-          <Card className="bg-white/5 border-white/10 backdrop-blur-xl rounded-[2rem] overflow-hidden sticky top-8">
+          <Card className="bg-white/5 border-none backdrop-blur-xl rounded-[2rem] overflow-hidden sticky top-8">
             <div className="h-1.5 bg-gradient-to-r from-primary/50 via-primary to-primary/50 w-full" />
             <CardHeader className="p-6 pb-2">
               <div className="flex items-center justify-between">
@@ -175,7 +175,7 @@ export default function Dashboard() {
                 { time: "03:00 PM", horse: "Midnight Star", protocol: "Manual", status: "Confirmed", modalities: ["class_iv"] },
                 { time: "04:30 PM", horse: "Storm", protocol: "Recovery", status: "Confirmed", modalities: ["cryo"] },
               ].map((row, i) => (
-                <div key={i} className="group flex items-center gap-4 p-3 rounded-2xl bg-[#121826]/50 border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+                <div key={i} className="group flex items-center gap-4 p-3 rounded-2xl bg-[#121826]/50 hover:bg-primary/5 transition-all cursor-pointer">
                   <div className="text-center min-w-[50px]">
                     <p className="text-[9px] font-semibold text-primary">{row.time.split(' ')[1]}</p>
                     <p className="text-sm font-bold text-white leading-tight">{row.time.split(' ')[0]}</p>
