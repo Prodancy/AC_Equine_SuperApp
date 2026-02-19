@@ -83,7 +83,7 @@ export default function Dashboard() {
     <div className="min-h-screen text-white p-4 md:p-8 pb-24 md:pb-8 bg-[#0a0f1d]">
       <div className="flex justify-center mb-10">
         <div className="flex flex-col items-center">
-          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-10 md:h-12 w-auto mb-1" />
+          <img src={america_cryo_logo} alt="America Cryo Logo" className="h-5 md:h-6 w-auto mb-1" />
         </div>
       </div>
       {/* Header Area */}
