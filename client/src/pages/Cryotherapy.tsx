@@ -718,7 +718,7 @@ export default function Cryotherapy() {
                 </div>
                 <div className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square w-[360px] h-[360px] mx-auto my-8">
                   {/* Top Section: Time */}
-                  <div className="w-full h-1/3 bg-[#0a0f1d] flex flex-col items-center justify-end relative transition-colors duration-300 border-b border-white/5 pb-10">
+                  <div className="w-full h-1/3 bg-[#0a0f1d] flex flex-col items-center justify-end relative transition-colors duration-300 border-b border-white/5 pb-1">
                     <div className="flex items-center gap-1">
                       <div className="w-9 h-9 rounded-full border-[3px] border-white/90 flex items-center justify-center relative">
                         <div className="absolute top-[4px] left-1/2 w-[3px] h-[12px] bg-white origin-bottom -translate-x-1/2" />
@@ -733,7 +733,7 @@ export default function Cryotherapy() {
 
                   {/* Middle Section: Temperature */}
                   <div className={cn(
-                    "w-full h-1/3 flex flex-col items-center justify-center relative transition-colors duration-300",
+                    "w-full h-1/3 flex items-center justify-center relative transition-colors duration-300",
                     (currentTemp < 0.5 || currentTemp > 8.1) ? "bg-[#b91c1c]" : "bg-[#1d4ed8]"
                   )}>
                     <div className="flex items-center gap-0">
@@ -746,7 +746,7 @@ export default function Cryotherapy() {
 
                   {/* Bottom Section: Intensity */}
                   <div className={cn(
-                    "w-full h-1/3 flex flex-col items-center justify-end relative transition-colors duration-300 pb-10",
+                    "w-full h-1/3 flex items-center justify-center relative transition-colors duration-300",
                     (intensity[0] < 10 || intensity[0] > 15) ? "bg-[#b91c1c]" : "bg-[#1d4ed8]"
                   )}>
                     <div className="flex items-center gap-1">
