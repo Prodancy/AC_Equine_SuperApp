@@ -745,10 +745,7 @@ export default function Cryotherapy() {
                   </div>
 
                   {/* Bottom Section: Intensity */}
-                  <div className={cn(
-                    "w-full h-1/3 flex items-center justify-center relative transition-colors duration-300",
-                    (intensity[0] < 10 || intensity[0] > 15) ? "bg-[#b91c1c]" : "bg-[#1d4ed8]"
-                  )}>
+                  <div className="w-full h-1/3 flex items-center justify-center relative transition-colors duration-300 bg-[#b91c1c] pt-[-20px] pb-[-20px]">
                     <div className="flex items-center gap-1">
                       <div className="w-12 h-12 flex items-center justify-center">
                         <div className="w-10 h-7 border-[3px] border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
