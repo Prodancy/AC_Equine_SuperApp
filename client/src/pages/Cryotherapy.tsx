@@ -1248,15 +1248,15 @@ export default function Cryotherapy() {
 
                 {/* Hotspots */}
                 {[
-                  { id: "head", top: "25%", left: "15%", label: "Head" },
-                  { id: "neck", top: "35%", left: "30%", label: "Neck" },
-                  { id: "shoulder", top: "50%", left: "35%", label: "Shoulder" },
-                  { id: "back-left", top: "35%", left: "55%", label: "Back" },
-                  { id: "hip", top: "45%", left: "75%", label: "Hip" },
-                  { id: "stifle", top: "65%", left: "70%", label: "Stifle" },
-                  { id: "leg-front-left", top: "80%", left: "35%", label: "Fetlock" },
-                  { id: "hoof-front-left", top: "85%", left: "75%", label: "Hock" },
-                  { id: "leg-front-right", top: "85%", left: "42%", label: "Feet" },
+                  { id: "head", top: "20%", left: "10%", label: "Head" },
+                  { id: "neck", top: "17.5%", left: "24%", label: "Neck" },
+                  { id: "shoulder", top: "31%", left: "31.5%", label: "Shoulder" },
+                  { id: "back-left", top: "22%", left: "49%", label: "Back" },
+                  { id: "hip", top: "24%", left: "69%", label: "Hip" },
+                  { id: "stifle", top: "47%", left: "68%", label: "Stifle" },
+                  { id: "leg-front-left", top: "78%", left: "36%", label: "Fetlock" },
+                  { id: "hoof-front-left", top: "58.5%", left: "74.5%", label: "Hock" },
+                  { id: "leg-front-right", top: "83%", left: "60%", label: "Feet" },
                 ].map((spot) => (
                   <button
                     key={`hotspot-${spot.id}`}
@@ -1286,8 +1286,8 @@ export default function Cryotherapy() {
 
                       {/* Label tooltip */}
                       <div className={cn(
-                        "absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 rounded-md bg-[#FF8A00] text-[11px] font-bold text-white whitespace-nowrap opacity-0 group-hover/spot:opacity-100 transition-opacity pointer-events-none z-30 shadow-lg",
-                        selectedPart === spot.id && "opacity-100 translate-y-1"
+                        "absolute -bottom-7 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-md bg-[#FF8A00] text-[10px] font-bold text-white whitespace-nowrap opacity-0 group-hover/spot:opacity-100 transition-opacity pointer-events-none z-30 shadow-lg",
+                        selectedPart === spot.id && "opacity-100 translate-y-0.5"
                       )}>
                         {spot.label}
                       </div>
