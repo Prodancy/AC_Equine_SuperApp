@@ -219,8 +219,8 @@ html, body, #root {
 }
 
 .px-safe {
-  padding-left: var(--sal);
-  padding-right: var(--sar);
+  padding-left: max(10px, var(--sal));
+  padding-right: max(10px, var(--sar));
 }
 
 /* Eliminate tap delay and highlight */
