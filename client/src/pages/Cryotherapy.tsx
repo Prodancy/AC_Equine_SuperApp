@@ -715,16 +715,16 @@ export default function Cryotherapy() {
             {/* Cooling Progress Card - Moved to Top and Span 2 Columns */}
             <div className="md:col-span-2 flex justify-center">
               <div className="flex flex-col justify-between overflow-hidden relative w-full max-w-2xl">
-                <div className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square w-[360px] h-[360px] mx-auto my-8">
+                <div className="flex-1 flex flex-col items-center justify-center relative z-10 p-0 overflow-hidden rounded-full aspect-square w-[340px] h-[340px] mx-auto my-0">
                   {/* Top Section: Time */}
-                  <div className="w-full h-1/3 bg-[#0a0f1d] flex flex-col items-center justify-end relative transition-colors duration-300 border-b border-white/5 pb-1">
-                    <div className="flex items-center gap-1">
-                      <div className="w-9 h-9 rounded-full border-[3px] border-white/90 flex items-center justify-center relative">
-                        <div className="absolute top-[4px] left-1/2 w-[3px] h-[12px] bg-white origin-bottom -translate-x-1/2" />
-                        <div className="w-2 h-2 rounded-full bg-white z-10" />
-                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-[3px] bg-white rounded-full" />
+                  <div className="w-full h-1/3 bg-[#0a0f1d] flex flex-col items-center justify-end relative transition-colors duration-300 border-b border-white/5 pb-0">
+                    <div className="flex items-center gap-1 -mb-12">
+                      <div className="w-8 h-8 rounded-full border-[2px] border-white/90 flex items-center justify-center relative scale-[0.5]">
+                        <div className="absolute top-[3px] left-1/2 w-[2px] h-[10px] bg-white origin-bottom -translate-x-1/2" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-white z-10" />
+                        <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-[2px] bg-white rounded-full" />
                       </div>
-                      <span className="font-bold text-white tabular-nums tracking-tight text-[42px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                      <span className="font-bold text-white tabular-nums tracking-tight text-[24px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                         {timeLeft}s
                       </span>
                     </div>
@@ -732,55 +732,54 @@ export default function Cryotherapy() {
 
                   {/* Middle Section: Temperature */}
                   <div className={cn(
-                    "w-full h-1/3 flex items-center justify-center relative transition-colors duration-300",
+                    "w-full h-1/3 flex items-center justify-center relative transition-colors duration-300 py-0",
                     (currentTemp < 0.5 || currentTemp > 8.1) ? "bg-[#b91c1c]" : "bg-[#1d4ed8]"
                   )}>
                     <div className="flex items-center gap-0">
-                      <Thermometer className="w-12 h-12 text-white" />
-                      <span className="text-white tabular-nums tracking-tighter font-semibold text-[56px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                      <Thermometer className="w-6 h-6 text-white scale-[0.6]" />
+                      <span className="text-white tabular-nums tracking-tighter font-semibold text-[34px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                         {currentTemp.toFixed(1)}°C
                       </span>
                     </div>
                   </div>
 
                   {/* Bottom Section: Intensity */}
-                  <div className="w-full h-1/3 flex items-center justify-center relative transition-colors duration-300 bg-[#b91c1c]">
-                    <div className="flex items-center gap-1">
-                      <div className="w-12 h-12 flex items-center justify-top">
-                        <div className="w-10 h-7 border-[2px] border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
-                          <div className="w-6 h-[3px] bg-white" />
-                          <div className="w-6 h-[3px] bg-white" />
-                          <div className="w-6 h-[3px] bg-white" />
+                  <div className="w-full h-1/3 flex items-center justify-center relative transition-colors duration-300 bg-[#b91c1c] pt-0">
+                    <div className="flex items-center gap-1 -mt-12">
+                      <div className="w-8 h-8 flex items-center justify-top scale-[0.5]">
+                        <div className="w-9 h-6 border-[2px] border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
+                          <div className="w-5 h-[2px] bg-white" />
+                          <div className="w-5 h-[2px] bg-white" />
+                          <div className="w-5 h-[2px] bg-white" />
                         </div>
                       </div>
-                      <span className="text-white tabular-nums tracking-tight font-semibold text-[40px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                      <span className="text-white tabular-nums tracking-tight font-semibold text-[22px]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                         {Math.round(intensity[0])} cm
                       </span>
                     </div>
                   </div>
-
                   {/* Progress Ring Overlay */}
                   <div className="absolute inset-0 pointer-events-none p-0">
-                    <svg className="w-full h-full" viewBox="0 0 360 360">
+                    <svg className="w-full h-full" viewBox="0 0 340 340">
                       {/* Background Track */}
                       <circle
-                        cx="180"
-                        cy="180"
-                        r="172.5"
+                        cx="170"
+                        cy="170"
+                        r="165"
                         stroke="rgba(61,99,221,0.1)"
-                        strokeWidth="35"
+                        strokeWidth="10"
                         fill="transparent"
                       />
                       {/* Progress Indicator */}
                       <circle
-                        cx="180"
-                        cy="180"
-                        r="172.5"
+                        cx="170"
+                        cy="170"
+                        r="165"
                         stroke="#3D63DD"
-                        strokeWidth="35"
+                        strokeWidth="10"
                         fill="transparent"
-                        strokeDasharray="1083.8"
-                        strokeDashoffset={1083.8 * (progress / 100)}
+                        strokeDasharray="1036.7"
+                        strokeDashoffset={1036.7 * (progress / 100)}
                         strokeLinecap="round"
                         className="transition-all duration-1000 ease-linear"
                         style={{ 
