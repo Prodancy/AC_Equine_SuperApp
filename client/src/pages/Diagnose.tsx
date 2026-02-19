@@ -32,8 +32,8 @@ export default function Diagnose() {
   ];
 
   return (
-    <div className="p-3 md:p-6 max-w-7xl mx-auto space-y-6 pb-20 md:pb-6">
-      <div className="flex justify-center pt-[0px] pb-[0px] mt-[16px] mb-[16px]">
+    <div className="min-h-screen text-white p-3 md:p-6 pb-20 md:pb-6 bg-[#0a0f1d]">
+      <div className="flex justify-center mb-8">
         <div className="flex flex-col items-center">
           <img src={america_cryo_logo} alt="America Cryo Logo" className="h-7 md:h-9 w-auto mb-1" />
         </div>
