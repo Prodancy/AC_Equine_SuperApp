@@ -47,6 +47,7 @@ export default function Dashboard() {
   const [selectedHorse, setSelectedHorse] = useState<string>("");
   const [selectedDate, setSelectedDate] = useState<string>(new Date().toISOString().split('T')[0]);
   const [selectedTime, setSelectedTime] = useState<string>("");
+  const [selectedTreatment, setSelectedTreatment] = useState<string>("");
 
   const horses = [
     "Thunder Spirit",
@@ -354,19 +355,47 @@ export default function Dashboard() {
 
               <div className="space-y-3">
                 <Label className="text-[10px] font-semibold text-primary">4. Treatment modality</Label>
-                <div className="grid grid-cols-2 gap-2">
-                {treatments.map((t) => (
-                  <Button
-                    key={t.id}
-                    variant="outline"
-                    className="justify-start font-bold border-white/5 bg-white/5 hover:bg-white/10 text-white rounded-xl h-12"
-                  >
-                    <t.icon className={cn("w-4 h-4 mr-3", t.color)} />
-                    {t.label}
-                  </Button>
-                ))}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className={cn(
+                        "w-full justify-between font-bold border-white/5 bg-white/5 hover:bg-white/10 text-white rounded-xl h-12 px-4 transition-all",
+                        selectedTreatment && "border-primary/50 bg-primary/5"
+                      )}
+                    >
+                      {selectedTreatment ? (
+                        <div className="flex items-center">
+                          {(() => {
+                            const t = treatments.find(t => t.id === selectedTreatment);
+                            return t ? (
+                              <>
+                                <t.icon className={cn("w-4 h-4 mr-3 shrink-0", t.color)} />
+                                <span>{t.label}</span>
+                              </>
+                            ) : null;
+                          })()}
+                        </div>
+                      ) : (
+                        <span className="text-gray-500 font-medium">Select modality...</span>
+                      )}
+                      <ChevronDown className="w-4 h-4 opacity-50" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-[var(--radix-dropdown-menu-trigger-width)] bg-[#121826] border-white/10 text-white rounded-xl">
+                    {treatments.map((t) => (
+                      <DropdownMenuItem
+                        key={t.id}
+                        onClick={() => setSelectedTreatment(t.id)}
+                        className="hover:bg-primary/20 cursor-pointer py-3 px-4 flex items-center gap-3 transition-colors"
+                      >
+                        <t.icon className={cn("w-4 h-4", t.color)} />
+                        <span className="font-medium">{t.label}</span>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
-            </div>
           </div>
 
           <DialogFooter className="mt-4">
