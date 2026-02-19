@@ -655,8 +655,18 @@ export default function Cryotherapy() {
           return prev - 1;
         });
         setCurrentTemp((prev) => {
-          if (prev > targetTemp) return prev - 2;
-          return prev + (Math.random() - 0.5) * 2;
+          // Temperature range: 0.5 to 8.1
+          const next = prev - 0.5;
+          if (next <= 0.5) return 0.5 + Math.random() * 0.5;
+          return next;
+        });
+        setIntensity((prev) => {
+          // Distance (intensity field) range: 10 to 15
+          const current = prev[0];
+          const next = current + (Math.random() > 0.5 ? 0.5 : -0.5);
+          if (next < 10) return [10];
+          if (next > 15) return [15];
+          return [next];
         });
       }, 1000);
     }
@@ -715,12 +725,12 @@ export default function Cryotherapy() {
                   <div className="w-full h-1/3 bg-[#1d4ed8] flex items-center justify-center gap-3 relative">
                     <Thermometer className="w-10 h-10 text-white" />
                     <span className="font-black text-white tabular-nums tracking-tighter text-[48px]">
-                      {Math.round(currentTemp)}° C
+                      {currentTemp.toFixed(1)}° C
                     </span>
                   </div>
 
                   {/* Bottom Section: Intensity */}
-                  <div className="w-full h-1/3 bg-[#b91c1c] flex items-center justify-center gap-3 relative">
+                  <div className="w-full h-1/3 bg-[#1d4ed8] flex items-center justify-center gap-3 relative">
                     <div className="w-8 h-8 flex items-center justify-center">
                       <div className="w-7 h-5 border-2 border-white rounded-sm flex flex-col items-center justify-around py-0.5 rotate-45">
                         <div className="w-4 h-[2px] bg-white" />
@@ -729,7 +739,7 @@ export default function Cryotherapy() {
                       </div>
                     </div>
                     <span className="font-black text-white tabular-nums tracking-tight text-[28px]">
-                      {intensity[0]} in
+                      {Math.round(intensity[0])} cm
                     </span>
                   </div>
 
