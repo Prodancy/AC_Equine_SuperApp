@@ -1316,7 +1316,7 @@ export default function Cryotherapy() {
                   <img
                     src={horse_anatomy}
                     alt="Horse Anatomy"
-                    className="w-full h-full object-contain relative z-10 filter brightness-110 contrast-110 drop-shadow-[0_0_3px_rgba(61,99,221,0.2)]"
+                    className="w-full h-full object-contain relative z-10 filter brightness-110 contrast-110 drop-shadow-[0_0_30px_rgba(61,99,221,0.2)]"
                   />
 
                   {/* Hotspots */}
@@ -1335,7 +1335,7 @@ export default function Cryotherapy() {
                       key={`hotspot-${spot.id}`}
                       onClick={() => setSelectedPart(spot.id)}
                       className={cn(
-                        "absolute w-10 h-10 md:w-12 md:h-12 z-20 group/spot transition-all duration-500 -translate-x-1/2 -translate-y-1/2",
+                        "absolute w-5 h-5 md:w-6 md:h-6 z-20 group/spot transition-all duration-500 -translate-x-1/2 -translate-y-1/2",
                         selectedPart === spot.id ? "scale-110" : "hover:scale-105",
                       )}
                       style={{ top: spot.top, left: spot.left }}
@@ -1351,7 +1351,7 @@ export default function Cryotherapy() {
                         
                         {/* Inner Core */}
                         <div className={cn(
-                          "w-3 h-3 rounded-full transition-all duration-500",
+                          "w-1.5 h-1.5 rounded-full transition-all duration-500",
                           selectedPart === spot.id 
                             ? "bg-white scale-125 shadow-[0_0_10px_white]" 
                             : "bg-[#FF8A00]/80 group-hover/spot:bg-[#FF8A00]"
@@ -1359,7 +1359,7 @@ export default function Cryotherapy() {
 
                         {/* Label tooltip */}
                         <div className={cn(
-                          "absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-md bg-[#FF8A00] text-[10px] font-bold text-white whitespace-nowrap opacity-0 group-hover/spot:opacity-100 transition-opacity pointer-events-none z-30 shadow-lg",
+                          "absolute -top-6 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-md bg-[#FF8A00] text-[10px] font-bold text-white whitespace-nowrap opacity-0 group-hover/spot:opacity-100 transition-opacity pointer-events-none z-30 shadow-lg",
                           selectedPart === spot.id && "opacity-100 -translate-y-0.5"
                         )}>
                           {spot.label}
@@ -1367,7 +1367,7 @@ export default function Cryotherapy() {
 
                         {/* Pulse effect */}
                         {selectedPart === spot.id && (
-                          <div className="absolute inset-[-10px] rounded-full border-2 border-[#FF8A00] animate-ping opacity-40" />
+                          <div className="absolute inset-[-5px] rounded-full border border-[#FF8A00] animate-ping opacity-40" />
                         )}
                       </div>
                     </button>
