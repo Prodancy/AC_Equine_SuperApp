@@ -857,7 +857,7 @@ export default function Cryotherapy() {
   }
 
   return (
-    <div className="p-3 md:p-6 max-w-5xl mx-auto space-y-4 pb-20 md:pb-6 h-screen overflow-hidden flex flex-col">
+    <div className="p-3 md:p-6 max-w-5xl mx-auto space-y-4 pb-20 md:pb-6 min-h-screen flex flex-col">
       <div className="flex justify-center mb-4 pt-3">
         <img
           src={america_cryo_logo}
