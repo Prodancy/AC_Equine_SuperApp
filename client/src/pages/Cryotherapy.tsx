@@ -1305,7 +1305,7 @@ export default function Cryotherapy() {
             className="flex flex-col items-center"
           >
             <div className="w-full">
-              <div className="relative w-full aspect-[1536/1024] bg-[#0a0f1d] overflow-hidden group">
+              <div className="relative w-full aspect-[1536/1024] bg-[#0a0f1d] overflow-hidden group rounded-3xl border border-white/5">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                   <div className="absolute inset-0 bg-[radial-gradient(#3D63DD_1px,transparent_1px)] [background-size:20px_20px]" />
@@ -1314,7 +1314,7 @@ export default function Cryotherapy() {
                 <img
                   src={horse_anatomy}
                   alt="Horse Anatomy"
-                  className="w-full h-full object-contain relative z-10 filter brightness-110 contrast-110 drop-shadow-[0_0_30px_rgba(61,99,221,0.2)]"
+                  className="w-[125%] h-[125%] object-contain relative z-10 filter brightness-110 contrast-110 drop-shadow-[0_0_30px_rgba(61,99,221,0.2)] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 />
 
                 {/* Hotspots */}
