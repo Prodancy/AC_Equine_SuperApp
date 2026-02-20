@@ -1311,65 +1311,68 @@ export default function Cryotherapy() {
                   <div className="absolute inset-0 bg-[radial-gradient(#3D63DD_1px,transparent_1px)] [background-size:20px_20px]" />
                 </div>
                 
-                <img
-                  src={horse_anatomy}
-                  alt="Horse Anatomy"
-                  className="w-full h-full object-contain relative z-10 filter brightness-110 contrast-110 drop-shadow-[0_0_30px_rgba(61,99,221,0.2)]"
-                />
+                {/* Scaling Wrapper for Image and Hotspots */}
+                <div className="absolute inset-0 scale-[1.35] origin-center">
+                  <img
+                    src={horse_anatomy}
+                    alt="Horse Anatomy"
+                    className="w-full h-full object-contain relative z-10 filter brightness-110 contrast-110 drop-shadow-[0_0_30px_rgba(61,99,221,0.2)]"
+                  />
 
-                {/* Hotspots */}
-                {[
-                  { id: "head", top: "30.58%", left: "8.57%", label: "Head" },
-                  { id: "neck", top: "28.99%", left: "25.48%", label: "Neck" },
-                  { id: "shoulder", top: "41.14%", left: "34.41%", label: "Shoulder" },
-                  { id: "back-left", top: "33.26%", left: "54.96%", label: "Back" },
-                  { id: "hip", top: "35.64%", left: "78.85%", label: "Hip" },
-                  { id: "stifle", top: "54.54%", left: "77.92%", label: "Stifle" },
-                  { id: "leg-front-left", top: "79.99%", left: "39.59%", label: "Fetlock" },
-                  { id: "hoof-front-left", top: "64.51%", left: "85.23%", label: "Hock" },
-                  { id: "leg-front-right", top: "83.98%", left: "68.61%", label: "Feet" },
-                ].map((spot) => (
-                  <button
-                    key={`hotspot-${spot.id}`}
-                    onClick={() => setSelectedPart(spot.id)}
-                    className={cn(
-                      "absolute w-10 h-10 md:w-12 md:h-12 z-20 group/spot transition-all duration-500 -translate-x-1/2 -translate-y-1/2",
-                      selectedPart === spot.id ? "scale-110" : "hover:scale-105",
-                    )}
-                    style={{ top: spot.top, left: spot.left }}
-                  >
-                    <div className="relative w-full h-full flex items-center justify-center">
-                      {/* Orange Button Style */}
-                      <div className={cn(
-                        "absolute inset-0 rounded-full border-2 transition-all duration-500",
-                        selectedPart === spot.id 
-                          ? "border-[#FF8A00] bg-[#FF8A00]/40 shadow-[0_0_20px_rgba(255,138,0,0.6)]" 
-                          : "border-[#FF8A00]/60 bg-[#FF8A00]/10 group-hover/spot:border-[#FF8A00] group-hover/spot:bg-[#FF8A00]/20"
-                      )} />
-                      
-                      {/* Inner Core */}
-                      <div className={cn(
-                        "w-3 h-3 rounded-full transition-all duration-500",
-                        selectedPart === spot.id 
-                          ? "bg-white scale-125 shadow-[0_0_10px_white]" 
-                          : "bg-[#FF8A00]/80 group-hover/spot:bg-[#FF8A00]"
-                      )} />
-
-                      {/* Label tooltip */}
-                      <div className={cn(
-                        "absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-md bg-[#FF8A00] text-[10px] font-bold text-white whitespace-nowrap opacity-0 group-hover/spot:opacity-100 transition-opacity pointer-events-none z-30 shadow-lg",
-                        selectedPart === spot.id && "opacity-100 -translate-y-0.5"
-                      )}>
-                        {spot.label}
-                      </div>
-
-                      {/* Pulse effect */}
-                      {selectedPart === spot.id && (
-                        <div className="absolute inset-[-10px] rounded-full border-2 border-[#FF8A00] animate-ping opacity-40" />
+                  {/* Hotspots */}
+                  {[
+                    { id: "head", top: "30.58%", left: "8.57%", label: "Head" },
+                    { id: "neck", top: "28.99%", left: "25.48%", label: "Neck" },
+                    { id: "shoulder", top: "41.14%", left: "34.41%", label: "Shoulder" },
+                    { id: "back-left", top: "33.26%", left: "54.96%", label: "Back" },
+                    { id: "hip", top: "35.64%", left: "78.85%", label: "Hip" },
+                    { id: "stifle", top: "54.54%", left: "77.92%", label: "Stifle" },
+                    { id: "leg-front-left", top: "79.99%", left: "39.59%", label: "Fetlock" },
+                    { id: "hoof-front-left", top: "64.51%", left: "85.23%", label: "Hock" },
+                    { id: "leg-front-right", top: "83.98%", left: "68.61%", label: "Feet" },
+                  ].map((spot) => (
+                    <button
+                      key={`hotspot-${spot.id}`}
+                      onClick={() => setSelectedPart(spot.id)}
+                      className={cn(
+                        "absolute w-10 h-10 md:w-12 md:h-12 z-20 group/spot transition-all duration-500 -translate-x-1/2 -translate-y-1/2",
+                        selectedPart === spot.id ? "scale-110" : "hover:scale-105",
                       )}
-                    </div>
-                  </button>
-                ))}
+                      style={{ top: spot.top, left: spot.left }}
+                    >
+                      <div className="relative w-full h-full flex items-center justify-center">
+                        {/* Orange Button Style */}
+                        <div className={cn(
+                          "absolute inset-0 rounded-full border-2 transition-all duration-500",
+                          selectedPart === spot.id 
+                            ? "border-[#FF8A00] bg-[#FF8A00]/40 shadow-[0_0_20px_rgba(255,138,0,0.6)]" 
+                            : "border-[#FF8A00]/60 bg-[#FF8A00]/10 group-hover/spot:border-[#FF8A00] group-hover/spot:bg-[#FF8A00]/20"
+                        )} />
+                        
+                        {/* Inner Core */}
+                        <div className={cn(
+                          "w-3 h-3 rounded-full transition-all duration-500",
+                          selectedPart === spot.id 
+                            ? "bg-white scale-125 shadow-[0_0_10px_white]" 
+                            : "bg-[#FF8A00]/80 group-hover/spot:bg-[#FF8A00]"
+                        )} />
+
+                        {/* Label tooltip */}
+                        <div className={cn(
+                          "absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-md bg-[#FF8A00] text-[10px] font-bold text-white whitespace-nowrap opacity-0 group-hover/spot:opacity-100 transition-opacity pointer-events-none z-30 shadow-lg",
+                          selectedPart === spot.id && "opacity-100 -translate-y-0.5"
+                        )}>
+                          {spot.label}
+                        </div>
+
+                        {/* Pulse effect */}
+                        {selectedPart === spot.id && (
+                          <div className="absolute inset-[-10px] rounded-full border-2 border-[#FF8A00] animate-ping opacity-40" />
+                        )}
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
 
               <div className="mt-8 w-full max-w-2xl">
